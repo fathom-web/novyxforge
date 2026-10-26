@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050917">
+  <meta name="description" content="NOVYX FORGE is an independent digital lab. We turn ideas into experiences, tools, experiments and useful products.">
+  <meta property="og:title" content="NOVYX FORGE — Ideas Forged Into Reality">
+  <meta property="og:description" content="A digital lab for ideas, powered by technology and fueled by creativity.">
+  <title>NOVYX FORGE — Ideas Forged Into Reality</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23050b1c'/%3E%3Cpath d='M13 48V16l38 32V16' fill='none' stroke='%237bdfff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root{color-scheme:dark;--bg:#050815;--bg2:#080e22;--txt:#f2f6ff;--muted:#96a4c5;--line:rgba(148,180,246,.15);--blue:#8cdfff;--cyan:#43d2ff;--violet:#ad87ff;--max:1180px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--txt);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible{outline:2px solid var(--blue);outline-offset:5px;border-radius:3px}
+    .noise{position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E")}
+    .sky{position:absolute;inset:0 0 auto;height:1050px;overflow:hidden;z-index:-1;background:radial-gradient(ellipse 54% 38% at 50% 39%,rgba(31,92,202,.17),transparent 80%),radial-gradient(ellipse 45% 44% at 70% 30%,rgba(93,34,188,.11),transparent 80%),linear-gradient(180deg,#071126 0%,#050815 90%)}
+    .sky:after{content:"";position:absolute;inset:0;opacity:.48;background-image:radial-gradient(circle,rgba(216,235,255,.6) .8px,transparent 1.2px);background-size:97px 111px;mask-image:linear-gradient(180deg,#000 0%,transparent 86%)}
+    .container{max-width:var(--max);width:calc(100% - 48px);margin-inline:auto}
+    .nav{height:92px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:5}
+    .brand{display:flex;align-items:center;gap:12px;font-family:Outfit,sans-serif;font-weight:700;letter-spacing:.13em;font-size:18px}
+    .brand .mark{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(133,204,255,.38);border-radius:10px;background:linear-gradient(145deg,rgba(112,189,255,.13),rgba(146,83,255,.04));box-shadow:inset 0 0 15px rgba(60,180,255,.09)}
+    .brand .mark svg{width:25px}
+    .brand small{color:#a6b6d7;font-size:11px;letter-spacing:.35em;margin-left:2px;font-weight:500}
+    .navlinks{display:flex;align-items:center;gap:38px;font-size:12px;text-transform:uppercase;letter-spacing:.17em;color:#b5c3e0}
+    .navlinks a:hover{color:white}
+    .top-cta{padding:13px 18px;border:1px solid rgba(134,202,255,.3);border-radius:4px;font-weight:700;letter-spacing:.13em;font-size:11px;text-transform:uppercase;background:rgba(13,36,72,.3);transition:.25s}
+    .top-cta:hover{border-color:var(--blue);background:rgba(74,147,227,.15)}
+    .hero{min-height:745px;text-align:center;position:relative;display:flex;flex-direction:column;align-items:center;padding-top:23px}
+    .eyebrow,.section-kicker{font-size:11px;letter-spacing:.36em;font-weight:700;text-transform:uppercase;color:#85b4f0;display:flex;align-items:center;justify-content:center;gap:13px}
+    .eyebrow:before,.eyebrow:after{content:"";display:block;width:30px;height:1px;background:linear-gradient(90deg,transparent,#4688c3)}
+    .eyebrow:after{transform:rotate(180deg)}
+    .scene{width:min(880px,100%);aspect-ratio:880 / 435;position:relative;margin-top:5px;filter:drop-shadow(0 15px 35px rgba(19,114,221,.16))}
+    .scene svg{width:100%;height:100%;overflow:visible}
+    .orbit1,.orbit2,.orbit3{transform-origin:440px 235px;animation:orbit 22s linear infinite;transform-box:fill-box}
+    .orbit2{animation-duration:29s;animation-direction:reverse}
+    .orbit3{animation-duration:37s}
+    .pulse{animation:pulse 4s ease-in-out infinite}
+    .float{animation:float 8s ease-in-out infinite}
+    .shimmer{animation:shimmer 3s ease-in-out infinite alternate}
+    .main-title{margin:-24px 0 4px;z-index:1;position:relative;font:600 clamp(54px,9.3vw,112px)/.97 Outfit,sans-serif;letter-spacing:-.055em;text-shadow:0 0 60px rgba(117,180,255,.24)}
+    .main-title span{font-weight:300;letter-spacing:-.075em;color:#a6c7f4}
+    .hero-tagline{font-size:12px;text-transform:uppercase;letter-spacing:.53em;color:#7fa3d4;font-weight:700;margin-top:18px}
+    .hero-desc{max-width:520px;margin:28px auto 0;font-size:16px;line-height:1.75;color:#b3bdd6}
+    .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:29px}
+    .btn{display:inline-flex;align-items:center;gap:12px;padding:15px 23px;font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;border-radius:4px;transition:transform .25s,background .25s,box-shadow .25s}
+    .btn:hover{transform:translateY(-3px)}
+    .btn-primary{background:#d8eaff;color:#06162e;box-shadow:0 10px 35px rgba(80,165,255,.12)}
+    .btn-primary:hover{background:white;box-shadow:0 10px 35px rgba(80,165,255,.28)}
+    .btn-outline{border:1px solid rgba(142,194,255,.25);color:#cbd9f1;background:rgba(8,24,55,.35)}
+    .btn-outline:hover{border-color:rgba(142,194,255,.7)}
+    .divider-wrap{padding:45px 0 0}
+    .thin-rule{height:1px;background:linear-gradient(90deg,transparent,rgba(121,173,231,.3) 20%,rgba(121,173,231,.3) 80%,transparent)}
+    .manifesto{text-align:center;padding-top:93px;padding-bottom:89px}
+    .manifesto h2{font:500 clamp(31px,4.1vw,54px)/1.16 Outfit,sans-serif;letter-spacing:-.035em;max-width:780px;margin:23px auto}
+    .manifesto h2 em{font-style:normal;background:linear-gradient(95deg,#8fdaff,#a897ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .manifesto p{color:var(--muted);font-size:15px;max-width:590px;line-height:1.85;margin-inline:auto}
+    .projects{padding-top:25px;padding-bottom:114px}
+    .section-header{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:36px}
+    .section-header .section-kicker{justify-content:start}
+    .section-header h2{font:500 clamp(35px,4.2vw,56px)/1.05 Outfit,sans-serif;letter-spacing:-.04em;margin:13px 0 0}
+    .section-header p{color:var(--muted);font-size:14px;max-width:320px;line-height:1.65;margin:0}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .project{min-height:333px;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,rgba(20,36,75,.55),rgba(9,15,32,.95));padding:26px;display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s}
+    .project:hover{transform:translateY(-6px);border-color:rgba(124,204,255,.52);box-shadow:0 24px 60px rgba(3,9,28,.65)}
+    .project:after{content:"";position:absolute;inset:auto -35% -50% -35%;height:65%;background:radial-gradient(ellipse at center,rgba(55,135,253,.11),transparent 70%);pointer-events:none}
+    .project-top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+    .project-number{font:500 11px Outfit,sans-serif;letter-spacing:.26em;color:#7490bd}
+    .state{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#a2caff;border:1px solid rgba(115,193,255,.18);background:rgba(70,146,241,.07);padding:6px 9px;border-radius:3px}
+    .project-art{position:relative;z-index:1;height:139px;display:flex;align-items:center;justify-content:center}
+    .project-art svg{height:105px;width:145px;filter:drop-shadow(0 7px 23px rgba(73,158,255,.25))}
+    .project h3{font:500 26px Outfit,sans-serif;letter-spacing:-.025em;margin:4px 0 5px;position:relative;z-index:2}
+    .project p{font-size:13px;line-height:1.6;color:#a5b4d2;margin:0;position:relative;z-index:2}
+    .project-arrow{display:flex;align-items:center;gap:9px;margin-top:auto;padding-top:20px;color:#8bcefb;font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:10px;position:relative;z-index:2}
+    .card-lab{background:linear-gradient(155deg,rgba(40,29,83,.5),rgba(9,15,32,.95))}
+    .card-lab:after{background:radial-gradient(ellipse at center,rgba(128,72,253,.18),transparent 70%)}
+    .card-lab .state{color:#c2a1fa;border-color:rgba(178,128,255,.18)}
+    .card-lab .project-arrow{color:#c6abff}
+    .values{padding:40px 0 103px}
+    .value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:37px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .value{padding:0 15px;border-right:1px solid var(--line)}
+    .value:last-child{border-right:0}
+    .value .number{display:block;font:500 12px Outfit,sans-serif;letter-spacing:.18em;color:#7eabed;margin-bottom:15px}
+    .value strong{font:500 20px Outfit,sans-serif;display:block;margin-bottom:9px}
+    .value span:last-child{font-size:12px;line-height:1.7;color:var(--muted)}
+    .lab-section{position:relative;overflow:hidden;border:1px solid rgba(118,167,241,.2);border-radius:13px;background:radial-gradient(ellipse 60% 115% at 89% 50%,rgba(73,71,195,.24),transparent 78%),linear-gradient(135deg,#0d1830,#0b1126);padding:64px 72px;margin-bottom:99px}
+    .lab-section:after{content:"";position:absolute;width:310px;height:310px;border:1px solid rgba(151,173,255,.16);border-radius:50%;right:7%;top:-15%;box-shadow:0 0 0 35px rgba(144,156,255,.025),0 0 0 70px rgba(144,156,255,.02);pointer-events:none}
+    .lab-section .section-kicker{justify-content:start}
+    .lab-section h2{max-width:610px;font:500 clamp(38px,4.3vw,58px)/1.09 Outfit,sans-serif;letter-spacing:-.04em;margin:18px 0}
+    .lab-section p{max-width:500px;font-size:14px;line-height:1.85;color:#aab9da}
+    .lab-section .btn{margin-top:15px}
+    footer{border-top:1px solid var(--line);padding:38px 0 48px}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;color:#7f91b0;font-size:12px}
+    .footer-inner strong{font:600 16px Outfit,sans-serif;color:#dbe9ff;letter-spacing:.14em}
+    .footer-inner a:hover{color:white}
+    .footer-links{display:flex;gap:24px}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes pulse{0%,100%{opacity:.65}50%{opacity:1}}
+    @keyframes shimmer{0%{opacity:.5}100%{opacity:1}}
+    @keyframes orbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    @media(max-width:950px){.cards{grid-template-columns:repeat(2,1fr)}.card-lab{grid-column:span 2}.navlinks{gap:19px}.scene{margin-top:24px}.hero{min-height:690px}}
+    @media(max-width:650px){
+      .container{width:calc(100% - 32px)}.nav{height:75px}.navlinks{gap:0}.navlinks>a:not(.top-cta){display:none}.brand{font-size:15px;gap:8px}.brand .mark{width:32px;height:32px}.brand .mark svg{width:23px}.top-cta{padding:11px 13px;font-size:10px}
+      .hero{min-height:auto;padding-bottom:85px;padding-top:25px}.eyebrow{letter-spacing:.18em;font-size:9px}.eyebrow:before,.eyebrow:after{width:15px}.scene{margin-top:32px;width:calc(100% + 50px);max-width:none;min-height:245px}.main-title{font-size:clamp(45px,12vw,72px);margin-top:-8px}.hero-tagline{font-size:9px;letter-spacing:.31em;margin-top:16px}.hero-desc{font-size:14px;margin-top:24px}.hero-actions{margin-top:25px}.btn{padding:14px 17px;font-size:10px}.manifesto{padding:72px 0 66px}.projects{padding-bottom:70px}.section-header{align-items:start;flex-direction:column;gap:13px;margin-bottom:25px}.cards{grid-template-columns:1fr}.card-lab{grid-column:auto}.project{min-height:308px}.value-grid{grid-template-columns:repeat(2,1fr);gap:22px 0}.value:nth-child(even){border-right:0}.value{padding:8px 18px 8px 10px}.value strong{font-size:18px}.lab-section{padding:42px 28px;margin-bottom:60px}.lab-section:after{right:-43%;top:-25%}.footer-inner{flex-direction:column;align-items:start}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div><div class="sky" aria-hidden="true"></div>
+  <header class="container nav">
+    <a class="brand" href="#home" aria-label="NOVYX FORGE home">
+      <span class="mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 25V7l18 18V7" stroke="#83dcff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 7L25 25" stroke="#a991ff" stroke-opacity=".7" stroke-width="1.1"/></svg></span>
+      NOVYX <small>FORGE</small>
+    </a>
+    <nav class="navlinks" aria-label="Main navigation"><a href="#projects">Projects</a><a href="#approach">Our approach</a><a href="#lab">The lab</a><a class="top-cta" href="#projects">Explore the forge ↗</a></nav>
+  </header>
+  <main>
+    <section class="container hero" id="home">
+      <div class="eyebrow">A Digital Laboratory For Ideas</div>
+      <div class="scene" aria-hidden="true">
+        <svg viewBox="0 0 880 435" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8f8ff" stop-opacity=".76"/><stop offset=".19" stop-color="#63baff" stop-opacity=".13"/><stop offset=".58" stop-color="#172a64" stop-opacity=".58"/><stop offset=".85" stop-color="#a398ff" stop-opacity=".3"/><stop offset="1" stop-color="#83caff" stop-opacity=".48"/></linearGradient>
+            <linearGradient id="edge" x1=".05" y1="0" x2=".9" y2="1"><stop stop-color="#dffbff" stop-opacity=".92"/><stop offset=".49" stop-color="#68beff" stop-opacity=".57"/><stop offset="1" stop-color="#b39cff" stop-opacity=".78"/></linearGradient>
+            <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8edfff" stop-opacity=".02"/><stop offset=".3" stop-color="#d1ecff" stop-opacity=".6"/><stop offset=".65" stop-color="#a48bff" stop-opacity=".07"/><stop offset="1" stop-color="#4d9ee6" stop-opacity=".65"/></linearGradient>
+            <radialGradient id="core"><stop stop-color="#f7ffff"/><stop offset=".17" stop-color="#8edaff"/><stop offset=".48" stop-color="#517ee9" stop-opacity=".87"/><stop offset=".76" stop-color="#4e44c2" stop-opacity=".37"/><stop offset="1" stop-color="#232b91" stop-opacity="0"/></radialGradient>
+            <radialGradient id="halo"><stop stop-color="#2985ff" stop-opacity=".38"/><stop offset=".5" stop-color="#254bb7" stop-opacity=".1"/><stop offset="1" stop-color="#2445a2" stop-opacity="0"/></radialGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="7"/></filter>
+            <filter id="fineglow"><feGaussianBlur stdDeviation="2.5"/></filter>
+          </defs>
+          <ellipse cx="440" cy="267" rx="290" ry="156" fill="url(#halo)"/>
+          <g class="orbit1" fill="none" stroke="url(#ring)" stroke-width="1.5"><ellipse cx="440" cy="224" rx="350" ry="120" transform="rotate(-22 440 224)"/></g>
+          <g class="orbit2" fill="none" stroke="url(#ring)" stroke-width="1"><ellipse cx="440" cy="235" rx="285" ry="172" transform="rotate(42 440 235)"/></g>
+          <g class="orbit3" fill="none" stroke="url(#ring)" stroke-width="1"><ellipse cx="440" cy="235" rx="200" ry="210" transform="rotate(-63 440 235)"/></g>
+          <g class="pulse" opacity=".42" stroke="#61b6ff" stroke-width=".9">
+            <path d="M440 22V145M440 324v78M108 238h116M663 238h114M304 99l48 49M553 327l42 45M584 101l-46 47M306 342l41-37" />
+          </g>
+          <circle cx="440" cy="130" r="62" fill="url(#core)" opacity=".9" class="pulse"/>
+          <circle cx="440" cy="130" r="25" fill="url(#core)"/>
+          <circle cx="440" cy="130" r="20" fill="none" stroke="#c4f0ff" stroke-opacity=".68" stroke-width="1.3"/>
+          <circle cx="440" cy="130" r="31" fill="none" stroke="#7fc5ff" stroke-opacity=".16"/>
+          <g class="float">
+            <!-- A translucent engineered forge: anvil crossed with a dimensional gateway -->
+            <path d="M204 210 L301 182 L559 182 L630 210 L738 181 L718 252 L638 280 L561 280 L544 331 L590 363 L632 395 L249 395 L293 361 L337 330 L323 280 L252 280 L188 247 Z" fill="url(#metal)" stroke="url(#edge)" stroke-width="2.5"/>
+            <path d="M204 210 L328 218 L552 218 L630 210 L738 181" fill="none" stroke="#b4e9ff" stroke-opacity=".85" stroke-width="1.4"/>
+            <path d="M188 247 L316 253 L552 253 L718 252 M323 280 L384 253 M561 280 L501 253 M337 330 L398 300 L480 300 L544 331 M249 395 L372 356 L507 356 L632 395" fill="none" stroke="#86c6ff" stroke-opacity=".4" stroke-width="1.1"/>
+            <path d="M301 182 L328 218 L316 253 L323 280 L337 330 L293 361 M559 182 L552 218 L552 253 L561 280 L544 331 L590 363" fill="none" stroke="#c8ebff" stroke-opacity=".4"/>
+            <path d="M204 210 L316 253 L188 247 M738 181 L638 280 L718 252" fill="#6ca9ff" fill-opacity=".1" stroke="#bbeaff" stroke-opacity=".5"/>
+            <path d="M337 330 L398 300 L384 253 L419 219 L328 218 L301 182 M544 331 L480 300 L501 253 L464 218 L552 218 L559 182" fill="none" stroke="#8ebdff" stroke-opacity=".28"/>
+            <path d="M249 395 L337 330 L372 356 L398 300 L440 325 L480 300 L507 356 L544 331 L632 395" fill="none" stroke="#d1d8ff" stroke-opacity=".24"/>
+            <!-- Glass circuits -->
+            <g fill="none" stroke="#65cdff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".85">
+              <path d="M364 203v28l42 42v33"/><path d="M390 203v22l35 34v53"/><path d="M478 203v26l-35 35v60"/><path d="M513 209v27l-42 42v33"/><path d="M380 342l33-29v-26"/><path d="M509 350l-33-31v-20"/>
+            </g>
+            <g fill="#8bdeff"><circle cx="364" cy="203" r="3.2"/><circle cx="390" cy="203" r="3.2"/><circle cx="478" cy="203" r="3.2"/><circle cx="513" cy="209" r="3.2"/><circle cx="413" cy="287" r="3.2"/><circle cx="476" cy="299" r="3.2"/></g>
+            <!-- Living current -->
+            <path d="M455 188 C386 228 505 264 424 301 C379 321 490 354 442 389" fill="none" stroke="#3d9bff" stroke-width="18" stroke-opacity=".3" filter="url(#glow)"/>
+            <path d="M455 188 C386 228 505 264 424 301 C379 321 490 354 442 389" fill="none" stroke="#b2eeff" stroke-width="3.4" stroke-opacity=".95"/>
+            <path d="M443 193 C402 247 474 270 429 308 C416 325 476 349 439 387" fill="none" stroke="#56b9ff" stroke-width="1.8"/>
+          </g>
+          <g opacity=".87" fill="#d5f5ff"><circle cx="171" cy="135" r="1.9"/><circle cx="696" cy="124" r="2.4"/><circle cx="665" cy="339" r="1.4"/><circle cx="249" cy="364" r="1.6"/><circle cx="304" cy="116" r="1.6"/><circle cx="598" cy="138" r="1.7"/></g>
+          <path d="M390 412H510" stroke="#55acfa" stroke-opacity=".5" stroke-width="1" filter="url(#fineglow)"/>
+        </svg>
+      </div>
+      <h1 class="main-title">NOVYX <span>FORGE</span></h1>
+      <div class="hero-tagline">Ideas forged into reality</div>
+      <p class="hero-desc">A digital lab for bold ideas. Where curiosity meets code, experiments become experiences, and imagination takes shape.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#lab">Enter the lab <span aria-hidden="true">→</span></a></div>
+    </section>
+    <div class="container divider-wrap"><div class="thin-rule"></div></div>
+    <section class="container manifesto reveal" id="approach">
+      <div class="section-kicker">The philosophy</div>
+      <h2>Not just another website.<br><em>A place where ideas evolve.</em></h2>
+      <p>From education and sports to artificial intelligence and unexplained discoveries — NOVYX FORGE is a workshop for things worth exploring, improving and building.</p>
+    </section>
+    <section class="container projects" id="projects">
+      <div class="section-header reveal"><div><div class="section-kicker">Built in the forge</div><h2>Explore the projects<span style="color:#82d5ff">.</span></h2></div><p>Different ideas. One driving force: create something useful, surprising or entirely new.</p></div>
+      <div class="cards">
+        <a class="project reveal" href="https://fathom-web.github.io/studyforge/" target="_blank" rel="noopener noreferrer" aria-label="Open StudyForge">
+          <div class="project-top"><span class="project-number">PROJECT / 01</span><span class="state">Live project</span></div>
+          <div class="project-art"><svg viewBox="0 0 145 105" fill="none" aria-hidden="true"><path d="M72 12L117 36V79L72 99L28 79V36L72 12Z" fill="#69beff" fill-opacity=".07" stroke="#7bcaff" stroke-width="1.6"/><path d="M72 12V99M28 36L72 59L117 36M28 79L72 59L117 79" stroke="#9bdeff" stroke-opacity=".55"/><path d="M55 43L72 35L90 43V70L72 79L55 70V43Z" stroke="#bbefff" stroke-width="2"/><path d="M64 48L72 45L81 48M64 57L72 61L81 57" stroke="#7adfff" stroke-width="1.5"/><circle cx="72" cy="59" r="4" fill="#c5f7ff"/></svg></div>
+          <h3>StudyForge</h3><p>A smarter way to learn. Practice, challenge yourself and track your progress.</p><span class="project-arrow">Visit project <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="project reveal" href="https://fathom-web.github.io/svdiemen/" target="_blank" rel="noopener noreferrer" aria-label="Open FootballForge">
+          <div class="project-top"><span class="project-number">PROJECT / 02</span><span class="state">Live project</span></div>
+          <div class="project-art"><svg viewBox="0 0 145 105" fill="none" aria-hidden="true"><circle cx="72" cy="56" r="39" fill="#328de9" fill-opacity=".065" stroke="#8ccfff" stroke-width="1.5"/><circle cx="72" cy="56" r="27" stroke="#c1eaff" stroke-opacity=".35"/><path d="M72 32L93 48L84 74H60L51 48L72 32Z" fill="#8acbff" fill-opacity=".19" stroke="#b5e6ff" stroke-width="1.6"/><path d="M51 48L35 39M93 48L110 39M84 74L92 90M60 74L51 90M72 32V17" stroke="#8acbff" stroke-width="1.5"/><circle cx="72" cy="56" r="4" fill="#b7f2ff"/></svg></div>
+          <h3>FootballForge</h3><p>Football management reimagined. Teams, training, matches and planning.</p><span class="project-arrow">Visit project <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="project card-lab reveal" href="#lab" aria-label="Discover the NOVYX experimental lab">
+          <div class="project-top"><span class="project-number">PROJECT / 03</span><span class="state">In the lab</span></div>
+          <div class="project-art"><svg viewBox="0 0 145 105" fill="none" aria-hidden="true"><ellipse cx="72" cy="54" rx="58" ry="21" transform="rotate(-25 72 54)" stroke="#a99aff" stroke-opacity=".8" stroke-width="1.2"/><ellipse cx="72" cy="54" rx="58" ry="21" transform="rotate(40 72 54)" stroke="#72b7ff" stroke-opacity=".55" stroke-width="1.2"/><circle cx="72" cy="54" r="23" fill="#9b8bff" fill-opacity=".12" stroke="#d6c7ff" stroke-width="1.5"/><circle cx="72" cy="54" r="10" fill="#9e8bff" fill-opacity=".4"/><circle cx="72" cy="54" r="4" fill="#fff"/><circle cx="25" cy="43" r="3" fill="#b5a3ff"/><circle cx="110" cy="72" r="3" fill="#a3ddff"/></svg></div>
+          <h3>The AI Lab</h3><p>Exploring AI, strange questions, digital experiments and the fascination of discovery.</p><span class="project-arrow">Discover the lab <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
+    <section class="container values" aria-label="What we explore">
+      <div class="value-grid reveal">
+        <div class="value"><span class="number">01 —</span><strong>Artificial intelligence</strong><span>Experimenting with what's possible.</span></div>
+        <div class="value"><span class="number">02 —</span><strong>Education</strong><span>Turning learning into progress.</span></div>
+        <div class="value"><span class="number">03 —</span><strong>Technology</strong><span>Building tools people can use.</span></div>
+        <div class="value"><span class="number">04 —</span><strong>Curiosity</strong><span>Following questions worth asking.</span></div>
+      </div>
+    </section>
+    <section class="container" id="lab">
+      <div class="lab-section reveal">
+        <div class="section-kicker">The experimental division</div>
+        <h2>Some ideas don't fit<br>inside a box.</h2>
+        <p>Good. Neither do we. The NOVYX lab is where artificial intelligence, unusual discoveries and wild concepts meet creative experimentation. Including The Fascination Files — a journey into the remarkable, the mysterious and the unexpected.</p>
+        <a class="btn btn-outline" href="#projects">Explore what's taking shape <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container footer-inner"><div><strong>NOVYX FORGE</strong><div style="margin-top:9px">Ideas forged into reality. © <span id="year">2026</span></div></div><div class="footer-links"><a href="#home">Back to top ↑</a><a href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></footer>
+  <script>
+    document.getElementById("year").textContent=new Date().getFullYear();
+    const cards=document.querySelectorAll(".reveal");
+    if("IntersectionObserver" in window){
+      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.08});
+      cards.forEach(el=>observer.observe(el));
+    }else{cards.forEach(el=>el.classList.add("visible"))}
+  </script>
+</body>
+</html>
