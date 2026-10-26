@@ -179,6 +179,56 @@
     }
     @media(prefers-reduced-motion:reduce){.orb,.orb-orbit,.orb-orbit-back,.hero-beams .beam-run,.hero-particles i{animation:none!important}.hero .scene{transform:none!important}}
 
+
+    /* Third orbit: The Fascination Files — a mysterious glass discovery sphere */
+    .sphere-link.third{
+      --c:178,124,255;
+      position:relative;
+      inset:auto;
+      order:initial;
+      width:min(320px,100%);
+      max-width:100%;
+      z-index:5;
+      margin:48px auto 0;
+      gap:9px;
+      padding:0 12px 4px;
+    }
+    .sphere-link.third .orb{width:172px;animation-delay:-4s}
+    .sphere-link.third .orb-globe{width:130px;height:130px}
+    .sphere-link.third .orb-shell{
+      background:
+        radial-gradient(ellipse at 28% 20%,rgba(255,255,255,.7) 0%,rgba(206,157,255,.25) 5%,rgba(169,117,255,.08) 27%,rgba(12,10,49,.84) 64%,rgba(65,25,102,.44) 88%,rgba(185,121,255,.27) 100%),
+        radial-gradient(circle at 65% 70%,rgba(78,150,235,.32),transparent 60%);
+      box-shadow:inset -12px -16px 28px rgba(5,0,26,.86),inset 4px 7px 13px rgba(244,214,255,.31),0 0 37px rgba(153,89,246,.33),0 0 75px rgba(77,106,237,.12);
+    }
+    .sphere-link.third .sphere-caption{font-size:19px;line-height:1.18;letter-spacing:.12em;font-weight:600}
+    .sphere-link.third .sphere-caption span{font-size:21px;letter-spacing:.22em}
+    .sphere-link.third .sphere-description{margin-top:4px;color:#b8a6e3;font-size:9px}
+    .sphere-link.third .arrow{opacity:.65;transform:none;font-size:10px;line-height:1.5}
+    .sphere-link.third:hover .arrow,.sphere-link.third:focus-visible .arrow{opacity:1}
+    .sphere-link.third .orb-orbit{animation-duration:17s}
+    .sphere-link.third .orb-orbit-back{animation-direction:reverse;animation-duration:31s}
+    .sphere-link.third .mystery-glyph{transform-origin:85px 85px;animation:mystery-rotation 26s linear infinite}
+    .sphere-link.third .mystery-eye{animation:mystery-glow 4s ease-in-out infinite}
+    .mystery-connector{display:block;position:absolute;top:-36px;left:50%;height:42px;border-left:1px solid transparent;border-image:linear-gradient(to bottom,transparent,rgba(168,123,255,.5),transparent) 1;pointer-events:none}
+    .mystery-connector:before{content:"";position:absolute;bottom:13px;left:-3px;width:6px;height:6px;background:#c4a2ff;border-radius:50%;box-shadow:0 0 9px #aa77ff;animation:mystery-glow 3s ease-in-out infinite}
+    @keyframes mystery-rotation{to{transform:rotate(360deg)}}
+    @keyframes mystery-glow{0%,100%{opacity:.52;filter:drop-shadow(0 0 2px #996cff)}50%{opacity:1;filter:drop-shadow(0 0 9px #b28cff)}}
+    @media (max-width:650px){
+      .sphere-link.third{order:6!important;margin:35px auto 0;width:100%;padding:8px 4px 0;align-self:center}
+      .sphere-link.third .orb{width:min(155px,42vw)}
+      .sphere-link.third .orb-globe{width:76%;height:76%}
+      .sphere-link.third .sphere-caption{font-size:16px;letter-spacing:.12em}
+      .sphere-link.third .sphere-caption span{font-size:18px;letter-spacing:.15em}
+      .sphere-link.third .sphere-description{font-size:8px}
+      .sphere-link.third .arrow{display:block;font-size:9px}
+      .hero .glass-divider{order:7}
+      .mystery-connector{display:none}
+    }
+    @media (prefers-reduced-motion:reduce){
+      .sphere-link.third .mystery-glyph,.sphere-link.third .mystery-eye,.mystery-connector:before{animation:none!important}
+    }
+
   </style>
 </head>
 <body>
@@ -287,6 +337,42 @@
       <div class="hero-tagline">Ideas forged into reality</div>
       <p class="hero-desc">A digital lab for bold ideas. Where curiosity meets code, experiments become experiences, and imagination takes shape.</p>
       <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#lab">Enter the lab <span aria-hidden="true">→</span></a></div>
+      <a class="sphere-link third" href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer" aria-label="Explore The Fascination Files on Instagram">
+        <span class="mystery-connector" aria-hidden="true"></span>
+        <span class="orb" aria-hidden="true">
+          <span class="orb-shell"></span><span class="orb-orbit-back"></span>
+          <svg class="orb-globe" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="mysteryCore">
+                <stop stop-color="#e8f8ff"/><stop offset=".14" stop-color="#9fd9ff"/><stop offset=".42" stop-color="#9b76ff" stop-opacity=".79"/><stop offset=".77" stop-color="#673bca" stop-opacity=".23"/><stop offset="1" stop-color="#6b45ed" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="mysteryLines" x1="24" y1="40" x2="153" y2="128">
+                <stop stop-color="#b0e6ff"/><stop offset=".55" stop-color="#d4baff"/><stop offset="1" stop-color="#7188ff"/>
+              </linearGradient>
+            </defs>
+            <g class="mystery-glyph">
+              <circle cx="85" cy="85" r="66" stroke="#caacff" stroke-width="1" stroke-opacity=".5" stroke-dasharray="3 9"/>
+              <circle cx="85" cy="85" r="54" stroke="#7e9cff" stroke-opacity=".35"/>
+              <path d="M85 13V27M85 143v14M13 85h14M143 85h14M34 34l10 10M126 126l10 10M136 34l-10 10M44 126l-10 10" stroke="#c6b6ff" stroke-width="1.6" stroke-opacity=".7"/>
+              <circle cx="85" cy="19" r="3" fill="#e1d1ff"/><circle cx="151" cy="85" r="2.5" fill="#a9e2ff"/><circle cx="29" cy="110" r="2" fill="#e2d1ff"/>
+              <path d="M48 43l17-13 20 12M115 132l18-18-6-18" stroke="#9d93ff" stroke-opacity=".7" stroke-width="1"/>
+              <circle cx="48" cy="43" r="2" fill="#d9c9ff"/><circle cx="65" cy="30" r="2" fill="#d9c9ff"/><circle cx="85" cy="42" r="2" fill="#d9c9ff"/>
+              <circle cx="115" cy="132" r="2" fill="#d9c9ff"/><circle cx="133" cy="114" r="2" fill="#d9c9ff"/><circle cx="127" cy="96" r="2" fill="#d9c9ff"/>
+            </g>
+            <circle cx="85" cy="85" r="45" fill="url(#mysteryCore)" opacity=".42" class="mystery-eye"/>
+            <path d="M29 85C47 62 65 51 85 51s38 11 56 34c-18 23-36 34-56 34S47 108 29 85Z" stroke="url(#mysteryLines)" stroke-width="2.6" fill="#a58aff" fill-opacity=".065"/>
+            <circle cx="85" cy="85" r="25" stroke="#bea9ff" stroke-width="1.5"/>
+            <circle cx="85" cy="85" r="18" fill="url(#mysteryCore)" class="mystery-eye"/>
+            <circle cx="85" cy="85" r="9" fill="#0f0e32" stroke="#d6ceff" stroke-width="2"/>
+            <circle cx="79" cy="79" r="4" fill="#f4f7ff"/>
+            <path d="M86 64v8M86 98v8M64 85h8M99 85h8" stroke="#a0ddff" stroke-width="1" stroke-opacity=".8"/>
+          </svg>
+          <span class="orb-orbit"></span>
+        </span>
+        <span class="sphere-caption">THE FASCINATION<br><span>FILES</span></span>
+        <span class="sphere-description">Mystery · Discovery · Wonder</span>
+        <span class="arrow">Explore Instagram ↗</span>
+      </a>
       <div class="glass-divider" aria-hidden="true"></div>
     </section>
     <div class="container divider-wrap"><div class="thin-rule"></div></div>
@@ -328,7 +414,7 @@
         <div class="section-kicker">The experimental division</div>
         <h2>Some ideas don't fit<br>inside a box.</h2>
         <p>Good. Neither do we. The NOVYX lab is where artificial intelligence, unusual discoveries and wild concepts meet creative experimentation. Including The Fascination Files — a journey into the remarkable, the mysterious and the unexpected.</p>
-        <a class="btn btn-outline" href="#projects">Explore what's taking shape <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-outline" href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer">Discover The Fascination Files <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>
