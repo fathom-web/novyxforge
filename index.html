@@ -113,6 +113,72 @@
       .hero{min-height:auto;padding-bottom:85px;padding-top:25px}.eyebrow{letter-spacing:.18em;font-size:9px}.eyebrow:before,.eyebrow:after{width:15px}.scene{margin-top:32px;width:calc(100% + 50px);max-width:none;min-height:245px}.main-title{font-size:clamp(45px,12vw,72px);margin-top:-8px}.hero-tagline{font-size:9px;letter-spacing:.31em;margin-top:16px}.hero-desc{font-size:14px;margin-top:24px}.hero-actions{margin-top:25px}.btn{padding:14px 17px;font-size:10px}.manifesto{padding:72px 0 66px}.projects{padding-bottom:70px}.section-header{align-items:start;flex-direction:column;gap:13px;margin-bottom:25px}.cards{grid-template-columns:1fr}.card-lab{grid-column:auto}.project{min-height:308px}.value-grid{grid-template-columns:repeat(2,1fr);gap:22px 0}.value:nth-child(even){border-right:0}.value{padding:8px 18px 8px 10px}.value strong{font-size:18px}.lab-section{padding:42px 28px;margin-bottom:60px}.lab-section:after{right:-43%;top:-25%}.footer-inner{flex-direction:column;align-items:start}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+    /* Interactive glass spheres and living energy fields */
+    .hero{isolation:isolate;min-height:880px;padding-top:14px}
+    .hero:before{content:"";position:absolute;z-index:-2;left:50%;top:115px;transform:translateX(-50%);width:1250px;max-width:115vw;height:590px;background:radial-gradient(ellipse at 50% 40%,rgba(54,117,244,.14),transparent 56%),radial-gradient(ellipse at 15% 45%,rgba(16,151,236,.085),transparent 29%),radial-gradient(ellipse at 85% 45%,rgba(123,55,231,.09),transparent 29%);pointer-events:none}
+    .hero .scene{width:min(770px,77%);max-width:none;z-index:2;margin-top:28px;pointer-events:none;will-change:transform;transform:translate3d(var(--px,0px),var(--py,0px),0);transition:transform .28s ease-out}
+    .hero .main-title{font-size:clamp(60px,8.4vw,113px);margin-top:-14px;z-index:5;line-height:1.03;letter-spacing:-.067em;font-weight:400}
+    .hero .main-title .novyx-word{font-weight:500;letter-spacing:.025em;background:linear-gradient(180deg,#fff 1%,#c5e9ff 27%,#6899d2 47%,#e4f4ff 67%,#6b91c6 98%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 18px rgba(77,161,255,.29))}
+    .hero .main-title .forge-word{display:block;font-size:.26em;letter-spacing:.58em;margin-top:8px;margin-left:.57em;font-weight:400;color:#b9d5f5}
+    .hero .hero-tagline{margin-top:17px;letter-spacing:.38em;color:#b9c6e3;font-size:11px}
+    .hero .hero-desc{margin-top:27px}
+    .hero .eyebrow{z-index:5}
+    .sphere-link{--c:112,207,255;position:absolute;z-index:4;top:170px;width:250px;display:flex;flex-direction:column;align-items:center;gap:15px;text-align:center;text-decoration:none;outline-offset:8px;transition:filter .25s}
+    .sphere-link.left{left:-40px}
+    .sphere-link.right{right:-40px;--c:173,126,255}
+    .sphere-link:hover,.sphere-link:focus-visible{filter:brightness(1.22)}
+    .orb{width:210px;aspect-ratio:1;position:relative;display:grid;place-items:center;transition:transform .35s ease;animation:orb-bob 7s ease-in-out infinite;transform-style:preserve-3d}
+    .sphere-link.right .orb{animation-delay:-3s}
+    .sphere-link:hover .orb{animation-play-state:paused;transform:scale(1.07)}
+    .orb-shell{position:absolute;inset:5%;border-radius:50%;border:1px solid rgba(var(--c),.7);background:radial-gradient(ellipse at 32% 21%,rgba(239,252,255,.62) 0%,rgba(var(--c),.29) 7%,rgba(var(--c),.11) 23%,rgba(8,19,44,.74) 62%,rgba(17,32,83,.78) 82%,rgba(var(--c),.23) 100%),radial-gradient(circle at 70% 80%,rgba(var(--c),.32),transparent 55%);box-shadow:inset -13px -18px 29px rgba(0,5,25,.9),inset 6px 9px 16px rgba(164,220,255,.23),inset 0 0 40px rgba(var(--c),.21),0 0 48px rgba(var(--c),.28),0 0 4px rgba(var(--c),.65);overflow:hidden}
+    .orb-shell:before{content:"";position:absolute;inset:6%;border-radius:50%;border:1px solid rgba(var(--c),.27);box-shadow:inset 0 0 17px rgba(var(--c),.12)}
+    .orb-shell:after{content:"";position:absolute;left:15%;top:7%;width:49%;height:19%;border-radius:50%;transform:rotate(-29deg);background:radial-gradient(ellipse,rgba(255,255,255,.42),transparent 72%);filter:blur(5px)}
+    .orb-globe{width:155px;height:155px;position:relative;z-index:2;filter:drop-shadow(0 0 14px rgba(var(--c),.42))}
+    .orb-orbit{position:absolute;inset:25% -12%;border-radius:50%;border:2px solid rgba(var(--c),.73);box-shadow:0 0 15px rgba(var(--c),.45),inset 0 0 8px rgba(var(--c),.15);transform:rotate(-24deg);animation:orbit-tilt 13s ease-in-out infinite alternate;pointer-events:none}
+    .sphere-link.right .orb-orbit{animation-delay:-5s;transform:rotate(22deg)}
+    .orb-orbit:after{content:"";position:absolute;right:18%;top:1px;width:7px;height:7px;border-radius:50%;background:#d9f4ff;box-shadow:0 0 16px 5px rgba(var(--c),.75)}
+    .orb-orbit-back{position:absolute;inset:18% -8%;border-radius:50%;border:1px solid rgba(var(--c),.32);transform:rotate(54deg);animation:orb-rotate 35s linear infinite;pointer-events:none}
+    .sphere-caption{position:relative;display:block;font:500 20px Outfit,sans-serif;letter-spacing:.085em;text-shadow:0 0 16px rgba(var(--c),.25)}
+    .sphere-caption span{color:rgb(var(--c))}
+    .sphere-description{display:block;margin-top:8px;letter-spacing:.19em;text-transform:uppercase;font-size:9px;color:#a6bad7}
+    .sphere-link .arrow{font-size:10px;color:rgb(var(--c));letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateY(-5px);transition:.25s}
+    .sphere-link:hover .arrow,.sphere-link:focus-visible .arrow{opacity:1;transform:none}
+    .hero-beams{position:absolute;z-index:1;left:50%;top:155px;transform:translateX(-50%);width:calc(100% + 170px);height:340px;overflow:visible;pointer-events:none}
+    .hero-beams .beam-base{fill:none;stroke:url(#beamgradient);stroke-width:1;opacity:.29}
+    .hero-beams .beam-run{fill:none;stroke:url(#beamgradient);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:2 18;animation:beams 16s linear infinite;opacity:.85;filter:drop-shadow(0 0 5px #6cbaff)}
+    .hero-particles{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none}
+    .hero-particles i{position:absolute;top:var(--y);left:var(--x);width:var(--size);height:var(--size);background:rgb(var(--rgb));border-radius:50%;box-shadow:0 0 9px 2px rgba(var(--rgb),.5);opacity:0;animation:particle-move var(--t) ease-in-out var(--delay) infinite}
+    .glass-divider{width:min(920px,90%);height:1px;margin-top:60px;background:linear-gradient(90deg,transparent,rgba(137,210,255,.3),rgba(169,134,255,.2),transparent);box-shadow:0 0 18px rgba(87,166,254,.23)}
+    @keyframes orb-bob{0%,100%{translate:0 0}50%{translate:0 -13px}}
+    @keyframes orb-rotate{from{rotate:0deg}to{rotate:360deg}}
+    @keyframes orbit-tilt{from{transform:rotate(-34deg) skew(-7deg)}to{transform:rotate(7deg) skew(7deg)}}
+    @keyframes beams{from{stroke-dashoffset:0}to{stroke-dashoffset:-400}}
+    @keyframes particle-move{0%,100%{opacity:0;transform:translate3d(0,18px,0)}25%,75%{opacity:.6}50%{transform:translate3d(9px,-24px,0);opacity:.9}}
+    @media(max-width:1150px){.sphere-link{width:210px;top:178px}.sphere-link.left{left:-30px}.sphere-link.right{right:-30px}.orb{width:178px}.orb-globe{width:130px;height:130px}.sphere-caption{font-size:17px}.hero .scene{width:min(730px,76%)}}
+    @media(max-width:900px){.hero{min-height:860px}.sphere-link{top:255px;width:180px}.sphere-link.left{left:-25px}.sphere-link.right{right:-25px}.orb{width:150px}.orb-globe{width:112px;height:112px}.sphere-caption{font-size:14px}.sphere-description{font-size:8px}.hero .scene{width:min(700px,90%);margin-top:65px}.hero .main-title{margin-top:6px}.hero-beams{top:220px}}
+    @media(max-width:650px){
+      .hero{padding-top:16px;min-height:0;padding-bottom:82px}
+      .hero .scene{width:calc(100% + 60px);max-width:620px;margin-top:30px;margin-bottom:9px}
+      .hero .main-title{font-size:clamp(45px,12vw,70px);margin-top:-12px}
+      .hero .main-title .forge-word{font-size:.28em;margin-top:6px}
+      .hero .hero-tagline{letter-spacing:.24em;font-size:9px}
+      .hero .hero-desc{margin-top:22px}
+      .sphere-link{position:relative;top:auto!important;left:auto!important;right:auto!important;display:inline-flex;vertical-align:top;width:48%;margin:10px 0 14px;gap:5px}
+      .sphere-link.left{order:2;align-self:flex-start}
+      .sphere-link.right{order:3;align-self:flex-end;margin-top:-213px}
+      .sphere-link .orb{width:min(150px,39vw);margin:0 auto}
+      .sphere-link .orb-globe{width:72%;height:72%}
+      .sphere-link .sphere-caption{font-size:clamp(12px,3.4vw,17px);letter-spacing:.01em}
+      .sphere-link .sphere-description{font-size:7px;letter-spacing:.09em}
+      .sphere-link .arrow{display:none}
+      .hero-beams{display:none}
+      .hero .hero-actions{order:5;margin-top:18px}
+      .hero .hero-desc{order:4;margin-top:20px}
+      .hero .glass-divider{order:6;margin-top:30px}
+    }
+    @media(prefers-reduced-motion:reduce){.orb,.orb-orbit,.orb-orbit-back,.hero-beams .beam-run,.hero-particles i{animation:none!important}.hero .scene{transform:none!important}}
+
   </style>
 </head>
 <body>
@@ -127,6 +193,51 @@
   <main>
     <section class="container hero" id="home">
       <div class="eyebrow">A Digital Laboratory For Ideas</div>
+
+      <svg class="hero-beams" viewBox="0 0 1400 370" aria-hidden="true" preserveAspectRatio="none">
+        <defs><linearGradient id="beamgradient" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#36c5ff" stop-opacity="0"/><stop offset=".18" stop-color="#5fd5ff"/><stop offset=".5" stop-color="#d9f5ff" stop-opacity=".12"/><stop offset=".81" stop-color="#b99aff"/><stop offset="1" stop-color="#a269ff" stop-opacity="0"/></linearGradient></defs>
+        <path class="beam-base" d="M45 200C230 20 350 180 700 196S1160 10 1355 180"/>
+        <path class="beam-run" d="M45 200C230 20 350 180 700 196S1160 10 1355 180"/>
+        <path class="beam-base" d="M20 255C280 355 416 60 700 175S1060 350 1380 135"/>
+        <path class="beam-run" style="animation-direction:reverse" d="M20 255C280 355 416 60 700 175S1060 350 1380 135"/>
+      </svg>
+      <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
+      <a class="sphere-link left" href="https://fathom-web.github.io/svdiemen/" target="_blank" rel="noopener noreferrer" aria-label="Open FootballForge">
+        <span class="orb" aria-hidden="true">
+          <span class="orb-shell"></span><span class="orb-orbit-back"></span>
+          <svg class="orb-globe" viewBox="0 0 170 170" fill="none">
+            <defs><radialGradient id="footballGlass"><stop stop-color="#b9e9ff" stop-opacity=".54"/><stop offset=".6" stop-color="#3972be" stop-opacity=".23"/><stop offset="1" stop-color="#091a41" stop-opacity=".13"/></radialGradient></defs>
+            <circle cx="85" cy="85" r="59" fill="url(#footballGlass)" stroke="#a6eaff" stroke-opacity=".5"/>
+            <path d="M85 41l29 20-11 34H67L56 61l29-20Z" fill="#93d5ff" fill-opacity=".23" stroke="#e0f8ff" stroke-width="2.5"/>
+            <path d="M85 41L85 26M56 61L33 53M114 61l22-8M67 95l-15 23M103 95l15 23M85 26l-21 6-8 29M85 26l20 6 9 29M52 118l24 14 22-1 20-13M33 53l-2 28 21 37M136 53l3 28-21 37" stroke="#86cfff" stroke-width="2" stroke-linecap="round" stroke-opacity=".85"/>
+            <path d="M67 95L52 118M103 95l15 23" stroke="#d9f6ff" stroke-opacity=".8"/>
+            <circle cx="85" cy="85" r="66" stroke="#8bdfff" stroke-opacity=".21"/>
+            <g fill="#d1f7ff"><circle cx="85" cy="26" r="3"/><circle cx="31" cy="81" r="2"/><circle cx="139" cy="81" r="2"/></g>
+          </svg>
+          <span class="orb-orbit"></span>
+        </span>
+        <span class="sphere-caption">FOOTBALL<span>FORGE</span></span>
+        <span class="sphere-description">Teams · Data · Passion</span>
+        <span class="arrow">Enter project ↗</span>
+      </a>
+      <a class="sphere-link right" href="https://fathom-web.github.io/studyforge/" target="_blank" rel="noopener noreferrer" aria-label="Open StudyForge">
+        <span class="orb" aria-hidden="true">
+          <span class="orb-shell"></span><span class="orb-orbit-back"></span>
+          <svg class="orb-globe" viewBox="0 0 170 170" fill="none">
+            <defs><linearGradient id="bookGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c3a3ff"/><stop offset=".55" stop-color="#c8ddff"/><stop offset="1" stop-color="#777dff"/></linearGradient></defs>
+            <circle cx="85" cy="85" r="66" stroke="#b9b0ff" stroke-opacity=".35"/>
+            <path d="M85 91c-18-16-39-15-51-11V51c19-6 37-1 51 11 14-12 32-17 51-11v29c-12-4-33-5-51 11Z" fill="#a489ff" fill-opacity=".12" stroke="url(#bookGlass)" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M85 62v29M43 59c12-3 24-1 33 7M94 66c9-8 21-10 33-7M43 69c12-2 24 0 33 7M94 76c9-7 21-9 33-7" stroke="#dcd7ff" stroke-opacity=".6" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M44 40l41-18 41 18-41 18-41-18Z" fill="#c6adff" fill-opacity=".25" stroke="#d4baff" stroke-width="2.2"/><path d="M59 47v10c12 10 40 10 52 0V47M126 40v23" stroke="#b6a1ff" stroke-width="2.4"/><circle cx="126" cy="65" r="3.5" fill="#e5d6ff"/>
+            <path d="M62 111h45m-39 10h34" stroke="#afc6ff" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="orb-orbit"></span>
+        </span>
+        <span class="sphere-caption">STUDY<span>FORGE</span></span>
+        <span class="sphere-description">Learn · Create · Grow</span>
+        <span class="arrow">Enter project ↗</span>
+      </a>
+
       <div class="scene" aria-hidden="true">
         <svg viewBox="0 0 880 435" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -172,10 +283,11 @@
           <path d="M390 412H510" stroke="#55acfa" stroke-opacity=".5" stroke-width="1" filter="url(#fineglow)"/>
         </svg>
       </div>
-      <h1 class="main-title">NOVYX <span>FORGE</span></h1>
+      <h1 class="main-title"><span class="novyx-word">NOVYX</span> <span class="forge-word">FORGE</span></h1>
       <div class="hero-tagline">Ideas forged into reality</div>
       <p class="hero-desc">A digital lab for bold ideas. Where curiosity meets code, experiments become experiences, and imagination takes shape.</p>
       <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#lab">Enter the lab <span aria-hidden="true">→</span></a></div>
+      <div class="glass-divider" aria-hidden="true"></div>
     </section>
     <div class="container divider-wrap"><div class="thin-rule"></div></div>
     <section class="container manifesto reveal" id="approach">
@@ -228,6 +340,34 @@
       const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.08});
       cards.forEach(el=>observer.observe(el));
     }else{cards.forEach(el=>el.classList.add("visible"))}
+
+    const particles=document.getElementById("hero-particles");
+    if(particles){
+      const frag=document.createDocumentFragment();
+      for(let i=0;i<34;i++){
+        const p=document.createElement("i");
+        const x=(i*37.21+11)%100,y=(i*23.67+9)%75;
+        p.style.setProperty("--x",x+"%");
+        p.style.setProperty("--y",y+"%");
+        p.style.setProperty("--size",(i%5===0?2.5:1.4)+"px");
+        p.style.setProperty("--t",(4.5+i%7)+"s");
+        p.style.setProperty("--delay",(-i*0.71)+"s");
+        p.style.setProperty("--rgb",i%3===0?"184,141,255":"108,199,255");
+        frag.appendChild(p);
+      }
+      particles.appendChild(frag);
+    }
+    if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.matchMedia("(pointer: fine)").matches){
+      const scene=document.querySelector(".hero .scene"),area=document.querySelector(".hero");
+      area.addEventListener("pointermove",e=>{
+        const b=area.getBoundingClientRect();
+        const x=(e.clientX-(b.left+b.width/2))/b.width;
+        const y=(e.clientY-(b.top+b.height/2))/b.height;
+        scene.style.setProperty("--px",x*12+"px");
+        scene.style.setProperty("--py",y*10+"px");
+      },{passive:true});
+      area.addEventListener("pointerleave",()=>{scene.style.setProperty("--px","0px");scene.style.setProperty("--py","0px")});
+    }
   </script>
 </body>
 </html>
