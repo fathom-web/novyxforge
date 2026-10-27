@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#050917">
-  <meta name="description" content="NOVYX FORGE is an independent digital lab. We turn ideas into experiences, tools, experiments and useful products.">
+  <meta name="description" content="Enter NOVYX FORGE: an independent AI & technology lab where curiosity becomes digital experiences. Explore StudyForge, FootballForge and The Fascination Files.">
   <meta property="og:title" content="NOVYX FORGE — Ideas Forged Into Reality">
-  <meta property="og:description" content="A digital lab for ideas, powered by technology and fueled by creativity.">
+  <meta property="og:description" content="Explore. Experiment. Build. Enter an independent AI and technology lab where ideas become experiences.">
   <title>NOVYX FORGE — Ideas Forged Into Reality</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -328,6 +328,204 @@
     }
     @media(prefers-reduced-motion:reduce){.ambient-mesh,.reactor-ring,.reactor-core,.reactor-core:after,.process-orb:after,.why-panel:before,.why-panel:after{animation:none!important}}
 
+
+    /* NOVYX FORGE // VISUAL SYSTEM V2  */
+    :root{--max:1240px;--muted:#aabbd4}
+    html{scroll-padding-top:80px}
+    body{background:radial-gradient(ellipse at 50% 0,rgba(14,39,85,.3),transparent 38%),#050815}
+    .container{width:calc(100% - 60px)}
+    .nav{height:89px}
+    .navlinks{gap:27px;font-size:12px}
+    .sky{height:1200px}
+    .hero{padding-top:13px;min-height:0;padding-bottom:56px}
+    .hero:before{height:760px;top:90px;background:radial-gradient(ellipse at 50% 39%,rgba(40,99,224,.2),transparent 56%),radial-gradient(ellipse at 14% 30%,rgba(12,155,224,.09),transparent 32%),radial-gradient(ellipse at 83% 31%,rgba(142,70,238,.14),transparent 33%)}
+    .hero .eyebrow{font-size:11px;letter-spacing:.26em}
+    .hero .main-title{margin:3px 0 0;font-size:clamp(66px,9vw,126px);line-height:1}
+    .hero .hero-tagline{font-size:12px;margin-top:20px;letter-spacing:.31em}
+    .hero .hero-desc{max-width:600px;font-size:17px;line-height:1.72;margin-top:22px;color:#bfcce3}
+    .hero .hero-actions{margin-top:28px}
+    .hero .glass-divider{margin-top:80px}
+    .universe{width:100%;height:608px;position:relative;isolation:isolate;margin:12px auto 0}
+    .universe-aura{position:absolute;inset:7% 15% 8%;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(ellipse,rgba(35,111,223,.18),rgba(67,60,157,.05) 47%,transparent 70%);filter:blur(32px);animation:universe-breathe 9s ease-in-out infinite alternate}
+    .universe:after{content:"";position:absolute;inset:11% 22% 11%;border-radius:50%;border:1px solid rgba(126,192,255,.06);box-shadow:0 0 0 50px rgba(103,149,243,.013),0 0 0 104px rgba(141,114,244,.01);pointer-events:none;z-index:0}
+    .hero .universe .scene{position:absolute;left:50%;top:61px;margin:0;width:min(795px,72%);aspect-ratio:880/435;z-index:3;transform:translate3d(calc(-50% + var(--px,0px)),var(--py,0px),0);filter:drop-shadow(0 30px 58px rgba(26,126,245,.29));pointer-events:none}
+    .universe .hero-beams{top:100px;width:100%;height:460px;z-index:1;opacity:.65}
+    .universe .hero-particles{z-index:2}
+    .universe-network{position:absolute;inset:0;width:100%;height:100%;z-index:2;overflow:visible;pointer-events:none;opacity:.9;filter:drop-shadow(0 0 6px rgba(91,168,255,.24))}
+    .universe-network .net-current{stroke-dasharray:4 24;animation:network-flow 17s linear infinite}
+    .universe-network .net-nodes{animation:network-pulse 3.5s ease-in-out infinite}
+    .universe .sphere-link{position:absolute!important;z-index:6;margin:0!important;gap:8px;width:220px!important;padding:0;inset:auto}
+    .universe .sphere-link.left{left:0!important;top:119px!important;right:auto!important}
+    .universe .sphere-link.right{right:0!important;top:104px!important;left:auto!important}
+    .universe .sphere-link.third{left:50%!important;top:386px!important;right:auto!important;transform:translateX(-50%);width:235px!important;gap:5px;max-width:none}
+    .universe .sphere-link .orb{width:186px;animation-duration:7.7s}
+    .universe .sphere-link.third .orb{width:146px;animation-duration:8.9s}
+    .universe .sphere-link .orb-globe{width:75%;height:75%}
+    .universe .sphere-link.third .orb-globe{width:75%;height:75%}
+    .universe .sphere-link .sphere-caption{font-size:18px;line-height:1.2}
+    .universe .sphere-link.third .sphere-caption{font-size:16px;line-height:1.12}
+    .universe .sphere-link.third .sphere-caption span{font-size:18px}
+    .universe .sphere-link .sphere-description{font-size:10px;letter-spacing:.12em;line-height:1.5}
+    .universe .sphere-link .arrow{opacity:.8;transform:none;font-size:10px;line-height:1.5}
+    .universe .sphere-link:hover .arrow{color:white}
+    .universe .sphere-link:hover .orb-shell{box-shadow:inset -13px -18px 29px rgba(0,5,25,.9),inset 6px 9px 16px rgba(164,220,255,.3),inset 0 0 46px rgba(var(--c),.36),0 0 65px rgba(var(--c),.42),0 0 9px rgba(var(--c),.9)}
+    .universe .sphere-link:focus-visible{outline:2px solid #8fdbff;outline-offset:9px;border-radius:14px}
+    .universe .hero-beams{pointer-events:none}
+    .about-section{padding-top:99px;padding-bottom:75px}
+    .about-copy p{font-size:16px;line-height:1.85}
+    .section-kicker{letter-spacing:.23em;font-size:11px}
+    .feature-heading{letter-spacing:-.05em}
+    .manifesto{padding-top:84px;padding-bottom:104px}
+    .manifesto h2{max-width:900px}
+    .manifesto>p{font-size:16px;line-height:1.8}
+    .principles{margin-top:44px}
+    .principle{min-height:195px;padding:26px}
+    .principle .principle-no{margin-bottom:23px;font-size:11px}
+    .principle p{font-size:14px}
+    .projects{padding-bottom:95px}
+    .section-header p{font-size:15px;max-width:350px}
+    .cards{gap:22px}
+    .project{--accent:103,205,255;min-height:460px;padding:21px 22px 25px;border-radius:18px;isolation:isolate;background:linear-gradient(160deg,rgba(20,37,75,.85),rgba(7,13,32,.97));border:1px solid rgba(var(--accent),.23);transition:transform .4s cubic-bezier(.2,.75,.2,1),border-color .3s,box-shadow .4s}
+    .project:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,30%),rgba(var(--accent),.18),transparent 65%);transition:opacity .35s}
+    .project:hover:before{opacity:1}
+    .project:hover{transform:translateY(-9px);border-color:rgba(var(--accent),.57);box-shadow:0 25px 70px rgba(0,0,0,.46),0 0 35px rgba(var(--accent),.1)}
+    .project-study{--accent:85,213,254}
+    .project-football{--accent:74,194,245}
+    .project-fascination{--accent:181,122,255;background:linear-gradient(160deg,rgba(35,27,77,.75),rgba(9,12,33,.96))}
+    .project-top{z-index:5}
+    .project-number{font-size:11px}
+    .state{display:inline-flex;align-items:center;gap:8px;font-size:10px;border-color:rgba(var(--accent),.28);color:#cdeeff}
+    .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:rgb(var(--accent));box-shadow:0 0 13px rgba(var(--accent),.9);animation:network-pulse 3.5s ease-in-out infinite}
+    .project-art{height:233px;position:relative;display:grid;place-items:center;overflow:visible;isolation:isolate;margin:1px -6px 4px}
+    .project-art:after{content:"";position:absolute;inset:auto 10% 10%;height:100px;z-index:-1;background:radial-gradient(ellipse,rgba(var(--accent),.18),transparent 68%);filter:blur(12px)}
+    .preview-window{position:relative;width:min(100%,320px);height:194px;border-radius:13px;overflow:hidden;background:linear-gradient(140deg,rgba(17,37,70,.97),rgba(8,13,32,.98));border:1px solid rgba(var(--accent),.48);box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 19px 29px rgba(0,0,0,.4),0 0 35px rgba(var(--accent),.15);transform:perspective(700px) rotateX(7deg) rotateY(-7deg);transition:transform .5s cubic-bezier(.2,.7,.3,1),box-shadow .4s;animation:preview-bob 8s ease-in-out infinite}
+    .project-football .preview-window{transform:perspective(700px) rotateX(6deg) rotateY(6deg);animation-delay:-2s}
+    .project-fascination .preview-window{animation-delay:-4s}
+    .project:hover .preview-window{transform:perspective(800px) rotateX(0deg) rotateY(0deg) translateY(-9px) scale(1.055);box-shadow:0 25px 48px rgba(0,0,0,.45),0 0 56px rgba(var(--accent),.27);animation-play-state:paused}
+    .preview-bar{height:29px;padding:0 12px;display:flex;justify-content:space-between;align-items:center;background:rgba(7,14,34,.85);border-bottom:1px solid rgba(var(--accent),.2)}
+    .preview-brand{font:700 10px Outfit,sans-serif;letter-spacing:.12em;color:#dff6ff}
+    .preview-brand span{color:rgb(var(--accent))}
+    .preview-dots{display:flex;gap:5px}
+    .preview-dots i{width:4px;height:4px;border-radius:50%;background:rgba(var(--accent),.6)}
+    .preview-study-layout{display:flex;height:calc(100% - 29px)}
+    .study-sidebar{width:40px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:15px;padding-top:20px;border-right:1px solid rgba(113,185,255,.11);background:rgba(7,18,43,.8)}
+    .study-sidebar span{display:block;width:13px;height:7px;border-radius:4px;background:rgba(124,180,247,.28)}
+    .study-sidebar .sidebar-active{height:13px;background:linear-gradient(135deg,#57d5ff,#7b86ff);box-shadow:0 0 11px rgba(84,193,255,.65)}
+    .study-work{padding:19px 19px;flex:1}
+    .preview-overline{font:600 8px Outfit,sans-serif;letter-spacing:.17em;color:#80abd8}
+    .study-mainline{width:74%;height:9px;margin-top:12px;border-radius:4px;background:linear-gradient(90deg,#a5e8ff,#6187c9)}
+    .study-subline{width:55%;height:5px;margin-top:8px;border-radius:4px;background:rgba(149,186,227,.36)}
+    .study-tile-row{display:flex;gap:10px;margin-top:17px}
+    .study-tile{flex:1;height:64px;border:1px solid rgba(110,206,255,.3);border-radius:8px;background:linear-gradient(160deg,rgba(40,114,189,.3),rgba(13,37,81,.7));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+    .study-tile.purple{border-color:rgba(165,139,255,.25);background:linear-gradient(135deg,rgba(111,85,210,.35),rgba(27,27,81,.7))}
+    .study-tile b{font:600 21px Outfit,sans-serif;color:#cbeeff}
+    .study-tile small{font:600 7px Outfit,sans-serif;letter-spacing:.08em;color:#b9ccea}
+    .study-progress{width:100%;height:4px;background:rgba(133,185,243,.15);border-radius:5px;margin-top:13px}
+    .study-progress span{display:block;width:63%;height:100%;background:linear-gradient(90deg,#52cfff,#9379ff);border-radius:5px;animation:study-glow 3.4s ease-in-out infinite alternate}
+    .football-interface{height:calc(100% - 29px);padding:11px 14px;display:grid;grid-template-columns:1.35fr 1fr;gap:12px}
+    .football-summary{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:8px;font:600 8px Outfit,sans-serif;letter-spacing:.13em;color:#a6bee2}
+    .football-summary strong{font:700 10px Outfit,sans-serif;color:#e3f8ff}
+    .preview-mini-chip{font-size:7px;border:1px solid rgba(90,214,224,.45);border-radius:4px;color:#86ffdd;padding:3px 5px}
+    .football-pitch{position:relative;height:109px;border:1px solid rgba(134,233,243,.38);border-radius:3px;background:linear-gradient(110deg,rgba(28,110,123,.24),rgba(10,64,109,.33));overflow:hidden}
+    .football-pitch:after{content:"";position:absolute;inset:3px;border:1px solid rgba(174,234,239,.2)}
+    .pitch-midline{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(145,232,242,.32)}
+    .pitch-circle{position:absolute;left:50%;top:50%;width:31px;height:31px;border:1px solid rgba(164,237,239,.48);border-radius:50%;transform:translate(-50%,-50%)}
+    .pitch-area{position:absolute;top:25%;width:21px;height:50%;border:1px solid rgba(164,237,239,.34)}
+    .pitch-left{left:0;border-left:none}.pitch-right{right:0;border-right:none}
+    .football-pitch i{position:absolute;width:8px;height:8px;border-radius:50%;z-index:2;background:#7ce2ff;box-shadow:0 0 10px rgba(92,218,255,.65);border:1px solid rgba(222,255,255,.65)}
+    .football-pitch .p1{left:17%;top:40%}.football-pitch .p2{left:35%;top:22%}.football-pitch .p3{left:35%;top:65%}.football-pitch .p4{left:51%;top:45%}.football-pitch .p5{left:69%;top:18%}.football-pitch .p6{left:70%;top:71%}.football-pitch .p7{left:84%;top:44%}
+    .football-rows{display:flex;flex-direction:column;justify-content:center;gap:13px}
+    .football-rows i{height:21px;border-radius:5px;background:linear-gradient(90deg,rgba(91,167,231,.32),rgba(60,109,201,.09));border-left:3px solid rgba(104,207,255,.65)}
+    .football-rows i:nth-child(2){width:87%}.football-rows i:nth-child(3){width:74%}
+    .preview-fascination{background:#080b20}
+    .fascination-art{position:relative;height:calc(100% - 29px);overflow:hidden;background:radial-gradient(ellipse at 61% 52%,rgba(94,43,188,.4),transparent 53%),radial-gradient(ellipse at 44% 38%,rgba(24,111,187,.24),transparent 48%),#090c20}
+    .fascination-art:before{content:"";position:absolute;inset:0;opacity:.27;background-image:radial-gradient(circle,#d7d5ff .8px,transparent 1px);background-size:27px 22px}
+    .fascination-planet{position:absolute;width:118px;height:118px;left:52%;top:12%;border-radius:50%;background:radial-gradient(circle at 28% 19%,rgba(220,205,255,.85),rgba(149,111,255,.39) 19%,rgba(43,45,145,.95) 62%,#0d082f);box-shadow:inset -12px -10px 18px #070620,0 0 48px rgba(136,89,255,.45);animation:planet-levitate 8s ease-in-out infinite}
+    .fascination-planet-ring{position:absolute;width:185px;height:53px;left:40%;top:33%;border:2px solid rgba(190,161,255,.72);box-shadow:0 0 15px rgba(145,112,246,.4);border-radius:50%;transform:rotate(-28deg)}
+    .fascination-label{position:absolute;z-index:2;top:17px;left:16px;font:600 7px Outfit,sans-serif;letter-spacing:.12em;color:#a3a5da}
+    .fascination-art strong{position:absolute;left:16px;bottom:15px;z-index:2;font:600 14px/1.13 Outfit,sans-serif;letter-spacing:.045em;color:#f0e9ff;text-shadow:0 0 22px #6d48cf}
+    .project-bottom{position:relative;z-index:4;display:flex;flex:1;flex-direction:column}
+    .project-category{display:block;font:600 10px Outfit,sans-serif;letter-spacing:.16em;color:rgb(var(--accent));margin-bottom:8px}
+    .project h3{font-size:25px;line-height:1.16;margin:0 0 9px}
+    .project p{font-size:14px;line-height:1.67}
+    .project-arrow{font-size:11px;margin-top:auto;padding-top:22px;color:rgb(var(--accent))}
+    .next-build p{font-size:14px}
+    .process-intro p{font-size:16px}
+    .process-step p{font-size:14px}
+    .process-orb{box-shadow:0 0 32px rgba(71,149,255,.27)}
+    .why-section{padding-bottom:100px}
+    .why-content p{font-size:16px}
+    .footer-inner{line-height:1.7}
+    @keyframes network-flow{to{stroke-dashoffset:-448}}
+    @keyframes network-pulse{0%,100%{opacity:.48}50%{opacity:1}}
+    @keyframes universe-breathe{to{opacity:.6;transform:scale(1.04)}}
+    @keyframes preview-bob{0%,100%{translate:0 0}50%{translate:0 -6px}}
+    @keyframes study-glow{to{opacity:.48}}
+    @keyframes planet-levitate{0%,100%{translate:0 0}50%{translate:0 -9px}}
+    @media(max-width:1050px){
+      .universe{height:570px}
+      .hero .universe .scene{width:76%;top:88px}
+      .universe .sphere-link{width:182px!important}
+      .universe .sphere-link.left{left:-12px!important;top:130px!important}
+      .universe .sphere-link.right{right:-12px!important;top:130px!important}
+      .universe .sphere-link .orb{width:158px}
+      .universe .sphere-link.third{top:379px!important;width:210px!important}
+      .universe .sphere-link.third .orb{width:135px}
+      .universe .sphere-link .sphere-caption{font-size:15px}
+      .universe .sphere-link.third .sphere-caption{font-size:15px}
+      .universe .sphere-link .sphere-description{font-size:9px}
+      .cards{gap:13px}
+      .project{padding:18px;min-height:457px}
+    }
+    @media(max-width:760px){
+      .container{width:calc(100% - 34px)}
+      .hero{padding-top:20px;padding-bottom:20px}
+      .hero .eyebrow{font-size:9px;letter-spacing:.14em}
+      .universe{height:auto;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:8px;row-gap:7px;margin:12px auto 0}
+      .universe:after,.universe .hero-beams,.universe-network{display:none}
+      .universe-aura{inset:0 0 15%;filter:blur(18px)}
+      .hero .universe .scene{position:relative;grid-column:1/-1;grid-row:1;left:auto;top:auto;margin:0 auto;width:min(100%,620px);transform:translate3d(var(--px,0px),var(--py,0px),0);filter:drop-shadow(0 14px 28px rgba(54,126,243,.25))}
+      .universe .sphere-link,.universe .sphere-link.left,.universe .sphere-link.right,.universe .sphere-link.third{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;order:initial!important;align-self:start!important;width:100%!important;max-width:100%;margin:0!important;padding:0!important;gap:5px}
+      .universe .sphere-link.left{grid-column:1;grid-row:2}
+      .universe .sphere-link.right{grid-column:2;grid-row:2}
+      .universe .sphere-link.third{grid-column:3;grid-row:2}
+      .universe .sphere-link .orb,.universe .sphere-link.third .orb{width:min(115px,27vw);margin-inline:auto}
+      .universe .sphere-link .orb-globe,.universe .sphere-link.third .orb-globe{width:73%;height:73%}
+      .universe .sphere-link .sphere-caption,.universe .sphere-link.third .sphere-caption,.universe .sphere-link.third .sphere-caption span{font-size:clamp(10px,2.5vw,15px);letter-spacing:0;line-height:1.16}
+      .universe .sphere-link .sphere-description{font-size:8px;line-height:1.35;letter-spacing:0;margin-top:2px}
+      .universe .sphere-link .arrow{display:none}
+      .hero .main-title{margin-top:36px;font-size:clamp(54px,12vw,82px)}
+      .hero .hero-desc{font-size:15px;max-width:490px}
+      .hero .glass-divider{margin-top:55px}
+      .cards{grid-template-columns:1fr;gap:18px}
+      .card-lab{grid-column:auto}
+      .project{min-height:445px;padding:20px 23px 25px}
+      .project-art{height:238px}
+      .preview-window{width:min(100%,350px);height:198px}
+      .project h3{font-size:27px}
+      .project p{font-size:15px}
+      .about-section{padding-top:60px}
+      .manifesto{padding-top:45px;padding-bottom:80px}
+      .principle{min-height:0}
+      .principle p{font-size:14px}
+      .section-header p{font-size:15px}
+      .process-section{padding-bottom:90px}
+    }
+    @media(max-width:430px){
+      .universe .sphere-link .orb,.universe .sphere-link.third .orb{width:min(103px,25vw)}
+      .universe .sphere-link .sphere-description{font-size:7px}
+      .hero .hero-tagline{font-size:10px;letter-spacing:.16em}
+      .hero .main-title{margin-top:30px}
+      .preview-window{height:185px}
+      .project-art{height:221px}
+      .project{min-height:425px}
+      .future-note{padding:20px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .universe-aura,.universe-network .net-current,.universe-network .net-nodes,.preview-window,.study-progress span,.fascination-planet,.live-dot{animation:none!important}
+      .preview-window,.project:hover .preview-window{transform:none!important;translate:0 0!important}
+    }
+
   </style>
 </head>
 <body>
@@ -337,12 +535,14 @@
       <span class="mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 25V7l18 18V7" stroke="#83dcff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 7L25 25" stroke="#a991ff" stroke-opacity=".7" stroke-width="1.1"/></svg></span>
       NOVYX <small>FORGE</small>
     </a>
-    <nav class="navlinks" id="site-menu" aria-label="Main navigation"><a href="#about">About</a><a href="#projects">Projects</a><a href="#approach">Philosophy</a><a href="#process">Process</a><a href="#lab">The lab</a><a class="top-cta" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav><button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="navlinks" id="site-menu" aria-label="Main navigation"><a href="#about">About</a><a href="#projects">Projects</a><a href="#approach">Philosophy</a><a href="#process">Process</a><a class="top-cta" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav><button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
   <main>
     <section class="container hero" id="home">
-      <div class="eyebrow">A Digital Laboratory For Ideas</div>
+      <div class="eyebrow">Independent AI &amp; Technology Lab</div>
 
+      <div class="universe" aria-label="Explore the three NOVYX projects">
+        <div class="universe-aura" aria-hidden="true"></div>
       <svg class="hero-beams" viewBox="0 0 1400 370" aria-hidden="true" preserveAspectRatio="none">
         <defs><linearGradient id="beamgradient" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#36c5ff" stop-opacity="0"/><stop offset=".18" stop-color="#5fd5ff"/><stop offset=".5" stop-color="#d9f5ff" stop-opacity=".12"/><stop offset=".81" stop-color="#b99aff"/><stop offset="1" stop-color="#a269ff" stop-opacity="0"/></linearGradient></defs>
         <path class="beam-base" d="M45 200C230 20 350 180 700 196S1160 10 1355 180"/>
@@ -351,6 +551,22 @@
         <path class="beam-run" style="animation-direction:reverse" d="M20 255C280 355 416 60 700 175S1060 350 1380 135"/>
       </svg>
       <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
+      <svg class="universe-network" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="netline"><stop stop-color="#45d5ff" stop-opacity=".06"/><stop offset=".4" stop-color="#80d4ff" stop-opacity=".68"/><stop offset=".72" stop-color="#c7a9ff" stop-opacity=".6"/><stop offset="1" stop-color="#885cff" stop-opacity=".06"/></linearGradient></defs>
+        <g class="net-static" fill="none" stroke="url(#netline)" stroke-width="1">
+          <path d="M138 239 Q341 38 600 280 Q820 57 1055 221"/>
+          <path d="M138 239 Q312 488 600 454 Q879 482 1055 221"/>
+          <path d="M600 280 Q645 364 600 469"/>
+          <ellipse cx="600" cy="302" rx="439" ry="237" transform="rotate(-8 600 302)" stroke-dasharray="3 15"/>
+        </g>
+        <g class="net-current" fill="none" stroke="url(#netline)" stroke-width="2" stroke-linecap="round">
+          <path d="M138 239 Q341 38 600 280 Q820 57 1055 221"/>
+          <path d="M138 239 Q312 488 600 454 Q879 482 1055 221"/>
+          <path d="M600 280 Q645 364 600 469"/>
+        </g>
+        <g fill="#8ce8ff" class="net-nodes"><circle cx="138" cy="239" r="3"/><circle cx="1055" cy="221" r="3"/><circle cx="600" cy="469" r="3"/></g>
+      </svg>
+
       <a class="sphere-link left" href="https://fathom-web.github.io/svdiemen/" target="_blank" rel="noopener noreferrer" aria-label="Open FootballForge">
         <span class="orb" aria-hidden="true">
           <span class="orb-shell"></span><span class="orb-orbit-back"></span>
@@ -432,12 +648,8 @@
           <path d="M390 412H510" stroke="#55acfa" stroke-opacity=".5" stroke-width="1" filter="url(#fineglow)"/>
         </svg>
       </div>
-      <h1 class="main-title"><span class="novyx-word">NOVYX</span> <span class="forge-word">FORGE</span></h1>
-      <div class="hero-tagline">Ideas forged into reality</div>
-      <p class="hero-desc">An independent AI &amp; technology lab. Where curiosity meets code, experiments become experiences, and ideas take shape.</p>
-      <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#about">Discover the Forge <span aria-hidden="true">↓</span></a></div>
       <a class="sphere-link third" href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer" aria-label="Explore The Fascination Files on Instagram">
-        <span class="mystery-connector" aria-hidden="true"></span>
+        
         <span class="orb" aria-hidden="true">
           <span class="orb-shell"></span><span class="orb-orbit-back"></span>
           <svg class="orb-globe" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -472,15 +684,20 @@
         <span class="sphere-description">Mystery · Discovery · Wonder</span>
         <span class="arrow">Explore Instagram ↗</span>
       </a>
+      </div>
+      <h1 class="main-title"><span class="novyx-word">NOVYX</span> <span class="forge-word">FORGE</span></h1>
+      <div class="hero-tagline">Explore &nbsp;·&nbsp; Experiment &nbsp;·&nbsp; Build</div>
+      <p class="hero-desc">Step into a living laboratory of ideas — where curiosity meets technology, and experiments become experiences.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#about">The story behind it <span aria-hidden="true">↓</span></a></div>
       <div class="glass-divider" aria-hidden="true"></div>
     </section>
 
     <section class="container about-section" id="about" aria-labelledby="about-heading">
       <div class="about-copy reveal">
-        <div class="section-kicker">01 / The concept</div>
+        <div class="section-kicker">01 / What is NOVYX?</div>
         <h2 class="feature-heading" id="about-heading">Curiosity is the spark.<br><em>Creation is the point.</em></h2>
-        <p>NOVYX FORGE is an independent digital laboratory built around ideas, artificial intelligence and emerging technology. A place to explore the unexpected, experiment freely and turn possibilities into working experiences.</p>
-        <p>From smarter ways to learn to better tools for football and stories that reveal how fascinating our world is — every project starts with a simple question: <strong style="color:#e1f2ff;font-weight:500">what if?</strong></p>
+        <p>An independent AI and technology lab where ideas are explored, tested and turned into digital experiences. From practical tools to creative experiments, NOVYX is built around one simple belief: the best ideas deserve to become real.</p>
+        <p>It starts with curiosity. The rest is experimentation, design, code and a willingness to discover something unexpected.</p>
         <div class="about-meta"><span>Independent by nature</span><span>Experimental by design</span></div>
       </div>
       <div class="forge-reactor reveal" aria-hidden="true">
@@ -491,8 +708,8 @@
     <div class="container divider-wrap"><div class="thin-rule"></div></div>
     <section class="container manifesto reveal" id="approach">
       <div class="section-kicker">The philosophy</div>
-      <h2>Not just another website.<br><em>A place where ideas evolve.</em></h2>
-      <p>Every project begins with a question: what if this idea could become something real? We give curiosity room to turn into useful, imaginative technology.</p>
+      <h2>Explore. Experiment.<br><em>Build what comes next.</em></h2>
+      <p>No fixed rules, no corporate playbook. Four principles keep the Forge moving.</p>
       <div class="principles" aria-label="Our philosophy">
         <article class="principle reveal"><span class="principle-no">01 / DISCOVER</span><h3>Explore.</h3><p>Follow interesting questions and discover possibilities that deserve attention.</p></article>
         <article class="principle reveal"><span class="principle-no">02 / TEST</span><h3>Experiment.</h3><p>Prototype quickly, learn from mistakes and see what actually works.</p></article>
@@ -501,40 +718,61 @@
       </div>
     </section>
     <section class="container projects" id="projects">
-      <div class="section-header reveal"><div><div class="section-kicker">Built in the forge</div><h2>Explore the projects<span style="color:#82d5ff">.</span></h2></div><p>Different ideas. One driving force: create something useful, surprising or entirely new.</p></div>
+      <div class="section-header reveal"><div><div class="section-kicker">Built in the forge</div><h2>Built to be explored<span style="color:#82d5ff">.</span></h2></div><p>Real projects. Different worlds. One obsession with making ideas work.</p></div>
       <div class="cards">
-        <a class="project reveal" href="https://fathom-web.github.io/studyforge/" target="_blank" rel="noopener noreferrer" aria-label="Open StudyForge">
-          <div class="project-top"><span class="project-number">PROJECT / 01</span><span class="state">Live project</span></div>
-          <div class="project-art"><svg viewBox="0 0 145 105" fill="none" aria-hidden="true"><path d="M72 12L117 36V79L72 99L28 79V36L72 12Z" fill="#69beff" fill-opacity=".07" stroke="#7bcaff" stroke-width="1.6"/><path d="M72 12V99M28 36L72 59L117 36M28 79L72 59L117 79" stroke="#9bdeff" stroke-opacity=".55"/><path d="M55 43L72 35L90 43V70L72 79L55 70V43Z" stroke="#bbefff" stroke-width="2"/><path d="M64 48L72 45L81 48M64 57L72 61L81 57" stroke="#7adfff" stroke-width="1.5"/><circle cx="72" cy="59" r="4" fill="#c5f7ff"/></svg></div>
-          <h3>StudyForge</h3><p>A smarter way to learn. Practice, challenge yourself and track your progress.</p><span class="project-arrow">Visit project <span aria-hidden="true">↗</span></span>
+        <a class="project project-study reveal" href="https://fathom-web.github.io/studyforge/" target="_blank" rel="noopener noreferrer" aria-label="Open StudyForge">
+          <div class="project-top"><span class="project-number">FORGE / 001</span><span class="state"><span class="live-dot"></span> Live</span></div>
+          <div class="project-art" aria-hidden="true">
+            <div class="preview-window preview-study">
+              <div class="preview-bar"><span class="preview-brand">STUDY<span>FORGE</span></span><span class="preview-dots"><i></i><i></i><i></i></span></div>
+              <div class="preview-study-layout">
+                <div class="study-sidebar"><span class="sidebar-active"></span><span></span><span></span><span></span></div>
+                <div class="study-work">
+                  <span class="preview-overline">YOUR LEARNING SPACE</span>
+                  <div class="study-mainline"></div><div class="study-subline"></div>
+                  <div class="study-tile-row"><div class="study-tile"><b>Q</b><small>PRACTICE</small></div><div class="study-tile purple"><b>✦</b><small>FLASHCARDS</small></div></div>
+                  <div class="study-progress"><span></span></div>
+                </div>
+              </div>
+            </div>
+            <span class="preview-halo"></span>
+          </div>
+          <div class="project-bottom"><span class="project-category">LEARNING / EDUCATION</span><h3>StudyForge</h3><p>Interactive practice, flashcards and progress — helping learning feel less like a chore.</p><span class="project-arrow">Launch project <span aria-hidden="true">↗</span></span></div>
         </a>
-        <a class="project reveal" href="https://fathom-web.github.io/svdiemen/" target="_blank" rel="noopener noreferrer" aria-label="Open FootballForge">
-          <div class="project-top"><span class="project-number">PROJECT / 02</span><span class="state">Live project</span></div>
-          <div class="project-art"><svg viewBox="0 0 145 105" fill="none" aria-hidden="true"><circle cx="72" cy="56" r="39" fill="#328de9" fill-opacity=".065" stroke="#8ccfff" stroke-width="1.5"/><circle cx="72" cy="56" r="27" stroke="#c1eaff" stroke-opacity=".35"/><path d="M72 32L93 48L84 74H60L51 48L72 32Z" fill="#8acbff" fill-opacity=".19" stroke="#b5e6ff" stroke-width="1.6"/><path d="M51 48L35 39M93 48L110 39M84 74L92 90M60 74L51 90M72 32V17" stroke="#8acbff" stroke-width="1.5"/><circle cx="72" cy="56" r="4" fill="#b7f2ff"/></svg></div>
-          <h3>FootballForge</h3><p>Football management reimagined. Teams, training, matches and planning.</p><span class="project-arrow">Visit project <span aria-hidden="true">↗</span></span>
+        <a class="project project-football reveal" href="https://fathom-web.github.io/svdiemen/" target="_blank" rel="noopener noreferrer" aria-label="Open FootballForge">
+          <div class="project-top"><span class="project-number">FORGE / 002</span><span class="state"><span class="live-dot"></span> Live</span></div>
+          <div class="project-art" aria-hidden="true">
+            <div class="preview-window preview-football">
+              <div class="preview-bar"><span class="preview-brand">FOOTBALL<span>FORGE</span></span><span class="preview-dots"><i></i><i></i><i></i></span></div>
+              <div class="football-interface">
+                <div class="football-summary"><span>MATCHDAY</span><strong>TEAM COMMAND</strong><span class="preview-mini-chip">READY</span></div>
+                <div class="football-pitch"><div class="pitch-midline"></div><div class="pitch-circle"></div><div class="pitch-area pitch-left"></div><div class="pitch-area pitch-right"></div><i class="p1"></i><i class="p2"></i><i class="p3"></i><i class="p4"></i><i class="p5"></i><i class="p6"></i><i class="p7"></i></div>
+                <div class="football-rows"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <span class="preview-halo"></span>
+          </div>
+          <div class="project-bottom"><span class="project-category">SPORT / ORGANISATION</span><h3>FootballForge</h3><p>From training to matchday: a digital command center for football teams.</p><span class="project-arrow">Launch project <span aria-hidden="true">↗</span></span></div>
         </a>
-        <a class="project card-lab reveal" href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer" aria-label="Explore The Fascination Files on Instagram">
-          <div class="project-top"><span class="project-number">PROJECT / 03</span><span class="state">Live project</span></div>
-          <div class="project-art"><svg viewBox="0 0 145 105" fill="none" aria-hidden="true"><ellipse cx="72" cy="54" rx="58" ry="21" transform="rotate(-25 72 54)" stroke="#a99aff" stroke-opacity=".8" stroke-width="1.2"/><ellipse cx="72" cy="54" rx="58" ry="21" transform="rotate(40 72 54)" stroke="#72b7ff" stroke-opacity=".55" stroke-width="1.2"/><circle cx="72" cy="54" r="23" fill="#9b8bff" fill-opacity=".12" stroke="#d6c7ff" stroke-width="1.5"/><circle cx="72" cy="54" r="10" fill="#9e8bff" fill-opacity=".4"/><circle cx="72" cy="54" r="4" fill="#fff"/><circle cx="25" cy="43" r="3" fill="#b5a3ff"/><circle cx="110" cy="72" r="3" fill="#a3ddff"/></svg></div>
-          <h3>The Fascination Files</h3><p>A visual journey through science, mysteries, technology and astonishing facts.</p><span class="project-arrow">Explore Instagram <span aria-hidden="true">↗</span></span>
+        <a class="project project-fascination reveal" href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer" aria-label="Explore The Fascination Files on Instagram">
+          <div class="project-top"><span class="project-number">FORGE / 003</span><span class="state"><span class="live-dot"></span> Live</span></div>
+          <div class="project-art" aria-hidden="true">
+            <div class="preview-window preview-fascination">
+              <div class="preview-bar"><span class="preview-brand">THE FASCINATION FILES</span><span class="preview-dots"><i></i><i></i><i></i></span></div>
+              <div class="fascination-art"><div class="fascination-planet"></div><div class="fascination-planet-ring"></div><div class="fascination-specks"></div><span class="fascination-label">SCIENCE / MYSTERY / DISCOVERY</span><strong>THE UNKNOWN<br>IS EVERYWHERE.</strong></div>
+            </div>
+            <span class="preview-halo"></span>
+          </div>
+          <div class="project-bottom"><span class="project-category">SCIENCE / CURIOSITY</span><h3>The Fascination Files</h3><p>Remarkable facts, strange mysteries and discoveries hiding in plain sight.</p><span class="project-arrow">Explore Instagram <span aria-hidden="true">↗</span></span></div>
         </a>
       </div>
       <div class="next-build reveal"><div><strong>And this is only the beginning.</strong><p>New ideas, prototypes and unexpected experiments will keep emerging from the Forge.</p></div><a href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">See the builds ↗</a></div>
     </section>
-    <section class="container values" aria-label="What we explore">
-      <div class="value-grid reveal">
-        <div class="value"><span class="number">01 —</span><strong>Artificial intelligence</strong><span>Experimenting with what's possible.</span></div>
-        <div class="value"><span class="number">02 —</span><strong>Education</strong><span>Turning learning into progress.</span></div>
-        <div class="value"><span class="number">03 —</span><strong>Technology</strong><span>Building tools people can use.</span></div>
-        <div class="value"><span class="number">04 —</span><strong>Curiosity</strong><span>Following questions worth asking.</span></div>
-      </div>
-    </section>
-
     <section class="container process-section" id="process" aria-labelledby="process-heading">
       <div class="process-intro reveal">
         <div class="section-kicker">02 / The process</div>
         <h2 class="feature-heading" id="process-heading">From idea.<br><em>To experience.</em></h2>
-        <p>NOVYX FORGE isn't built around fixed products or a rigid roadmap. Ideas are explored, tested and refined until something worth using comes to life.</p>
+        <p>There's no rigid roadmap here. An idea moves from the first spark to something you can actually use.</p>
       </div>
       <div class="process-path" aria-label="Our creative process">
         <div class="process-step reveal"><div class="process-orb" aria-hidden="true">01</div><span class="process-phase">The spark</span><h3>Imagine</h3><p>Start with a problem, a question, or the sense that something could work better.</p></div>
@@ -543,22 +781,13 @@
         <div class="process-step reveal"><div class="process-orb" aria-hidden="true">04</div><span class="process-phase">The outcome</span><h3>Launch</h3><p>Share a useful digital experience — and keep evolving it as new ideas appear.</p></div>
       </div>
     </section>
-    <section class="container" id="lab">
-      <div class="lab-section reveal">
-        <div class="section-kicker">The experimental division</div>
-        <h2>Some ideas don't fit<br>inside a box.</h2>
-        <p>Good. Neither do we. The experimental lab is where artificial intelligence, surprising discoveries and unusual concepts meet creativity. The Fascination Files brings that curiosity to life through science, mystery and remarkable stories.</p>
-        <a class="btn btn-outline" href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer">Discover The Fascination Files <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-
     <section class="container why-section" id="why" aria-labelledby="why-heading">
       <div class="why-panel reveal">
         <div class="why-content">
-          <div class="section-kicker">03 / The purpose</div>
-          <h2 id="why-heading">Why the Forge exists.</h2>
-          <p>Technology should feel creative, useful and exciting — not distant or inaccessible. NOVYX FORGE is a space for the joy of making things, discovering what's possible and proving that a good idea doesn't have to stay an idea.</p>
-          <div class="why-actions"><a class="btn btn-primary" href="#projects">Step inside the Forge <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">Explore GitHub <span aria-hidden="true">↗</span></a></div>
+          <div class="section-kicker">03 / Behind the Forge</div>
+          <h2 id="why-heading">Made by curiosity.<br>Driven by possibility.</h2>
+          <p>NOVYX FORGE is an independent creative technology playground. Not an agency. Not a corporation. Just a place to explore AI, build practical tools and see how far an idea can go.</p>
+          <div class="why-actions"><a class="btn btn-primary" href="#projects">Explore the projects <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">Explore GitHub <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
     </section>
@@ -623,6 +852,17 @@
     window.addEventListener("scroll",()=>{if(!pageScrollQueued){pageScrollQueued=true;requestAnimationFrame(renderScrollProgress)}},{passive:true});
     window.addEventListener("resize",renderScrollProgress,{passive:true});
     renderScrollProgress();
+
+    // Light follows project cards; cosmetic only and disabled for reduced-motion.
+    if(window.matchMedia("(pointer:fine)").matches && !window.matchMedia("(prefers-reduced-motion:reduce)").matches){
+      document.querySelectorAll(".project").forEach(card=>{
+        card.addEventListener("pointermove",e=>{
+          const r=card.getBoundingClientRect();
+          card.style.setProperty("--mx",((e.clientX-r.left)/r.width*100).toFixed(1)+"%");
+          card.style.setProperty("--my",((e.clientY-r.top)/r.height*100).toFixed(1)+"%");
+        },{passive:true});
+      });
+    }
   </script>
 </body>
 </html>
