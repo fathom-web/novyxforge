@@ -127,6 +127,18 @@ function draw(project,all){
  const top=$("hero-actions");
  const view=buildLink("Explore the interface","#screenshots","btn-primary");if(view)top.append(view);
  const how=buildLink("What it does","#how-it-works","btn-secondary");if(how)top.append(how);
+ // Only mount four approved, client-only sample demos. Others remain honest showcases.
+ const demoSection=$("try-demo"),demoHost=$("demo-board");
+ const hasDemo=Boolean(demoSection&&demoHost&&window.NovyxDemos?.mount?.(project,demoHost));
+ if(hasDemo){
+   demoSection.hidden=false;
+   $("demo-intro").textContent=profile.demo?.description||"An interactive sample experience using entirely fictional data.";
+   const tryDemo=buildLink("Try interactive demo","#try-demo","btn-secondary");
+   if(tryDemo)top.append(tryDemo);
+ }else{
+   if($("features-section-number"))$("features-section-number").textContent="04 / CAPABILITIES";
+   if($("go-further-number"))$("go-further-number").textContent="05 / GO FURTHER";
+ }
  // Place the atmosphere control after the primary overview actions.
  if(atmosphere && window.NovyxWeather)window.NovyxWeather.mount(document.querySelector(".hero"),atmosphere);
  const steps=$("steps");
