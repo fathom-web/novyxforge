@@ -1,0 +1,89 @@
+/* NOVYX FORGE 3.0 / Universe Alpha
+   Six distinct project portals around the existing glass Forge.
+   Keep existing five identities and animations; recompose positions only. */
+.hero .universe{height:807px}
+.universe .sphere-link{z-index:5}
+.universe .sphere-link.left{left:1%!important;top:135px!important}
+.universe .sphere-link.right{right:1%!important;top:135px!important}
+.universe .sphere-link.third{left:21%!important;right:auto!important;top:350px!important;transform:translateX(-50%)}
+.universe .sphere-link.fourth{right:21%!important;left:auto!important;top:350px!important;transform:translateX(50%)}
+.universe .sphere-link.fifth{left:35%!important;right:auto!important;top:552px!important;transform:translateX(-50%);width:215px!important}
+.universe .sphere-link.sixth{
+ --c:94,223,231;position:absolute!important;z-index:7;
+ left:auto!important;right:35%!important;top:552px!important;
+ width:215px!important;transform:translateX(50%);
+ display:flex;align-items:center;flex-direction:column;gap:5px;
+ padding:0;margin:0;text-align:center;
+}
+.universe .sphere-link.sixth .orb{width:146px;animation-duration:8.4s;animation-delay:-3.1s}
+.universe .sphere-link.sixth .orb-globe{width:76%;height:76%;z-index:2;filter:drop-shadow(0 0 16px rgba(80,215,230,.6))}
+.universe .sphere-link.sixth .orb-shell{
+ background:radial-gradient(circle at 25% 17%,rgba(235,255,255,.98),rgba(114,250,239,.58) 8%,rgba(30,109,149,.29) 27%,rgba(10,17,52,.95) 63%,rgba(75,68,158,.49) 86%,rgba(96,224,221,.23)),
+ conic-gradient(from 20deg,rgba(110,222,229,.1),rgba(150,111,255,.08),transparent,rgba(90,244,238,.18));
+ border-color:rgba(121,240,237,.84);
+ box-shadow:inset -17px -18px 30px rgba(4,10,39,.92),inset 5px 9px 15px rgba(190,255,255,.31),0 0 58px rgba(84,218,238,.32),0 0 103px rgba(89,126,255,.12);
+}
+.universe .sphere-link.sixth .orb-orbit{
+ border:2px dashed rgba(112,250,240,.78);border-right-color:rgba(181,138,255,.65);
+ box-shadow:0 0 23px rgba(102,237,233,.36);animation-duration:8s;animation-direction:reverse;
+}
+.universe .sphere-link.sixth .orb-orbit-back{border:1px dotted rgba(196,151,255,.6);animation-duration:18s}
+.universe .sphere-link.sixth .sphere-caption{font-size:17px;line-height:1.15;letter-spacing:.075em;color:#ecfcff}
+.universe .sphere-link.sixth .sphere-caption span{color:#82f3ee}
+.universe .sphere-link.sixth .sphere-description{font-size:9px;color:#9ee5e3;letter-spacing:.08em}
+.universe .sphere-link.sixth .arrow{color:#94f8f1;opacity:.8;transform:none;font-size:10px}
+.universe .sphere-link.sixth:hover .orb,.universe .sphere-link.sixth:focus-visible .orb{transform:translateY(-4px) scale(1.075);animation-play-state:paused}
+.universe .sphere-link.sixth:hover .sphere-caption{color:#fff}
+.orb-identity-wind{inset:13%;background:conic-gradient(from 180deg,transparent 0 20deg,rgba(91,237,226,.16) 34deg,transparent 52deg,transparent 130deg,rgba(181,132,255,.15) 145deg,transparent 178deg)}
+.orb-identity-wind i{position:absolute;display:block;height:1px;width:37%;border-radius:3px;background:linear-gradient(90deg,transparent,rgba(153,255,249,.84),transparent);box-shadow:0 0 10px rgba(104,242,237,.6);transform:rotate(-30deg);animation:wind-rune-drift 3.9s ease-in-out infinite alternate}
+.orb-identity-wind i:nth-child(1){top:20%;left:8%}
+.orb-identity-wind i:nth-child(2){top:48%;right:3%;width:43%;animation-delay:-1.3s}
+.orb-identity-wind i:nth-child(3){bottom:20%;left:19%;width:28%;animation-delay:-2.2s}
+@keyframes wind-rune-drift{to{translate:10px -7px;opacity:.35}}
+.universe .sphere-link.sixth:focus-visible{outline:2px solid #a5fffc;outline-offset:8px;border-radius:13px}
+.universe .sphere-link.sixth .orb-shell:after{background:linear-gradient(135deg,transparent,rgba(158,235,255,.17),transparent)}
+/* Preserve the cinematic center while making room for the sixth world. */
+.hero .universe .scene{top:35px}
+.universe .scene{z-index:3}
+.universe .sphere-link.sixth[data-energy="off"] .orb{opacity:.75}
+@media(max-width:1100px) and (min-width:761px){
+ .hero .universe{height:775px}
+ .universe .sphere-link.third{left:20%!important;top:340px!important}
+ .universe .sphere-link.fourth{right:20%!important;top:340px!important}
+ .universe .sphere-link.fifth{left:33%!important;top:546px!important}
+ .universe .sphere-link.sixth{right:33%!important;top:546px!important;width:195px!important}
+ .universe .sphere-link.sixth .orb{width:135px}
+ .universe .sphere-link.sixth .sphere-caption{font-size:15px}
+}
+@media(max-width:760px){
+ .hero .universe{height:auto!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(7px,3vw,18px);row-gap:19px}
+ .universe .sphere-link,
+ .universe .sphere-link.left,.universe .sphere-link.right,
+ .universe .sphere-link.third,.universe .sphere-link.fourth,
+ .universe .sphere-link.fifth,.universe .sphere-link.sixth{
+   position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
+   transform:none!important;width:100%!important;max-width:100%!important;
+   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+   margin:0!important;padding:0!important;gap:6px
+ }
+ .universe .sphere-link.left{grid-column:1!important;grid-row:2!important}
+ .universe .sphere-link.right{grid-column:2!important;grid-row:2!important}
+ .universe .sphere-link.third{grid-column:1!important;grid-row:3!important}
+ .universe .sphere-link.fourth{grid-column:2!important;grid-row:3!important}
+ .universe .sphere-link.fifth{grid-column:1!important;grid-row:4!important}
+ .universe .sphere-link.sixth{grid-column:2!important;grid-row:4!important}
+ .universe .sphere-link.sixth .orb,.universe .sphere-link.fifth .orb{width:min(138px,34vw)}
+ .universe .sphere-link.sixth .orb-globe{width:75%;height:75%}
+ .universe .sphere-link.sixth .sphere-caption{font-size:clamp(12px,3.1vw,16px);letter-spacing:0}
+ .universe .sphere-link.sixth .sphere-description{font-size:9px;letter-spacing:.01em}
+ .universe .sphere-link.sixth .arrow{display:none}
+ .universe .sphere-link.sixth .orb-identity{opacity:.65}
+ .hero .universe .scene{top:auto}
+}
+@media(max-width:430px){
+ .hero .universe{row-gap:11px}
+ .universe .sphere-link.sixth .orb,.universe .sphere-link.fifth .orb{width:min(115px,31vw)}
+ .universe .sphere-link.sixth .sphere-caption{font-size:12px}
+ .universe .sphere-link.sixth .sphere-description{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){.orb-identity-wind i{animation:none!important}.universe .sphere-link.sixth .orb{animation:none!important}}
