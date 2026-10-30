@@ -605,6 +605,7 @@
   <link rel="stylesheet" href="./forge-observatory.css?v=1">
   <link rel="stylesheet" href="./forge-feedback.css?v=2">
   <link rel="stylesheet" href="./forge-search.css?v=2">
+  <link rel="stylesheet" href="./forge-v31.css?v=1">
   <link rel="canonical" href="https://novyxforge.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://novyxforge.com/">
@@ -625,6 +626,13 @@
 
       <div class="universe" aria-label="Explore six featured NOVYX project worlds">
         <div class="universe-aura" aria-hidden="true"></div>
+        <div class="v31-stage-field" aria-hidden="true"></div>
+        <div class="v31-stage-hud" aria-hidden="true">
+          <div class="v31-hud-top"><span><i class="v31-hud-led"></i><strong>FORGE NETWORK</strong> / SIX WORLDS</span><span>ATLAS // 03.1</span></div>
+          <span class="v31-stage-tick left"></span><span class="v31-stage-tick right"></span>
+          <div class="v31-hud-bottom"><span><strong>CORE LINK</strong> · SELECT A PORTAL</span><span class="v31-focus-state" id="v31-focus-state">SELECT A WORLD</span></div>
+        </div>
+        <span class="v31-reactor-marker" aria-hidden="true">CORE / REACTOR</span>
       <svg class="hero-beams" viewBox="0 0 1400 370" aria-hidden="true" preserveAspectRatio="none">
         <defs><linearGradient id="beamgradient" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#36c5ff" stop-opacity="0"/><stop offset=".18" stop-color="#5fd5ff"/><stop offset=".5" stop-color="#d9f5ff" stop-opacity=".12"/><stop offset=".81" stop-color="#b99aff"/><stop offset="1" stop-color="#a269ff" stop-opacity="0"/></linearGradient></defs>
         <path class="beam-base" d="M45 200C230 20 350 180 700 196S1160 10 1355 180"/>
@@ -972,6 +980,21 @@
     </section>
 
 
+    <nav class="container v31-system-index" id="systems" aria-label="Forge systems directory">
+      <div class="v31-system-head">
+        <div><div class="v31-system-kicker">NOVYX // OPERATIONS DECK</div><h2>Inside the machine.</h2></div>
+        <p>Six entry points to the experiments, development history and ideas behind the project worlds.</p>
+      </div>
+      <div class="v31-system-grid">
+        <a class="v31-system-link" href="#pipeline"><span class="v31-system-number">01</span><strong>Forge Pipeline</strong><span class="v31-arrow" aria-hidden="true">↗</span></a>
+        <a class="v31-system-link" href="#observatory"><span class="v31-system-number">02</span><strong>Observatory</strong><span class="v31-arrow" aria-hidden="true">↗</span></a>
+        <a class="v31-system-link" href="#pulse"><span class="v31-system-number">03</span><strong>Forge Pulse</strong><span class="v31-arrow" aria-hidden="true">↗</span></a>
+        <a class="v31-system-link" href="#spark-lab"><span class="v31-system-number">04</span><strong>Spark Lab</strong><span class="v31-arrow" aria-hidden="true">↗</span></a>
+        <a class="v31-system-link" href="#vault"><span class="v31-system-number">05</span><strong>Idea Vault</strong><span class="v31-arrow" aria-hidden="true">↗</span></a>
+        <a class="v31-system-link" href="#forge-feedback"><span class="v31-system-number">06</span><strong>Forge Feedback</strong><span class="v31-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+
     <section class="container platform-section forge-pipeline" id="pipeline" aria-labelledby="pipeline-heading">
       <div class="lab-section-heading reveal">
         <div><div class="section-kicker">THE FORGE / DEVELOPMENT CONTROL</div><h2 id="pipeline-heading">The Forge <em>Pipeline.</em></h2></div>
@@ -1264,6 +1287,7 @@
   <script src="./forge-observatory.js?v=2" defer></script>
   <script src="./forge-feedback.js?v=2" defer></script>
   <script src="./forge-search.js?v=3" defer></script>
+  <script src="./forge-v31.js?v=1" defer></script>
 
   <dialog class="forge-reactor-dialog" id="forge-reactor-dialog" aria-labelledby="reactor-dialog-title" aria-describedby="reactor-dialog-desc">
     <div class="reactor-dialog-inner">
@@ -1287,7 +1311,7 @@
           <span><strong>Mission Control</strong><small>Track the Forge Pipeline and current projects</small></span><span class="reactor-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
-      <div class="reactor-dialog-foot"><a id="reactor-home" href="#projects">Browse all projects ↗</a> · <a id="reactor-observatory" href="#observatory">Enter Observatory ↗</a> · NOVYX FORGE 3.0</div>
+      <div class="reactor-dialog-foot"><a id="reactor-home" href="#projects">Browse all projects ↗</a> · <a id="reactor-observatory" href="#observatory">Enter Observatory ↗</a> · NOVYX FORGE 3.1</div>
     </div>
   </dialog>
   <span id="novyx-world-status" role="status" aria-live="polite" aria-atomic="true"></span>

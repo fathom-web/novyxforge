@@ -46,6 +46,9 @@ jobs:
           node --check forge-search.js
           node --check forge-feedback.js
           node --check project-showcase.js
+          node --check forge-v31.js
+      - name: Verify 3.1 design contracts and keyboard/mobile safeguards
+        run: node tests/v31-design-check.mjs
       - name: Verify six project worlds and Weather Engine
         run: node tests/v3-alpha-check.mjs
       - name: Verify Navigator, transitions and Reactor
