@@ -46,3 +46,20 @@ body:has(.forge-search-dialog[open]){scrollbar-gutter:stable}
  .forge-search-trigger .forge-search-icon{margin-right:0}.forge-search-dialog{border-radius:14px;max-height:89vh}
  .forge-search-head{padding:17px}.forge-search-title{font-size:23px}.forge-search-input-box{padding:9px 16px}.forge-search-body{max-height:60vh}}
 @media(prefers-reduced-motion:reduce){.forge-search-result a,.forge-search-trigger{transition:none!important}}
+/* On small layouts the main navigation is collapsed. Keep Search beside the hamburger. */
+.forge-search-trigger.header-search-mobile{display:none}
+@media(max-width:900px){
+ .forge-search-trigger.header-search-mobile{display:inline-flex;margin-left:auto;flex:0 0 42px}
+ .forge-search-trigger.header-search-mobile .forge-search-icon{margin:0}
+ .navlinks .forge-search-trigger{width:100%;justify-content:center}
+}
+@media(max-width:760px){
+ header .forge-search-trigger{min-width:39px;min-height:39px}
+ header nav.shell .forge-search-trigger{margin-left:auto;flex:0 0 39px}
+ header nav.shell .back{font-size:9px;letter-spacing:0;padding:10px 9px}
+}
+@media(max-width:380px){
+ header nav.shell{gap:8px}
+ header nav.shell .brand{font-size:14px;letter-spacing:.08em}
+ header nav.shell .back{font-size:8px;padding:9px 8px}
+}
