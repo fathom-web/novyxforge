@@ -214,12 +214,15 @@ function draw(project,all){
    add(card,el("small","",p.category.toUpperCase()),el("strong","",p.name));
    related.append(card);
  });
+ // Expose the completed hero in one paint after all sourced content and
+ // primary controls exist. The loading class is JS-only.
+ document.documentElement.classList.remove("js-project-loading");
 }
 async function main(){
  initLightbox();
  const projectId=new URLSearchParams(location.search).get("project");
  if(!projectId||!/^[a-z0-9-]{1,50}$/.test(projectId)){
-   $("name").textContent="Project not found";$("summary").textContent="Go back to NOVYX to browse our projects.";return;
+   $("name").textContent="Project not found";$("summary").textContent="Go back to NOVYX to browse our projects.";document.documentElement.classList.remove("js-project-loading");return;
  }
  try{
    const response=await fetch("./projects.json",{cache:"no-store"});
@@ -234,6 +237,7 @@ async function main(){
    $("summary").textContent="We couldn't load this project right now. Please return to the Forge and try again.";
    const a=buildLink("Back to all projects","./index.html#catalog","btn-primary");
    if(a)$("hero-actions").append(a);
+   document.documentElement.classList.remove("js-project-loading");
  }
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",main,{once:true});else main();
