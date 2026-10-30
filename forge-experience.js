@@ -14,6 +14,7 @@
   let data=null;
   let filter="all";
   let searchTerm="";
+  let pipelineView="all";
 
   function tile(project){
     const card=make("a","catalog-tile");
@@ -47,6 +48,59 @@
     const count=byId("catalog-count");
     if(count)text(count,chosen.length+" of "+data.projects.length+" projects");
   }
+
+  // THE FORGE PIPELINE — a curated project/idea lifecycle, not inferred
+  // completion percentages or a live deploy status. projects.json is canonical.
+  function pipelineItem(item,kind){
+    const a=make("a","pipeline-card");
+    a.href=kind==="idea"?"#vault":detailUrl(item);
+    a.style.setProperty("--item-accent",item.accent||"#90dfff");
+    a.style.setProperty("--pipeline-halo",kind==="idea"?"rgba(176,133,255,.13)":"rgba(98,159,255,.12)");
+    a.setAttribute("aria-label",(kind==="idea"?"Explore idea: ":"Explore project: ")+item.name);
+    const meta=make("div","pipeline-meta");
+    const symbol=make("span","pipeline-symbol",item.symbol||"✧");symbol.setAttribute("aria-hidden","true");
+    append(meta,make("span","pipeline-type",kind==="idea"?"IDEA / "+item.category:"PROJECT / "+item.category),symbol);
+    const headline=make("h3","",item.name);
+    const description=make("p","",item.summary);
+    const link=make("div","pipeline-link");
+    append(link,make("span","",kind==="idea"?"See it in the Vault":"Explore project"),make("span","","↗"));
+    append(a,meta,headline,description,link);
+    return a;
+  }
+
+  function renderPipeline(){
+    const columns=[...document.querySelectorAll("[data-pipeline-stage]")];
+    if(!columns.length||!data)return;
+    const shownProjects=pipelineView!=="ideas"?data.projects:[];
+    const shownIdeas=pipelineView!=="projects"?data.ideas:[];
+    let total=0;
+    columns.forEach(column=>{
+      const stage=column.dataset.pipelineStage;
+      const items=[
+        ...shownProjects.filter(p=>p.stage===stage).map(item=>({item,kind:"project"})),
+        ...shownIdeas.filter(p=>p.stage===stage).map(item=>({item,kind:"idea"}))
+      ];
+      total+=items.length;
+      column.replaceChildren();
+      if(items.length)items.forEach(({item,kind})=>column.append(pipelineItem(item,kind)));
+      else column.append(make("p","pipeline-empty",pipelineView==="projects"?"No projects in this phase yet.":pipelineView==="ideas"?"No ideas in this phase yet.":"Nothing in this phase just yet."));
+      const count=byId("pipeline-count-"+stage);
+      if(count)text(count,items.length);
+    });
+    const summary=byId("pipeline-summary");
+    if(summary)text(summary,total+" "+(pipelineView==="projects"?"projects":pipelineView==="ideas"?"ideas":"initiatives")+" across four stages");
+  }
+
+  function initPipeline(){
+    document.querySelectorAll("[data-pipeline-view]").forEach(button=>{
+      button.addEventListener("click",()=>{
+        pipelineView=button.dataset.pipelineView;
+        document.querySelectorAll("[data-pipeline-view]").forEach(other=>other.setAttribute("aria-pressed",String(other===button)));
+        renderPipeline();
+      });
+    });
+  }
+
   function renderVault(){
     const container=byId("vault-grid");
     if(!container||!data)return;
@@ -162,6 +216,7 @@
   }
   async function start(){
     initFilters();
+    initPipeline();
     setupPulse();
     const detail=byId("project-detail");
     try{
@@ -170,7 +225,7 @@
       const payload=await response.json();
       if(!payload||!Array.isArray(payload.projects)||!Array.isArray(payload.ideas))throw new Error("Invalid catalog");
       data=payload;
-      renderCatalog();renderVault();
+      renderCatalog();renderVault();renderPipeline();
       if(detail){
         const key=new URLSearchParams(location.search).get("project");
         const match=key&&isSafeProjectId(key)?data.projects.find(p=>p.id===key):null;
@@ -180,6 +235,9 @@
     }catch(error){
       const grid=byId("catalog-grid");
       if(grid){grid.replaceChildren();const note=make("p","catalog-empty","The project explorer is temporarily unavailable. Featured projects above remain accessible.");grid.append(note);}
+      for(const column of document.querySelectorAll("[data-pipeline-stage]")){
+        column.replaceChildren(make("p","pipeline-empty","Pipeline data is temporarily unavailable."));
+      }
       const vault=byId("vault-grid");
       if(vault){vault.replaceChildren();vault.append(make("p","catalog-empty","Idea Vault data is unavailable. Try refreshing the page."));}
       if(detail){const el=byId("detail-summary");if(el)text(el,"Project information is temporarily unavailable. Please return to the Forge.");}
