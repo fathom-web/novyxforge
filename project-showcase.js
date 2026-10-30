@@ -110,6 +110,10 @@ function buildLink(label,url,style){
 }
 function draw(project,all){
  const profile=project.showcase||{};
+ // The same catalog drives world styling and the shared NOVYX weather engine.
+ const atmosphere=project.world?.weather;
+ if(atmosphere?.rgb)document.documentElement.style.setProperty("--weather-rgb",atmosphere.rgb);
+ if(atmosphere && window.NovyxWeather)window.NovyxWeather.mount(document.querySelector(".hero"),atmosphere);
  document.documentElement.style.setProperty("--accent",project.accent||"#a0deff");
  document.title=project.name+" — Inside NOVYX FORGE";
  const meta=document.querySelector('meta[name="description"]');
