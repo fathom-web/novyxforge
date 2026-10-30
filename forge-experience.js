@@ -61,7 +61,7 @@
     const symbol=make("span","pipeline-symbol",item.symbol||"✧");symbol.setAttribute("aria-hidden","true");
     append(meta,make("span","pipeline-type",kind==="idea"?"IDEA / "+item.category:"PROJECT / "+item.category),symbol);
     const headline=make("h3","",item.name);
-    const description=make("p","",item.summary);
+    const description=make("p","",kind==="project"?(item.pipelineNote||item.summary):item.summary);
     const link=make("div","pipeline-link");
     append(link,make("span","",kind==="idea"?"See it in the Vault":"Explore project"),make("span","","↗"));
     append(a,meta,headline,description,link);
