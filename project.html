@@ -1,96 +1,112 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#070c1c">
-  <meta name="description" content="Explore a NOVYX FORGE digital project and discover the ideas, design and technology behind it.">
-  <meta property="og:title" content="Inside the Forge — NOVYX FORGE">
-  <meta property="og:description" content="Explore NOVYX FORGE projects, prototypes and experiments.">
-  <title>Inside the Forge — NOVYX FORGE</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23050b1c'/%3E%3Cpath d='M13 48V16l38 32V16' fill='none' stroke='%237bdfff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./forge-experience.css?v=1">
-  <style>
-    :root{color-scheme:dark;--bg:#070b18;--txt:#eef7ff;--muted:#a0b1cb;--detail-accent:#88dfff}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(ellipse at 80% 15%,rgba(64,96,173,.22),transparent 47%),radial-gradient(ellipse at 12% 20%,rgba(49,117,151,.14),transparent 42%),var(--bg);color:var(--txt);font:15px/1.7 "DM Sans",sans-serif;overflow-x:hidden}
-    a{color:inherit;text-decoration:none}
-    a:focus-visible{outline:2px solid var(--detail-accent);outline-offset:5px}
-    .detail-shell{max-width:1190px;width:calc(100% - 46px);margin:auto}
-    .detail-header{border-bottom:1px solid rgba(128,181,235,.16)}
-    .detail-nav{height:85px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .detail-brand{font:700 18px Outfit,sans-serif;letter-spacing:.13em}
-    .detail-brand span{color:#9de1ff}
-    .detail-back{padding:11px 17px;border:1px solid rgba(141,195,244,.3);border-radius:7px;font:700 11px Outfit,sans-serif;letter-spacing:.1em}
-    .detail-back:hover{background:rgba(78,145,228,.16)}
-    .detail-hero{min-height:570px;padding:82px 0;display:grid;grid-template-columns:1.18fr .82fr;align-items:center;gap:35px}
-    .detail-kicker{color:var(--detail-accent);font:700 11px Outfit,sans-serif;text-transform:uppercase;letter-spacing:.22em}
-    .detail-hero h1{font:500 clamp(50px,6vw,88px)/1.04 Outfit,sans-serif;letter-spacing:-.055em;margin:18px 0}
-    .detail-tagline{font:400 clamp(21px,2.4vw,31px)/1.3 Outfit,sans-serif;color:#a4d6f1;margin:13px 0}
-    .detail-summary{max-width:630px;line-height:1.85;color:#b2c3dc;font-size:16px}
-    .detail-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:25px}
-    .detail-button{display:inline-flex;padding:13px 19px;border-radius:6px;font:700 11px Outfit,sans-serif;text-transform:uppercase;letter-spacing:.12em;transition:transform .2s}
-    .detail-button:hover{transform:translateY(-3px)}
-    .detail-button.primary{background:#ddf5ff;color:#071829}
-    .detail-button.secondary{background:rgba(26,51,92,.6);border:1px solid rgba(132,189,245,.4);color:#cae7ff}
-    .detail-notice{flex-basis:100%;margin:0;color:#a7b7d0;font-size:13px;max-width:530px}
-    .detail-visual{min-height:360px;display:grid;place-items:center;position:relative;isolation:isolate}
-    .detail-visual:before{content:"";position:absolute;inset:12%;background:radial-gradient(circle,var(--detail-accent),transparent 62%);opacity:.12;filter:blur(45px)}
-    .detail-orbit{position:absolute;width:91%;aspect-ratio:1;max-width:440px;border:1px solid rgba(134,183,254,.28);border-radius:50%;animation:spin 39s linear infinite}
-    .detail-orbit:nth-child(2){width:72%;border-color:rgba(137,218,255,.37);border-style:dashed;animation-duration:27s;animation-direction:reverse}
-    .detail-orbit:nth-child(3){width:55%;border-color:rgba(201,170,255,.44);animation-duration:17s}
-    .detail-orbit:after{content:"";position:absolute;width:8px;height:8px;left:13%;top:18%;border-radius:50%;background:var(--detail-accent);box-shadow:0 0 15px var(--detail-accent)}
-    .detail-core{position:relative;width:29%;aspect-ratio:1;border:1px solid var(--detail-accent);border-radius:28%;transform:rotate(45deg);background:radial-gradient(circle at 26% 19%,rgba(244,253,255,.8),rgba(78,147,203,.33) 25%,rgba(13,36,70,.86) 67%);box-shadow:inset 0 0 23px rgba(173,220,255,.2),0 0 47px rgba(88,161,255,.24);animation:core-float 7s ease-in-out infinite}
-    .detail-core:after{content:"";position:absolute;inset:23%;border-radius:20%;border:2px solid rgba(231,249,255,.53)}
-    .detail-section{padding:30px 0 75px}
-    .detail-section h2{font:500 clamp(34px,4.6vw,54px)/1.1 Outfit,sans-serif;letter-spacing:-.04em;margin:0 0 28px}
-    .detail-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
-    .detail-info{border:1px solid rgba(128,184,242,.23);background:linear-gradient(130deg,rgba(18,40,71,.73),rgba(9,17,38,.85));padding:31px;border-radius:15px}
-    .detail-info small{font:700 11px Outfit,sans-serif;color:#91bcf4;letter-spacing:.17em}
-    .detail-info h3{font:500 26px Outfit,sans-serif;margin:22px 0 10px}
-    .detail-info p{font-size:15px;color:#a9bbd8}
-    .detail-features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0;list-style:none}
-    .detail-features li{padding:21px;border:1px solid rgba(130,185,236,.25);border-radius:11px;background:rgba(18,37,67,.61);font:500 15px Outfit,sans-serif}
-    .detail-features li:before{content:"◇";color:var(--detail-accent);margin-right:13px}
-    .detail-tech{display:flex;flex-wrap:wrap;gap:8px}
-    .detail-tech span{padding:9px 12px;border-radius:40px;border:1px solid rgba(126,185,240,.28);color:#aecce9;font-size:12px}
-    .detail-footer{border-top:1px solid rgba(134,192,234,.17);padding:34px 0 45px;color:#8ba0bc;font-size:12px}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    @keyframes core-float{50%{transform:rotate(48deg) translate(-6px,7px)}}
-    @media(max-width:760px){.detail-hero{grid-template-columns:1fr;padding:55px 0 45px;gap:0}.detail-visual{min-height:260px;max-width:310px;margin:auto;width:100%}.detail-two,.detail-features{grid-template-columns:1fr}.detail-section{padding-bottom:60px}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-  </style>
-  <link rel="stylesheet" href="./forge-polish.css?v=3">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d1d">
+<meta name="description" content="NOVYX FORGE project showcase: explore the idea, key features, interface previews and official application environment.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NOVYX FORGE">
+<meta property="og:title" content="Inside the Forge — Project Worlds">
+<meta property="og:description" content="Learn about the idea, view interface previews and discover where to try the project.">
+<title>Inside the Forge — NOVYX FORGE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23050b1c'/%3E%3Cpath d='M13 48V16l38 32V16' fill='none' stroke='%237bdfff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./project-showcase.css?v=1">
+<script src="./project-showcase.js?v=1" defer></script>
 </head>
-<body id="project-detail">
-  <header class="detail-header"><nav class="detail-shell detail-nav" aria-label="Project navigation"><a class="detail-brand" href="./index.html">NOVYX <span>FORGE</span></a><a class="detail-back" href="./index.html#catalog">← All projects</a></nav></header>
-  <main>
-    <section class="detail-shell detail-hero" aria-labelledby="detail-name">
+<body>
+<header>
+  <nav class="shell" aria-label="Project navigation">
+    <a class="brand" href="./index.html">NOVYX <span>FORGE</span></a>
+    <a class="back" href="./index.html#projects">← All projects</a>
+  </nav>
+</header>
+<main>
+  <section class="shell hero" aria-labelledby="name">
+    <div class="hero-copy">
+      <span class="eyebrow">FORGE / PROJECT WORLD</span>
+      <h1 id="name">Discover the project.</h1>
+      <div class="lead" id="lead">Every idea has a story.</div>
+      <span class="status" id="stage">Loading project…</span>
+      <p class="summary" id="summary">Loading project details…</p>
+      <div class="hero-actions" id="hero-actions"></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <span class="hero-orbit"></span><span class="hero-orbit"></span><span class="hero-orbit"></span><span class="hero-core"></span>
+      <span class="hero-word" id="world">PROJECT WORLD</span>
+    </div>
+  </section>
+
+  <section class="shell section" aria-labelledby="about-heading">
+    <div class="section-label">01 / THE STORY</div>
+    <h2 id="about-heading">What is it, and why does it exist?</h2>
+    <div class="story-grid">
+      <article class="story-card">
+        <small>THE IDEA</small><h3>What we're building.</h3>
+        <p id="story">Every idea starts with a question.</p>
+      </article>
+      <article class="story-card">
+        <small>WHO IT'S FOR</small><h3>The people behind the purpose.</h3>
+        <p id="audience">A community of curious people.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="shell section" id="how-it-works" aria-labelledby="how-heading">
+    <div class="section-label">02 / HOW IT WORKS</div>
+    <h2 id="how-heading">From problem to experience.</h2>
+    <p class="section-intro">The project's key workflow, explained without unnecessary technical jargon.</p>
+    <div class="steps" id="steps"></div>
+  </section>
+
+  <section class="shell section" id="screenshots" aria-labelledby="screenshots-heading">
+    <div class="section-label">03 / INSIDE THE EXPERIENCE</div>
+    <h2 id="screenshots-heading">See the experience.</h2>
+    <p class="section-intro">A visual introduction to the product. Verified app screenshots will replace illustrative concepts as they're available.</p>
+    <p class="gallery-legend" id="gallery-note">Preparing visual previews…</p>
+    <div class="gallery-grid" id="gallery"></div>
+    <p class="privacy-note" id="privacy"></p>
+  </section>
+
+  <section class="shell section" aria-labelledby="features-heading">
+    <div class="section-label">04 / CAPABILITIES</div>
+    <h2 id="features-heading">What's inside.</h2>
+    <div class="story-grid">
+      <article class="story-card">
+        <small>FEATURES</small><h3>What it offers.</h3>
+        <ul class="detail-features" id="feature-list" style="color:#bdd1e7;line-height:2;padding-left:22px"></ul>
+      </article>
+      <article class="story-card">
+        <small>BUILT WITH</small><h3>Under the surface.</h3>
+        <div id="tech-list" style="display:flex;flex-wrap:wrap;gap:9px"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="shell" aria-labelledby="next-step-heading">
+    <div class="final-panel">
       <div>
-        <div class="detail-kicker" id="detail-stage">PROJECT / THE FORGE</div>
-        <h1 id="detail-name">Inside the Forge.</h1>
-        <div class="detail-tagline" id="detail-tagline">Explore our digital projects.</div>
-        <p class="detail-summary" id="detail-summary">Loading project information…</p>
-        <div class="detail-actions" id="detail-actions"></div>
+        <span class="eyebrow">05 / GO FURTHER</span>
+        <strong id="next-step-heading">Ready to explore?</strong>
+        <p>The environment is one step away. Explore the actual application or visit the source repository where available.</p>
+        <p class="privacy-note" id="launch-note"></p>
       </div>
-      <div class="detail-visual" aria-hidden="true"><span class="detail-orbit"></span><span class="detail-orbit"></span><span class="detail-orbit"></span><span class="detail-core"></span></div>
-    </section>
-    <section class="detail-shell detail-section" aria-labelledby="concept-heading">
-      <h2 id="concept-heading">The idea behind it.</h2>
-      <div class="detail-two">
-        <article class="detail-info"><small>01 / THE QUESTION</small><h3>Why build it?</h3><p id="detail-problem">A question worth exploring.</p></article>
-        <article class="detail-info"><small>02 / THE ANSWER</small><h3>What takes shape?</h3><p id="detail-solution">An experiment in progress.</p></article>
-      </div>
-    </section>
-    <section class="detail-shell detail-section" aria-labelledby="features-heading"><h2 id="features-heading">What lives inside.</h2><ul class="detail-features" id="detail-features"></ul><div class="detail-tech" id="detail-tech"></div></section>
-    <section class="detail-shell detail-section" aria-labelledby="next-heading"><h2 id="next-heading">Keep exploring.</h2><div class="catalog-grid" id="detail-related"></div></section>
-  </main>
-  <footer class="detail-footer"><div class="detail-shell"><a href="./index.html#home">NOVYX FORGE — Explore. Experiment. Build. ↑</a></div></footer>
-  <script src="./forge-experience.js?v=3" defer></script>
-  <script src="./forge-polish.js?v=4" defer></script>
+      <div class="final-actions" id="launch-actions"></div>
+    </div>
+  </section>
+  <section class="shell" aria-labelledby="related-heading">
+    <div class="section-label">EXPLORE ANOTHER WORLD</div>
+    <h2 id="related-heading" style="font:500 clamp(29px,4vw,42px) Outfit,sans-serif;letter-spacing:-.035em">There's more in the Forge.</h2>
+    <div class="related" id="related"></div>
+  </section>
+</main>
+<footer><div class="shell"><a href="./index.html#home">NOVYX FORGE — Explore. Experiment. Build. ↑</a></div></footer>
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-label="Screenshot preview" aria-modal="true">
+  <button id="lightbox-close" type="button" aria-label="Close screenshot">×</button>
+  <img id="lightbox-image" alt="">
+</div>
 </body>
 </html>
