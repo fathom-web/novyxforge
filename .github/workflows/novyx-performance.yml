@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
     paths:
+      - 'project.html'
+      - 'project-showcase.js'
+      - 'forge-showcase-finish.css'
+      - 'projects.json'
       - 'tests/v3-performance-baseline.mjs'
       - '.github/workflows/novyx-performance.yml'
   workflow_dispatch:
