@@ -95,3 +95,10 @@
   #pipeline .lab-section-heading{padding-top:10px}
   .pipeline-card p{font-size:13px}
 }
+
+
+/* Visual correction: the connecting wire must not run through Spark/Explore/
+   Build/Launch heading text. Place it above the column labels instead. */
+.pipeline-deck:before{top:-7px;left:3%;right:3%;opacity:.58}
+.pipeline-column-head{z-index:2}
+@media(max-width:800px){.pipeline-deck:before{display:none}}
