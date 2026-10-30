@@ -66,6 +66,7 @@ function screenshotPath(src){
 }
 function createGalleryItem(project,visual,index){
  const figure=el("figure","gallery-item");
+ figure.dataset.view=String(index+1).padStart(2,"0");
  const art=el("div","gallery-visual");
  const actual=visual.kind==="screenshot"&&visual.verified===true&&screenshotPath(visual.src);
  const tag=el("span","gallery-kind",actual?"VERIFIED SCREENSHOT":"ILLUSTRATIVE PREVIEW");
@@ -87,6 +88,7 @@ function createGalleryItem(project,visual,index){
    art.append(makeScene(visual.layout||"preview",project));
  }
  const caption=el("figcaption");
+ caption.dataset.viewNumber=String(index+1).padStart(2,"0");
  add(caption,el("h3","",visual.title),el("p","",visual.description));
  add(figure,art,caption);
  return figure;
@@ -94,20 +96,25 @@ function createGalleryItem(project,visual,index){
 let focusReturn=null;
 function openLightbox(src,alt,trigger){
  const box=$("lightbox"),image=$("lightbox-image");
- if(!box||!image)return;
- focusReturn=trigger;image.src=src;image.alt=alt;box.hidden=false;
- document.body.style.overflow="hidden";
- $("lightbox-close").focus();
+ if(!box||!image||typeof box.showModal!=="function")return;
+ focusReturn=trigger;
+ image.src=src;image.alt=alt;
+ box.showModal();
+ $("lightbox-close")?.focus({preventScroll:true});
 }
 function closeLightbox(){
- const box=$("lightbox");if(!box||box.hidden)return;
- box.hidden=true;$("lightbox-image").removeAttribute("src");document.body.style.overflow="";
- focusReturn?.focus();focusReturn=null;
+ const box=$("lightbox");
+ if(box?.open)box.close();
 }
 function initLightbox(){
+ const box=$("lightbox");
  $("lightbox-close")?.addEventListener("click",closeLightbox);
- $("lightbox")?.addEventListener("click",e=>{if(e.target===$("lightbox"))closeLightbox();});
- document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLightbox();});
+ box?.addEventListener("click",event=>{if(event.target===box)closeLightbox();});
+ box?.addEventListener("close",()=>{
+  $("lightbox-image")?.removeAttribute("src");
+  if(focusReturn?.isConnected)focusReturn.focus({preventScroll:true});
+  focusReturn=null;
+ });
 }
 function buildLink(label,url,style){
  if(!validDestination(url))return null;
@@ -118,18 +125,32 @@ function buildLink(label,url,style){
 }
 function draw(project,all){
  const profile=project.showcase||{};
+ document.body.dataset.world=project.id;
+ const number=all.filter(p=>p.world?.portal).findIndex(p=>p.id===project.id);
+ const worldLabel=project.id==="spark-lab"?"LAB / 07":number<0?"PROJECT WORLD":String(number+1).padStart(2,"0")+" / 06";
+ const hasPublicApp=Boolean(project.links?.visit);
  // The same catalog drives world styling and the shared NOVYX weather engine.
  const atmosphere=project.world?.weather;
  if(atmosphere?.rgb)document.documentElement.style.setProperty("--weather-rgb",atmosphere.rgb);
 
  document.documentElement.style.setProperty("--accent",project.accent||"#a0deff");
  document.title=project.name+" — Inside NOVYX FORGE";
+ const ogTitle=document.querySelector('meta[property="og:title"]');
+ if(ogTitle)ogTitle.content=project.name+" — NOVYX FORGE";
+ const ogDescription=document.querySelector('meta[property="og:description"]');
+ if(ogDescription)ogDescription.content=project.summary||"Discover this project world inside NOVYX FORGE.";
+ const canonical=document.querySelector('link[rel="canonical"]');
+ if(canonical)canonical.href=new URL("./project.html?project="+encodeURIComponent(project.id),location.href).href;
  const meta=document.querySelector('meta[name="description"]');
  if(meta)meta.content=(project.summary||"")+" | Explore the project, features and interface previews on NOVYX FORGE.";
  $("name").textContent=project.name;$("lead").textContent=profile.lead||project.tagline;
  $("summary").textContent=project.summary||"";
  $("stage").textContent=(labels[project.stage]||"Project")+" / "+project.category;
  $("world").textContent=nameFromId(project.id);
+ const summary={world:worldLabel,stage:labels[project.stage]||"Exploring",
+  experience:profile.demo?"Interactive sandbox":hasPublicApp?"Open application":"Concept showcase",
+  weather:project.world?.weather?.title||"Ambient world"};
+ for(const [key,value] of Object.entries(summary)){const field=$("compass-"+key);if(field)field.textContent=value;}
  $("story").textContent=profile.story||project.solution;
  $("audience").textContent=profile.audience||"Everyone curious about this experiment.";
  const top=$("hero-actions");
@@ -140,6 +161,7 @@ function draw(project,all){
  const hasDemo=Boolean(demoSection&&demoHost&&window.NovyxDemos?.mount?.(project,demoHost));
  if(hasDemo){
    demoSection.hidden=false;
+   document.querySelectorAll("[data-chapter-demo]").forEach(a=>a.hidden=false);
    $("demo-intro").textContent=profile.demo?.description||"An interactive sample experience using entirely fictional data.";
    const tryDemo=buildLink("Try interactive demo","#try-demo","btn-secondary");
    if(tryDemo)top.append(tryDemo);
