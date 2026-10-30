@@ -40,6 +40,16 @@ WoW LifeForge is currently an exploratory addon, **not a published download**. I
 
 The Pulse makes four anonymous read-only requests to GitHub's public REST API, one for each selected nonempty repo, when visitors scroll to the section. It displays commit dates and messages exactly from GitHub, and does not fabricate updates. It may show a fallback on rate limits, unavailable API or network failures. No tokens or backend are needed.
 
+## Cinematic polish / October 2026
+
+The V3 visual layer is split into two additional optional, cache-busted files:
+- `forge-polish.css`: viewport-wide hero atmosphere instead of container-clipped gradients, softer central Forge luminosity, refined spheres, constellation cards, cinematic footer, responsive breakpoints and reduced-motion support.
+- `forge-polish.js`: keyboard and pointer sphere-focus lighting, optional lightweight cursor halo, restrained card-tilt and section-aware navigation.
+
+The original five orbiting spheres, their project URLs, and central glass Forge SVG remain intact.
+
+**Visual QA after deploying:** check desktop widths around 1440–1920px and phones around 375–430px. Verify ambient light fades smoothly beyond the sphere edges, no colored rectangular panels appear, spheres remain tappable, the large NOVYX heading is visible after the shorter hero, and keyboard focus / reduced-motion are usable. The GitHub static checks do not substitute for this visual review.
+
 ## Hosting: MijnHost DirectAdmin
 
 NOVYX uses **GitHub for source control and MijnHost for website hosting**. GitHub commits alone do not automatically update the live domain.
