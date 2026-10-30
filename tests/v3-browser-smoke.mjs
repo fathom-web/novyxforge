@@ -47,7 +47,17 @@ const noOverflow=async page=>{
       return {tag:el.tagName,cl:String(el.className?.baseVal||el.className||"").slice(0,90),
         id:el.id||"",left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};
    }).filter(r=>(r.right>client+3||r.left< -3)&&r.width>0).sort((a,b)=>b.right-a.right).slice(0,13);
-   return {scroll,client,suspects};
+   const nearEdge=[...document.querySelectorAll("body *")].map(el=>{
+ const r=el.getBoundingClientRect();
+ return {tag:el.tagName,cl:String(el.className?.baseVal||el.className||"").slice(0,60),
+   id:el.id||"",left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),
+   overflowX:getComputedStyle(el).overflowX};
+}).filter(r=>r.right>client+3&&r.right<client+50).slice(0,35);
+const named=["body","main",".world-nav",".world-nav-inner",".world-nav-scroll",".world-nav-links",".hero",".weather-layer","#demo-board",".demo-section","#try-demo"].map(selector=>{
+ const el=document.querySelector(selector),rect=el?.getBoundingClientRect();
+ return el?{selector,left:Math.round(rect.left),right:Math.round(rect.right),width:Math.round(rect.width),scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,overflowX:getComputedStyle(el).overflowX}:null;
+}).filter(Boolean);
+return {scroll,client,suspects,nearEdge,named};
  });
  assert.ok(v.scroll-v.client<=3,"Horizontal document overflow "+JSON.stringify(v));
 };
