@@ -223,7 +223,7 @@
     if(desc)desc.content=project.summary;
     const name=byId("detail-name"),label=byId("detail-stage"),subtitle=byId("detail-tagline"),summary=byId("detail-summary");
     if(name)text(name,project.name);
-    if(label)text(label,(STAGE_LABELS[project.stage]||"Project")+" / "+project.category);
+    if(label)text(label,(STAGE_LABELS[actualStage(project)]||"Project")+" / "+project.category);
     if(subtitle)text(subtitle,project.tagline);
     if(summary)text(summary,project.summary);
     root.style.setProperty("--detail-accent",project.accent||"#90dfff");
@@ -237,6 +237,16 @@
       links.replaceChildren();
       if(project.links.visit){const a=make("a","detail-button primary","Open experience ↗");a.href=project.links.visit;a.rel="noopener noreferrer";a.target="_blank";links.append(a);}
       if(project.links.source && project.id!=="wow-lifeforge"){const a=make("a","detail-button secondary","View source on GitHub ↗");a.href=project.links.source;a.rel="noopener noreferrer";a.target="_blank";links.append(a);}
+      if(actualStage(project)==="public-ready"){
+        const pub=verifiedDistribution(project);
+        const add=(label,url)=>{
+          const a=make("a","detail-button secondary",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer";links.append(a);
+        };
+        if(pub.template)add("Use GitHub template ↗",pub.d.templateUrl);
+        if(pub.download)add("Download release ↗",pub.d.downloadUrl);
+        if(pub.docs)add("Installation guide ↗",pub.d.documentationUrl);
+      }
+
       if(project.id==="wow-lifeforge"){links.append(make("p","detail-notice","Addon in exploration. If released, official downloads and updates will be available exclusively through CurseForge. No download is available yet."));}
       if(project.id==="wildrift-counter"&&!project.links.visit){links.append(make("p","detail-notice","Prototype source is available; the public app address has not been confirmed."));}
     }
