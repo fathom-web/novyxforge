@@ -1,0 +1,37 @@
+name: NOVYX 3.0 Mobile Performance Baseline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tests/v3-performance-baseline.mjs'
+      - '.github/workflows/novyx-performance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mobile-lab:
+    name: Synthetic 390px Chromium performance baseline
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Measure mobile lab timing and layout stability
+        run: node tests/v3-performance-baseline.mjs
+      - name: Keep baseline JSON for release review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: novyx-v3-mobile-lab-performance
+          path: qa-performance/
+          retention-days: 14
+          if-no-files-found: warn
