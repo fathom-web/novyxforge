@@ -71,6 +71,8 @@
 
 **Next work package:** NOVYX 3.0 Release Candidate QA + real, sanitized screenshot collection. Do not announce 3.0 as released before its production gate.
 
+**Automated verification (2026-10-30):** [NOVYX 3.0 checks — passing run](https://github.com/fathom-web/novyxforge/actions/runs/41054917934) validated syntax and all five zero-dependency test suites, including Command Search and Forge Feedback. This is **code-level verification**, not a browser accessibility audit or confirmation of MijnHost deployment.
+
 ## 1. Product intent
 
 NOVYX is a public-facing independent innovation portfolio, not merely a list of project links. Visitors enter a cinematic central Forge, explore six distinct project portals, experience a project-specific atmosphere, understand each project through a credible showcase, try an optional safe demo, and finally choose to open the real environment, view source, or access a verified release.
