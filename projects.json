@@ -22,6 +22,11 @@
       "id": "released",
       "title": "Launch",
       "description": "Available to explore"
+    },
+    {
+      "id": "public-ready",
+      "title": "Public Ready",
+      "description": "Documented, distributable, ready for others to use"
     }
   ],
   "projects": [
@@ -51,7 +56,14 @@
         "visit": "https://fathom-web.github.io/svdiemen/",
         "source": null
       },
-      "pipelineNote": "Live project · football team and matchday tools available."
+      "pipelineNote": "Live project · football team and matchday tools available.",
+      "distribution": {
+        "type": "none",
+        "templateUrl": null,
+        "downloadUrl": null,
+        "documentationUrl": null,
+        "license": null
+      }
     },
     {
       "id": "studyforge",
@@ -79,7 +91,14 @@
         "visit": "https://fathom-web.github.io/studyforge/",
         "source": "https://github.com/fathom-web/studyforge"
       },
-      "pipelineNote": "Live project · practice tests, flashcards and progress."
+      "pipelineNote": "Live project · practice tests, flashcards and progress.",
+      "distribution": {
+        "type": "none",
+        "templateUrl": null,
+        "downloadUrl": null,
+        "documentationUrl": null,
+        "license": null
+      }
     },
     {
       "id": "fascination-files",
@@ -107,7 +126,14 @@
         "visit": "https://instagram.com/thefascinationfiles",
         "source": null
       },
-      "pipelineNote": "Published creative project · explore on Instagram."
+      "pipelineNote": "Published creative project · explore on Instagram.",
+      "distribution": {
+        "type": "none",
+        "templateUrl": null,
+        "downloadUrl": null,
+        "documentationUrl": null,
+        "license": null
+      }
     },
     {
       "id": "safeforge",
@@ -137,7 +163,14 @@
         "source": "https://github.com/fathom-web/SAFeForge"
       },
       "detail": "safe-agile.html",
-      "pipelineNote": "Working prototype · browser acceptance and independent hosting still to be verified."
+      "pipelineNote": "Working prototype · browser acceptance and independent hosting still to be verified.",
+      "distribution": {
+        "type": "none",
+        "templateUrl": null,
+        "downloadUrl": null,
+        "documentationUrl": null,
+        "license": null
+      }
     },
     {
       "id": "wow-lifeforge",
@@ -165,7 +198,14 @@
         "visit": null,
         "source": null
       },
-      "pipelineNote": "Addon concept · no published CurseForge release yet."
+      "pipelineNote": "Addon concept · no published CurseForge release yet.",
+      "distribution": {
+        "type": "none",
+        "templateUrl": null,
+        "downloadUrl": null,
+        "documentationUrl": null,
+        "license": null
+      }
     },
     {
       "id": "wildrift-counter",
@@ -193,7 +233,14 @@
         "visit": null,
         "source": "https://github.com/fathom-web/WildRiftCounter"
       },
-      "pipelineNote": "Draft assistant prototype · lane-counter development in progress."
+      "pipelineNote": "Draft assistant prototype · lane-counter development in progress.",
+      "distribution": {
+        "type": "none",
+        "templateUrl": null,
+        "downloadUrl": null,
+        "documentationUrl": null,
+        "license": null
+      }
     },
     {
       "id": "spark-lab",
@@ -223,7 +270,14 @@
         "source": "https://github.com/fathom-web/novyxforge"
       },
       "detail": "spark-lab.html",
-      "pipelineNote": "Browser-based beta on NOVYX · browser testing and refinement ongoing."
+      "pipelineNote": "Browser-based beta on NOVYX · browser testing and refinement ongoing.",
+      "distribution": {
+        "type": "none",
+        "templateUrl": null,
+        "downloadUrl": null,
+        "documentationUrl": null,
+        "license": null
+      }
     }
   ],
   "ideas": [
@@ -254,5 +308,12 @@
       "symbol": "↝",
       "summary": "Explore small automations that connect useful ideas with everyday tasks."
     }
+  ],
+  "publicReadyRequirements": [
+    "The project has been released and the public version works",
+    "A versioned release or approved distribution artifact is available",
+    "A clear license and setup documentation are published",
+    "A working download link is provided; for templates, the GitHub repository is actually configured as a template",
+    "Links and installation steps have been tested"
   ]
 }
