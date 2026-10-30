@@ -5,7 +5,7 @@
   const universe=document.querySelector(".hero .universe");
   const reduce=window.matchMedia("(prefers-reduced-motion: reduce)");
   const precise=window.matchMedia("(pointer: fine)");
-  const colors={left:"102,209,255",right:"179,132,255",third:"183,137,255",fourth:"109,239,186",fifth:"255,188,109"};
+  const colors={left:"60,218,255",right:"155,124,255",third:"255,99,207",fourth:"80,243,166",fifth:"255,181,65"};
 
   if(universe){
     const spheres=[...universe.querySelectorAll(".sphere-link")];
