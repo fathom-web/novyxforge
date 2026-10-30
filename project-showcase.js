@@ -113,7 +113,7 @@ function draw(project,all){
  // The same catalog drives world styling and the shared NOVYX weather engine.
  const atmosphere=project.world?.weather;
  if(atmosphere?.rgb)document.documentElement.style.setProperty("--weather-rgb",atmosphere.rgb);
- if(atmosphere && window.NovyxWeather)window.NovyxWeather.mount(document.querySelector(".hero"),atmosphere);
+
  document.documentElement.style.setProperty("--accent",project.accent||"#a0deff");
  document.title=project.name+" — Inside NOVYX FORGE";
  const meta=document.querySelector('meta[name="description"]');
@@ -127,6 +127,8 @@ function draw(project,all){
  const top=$("hero-actions");
  const view=buildLink("Explore the interface","#screenshots","btn-primary");if(view)top.append(view);
  const how=buildLink("What it does","#how-it-works","btn-secondary");if(how)top.append(how);
+ // Place the atmosphere control after the primary overview actions.
+ if(atmosphere && window.NovyxWeather)window.NovyxWeather.mount(document.querySelector(".hero"),atmosphere);
  const steps=$("steps");
  (profile.steps||[]).forEach(([heading,description],i)=>{
    const card=el("article","step");
