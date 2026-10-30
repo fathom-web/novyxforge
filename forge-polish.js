@@ -5,13 +5,13 @@
   const universe=document.querySelector(".hero .universe");
   const reduce=window.matchMedia("(prefers-reduced-motion: reduce)");
   const precise=window.matchMedia("(pointer: fine)");
-  const colors={left:"60,218,255",right:"155,124,255",third:"255,99,207",fourth:"80,243,166",fifth:"255,181,65"};
+  const colors={left:"60,218,255",right:"155,124,255",third:"255,99,207",fourth:"80,243,166",fifth:"255,181,65",sixth:"94,223,231"};
 
   if(universe){
     const spheres=[...universe.querySelectorAll(".sphere-link")];
     const activate=orb=>{
       spheres.forEach(s=>s.dataset.energy=s===orb?"on":"off");
-      universe.dataset.active=orb.classList.contains("left")?"football":orb.classList.contains("right")?"study":orb.classList.contains("third")?"fascination":orb.classList.contains("fourth")?"agile":"wow";
+      universe.dataset.active=orb.classList.contains("left")?"football":orb.classList.contains("right")?"study":orb.classList.contains("third")?"fascination":orb.classList.contains("fourth")?"agile":orb.classList.contains("fifth")?"wow":"wildrift";
       const token=Object.keys(colors).find(n=>orb.classList.contains(n))||"left";
       universe.style.setProperty("--energy-rgb",colors[token]);
       universe.dataset.focusSphere=token;
