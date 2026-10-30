@@ -60,6 +60,28 @@ The original five orbiting spheres, their project URLs, and central glass Forge 
 
 **Adding a new project:** edit `projects.json` (project id, stage, category, summary, `pipelineNote`, optional links); the pipeline and project explorer will both update without copying HTML cards. New ideas belong under `ideas`.
 
+## Sphere worlds and Public Ready stage (2026-10-30)
+
+**Signature project identities**: Five featured spheres now have deliberately differentiated materials, orbit motions and independent accent systems rather than recolored copies: FootballForge (electric cyan/tactical grid), StudyForge (royal violet/crystalline fragments), The Fascination Files (magenta/eclipse), SAFe Agile Forge (emerald/modular nodes) and WoW LifeForge (amber/crimson/runic relic). The original five project destinations remain unchanged. The central Forge reacts to the selected world via `forge-polish.js` and `forge-worlds.css`. These effects remain purely cosmetic and respect reduced-motion settings.
+
+**Pipeline now has five stages**:
+
+1. `spark`: a newly captured idea
+2. `exploring`: investigation and validation
+3. `building`: a prototype or work in progress
+4. `released`: Launch, a functioning published experience
+5. `public-ready`: a documented and tested package or GitHub template for third-party use
+
+**Launch is not Public Ready.** A live GitHub Pages app, a public repository or a working prototype is not automatically a redistributable template. The stage is reserved for projects with an explicit `distribution` object in `projects.json` with `type` (`template`, `download` or `both`), an HTTPS `documentationUrl`, a real `license`, and working approved `templateUrl` or `downloadUrl`. The browser checks links for plausible shape and gates the stage, but cannot confirm external repo settings, licensing rights, security or release testing; these remain manual checks. A misconfigured `public-ready` project stays displayed in Launch rather than generating a fake download button.
+
+**GitHub templates**: In the repository's GitHub Settings, enable **Template repository**, verify the URL ending `/generate`, confirm a license and README, then update its public distribution metadata and `stage`. Template creation and release ZIP downloads are two distinct actions; both can be offered only when properly prepared. `public-ready.html` provides an interactive editorial checklist (not an automated approval action).
+
+**Current verified repo state (2026-10-30)**: checked repository metadata; none of the existing examined NOVYX repositories had `is_template=true`. No projects are in Public Ready today and no fictitious download links appear. For future WoW addons, official distribution/updates remain strictly CurseForge; do not offer alternate addon download links via NOVYX.
+
+Files: `forge-worlds.css` (sphere identity + five-column layout), `public-ready.html` (publishing guide), `projects.json` and `forge-experience.js` (gated pipeline actions). No heavy 3D dependencies.
+
+**After deploying**: check 1440px/1920px desktop and 375px/430px mobile; hover/focus each sphere and verify unique light, orbit shapes and readable labels. Validate five pipeline stages and the empty Public Ready message. Test `public-ready.html` checklist, verify no template/download button is visible until an actual package is configured. Source code checks are not a substitute for in-browser regression testing.
+
 ## Hosting: MijnHost DirectAdmin
 
 NOVYX uses **GitHub for source control and MijnHost for website hosting**. GitHub commits alone do not automatically update the live domain.
