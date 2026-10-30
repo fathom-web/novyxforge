@@ -388,29 +388,30 @@
       "id": "wow-lifeforge",
       "name": "WoW LifeForge",
       "category": "Gaming",
-      "stage": "exploring",
+      "stage": "building",
       "featured": true,
       "accent": "#FFB541",
       "symbol": "◆",
       "tagline": "Your character. Your journey. Your legend.",
-      "summary": "A World of Warcraft: Forever addon concept to chronicle adventures, friendships and milestones.",
+      "summary": "LifeForge is a World of Warcraft: Forever addon in active alpha development, designed to chronicle milestones, memories and adventures.",
       "problem": "A character's most memorable moments and achievements disappear into chat logs and memories.",
-      "solution": "Explore a way to preserve the character's story in a meaningful addon experience.",
+      "solution": "A standalone Lua addon that records real in-game history and keeps personal memories in local SavedVariables.",
       "features": [
-        "Adventure journal concept",
-        "Character journey milestones",
-        "Memories and friendships",
-        "Future CurseForge distribution"
+        "Character chronicle and recorded milestones",
+        "Memory Museum, favorites and letters",
+        "Zone atlas and observed companions",
+        "Local LF2 backup and restore"
       ],
       "tech": [
-        "WoW addon concept",
-        "Lua (planned)"
+        "Native WoW Lua addon",
+        "WoW SavedVariables",
+        "Headless automated tests"
       ],
       "links": {
-        "visit": null,
-        "source": null
+        "visit": "https://wow.novyxforge.com/",
+        "source": "https://github.com/fathom-web/WoW-LifeForge"
       },
-      "pipelineNote": "Addon concept · no published CurseForge release yet.",
+      "pipelineNote": "Build 7 · 0.8.0-alpha · 67 headless Lua tests passing; real Forever-client validation and CurseForge release still pending.",
       "distribution": {
         "type": "none",
         "templateUrl": null,
@@ -421,19 +422,19 @@
       "showcase": {
         "lead": "Every character has a legend.",
         "audience": "World of Warcraft players who want to remember the journey",
-        "story": "WoW LifeForge is an exploratory addon concept about preserving meaningful character stories, milestones and memorable moments. It is not a finished addon or published download.",
+        "story": "LifeForge is a standalone in-game addon under active development. Build 7 preserves recorded character history, memories, zones and milestones. It has automated Lua test coverage but has not been validated in the actual Forever game client or published on CurseForge.",
         "steps": [
           [
-            "Collect the idea",
-            "Define which moments of an adventure are worth remembering."
+            "Build the legacy",
+            "Develop character, realm, timeline and memory features using the addon’s local data model."
           ],
           [
-            "Prototype an addon",
-            "Explore platform-supported data and a respectful in-game interface."
+            "Validate inside the game",
+            "Confirm in-client UI behavior, API compatibility and SavedVariables persistence before release."
           ],
           [
-            "Prepare a release",
-            "If built and approved, distribute the addon exclusively through CurseForge."
+            "Publish through CurseForge",
+            "Offer public downloads and future updates exclusively via a verified CurseForge release when ready."
           ]
         ],
         "views": [
@@ -453,7 +454,7 @@
             "journey"
           ]
         ],
-        "privacy": "Concept only. No verified addon screenshots, packages or CurseForge releases exist yet.",
+        "privacy": "Alpha development project. Source and tests are public on GitHub, but client functionality and appearance remain unverified. Illustrative previews are not actual game screenshots. No CurseForge download is published.",
         "screenshots": [],
         "demo": null
       },
