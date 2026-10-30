@@ -36,8 +36,7 @@ function mount(hero,config){
  button.className="atmosphere-toggle";button.type="button";
  controls.append(chip,button);
  const target=hero.querySelector(".hero-actions")||hero.querySelector(".hero-copy")||hero;
- target.insertAdjacentElement("afterend",controls); // layout CSS places below copy; adjusted at showcase initialization
- if(target.classList.contains("hero-actions"))target.append(controls);
+ target.append(controls); // Actions remain directly before the atmosphere control.
  function syncControls(){
    state.motion=!media.matches;
    layer.dataset.enabled=String(state.enabled);
