@@ -221,7 +221,8 @@
           choose?.focus();
         });
         close?.addEventListener("click", () => dialog.close());
-        dialog.addEventListener("close", () => trigger.focus());
+        dialog.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",()=>dialog.close()));
+        dialog.addEventListener("close", () => trigger.focus({preventScroll:true}));
         dialog.addEventListener("click", e => {if(e.target===dialog)dialog.close();});
       }
       const empty = create("a", "world-nav-link", "← All projects");
