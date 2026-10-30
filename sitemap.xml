@@ -9,4 +9,6 @@
   <url><loc>https://novyxforge.com/project.html?project=wildrift-counter</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://novyxforge.com/spark-lab.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://novyxforge.com/public-ready.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://novyxforge.com/project.html?project=safeforge</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://novyxforge.com/project.html?project=spark-lab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
