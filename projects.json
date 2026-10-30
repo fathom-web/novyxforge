@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "brand": "NOVYX FORGE",
   "updated": "2026-10-30",
   "stages": [
@@ -101,6 +101,17 @@
         ],
         "privacy": "The real app may contain information about youth players. Live pages are never embedded or automatically captured here.",
         "screenshots": []
+      },
+      "world": {
+        "weather": {
+          "type": "rain",
+          "title": "Stadium Rain",
+          "rgb": "60,218,255",
+          "level": 1,
+          "visual": "Electric cyan rain, reflected floodlights"
+        },
+        "portal": true,
+        "version": 1
       }
     },
     {
@@ -174,6 +185,17 @@
         ],
         "privacy": "Personal student dashboards and results are not embedded or captured on the public showcase.",
         "screenshots": []
+      },
+      "world": {
+        "weather": {
+          "type": "snow",
+          "title": "Crystal Snow",
+          "rgb": "155,124,255",
+          "level": 0.72,
+          "visual": "Drifting violet ice crystals"
+        },
+        "portal": true,
+        "version": 1
       }
     },
     {
@@ -247,6 +269,17 @@
         ],
         "privacy": "Illustrative visuals shown here are not captured Instagram posts.",
         "screenshots": []
+      },
+      "world": {
+        "weather": {
+          "type": "meteors",
+          "title": "Cosmic Drift",
+          "rgb": "255,99,207",
+          "level": 0.8,
+          "visual": "Meteors and deep-space particles"
+        },
+        "portal": true,
+        "version": 1
       }
     },
     {
@@ -322,6 +355,17 @@
         ],
         "privacy": "No direct Defence-system or Microsoft 365 integration. Do not use operationally sensitive information. The linked SAFe website is a beta; availability and organizational approval must be verified.",
         "screenshots": []
+      },
+      "world": {
+        "weather": {
+          "type": "fog",
+          "title": "Emerald Fog",
+          "rgb": "80,243,166",
+          "level": 0.9,
+          "visual": "Soft emerald mist and light shafts"
+        },
+        "portal": true,
+        "version": 1
       }
     },
     {
@@ -395,6 +439,17 @@
         ],
         "privacy": "Concept only. No verified addon screenshots, packages or CurseForge releases exist yet.",
         "screenshots": []
+      },
+      "world": {
+        "weather": {
+          "type": "storm",
+          "title": "Runic Storm",
+          "rgb": "255,181,65",
+          "level": 0.8,
+          "visual": "Distant thunderclouds and amber embers; no flash"
+        },
+        "portal": true,
+        "version": 1
       }
     },
     {
@@ -468,6 +523,17 @@
         ],
         "privacy": "Prototype data can evolve with patches. No claim of official Riot Games endorsement.",
         "screenshots": []
+      },
+      "world": {
+        "weather": {
+          "type": "wind",
+          "title": "Arcane Wind",
+          "rgb": "94,223,231",
+          "level": 1,
+          "visual": "Fast teal energy gusts"
+        },
+        "portal": true,
+        "version": 1
       }
     },
     {
@@ -543,6 +609,17 @@
         ],
         "privacy": "Inputs stay in the browser until you choose to copy or download them. This is not AI inference.",
         "screenshots": []
+      },
+      "world": {
+        "weather": {
+          "type": "sunrise",
+          "title": "First Light",
+          "rgb": "255,202,123",
+          "level": 0.7,
+          "visual": "Warm dawn and floating sparks"
+        },
+        "portal": false,
+        "version": 1
       }
     }
   ],
@@ -581,5 +658,6 @@
     "A clear license and setup documentation are published",
     "A working download link is provided; for templates, the GitHub repository is actually configured as a template",
     "Links and installation steps have been tested"
-  ]
+  ],
+  "worldsVersion": "3.0-alpha.1"
 }
