@@ -14,10 +14,17 @@
   const isDate=value=>typeof value==="string"&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(value)&&Number.isFinite(Date.parse(value));
   const shaGood=sha=>typeof sha==="string"&&/^[0-9a-f]{40}$/.test(sha);
   const allowSource=item=>{
-    if(item.source?.type!=="github-commit"||!shaGood(item.source?.sha))return false;
-    const repo=item.source.repository;
+    const src=item.source;
+    const repo=src?.repository;
     if(typeof repo!=="string"||!/^fathom-web\/[a-zA-Z0-9._-]+$/.test(repo))return false;
-    return item.source.url==="https://github.com/"+repo+"/commit/"+item.source.sha;
+    if(item.type==="development")
+      return src.type==="github-commit"&&shaGood(src.sha)&&
+        src.url==="https://github.com/"+repo+"/commit/"+src.sha;
+    if(item.type==="release")
+      return src.type==="github-release"&&typeof src.tag==="string"&&
+        /^[a-zA-Z0-9._-]{1,100}$/.test(src.tag)&&
+        src.url==="https://github.com/"+repo+"/releases/tag/"+src.tag;
+    return false;
   };
   function valid(raw){
     if(!raw||!Array.isArray(raw.items)||!isDate(raw.updated+"T00:00:00Z"))return null;
@@ -29,9 +36,9 @@
          typeof item.summary!=="string"||!item.summary.trim()||
          !allowSource(item)||seen.has(item.id))continue;
       if(item.type==="development"&&item.status!=="committed")continue;
-      // Future release items must use a verified release URL and distinct schema;
-      // GitHub commits must NEVER be silently promoted to releases.
-      if(item.type==="release")continue;
+      // A release is only accepted when a real GitHub release URL is curated.
+      // A commit alone is NEVER automatically promoted to a product release.
+      if(item.type==="release"&&item.status!=="published")continue;
       if(Date.parse(item.occurredAt)>Date.now()+3600000)continue;
       seen.add(item.id);
       items.push(item);
@@ -40,7 +47,7 @@
     return {updated:raw.updated,items};
   }
   const makeDate=item=>{const t=e("time","",formatDate.format(new Date(item.occurredAt)));t.dateTime=item.occurredAt;return t;};
-  const commitLink=(item,label)=>{
+  const evidenceLink=(item,label)=>{
     const a=e("a","",label||"View verified commit ↗");
     a.href=item.source.url;a.target="_blank";a.rel="noopener noreferrer";
     return a;
@@ -57,7 +64,7 @@
     const header=e("div","obs-entry-head");
     header.append(e("span","obs-entry-kind",labelOf(item.projectId,projects)),makeDate(item));
     const source=e("div","obs-entry-source");
-    source.append(commitLink(item),e("small","",kindOf(item)+" · Not a deployment"));
+    source.append(evidenceLink(item,item.type==="release"?"View verified release ↗":"View verified commit ↗"),e("small","",kindOf(item)+" · Not a deployment"));
     add(article,header,e("h3","",item.title),e("p","",item.summary),source);
     return article;
   }
@@ -68,7 +75,7 @@
     const count=$("obs-verified-count"),repos=$("obs-project-count"),releases=$("obs-releases-count");
     if(count)count.textContent=String(data.items.length);
     if(repos)repos.textContent=String(new Set(data.items.map(x=>x.projectId)).size);
-    if(releases)releases.textContent="0"; // no verified GitHub releases in this schema
+    if(releases)releases.textContent=String(data.items.filter(x=>x.type==="release").length);
     const updated=$("observatory-reviewed");
     if(updated)updated.textContent="Evidence reviewed · "+formatDate.format(new Date(data.updated+"T00:00:00Z"));
     const select=$("observatory-project");
@@ -117,14 +124,14 @@
     for(const item of entries.slice(0,8)){
       const card=e("article","evolution-item");
       const head=e("div","evolution-item-head");
-      head.append(makeDate(item),e("span","evolution-status","Code committed"));
-      add(card,head,e("h3","",item.title),e("p","",item.summary),commitLink(item,"Read the GitHub commit ↗"));
+      head.append(makeDate(item),e("span","evolution-status",item.type==="release"?"Release published":"Code committed"));
+      add(card,head,e("h3","",item.title),e("p","",item.summary),evidenceLink(item,item.type==="release"?"View the published GitHub release ↗":"Read the GitHub commit ↗"));
       card.lastElementChild.className="evolution-source";
       root.append(card);
     }
     const note=$("evolution-note");
-    if(note)note.textContent=entries.length+" verified development "+(entries.length===1?"entry":"entries")+
-      " · Source: public GitHub commit history · Committed code is not proof of a production release.";
+    if(note)note.textContent=entries.length+" verified history "+(entries.length===1?"entry":"entries")+
+      " · Source: reviewed public GitHub evidence · Committed code is not proof of a production release.";
   }
   async function load(){
     const home=Boolean($("observatory-feed")),detail=Boolean($("evolution-feed"));
