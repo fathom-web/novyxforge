@@ -961,17 +961,35 @@
       </div>
       <p class="pulse-note" id="pulse-state">Recent commits load when you reach this section. Feed availability depends on GitHub API limits.</p>
     </section>
-    <section class="container process-section" id="process" aria-labelledby="process-heading">
-      <div class="process-intro reveal">
-        <div class="section-kicker">02 / The process</div>
-        <h2 class="feature-heading" id="process-heading">From idea.<br><em>To experience.</em></h2>
-        <p>There's no rigid roadmap here. An idea moves from the first spark to something you can actually use.</p>
+
+    <section class="container platform-section" id="inside" aria-labelledby="inside-heading">
+      <div class="lab-section-heading reveal">
+        <div><div class="section-kicker">BEHIND THE SCENES</div><h2 id="inside-heading">Inside <em>the Forge.</em></h2></div>
+        <p>Explore the making of digital ideas, where creativity meets AI, design and code — with plenty of experimentation along the way.</p>
       </div>
-      <div class="process-path" aria-label="Our creative process">
-        <div class="process-step reveal"><div class="process-orb" aria-hidden="true">01</div><span class="process-phase">The spark</span><h3>Imagine</h3><p>Start with a problem, a question, or the sense that something could work better.</p></div>
-        <div class="process-step reveal"><div class="process-orb" aria-hidden="true">02</div><span class="process-phase">The experiment</span><h3>Prototype</h3><p>Use AI, design and code to turn a possibility into something you can actually try.</p></div>
-        <div class="process-step reveal"><div class="process-orb" aria-hidden="true">03</div><span class="process-phase">The refinement</span><h3>Improve</h3><p>Test in the real world, challenge assumptions and shape what matters.</p></div>
-        <div class="process-step reveal"><div class="process-orb" aria-hidden="true">04</div><span class="process-phase">The outcome</span><h3>Launch</h3><p>Share a useful digital experience — and keep evolving it as new ideas appear.</p></div>
+      <div class="inside-grid">
+        <article class="inside-card reveal"><span class="inside-orbit" aria-hidden="true"></span><small>01 / IMAGINE</small><h3>The Question</h3><p>It begins with a problem worth solving or a possibility too interesting to ignore.</p></article>
+        <article class="inside-card reveal"><span class="inside-orbit" aria-hidden="true"></span><small>02 / EXPERIMENT</small><h3>The Prototype</h3><p>Prompt, experiment, write code, challenge assumptions and test what actually works.</p></article>
+        <article class="inside-card reveal"><span class="inside-orbit" aria-hidden="true"></span><small>03 / SHARE</small><h3>The Experience</h3><p>Release useful things, share selected source code and keep evolving the products.</p></article>
+      </div>
+    </section>
+    <section class="container platform-section" id="open-forge" aria-labelledby="open-heading">
+      <div class="openforge-panel reveal">
+        <div>
+          <div class="section-kicker">EXPLORE / REUSE / DISCOVER</div>
+          <h2 id="open-heading">The <em style="font-style:normal;color:#9fdcff">Open Forge.</em></h2>
+          <p>Some ideas are meant to be shared. Browse open code, discover experiments and follow future reusable projects, with WoW addons showcased here and eventually distributed through CurseForge.</p>
+          <div class="openforge-actions">
+            <a class="btn btn-primary" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a>
+            <a class="btn btn-outline" href="./project.html?project=wow-lifeforge">WoW LifeForge →</a>
+          </div>
+          <p class="project-note">Public repositories are not necessarily freely reusable; check each project's license. No WoW addon download is available yet.</p>
+        </div>
+        <div class="openforge-list">
+          <div class="openforge-line"><strong>Public source</strong><span>Explore selected project repositories and technical experiments on GitHub.</span></div>
+          <div class="openforge-line"><strong>CurseForge releases</strong><span>When WoW addons are released, all downloads and updates will be hosted exclusively on CurseForge.</span></div>
+          <div class="openforge-line"><strong>Future reusable tools</strong><span>White-label and distribution concepts remain in the Idea Vault until developed.</span></div>
+        </div>
       </div>
     </section>
     <section class="container why-section" id="why" aria-labelledby="why-heading">
@@ -985,7 +1003,7 @@
       </div>
     </section>
   </main>
-  <footer><div class="container footer-inner"><div><strong>NOVYX FORGE</strong><div style="margin-top:9px">Independent AI &amp; Technology Lab. Ideas forged into reality. © <span id="year">2026</span></div></div><div class="footer-links"><a href="#home">Top ↑</a><a href="#about">About</a><a href="#projects">Projects</a><a href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer>
+  <footer><div class="container footer-inner"><div><strong>NOVYX FORGE</strong><div style="margin-top:9px">Independent AI &amp; Technology Lab. Ideas forged into reality. © <span id="year">2026</span></div></div><div class="footer-links"><a href="#home">Top ↑</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#vault">Idea Vault</a><a href="#pulse">Forge Pulse</a><a href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer>
   <script>
     document.getElementById("year").textContent=new Date().getFullYear();
     const cards=document.querySelectorAll(".reveal");
@@ -1057,5 +1075,6 @@
       });
     }
   </script>
+  <script src="./forge-experience.js?v=1" defer></script>
 </body>
 </html>
