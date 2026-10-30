@@ -2,6 +2,12 @@
 
 An independent AI & Technology Lab: a cinematic home for projects, ideas and experiments.
 
+## NOVYX FORGE 3.0 — approved roadmap (2026-10-30)
+
+The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3_0.md)**. It includes all ten selected workstreams: Six-Sphere Universe, seven-weather Weather Engine, World Transitions, World Navigator, Forge Reactor, Interactive Demo Mode, The Observatory, Evolution Timeline, Forge Feedback and Command Search, plus mobile/accessibility/performance/screenshot release gates.
+
+**Important:** This roadmap defines future work; it is not an implementation or a claim that 3.0 is live. Development begins with a common world configuration and six-sphere / Weather Engine alpha.
+
 ## What's here
 
 - **Five interactive glass spheres:** FootballForge, StudyForge, The Fascination Files, SAFe Agile Forge and WoW LifeForge.
