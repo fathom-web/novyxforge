@@ -598,6 +598,7 @@
   </style>
   <link rel="stylesheet" href="./forge-experience.css?v=1">
   <link rel="stylesheet" href="./forge-polish.css?v=3">
+  <link rel="stylesheet" href="./forge-pipeline.css?v=1">
   <link rel="canonical" href="https://novyxforge.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://novyxforge.com/">
@@ -610,7 +611,7 @@
       <span class="mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 25V7l18 18V7" stroke="#83dcff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 7L25 25" stroke="#a991ff" stroke-opacity=".7" stroke-width="1.1"/></svg></span>
       NOVYX <small>FORGE</small>
     </a>
-    <nav class="navlinks" id="site-menu" aria-label="Main navigation"><a href="#home">Universe</a><a href="#projects">Projects</a><a href="#vault">Idea Vault</a><a href="#pulse">Forge Pulse</a><a href="#inside">Inside the Forge</a><a class="top-cta" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav><button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="navlinks" id="site-menu" aria-label="Main navigation"><a href="#home">Universe</a><a href="#projects">Projects</a><a href="#pipeline">Pipeline</a><a href="#vault">Idea Vault</a><a href="#pulse">Forge Pulse</a><a class="top-cta" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav><button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
   <main>
     <section class="container hero" id="home">
@@ -919,16 +920,50 @@
       <div class="next-build reveal"><div><strong>And this is only the beginning.</strong><p>From education and football to gaming and agile planning — the constellation keeps expanding.</p></div><a href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">See the builds ↗</a></div>
     </section>
 
+
+    <section class="container platform-section forge-pipeline" id="pipeline" aria-labelledby="pipeline-heading">
+      <div class="lab-section-heading reveal">
+        <div><div class="section-kicker">THE FORGE / DEVELOPMENT CONTROL</div><h2 id="pipeline-heading">The Forge <em>Pipeline.</em></h2></div>
+        <p>See which ideas are emerging, which projects are being built, and what's already out in the world.</p>
+      </div>
+      <div class="pipeline-toolbar">
+        <div class="pipeline-view" role="group" aria-label="Pipeline content">
+          <button type="button" data-pipeline-view="all" aria-pressed="true">Everything</button>
+          <button type="button" data-pipeline-view="projects" aria-pressed="false">Projects</button>
+          <button type="button" data-pipeline-view="ideas" aria-pressed="false">Ideas</button>
+        </div>
+        <span class="pipeline-summary" id="pipeline-summary" aria-live="polite">Loading project stages…</span>
+      </div>
+      <div class="pipeline-frame">
+        <div class="pipeline-deck" aria-label="Project status pipeline. On smaller screens, scroll horizontally to see all stages.">
+          <div class="pipeline-column" data-stage="spark">
+            <div class="pipeline-column-head"><span class="pipeline-node" aria-hidden="true">01</span><div class="pipeline-column-title"><strong>Spark</strong><small>Ideas taking shape</small></div><span class="pipeline-count" id="pipeline-count-spark" aria-label="Items in Spark">0</span></div>
+            <div class="pipeline-items" data-pipeline-stage="spark"><p class="pipeline-empty">Loading the pipeline…</p></div>
+          </div>
+          <div class="pipeline-column" data-stage="exploring">
+            <div class="pipeline-column-head"><span class="pipeline-node" aria-hidden="true">02</span><div class="pipeline-column-title"><strong>Explore</strong><small>Testing possibilities</small></div><span class="pipeline-count" id="pipeline-count-exploring" aria-label="Items in Explore">0</span></div>
+            <div class="pipeline-items" data-pipeline-stage="exploring"><p class="pipeline-empty">Loading the pipeline…</p></div>
+          </div>
+          <div class="pipeline-column" data-stage="building">
+            <div class="pipeline-column-head"><span class="pipeline-node" aria-hidden="true">03</span><div class="pipeline-column-title"><strong>Build</strong><small>Prototypes in progress</small></div><span class="pipeline-count" id="pipeline-count-building" aria-label="Items in Build">0</span></div>
+            <div class="pipeline-items" data-pipeline-stage="building"><p class="pipeline-empty">Loading the pipeline…</p></div>
+          </div>
+          <div class="pipeline-column" data-stage="released">
+            <div class="pipeline-column-head"><span class="pipeline-node" aria-hidden="true">04</span><div class="pipeline-column-title"><strong>Launch</strong><small>Released experiences</small></div><span class="pipeline-count" id="pipeline-count-released" aria-label="Items in Launch">0</span></div>
+            <div class="pipeline-items" data-pipeline-stage="released"><p class="pipeline-empty">Loading the pipeline…</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="pipeline-statusline">
+        <span><i class="pipeline-led" aria-hidden="true"></i> Stages are curated in the Forge catalog — not automated build verification.</span>
+        <a href="#catalog">Explore the full project universe ↗</a>
+      </div>
+    </section>
+
     <section class="container platform-section" id="catalog" aria-labelledby="catalog-heading">
       <div class="lab-section-heading reveal">
         <div><div class="section-kicker">THE COMPLETE CONSTELLATION / PROJECT INDEX</div><h2 id="catalog-heading">Choose your <em>universe.</em></h2></div>
         <p>Beyond the featured spheres. A growing collection of experiments, prototypes and digital products.</p>
-      </div>
-      <div class="stage-track" aria-label="The Forge project lifecycle">
-        <div class="stage-chip" data-stage="spark"><span class="stage-num">01</span><div><strong>Spark</strong><small>An idea is born</small></div></div>
-        <div class="stage-chip" data-stage="exploring"><span class="stage-num">02</span><div><strong>Explore</strong><small>Testing possibilities</small></div></div>
-        <div class="stage-chip" data-stage="building"><span class="stage-num">03</span><div><strong>Build</strong><small>Prototype in progress</small></div></div>
-        <div class="stage-chip" data-stage="released"><span class="stage-num">04</span><div><strong>Launch</strong><small>Available to explore</small></div></div>
       </div>
       <div class="catalog-toolbar">
         <div class="catalog-filters" role="group" aria-label="Filter projects by category">
@@ -1017,7 +1052,7 @@
       </div>
       <a class="endcard-link" href="#vault">Enter the Idea Vault ↗</a>
     </div>
-    <div class="container footer-inner"><div><strong>NOVYX FORGE</strong><div style="margin-top:9px">Independent AI &amp; Technology Lab. Ideas forged into reality. © <span id="year">2026</span></div></div><div class="footer-links"><a href="#home">Top ↑</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#vault">Idea Vault</a><a href="#pulse">Forge Pulse</a><a href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer>
+    <div class="container footer-inner"><div><strong>NOVYX FORGE</strong><div style="margin-top:9px">Independent AI &amp; Technology Lab. Ideas forged into reality. © <span id="year">2026</span></div></div><div class="footer-links"><a href="#home">Top ↑</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#pipeline">Pipeline</a><a href="#vault">Idea Vault</a><a href="#pulse">Forge Pulse</a><a href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer>
   <script>
     document.getElementById("year").textContent=new Date().getFullYear();
     const cards=document.querySelectorAll(".reveal");
