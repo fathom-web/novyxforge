@@ -1,0 +1,41 @@
+name: NOVYX 3.0 Live Production QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tests/v3-production-check.mjs'
+      - '.github/workflows/novyx-production-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production-audit:
+    name: Check actual live novyxforge.com
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Check out QA script
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Validate live production website (no changes)
+        env:
+          NOVYX_BASE_URL: https://novyxforge.com
+        run: node tests/v3-production-check.mjs
+      - name: Save actual live screenshots when available
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: novyx-v3-live-site-screenshots
+          path: qa-production-screenshots/
+          retention-days: 14
+          if-no-files-found: warn
