@@ -128,7 +128,7 @@ try {
     });
     assert.equal(faults.length,0,engine+" uncaught JS errors: "+faults.join(" | "));
     await desktop.close();
-    const small=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,reducedMotion:"reduce",isMobile:true,hasTouch:true});
+    const small=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,reducedMotion:"reduce",hasTouch:true,...(engine==="firefox"?{}:{isMobile:true})});
     const mobile=await small.newPage();
     for(const id of worlds){
       await run(engine+" / 390px mobile "+id,async()=>{
