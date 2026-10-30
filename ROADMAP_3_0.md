@@ -1,14 +1,18 @@
 # NOVYX FORGE 3.0 — THE LIVING UNIVERSE
 
-**Status:** RC1 — all ten 3.0 feature streams coded; five source test suites green and 16/16 Chromium browser checks green. GitHub screenshots captured. Real approved app captures, production deployment, manual supported-browser/a11y/performance acceptance remain outstanding.  
+**Status:** RC1 — all ten 3.0 feature streams coded; five source test suites green and 16/16 Chromium browser checks green. GitHub screenshots captured. Core MijnHost production smoke verified (11/11). Real approved app captures, full production walkthrough and manual supported-browser/a11y/performance acceptance remain outstanding.  
 **Baseline inspected:** 2026-10-30 · GitHub repository `fathom-web/novyxforge`  
 **Release principle:** Ship all ten selected features as one coherent NOVYX 3.0 release, in testable, reversible increments; keep the existing site working.
 
 ## NOVYX FORGE 3.0 — Release Candidate RC1 (2026-10-30)
 
-**Source complete, not yet live-released.** All ten selected 3.0 features are implemented and [Chromium browser QA passed all 16 checks](https://github.com/fathom-web/novyxforge/actions/runs/41057805696), including desktop and 360/390px phones. The original five-suite [GitHub smoke checks are also passing](https://github.com/fathom-web/novyxforge/actions/runs/41057805528).
+**LIVE MijnHost verification — 2026-10-30:** The user deployed the latest 3.0 build. An independent [production Chromium + HTTP QA workflow](https://github.com/fathom-web/novyxforge/actions/runs/41058654495) checked the actual `https://novyxforge.com/` domain and passed **11/11 checks (0 failures)**, including HTTPS, current JS/CSS asset versions, six homepage spheres, Reactor, Command Search, Observatory, a FootballForge demo, and 360px/390px mobile layouts. [Live production screenshot artifact](https://github.com/fathom-web/novyxforge/actions/runs/41058654495/artifacts/12977897540) (retained until 2026-11-13). This verifies core production functionality, **not** all seven live app demos, Safari/Firefox, accessibility, performance metrics or approved real app screenshots.
 
-The exact current status, successful screenshot artifact, corrected responsive issues and remaining production gates are in **[RELEASE_CANDIDATE_3_0.md](./RELEASE_CANDIDATE_3_0.md)**. MijnHost deployment, reviewed real application screenshots, manual cross-browser/accessibility review and measured production performance remain open. Do **not** mark 3.0 as officially released until those are validated.
+
+
+**Code complete and live-deployed; not yet an official tagged 3.0 release.** All ten selected 3.0 features are implemented and [Chromium browser QA passed all 16 checks](https://github.com/fathom-web/novyxforge/actions/runs/41057805696), including desktop and 360/390px phones. The original five-suite [GitHub smoke checks are also passing](https://github.com/fathom-web/novyxforge/actions/runs/41057805528).
+
+The exact current status, successful screenshot artifact, corrected responsive issues and remaining production gates are in **[RELEASE_CANDIDATE_3_0.md](./RELEASE_CANDIDATE_3_0.md)**. MijnHost production is independently live-verified (11/11); reviewed real application screenshots, a full all-project live walkthrough, manual cross-browser/accessibility review and measured production performance remain open. Do **not** mark 3.0 as officially released until those are validated.
 
 ## Alpha implementation log — 2026-10-30
 
