@@ -1,6 +1,6 @@
 # NOVYX FORGE 3.0 — THE LIVING UNIVERSE
 
-**Status:** Approved scope / 3.0 Alpha + Increment 2 navigation beta committed to GitHub; browser acceptance and MijnHost production deployment not yet verified.  
+**Status:** Approved scope / 3.0 Alpha, Increment 2 navigation beta and core Increment 3 interactive demos committed to GitHub; real screenshots, browser acceptance and MijnHost production deployment not yet verified.  
 **Baseline inspected:** 2026-10-30 · GitHub repository `fathom-web/novyxforge`  
 **Release principle:** Ship all ten selected features as one coherent NOVYX 3.0 release, in testable, reversible increments; keep the existing site working.
 
@@ -32,6 +32,19 @@
 - Live MijnHost deployment, visual browser tests, native dialog keyboard/focus tests and actual mobile verification are **still required**. This is implemented beta code, not a completed release.
 
 **Next unimplemented increment:** product demos, verified screenshots and richer showcase interactions (Increment 3).
+
+## Increment 3 implementation log — 2026-10-30
+
+**Committed to GitHub `main`; deployed browser acceptance not yet verified.**
+
+- `forge-demos.js` + `forge-demo.css`: four isolated interactive demonstrations (FootballForge attendance/4–3–3 formation, StudyForge quizzes/flashcards, Wild Rift solo and 2-vs-2 draft considerations, SAFe role-based fictional PI schedules). All data is example-only and stays in ephemeral browser memory; demos do not fetch production application data or store results.
+- `project.html` + `project-showcase.js`: opt-in **Try the Demo** section and link on exactly four approved project showcases; no empty demo panel for other projects.
+- `projects.json`: demonstration metadata defines supported demo type and editorial description per project.
+- Showcase gallery explicitly distinguishes **Illustrative Preview** from **Verified Screenshot**, requires `verified:true` metadata for actual screenshots, and gracefully handles missing image files.
+- `tests/v3-demos-check.mjs`: standalone Node simulated DOM interactions and anti-data-leak checks. In-session simulated interactions were exercised for all four demos.
+- **Still pending:** collecting and reviewing actual app screenshots (none are published in `showcase.screenshots`); full desktop/mobile visual QA and production MijnHost deployment. Increment 3 code does not constitute a verified live release.
+
+**Next remaining 3.0 features:** Evolution Timeline, Observatory, Forge Feedback, Command Search and final release gate.
 
 ## 1. Product intent
 
