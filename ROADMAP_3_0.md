@@ -1,6 +1,6 @@
 # NOVYX FORGE 3.0 — THE LIVING UNIVERSE
 
-**Status:** Approved scope / 3.0 Alpha, Navigation Beta, four Interactive Demos, and Observatory/Evolution code committed to GitHub. Remaining features: Forge Feedback, Command Search, real reviewed screenshots and live browser/release acceptance.  
+**Status:** Code complete for the ten selected 3.0 feature streams; GitHub beta only. Actual verified screenshots, comprehensive responsive/accessibility/performance QA, and MijnHost production release remain outstanding.  
 **Baseline inspected:** 2026-10-30 · GitHub repository `fathom-web/novyxforge`  
 **Release principle:** Ship all ten selected features as one coherent NOVYX 3.0 release, in testable, reversible increments; keep the existing site working.
 
@@ -58,6 +58,18 @@
 - **Still to verify:** production deployment via MijnHost, actual desktop/mobile screenshots and UI accessibility testing. Curated commit history is not a claim of production release or real-time monitoring.
 
 **Next remaining implementation scope:** Forge Feedback + Command Search. Continue collecting actual product screenshots using fictional/demo data, then carry out final visual QA and 3.0 production release gate.
+
+## Forge Feedback + Command Search implementation log — 2026-10-30
+
+**Committed to GitHub `main`; browser and production validation outstanding.**
+
+- `forge-feedback.js` + `forge-feedback.css`: global feedback area and individual project-specific GitHub issue actions. Templates in `.github/ISSUE_TEMPLATE/{feature_request.md,bug_report.md,config.yml}`. The public repository has GitHub Issues enabled. Users must sign in to GitHub, review the content and submit themselves; no NOVYX collection or stored feedback.
+- `forge-search.js` + `forge-search.css`: client-only ranked search across all seven published project catalog records, three Idea Vault concepts, curated activity and public documentation, with `Ctrl+K`/`Cmd+K`, arrow-key navigation, native `<dialog>`, accessible focus and a mobile header trigger.
+- `index.html`: new public feedback section and search entry points; `project.html` + `project-showcase.js`: feedback for all project worlds, and Search on each showcase.
+- `tests/v3-search-feedback-check.mjs`: offline search/feedback contracts, URL safety and project-specific GitHub issue checks.
+- **Source completeness:** all 10 approved 3.0 functional workstreams have initial code. **Release incomplete** until actual privacy-safe product screenshots, full visual/mobile/keyboard/browser testing, accessibility/performance validation, final QA and MijnHost FETCH → DEPLOY verification.
+
+**Next work package:** NOVYX 3.0 Release Candidate QA + real, sanitized screenshot collection. Do not announce 3.0 as released before its production gate.
 
 ## 1. Product intent
 
