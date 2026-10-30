@@ -64,7 +64,7 @@ first.checked=false;first.fire("change");
 assert.ok(all(f,x=>x.className==="demo-total").some(x=>x.children.map(y=>y.textContent).join("").includes("15")),"Attendance change did not update squad");
 
 const study=run("study");
-const option=all(study,x=>String(x.className).startsWith("demo-choice"))[0];
+const option=all(study,x=>x.tag==="button"&&String(x.className).startsWith("demo-choice"))[0];
 assert.ok(option);option.fire("click");
 assert.ok(all(study,x=>x.tag==="p"&&/Correct|Not quite/.test(x.textContent)).length,"StudyForge answer feedback missing");
 const flashTab=all(study,x=>x.tag==="button"&&x.textContent==="Flashcards")[0];
