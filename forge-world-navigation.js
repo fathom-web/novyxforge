@@ -116,6 +116,8 @@
     });
     mission.addEventListener("click", () => dialog.close());
     homeLink.addEventListener("click", () => dialog.close());
+    const observatoryLink = $("#reactor-observatory", dialog);
+    observatoryLink?.addEventListener("click", () => dialog.close());
   }
 
   let gate = null, leaving = false;
