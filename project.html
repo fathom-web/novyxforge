@@ -16,8 +16,10 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23050b1c'/%3E%3Cpath d='M13 48V16l38 32V16' fill='none' stroke='%237bdfff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="./project-showcase.css?v=2">
 <link rel="stylesheet" href="./forge-weather.css?v=1">
+<link rel="stylesheet" href="./forge-world-navigation.css?v=1">
 <script src="./forge-weather.js?v=2" defer></script>
 <script src="./project-showcase.js?v=4" defer></script>
+<script src="./forge-world-navigation.js?v=1" defer></script>
 </head>
 <body>
 <header>
@@ -26,6 +28,20 @@
     <a class="back" href="./index.html#projects">← All projects</a>
   </nav>
 </header>
+<nav class="world-nav" aria-label="Explore NOVYX project worlds">
+  <div class="world-nav-inner">
+    <a class="world-nav-title" href="./index.html#home" aria-label="Return to the NOVYX Forge universe">
+      <span class="world-nav-core" aria-hidden="true">✦</span>
+      <span><strong>World Navigator</strong><small id="world-nav-count">PROJECT WORLDS</small></span>
+    </a>
+    <div class="world-nav-scroll" tabindex="0" role="region" aria-label="Scroll through project worlds">
+      <div class="world-nav-links" id="world-nav-links">
+        <a class="world-nav-link" href="./index.html#projects">Browse all project worlds</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<span id="novyx-world-status" role="status" aria-live="polite" aria-atomic="true"></span>
 <main>
   <section class="shell hero" aria-labelledby="name">
     <div class="hero-copy">
