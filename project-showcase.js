@@ -67,12 +67,20 @@ function screenshotPath(src){
 function createGalleryItem(project,visual,index){
  const figure=el("figure","gallery-item");
  const art=el("div","gallery-visual");
- const img=visual.kind==="screenshot"&&screenshotPath(visual.src);
+ const actual=visual.kind==="screenshot"&&visual.verified===true&&screenshotPath(visual.src);
+ const tag=el("span","gallery-kind",actual?"VERIFIED SCREENSHOT":"ILLUSTRATIVE PREVIEW");
+ art.append(tag);
+ const img=actual;
  if(img){
    const button=el("button","gallery-photo-button");
    button.type="button";button.setAttribute("aria-label","View full screenshot: "+visual.title);
    const image=el("img","gallery-photo");image.loading="lazy";image.decoding="async";image.src=visual.src;image.alt=visual.alt||"Screenshot of "+project.name+": "+visual.title;
    button.append(image);
+   image.addEventListener("error",()=>{
+     art.classList.add("gallery-missing");
+     tag.textContent="SCREENSHOT UNAVAILABLE";
+     button.replaceWith(el("p","gallery-error","This screenshot is temporarily unavailable."));
+   },{once:true});
    button.addEventListener("click",()=>openLightbox(image.src,image.alt,button));
    art.append(button);
  }else{
@@ -148,13 +156,13 @@ function draw(project,all){
    steps.append(card);
  });
  const gallery=$("gallery");
- const images=Array.isArray(profile.screenshots)?profile.screenshots.filter(v=>screenshotPath(v.src)).map(v=>({...v,kind:"screenshot"})):[];
+ const images=Array.isArray(profile.screenshots)?profile.screenshots.filter(v=>v&&v.verified===true&&screenshotPath(v.src)).map(v=>({...v,kind:"screenshot"})):[];
  // Real screenshots, when supplied, appear first; otherwise use honest
  // illustrative product art instead of claiming conceptual pictures are photos.
  const visuals=images.length?images:(profile.views||[]).map(([title,description,layout])=>({title,description,layout,kind:"concept"}));
  for(const [i,visual] of visuals.entries())gallery.append(createGalleryItem(project,visual,i));
  $("gallery-note").textContent=images.length
-   ?"Real screenshots from the published project, displayed with the source team's permission."
+   ?"Verified screenshots from the project. Captures use approved sample data and can be enlarged."
    :"ILLUSTRATIVE INTERFACE CONCEPTS — not screenshots of the live application. Actual verified screenshots can be added to this gallery.";
  const features=$("feature-list");
  (project.features||[]).forEach((feature,i)=>{const li=el("li");li.textContent=feature;features.append(li);});
