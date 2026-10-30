@@ -161,6 +161,11 @@
        event.preventDefault();open(document.activeElement);return;
      }
      if(!dialog.open)return;
+     if(event.key==="Escape"){
+       event.preventDefault();
+       shut();
+       return;
+     }
      const links=getLinks();
      const indexOf=links.indexOf(document.activeElement);
      if(event.key==="ArrowDown"){
