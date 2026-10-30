@@ -39,7 +39,7 @@
     const top=make("div","tile-top");
     const symbol=make("span","tile-symbol",project.symbol||"✦");
     symbol.setAttribute("aria-hidden","true");
-    append(top,symbol,make("span","stage-label",STAGE_LABELS[project.stage]||"Project"));
+    append(top,symbol,make("span","stage-label",STAGE_LABELS[actualStage(project)]||"Project"));
     const heading=make("h3","",project.name);
     const body=make("p","",project.summary);
     const bottom=make("div","tile-bottom");
