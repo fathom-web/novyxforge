@@ -87,3 +87,22 @@
  .universe .sphere-link.sixth .sphere-description{font-size:8px}
 }
 @media(prefers-reduced-motion:reduce){.orb-identity-wind i{animation:none!important}.universe .sphere-link.sixth .orb{animation:none!important}}
+
+/* Six showcased worlds: Wild Rift's Arcane-inspired lane-selection artwork. */
+.project-wildrift{border-color:rgba(107,231,233,.23);background:linear-gradient(155deg,rgba(9,55,77,.54),rgba(11,17,39,.94) 67%)}
+.project-wildrift:hover{border-color:rgba(121,244,237,.56);box-shadow:0 23px 57px rgba(6,27,48,.57),0 0 30px rgba(65,221,221,.11)}
+.project-wildrift .project-arrow{color:#91f7ec}
+.project-wildrift .state{color:#9ce9e5;border-color:rgba(90,224,230,.24)}
+.preview-wildrift{border-color:rgba(112,236,235,.37)!important;background:linear-gradient(142deg,#0a2b43,#11152f 83%)!important}
+.preview-wildrift .preview-brand span{color:#8bf9e7}
+.rift-interface{position:relative;min-height:129px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:10px 9px 7px;overflow:hidden;background:radial-gradient(circle at 50% 43%,rgba(69,216,222,.2),transparent 64%)}
+.rift-vortex{position:absolute;top:6px;left:50%;width:111px;height:88px;transform:translateX(-50%);display:grid;place-items:center}
+.rift-ring{position:absolute;inset:0 10px;border-radius:50%;border:2px solid rgba(124,237,235,.59);border-top-color:transparent;transform:rotate(-29deg);animation:rift-ring-spin 14s linear infinite}
+.rift-ring:nth-child(2){inset:7px 17px;border-color:rgba(188,153,255,.62);border-right-color:transparent;animation-direction:reverse;animation-duration:11s}
+.rift-core{font:500 36px Outfit,sans-serif;color:#ddfffc;text-shadow:0 0 21px rgba(70,246,232,.91);animation:rift-vortex-pulse 4s ease-in-out infinite}
+.rift-lanes{position:relative;z-index:1;width:100%;display:flex;gap:4px;justify-content:center;margin-top:67px}
+.rift-lanes span{border:1px solid rgba(133,222,229,.35);border-radius:3px;padding:4px 5px;color:#c3f9f3;background:rgba(9,27,53,.82);font:700 7px Outfit,sans-serif;letter-spacing:.03em}
+.rift-caption{position:relative;margin-top:7px;color:#86cdd7;font:700 7px Outfit,sans-serif;letter-spacing:.11em}
+@keyframes rift-ring-spin{to{transform:rotate(331deg)}}
+@keyframes rift-vortex-pulse{50%{opacity:.62;transform:scale(1.14)}}
+@media(prefers-reduced-motion:reduce){.rift-ring,.rift-core{animation:none!important}}
