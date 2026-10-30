@@ -6,7 +6,15 @@ An independent AI & Technology Lab: a cinematic home for projects, ideas and exp
 
 The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3_0.md)**. It includes all ten selected workstreams: Six-Sphere Universe, seven-weather Weather Engine, World Transitions, World Navigator, Forge Reactor, Interactive Demo Mode, The Observatory, Evolution Timeline, Forge Feedback and Command Search, plus mobile/accessibility/performance/screenshot release gates.
 
-**Important:** This roadmap defines future work; it is not an implementation or a claim that 3.0 is live. Development begins with a common world configuration and six-sphere / Weather Engine alpha.
+**Current state:** 3.0 Alpha code is being built on GitHub: six spheres and the seven-weather shared engine are implemented, but live browser acceptance and MijnHost deployment are not yet verified. The remaining roadmap items are scheduled for subsequent increments.
+
+### 3.0 Alpha code and test command
+
+- World configuration: `projects.json` → each project's `world.weather` (the source of truth).
+- Six portal layout: `forge-universe-v3.css` plus the existing `index.html` sphere markup.
+- Shared weather renderer: `forge-weather.js` + `forge-weather.css`. Runs behind showcase heroes, never as navigation-blocking input. An On/Off toggle remembers preference locally; motion-reduction defaults to static.
+- Zero-dependency smoke test: `node tests/v3-alpha-check.mjs`.
+- Real device/browser validation, including frame-rate, controls, and responsive layouts, is still required before calling this Alpha released.
 
 ## What's here
 
