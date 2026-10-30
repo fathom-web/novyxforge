@@ -40,7 +40,15 @@ const waitProject=async(page,name)=>{
 };
 const screenshot=async(page,name)=>page.screenshot({path:resolve(captures,name+".png"),fullPage:true,animations:"disabled",timeout:10000});
 const noOverflow=async page=>{
- const v=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+ const v=await page.evaluate(()=>{
+   const scroll=document.documentElement.scrollWidth,client=document.documentElement.clientWidth;
+   const suspects=[...document.querySelectorAll("body *")].map(el=>{
+      const r=el.getBoundingClientRect();
+      return {tag:el.tagName,cl:String(el.className?.baseVal||el.className||"").slice(0,90),
+        id:el.id||"",left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};
+   }).filter(r=>(r.right>client+3||r.left< -3)&&r.width>0).sort((a,b)=>b.right-a.right).slice(0,13);
+   return {scroll,client,suspects};
+ });
  assert.ok(v.scroll-v.client<=3,"Horizontal document overflow "+JSON.stringify(v));
 };
 const allIds=["footballforge","studyforge","fascination-files","safeforge","wow-lifeforge","wildrift-counter","spark-lab"];
@@ -57,8 +65,8 @@ try{
   await page.locator(".sphere-link").first().waitFor();
   assert.equal(await page.locator('.sphere-link[href*="project.html?project="]').count(),6);
   assert.equal(await page.locator('.project.project-wildrift').count(),1);
-  await noOverflow(page);
   await screenshot(page,"home-desktop-1440");
+  await noOverflow(page);
  });
  await check("Forge Reactor: accessible modal and six world links",async()=>{
   await page.locator("#forge-reactor-trigger").click();
@@ -98,8 +106,8 @@ try{
    assert.equal(await page.locator("#project-feedback-actions .feedback-action").count(),2,"Feedback missing "+id);
    const demoVisible=await page.locator("#try-demo").isVisible();
    assert.equal(demoVisible,supportedDemo.has(id),"Demo visibility "+id);
-   await noOverflow(page);
    if(["footballforge","studyforge","wildrift-counter","safeforge"].includes(id))await screenshot(page,"showcase-"+id+"-desktop");
+   await noOverflow(page);
   }
  });
  await check("Weather toggle: Off and On changes decorative layer",async()=>{
@@ -161,8 +169,8 @@ try{
    await waitProject(mp,"FootballForge");
    await mp.locator("#world-nav-links a").first().waitFor();
    await mp.locator("#demo-board .demo-toggle input").first().waitFor();
-   await noOverflow(mp);
    await screenshot(mp,"footballforge-mobile-"+width);
+   await noOverflow(mp);
   });
   await mobile.close();
  }
