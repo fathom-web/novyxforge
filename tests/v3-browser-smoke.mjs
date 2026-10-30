@@ -57,7 +57,7 @@ const named=["body","main",".world-nav",".world-nav-inner",".world-nav-scroll","
  const el=document.querySelector(selector),rect=el?.getBoundingClientRect();
  return el?{selector,left:Math.round(rect.left),right:Math.round(rect.right),width:Math.round(rect.width),scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,overflowX:getComputedStyle(el).overflowX}:null;
 }).filter(Boolean);
-return {scroll,client,suspects,nearEdge,named};
+return {scroll,client,nearEdge,named,suspects};
  });
  assert.ok(v.scroll-v.client<=3,"Horizontal document overflow "+JSON.stringify(v));
 };
