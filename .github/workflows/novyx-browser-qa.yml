@@ -1,0 +1,51 @@
+name: NOVYX 3.0 Browser QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - '*.js'
+      - '*.css'
+      - '*.json'
+      - 'tests/v3-browser-smoke.mjs'
+      - '.github/workflows/novyx-browser-qa.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - '*.js'
+      - '*.css'
+      - '*.json'
+      - 'tests/v3-browser-smoke.mjs'
+      - '.github/workflows/novyx-browser-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    name: Chromium desktop + mobile smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Check out NOVYX source
+        uses: actions/checkout@v4
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install headless Chromium for browser QA
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Test actual NOVYX browser interactions and capture public demo screenshots
+        run: node tests/v3-browser-smoke.mjs
+      - name: Preserve release candidate desktop and phone screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: novyx-v3-browser-qa-screenshots
+          path: qa-screenshots/
+          if-no-files-found: warn
+          retention-days: 14
