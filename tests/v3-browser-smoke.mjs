@@ -122,6 +122,20 @@ try{
   await screenshot(page,"home-desktop-1440");
   await noOverflow(page);
  });
+ await check("WoW Foundry: addon showcase, navigation and truthful alpha status",async()=>{
+  const hub=await ctx.newPage();
+  try{
+   await hub.goto(base+"/wow/",{waitUntil:"domcontentloaded"});
+   await hub.locator("#hero-title").waitFor();
+   assert.equal(await hub.locator("#lifeforge").count(),1);
+   assert.equal(await hub.locator(".feature").count(),6);
+   assert.equal(await hub.locator(".rail-step").count(),4);
+   assert.match(await hub.locator(".development-note").innerText(),/Not released yet/);
+   assert.equal(await hub.locator('a[href*="curseforge.com"]').count(),0);
+   await noOverflow(hub);
+   await screenshot(hub,"wow-foundry-desktop-1440");
+  }finally{await hub.close();}
+ });
  await check("Forge Reactor: accessible modal and six world links",async()=>{
   await page.locator("#forge-reactor-trigger").click();
   await page.locator("#forge-reactor-dialog[open]").waitFor();
@@ -217,6 +231,17 @@ try{
    await mp.locator(".forge-search-dialog[open]").waitFor();
    await mp.keyboard.press("Escape");
    await screenshot(mp,"home-mobile-"+width);
+  });
+  await check("WoW Foundry "+width+"px: menu, content and no overflow",async()=>{
+   await mp.goto(base+"/wow/",{waitUntil:"domcontentloaded"});
+   await mp.locator("#hero-title").waitFor();
+   const toggle=mp.locator(".menu-toggle");
+   await toggle.click();
+   assert.equal(await toggle.getAttribute("aria-expanded"),"true");
+   await mp.locator('#navigation a[href="#questions"]').click();
+   assert.equal(await toggle.getAttribute("aria-expanded"),"false");
+   await noOverflow(mp);
+   await screenshot(mp,"wow-foundry-mobile-"+width);
   });
   await check("Mobile project "+width+"px: navigator, demo, weather, no overflow",async()=>{
    await mp.goto(base+"/project.html?project=footballforge",{waitUntil:"domcontentloaded"});
