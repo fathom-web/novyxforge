@@ -194,17 +194,47 @@
         "source": "https://github.com/fathom-web/WildRiftCounter"
       },
       "pipelineNote": "Draft assistant prototype · lane-counter development in progress."
+    },
+    {
+      "id": "spark-lab",
+      "name": "Spark Lab",
+      "category": "AI",
+      "stage": "building",
+      "featured": false,
+      "accent": "#9debd6",
+      "symbol": "✳",
+      "tagline": "Every idea starts with a spark.",
+      "summary": "A browser-based idea workshop that generates a clear first brief and an AI-ready build prompt.",
+      "problem": "A good idea can be hard to turn into a practical starting plan.",
+      "solution": "Turn raw concepts into a structured project brief, starting steps and a reusable implementation prompt.",
+      "features": [
+        "Guided idea intake",
+        "Practical starting plan",
+        "Copyable AI build prompt",
+        "Local JSON brief export"
+      ],
+      "tech": [
+        "Static HTML/JavaScript",
+        "No paid AI API",
+        "Client-side processing"
+      ],
+      "links": {
+        "visit": null,
+        "source": "https://github.com/fathom-web/novyxforge"
+      },
+      "detail": "spark-lab.html",
+      "pipelineNote": "Interactive beta built · awaiting browser acceptance and MijnHost deployment."
     }
   ],
   "ideas": [
     {
       "id": "prompt-playground",
-      "name": "Prompt Playground",
-      "stage": "spark",
+      "name": "Prompt Studio",
+      "stage": "exploring",
       "category": "AI",
       "accent": "#9abfff",
       "symbol": "✳",
-      "summary": "A creative playground for discovering, testing and refining powerful AI prompts."
+      "summary": "An idea to expand Spark Lab with prompt iteration, reusable templates and structured experimentation."
     },
     {
       "id": "open-tools",
