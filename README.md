@@ -82,6 +82,25 @@ Files: `forge-worlds.css` (sphere identity + five-column layout), `public-ready.
 
 **After deploying**: check 1440px/1920px desktop and 375px/430px mobile; hover/focus each sphere and verify unique light, orbit shapes and readable labels. Validate five pipeline stages and the empty Public Ready message. Test `public-ready.html` checklist, verify no template/download button is visible until an actual package is configured. Source code checks are not a substitute for in-browser regression testing.
 
+## Product showcases and screenshot gallery
+
+All five homepage spheres, all five featured project cards, the Project Explorer, and the Pipeline now route to the **project showcase** first (`project.html?project=<project-id>`). This is intentional: visitors should understand the project before opening the real application.
+
+Each project showcase contains: the problem and audience, the core workflow, capabilities, three cinematic **illustrative interface previews**, an optional gallery of **real screenshots**, and a clearly separated "Open the application"/"Visit Instagram"/source CTA. Actual screenshots have **not** yet been collected from the apps. Illustrative previews are labeled as such; do not present them as real screenshots. Projects without a verified environment do not get invented launch links.
+
+### Add real screenshots
+
+1. Take screenshots of the real application while showing **demo/sample data**. Never expose team player names, student dashboards, personal records, credentials or API secrets.
+2. Upload the optimized `.webp`, `.jpg` or `.png` file to `assets/screenshots/<project-id>/` in the NOVYX GitHub repository.
+3. In `projects.json` find the project and add entries to `showcase.screenshots`:
+   
+   ```json
+   {"src":"./assets/screenshots/footballforge/dashboard.webp","title":"Team dashboard","description":"The current FootballForge workspace","alt":"FootballForge team dashboard shown with demo data"}
+   ```
+4. Deploy the updated repo to MijnHost with FETCH → DEPLOY. The real screenshot gallery will automatically replace the illustrative previews for that project, and visitors can enlarge each screenshot.
+
+The showcase pages use `project-showcase.css` and `project-showcase.js` and read the same `projects.json` project metadata. Product URLs remain in `links.visit`, separated from the showcase destinations. The old standalone `safe-agile.html` page still works and now links back to the full showcase.
+
 ## Hosting: MijnHost DirectAdmin
 
 NOVYX uses **GitHub for source control and MijnHost for website hosting**. GitHub commits alone do not automatically update the live domain.
