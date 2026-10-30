@@ -1,0 +1,257 @@
+/* NOVYX FORGE 3.1.1 — SIX WORLDS / ONE CORE
+   Functional translation of the cinematic visual exploration, not a raster screenshot.
+   Loaded after v3.1, retaining all existing navigation, reactor, weather and demos. */
+:root{--v311-ice:#a4ebf2;--v311-panel:#08141f}
+.hero{isolation:isolate}
+.hero .universe{height:828px;max-width:1330px;margin-top:20px;isolation:isolate}
+.v311-cosmos{
+ position:absolute;z-index:0;pointer-events:none;
+ inset:-22px -7% -18px;overflow:hidden;
+ background:
+  radial-gradient(ellipse 42% 45% at 49% 45%,rgba(30,103,135,.14),transparent 77%),
+  radial-gradient(ellipse 23% 26% at 2% 45%,rgba(11,68,106,.18),transparent 87%),
+  radial-gradient(ellipse 22% 25% at 98% 35%,rgba(75,47,126,.13),transparent 90%),
+  radial-gradient(circle at 18% 15%,rgba(204,241,255,.60) 0 1px,transparent 1.6px),
+  radial-gradient(circle at 81% 23%,rgba(186,222,248,.55) 0 1px,transparent 1.7px),
+  radial-gradient(circle at 66% 67%,rgba(218,239,253,.52) 0 1px,transparent 1.7px);
+ background-size:auto,auto,auto,137px 133px,173px 191px,229px 167px;
+ -webkit-mask-image:linear-gradient(to bottom,transparent,black 10%,black 84%,transparent);
+ mask-image:linear-gradient(to bottom,transparent,black 10%,black 84%,transparent);
+}
+.v311-cosmos:before,.v311-cosmos:after{content:"";position:absolute;pointer-events:none;border-radius:50%}
+.v311-cosmos:before{
+ width:575px;height:575px;left:-335px;bottom:-451px;
+ border:1px solid rgba(85,157,199,.24);
+ background:radial-gradient(circle at 66% 27%,rgba(42,125,162,.20),transparent 39%),linear-gradient(110deg,#071b2d,#08121e 60%,#040c17);
+ box-shadow:0 0 55px rgba(35,128,180,.17),0 0 0 8px rgba(74,125,157,.024),inset -25px 26px 67px rgba(2,10,21,.8)
+}
+.v311-cosmos:after{
+ width:410px;height:410px;right:-300px;bottom:-325px;
+ border:1px solid rgba(122,143,209,.18);
+ background:radial-gradient(circle at 15% 10%,rgba(85,107,180,.2),transparent 42%),#08121e;
+ box-shadow:0 0 52px rgba(101,106,181,.085),inset 38px 0 80px rgba(1,5,12,.75)
+}
+.v31-stage-field{
+ inset:18px 1.5% 10px;
+ border-radius:46% 46% 20% 20% / 28% 28% 14% 14%;
+ border-color:rgba(117,188,206,.1);
+ background:
+  radial-gradient(ellipse 36% 37% at 50% 37%,rgba(49,136,157,.14),transparent 79%),
+  repeating-linear-gradient(90deg,transparent 0 81px,rgba(130,180,200,.026) 82px),
+  repeating-linear-gradient(0deg,transparent 0 81px,rgba(130,180,200,.026) 82px);
+ -webkit-mask-image:radial-gradient(ellipse at 50% 49%,black 31%,transparent 82%);
+ mask-image:radial-gradient(ellipse at 50% 49%,black 31%,transparent 82%)
+}
+.v31-stage-field:before{inset:19% 20%;border-color:rgba(127,214,232,.2);box-shadow:0 0 0 65px rgba(104,189,210,.022),0 0 0 127px rgba(104,189,210,.011)}
+.v31-stage-field:after{inset:23% 26%;border-color:rgba(128,197,216,.23)}
+.v31-stage-hud{font-size:10px}
+.v31-hud-top,.v31-hud-bottom{left:23px;right:23px}
+.v31-hud-top{top:22px}.v31-hud-bottom{bottom:23px}
+.v31-reactor-marker{top:170px;z-index:5}
+/* Reactor is slightly smaller. The native trigger remains aligned to its central glow. */
+.hero .universe .scene{
+ top:148px;width:min(700px,55%);
+ filter:drop-shadow(0 20px 38px rgba(25,117,157,.18))
+}
+.universe .forge-reactor-trigger{top:252px}
+.universe .scene:before{background:radial-gradient(ellipse,rgba(68,178,212,.20),rgba(36,102,155,.08) 41%,transparent 73%)}
+.universe-network{opacity:.48}
+.universe-network .net-current{opacity:.58}
+.hero-beams{opacity:.38}
+.hero-particles{opacity:.38}
+/* Core geometry: three levels of portals, labels beside planets.
+   This eliminates the old column of stacked captions beneath each sphere. */
+.hero .universe .sphere-link{
+ position:absolute!important;
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) 174px;
+ grid-template-rows:1fr auto auto auto 1fr;
+ gap:7px 11px!important;
+ align-items:center;align-content:center;
+ width:365px!important;height:202px;min-height:0;
+ padding:4px 0!important;margin:0!important;
+ text-align:left;transform:none!important;
+ background:transparent!important;
+ z-index:6
+}
+.hero .universe .sphere-link .orb{
+ grid-column:2;grid-row:1/6;
+ justify-self:center;align-self:center;
+ width:174px;margin:0;
+ filter:saturate(.97);
+ animation-duration:9.5s
+}
+.hero .universe .sphere-link .sphere-caption,
+.hero .universe .sphere-link .sphere-description,
+.hero .universe .sphere-link .arrow{
+ grid-column:1;justify-self:stretch;align-self:initial;
+ min-width:0;width:auto;
+ margin:0;text-align:left;
+ opacity:1
+}
+.hero .universe .sphere-link .sphere-caption{
+ grid-row:2;font:700 19px/1.15 Outfit,sans-serif!important;
+ letter-spacing:.015em!important;color:#f5f9ff;
+ overflow-wrap:normal;white-space:normal;
+ text-shadow:0 1px 17px rgba(0,5,14,.83)
+}
+.hero .universe .sphere-link.third .sphere-caption,
+.hero .universe .sphere-link.third .sphere-caption span,
+.hero .universe .sphere-link.fourth .sphere-caption,
+.hero .universe .sphere-link.fourth .sphere-caption span,
+.hero .universe .sphere-link.sixth .sphere-caption{font-size:18px!important}
+.hero .universe .sphere-link .sphere-description{
+ grid-row:3;
+ font:600 10px/1.55 Outfit,sans-serif!important;
+ letter-spacing:.075em!important;color:#b9d2df!important;
+ text-shadow:0 1px 10px #040c16;opacity:.94
+}
+.hero .universe .sphere-link .arrow{
+ grid-row:4;
+ display:block!important;
+ font:700 10px/1.4 Outfit,sans-serif!important;
+ letter-spacing:.095em!important;
+ color:#86dce6!important;text-transform:uppercase
+}
+.hero .universe .sphere-link .sphere-caption:before{
+ display:block;content:"01 / WORLD";margin-bottom:9px;
+ font:700 9px/1.25 Outfit,sans-serif;letter-spacing:.18em;
+ color:rgba(151,195,208,.72)
+}
+.hero .universe .sphere-link.right .sphere-caption:before{content:"02 / WORLD"}
+.hero .universe .sphere-link.third .sphere-caption:before{content:"03 / WORLD"}
+.hero .universe .sphere-link.fourth .sphere-caption:before{content:"04 / WORLD"}
+.hero .universe .sphere-link.fifth .sphere-caption:before{content:"05 / WORLD"}
+.hero .universe .sphere-link.sixth .sphere-caption:before{content:"06 / WORLD"}
+.hero .universe .sphere-link.right,
+.hero .universe .sphere-link.fourth,
+.hero .universe .sphere-link.sixth{
+ grid-template-columns:174px minmax(0,1fr);
+ text-align:left
+}
+.hero .universe .sphere-link.right .orb,
+.hero .universe .sphere-link.fourth .orb,
+.hero .universe .sphere-link.sixth .orb{grid-column:1}
+.hero .universe .sphere-link.right .sphere-caption,
+.hero .universe .sphere-link.fourth .sphere-caption,
+.hero .universe .sphere-link.sixth .sphere-caption,
+.hero .universe .sphere-link.right .sphere-description,
+.hero .universe .sphere-link.fourth .sphere-description,
+.hero .universe .sphere-link.sixth .sphere-description,
+.hero .universe .sphere-link.right .arrow,
+.hero .universe .sphere-link.fourth .arrow,
+.hero .universe .sphere-link.sixth .arrow{grid-column:2}
+.hero .universe .sphere-link.left{left:0!important;right:auto!important;top:81px!important}
+.hero .universe .sphere-link.right{right:0!important;left:auto!important;top:86px!important}
+.hero .universe .sphere-link.third{left:2%!important;right:auto!important;top:330px!important}
+.hero .universe .sphere-link.fourth{right:2%!important;left:auto!important;top:330px!important}
+.hero .universe .sphere-link.fifth{left:6%!important;right:auto!important;top:574px!important}
+.hero .universe .sphere-link.sixth{right:6%!important;left:auto!important;top:574px!important}
+.hero .universe .sphere-link.left .orb{width:177px}
+.hero .universe .sphere-link.right .orb{width:180px}
+.hero .universe .sphere-link.third .orb{width:153px}
+.hero .universe .sphere-link.fourth .orb{width:167px}
+.hero .universe .sphere-link.fifth .orb{width:146px}
+.hero .universe .sphere-link.sixth .orb{width:154px}
+.hero .universe .sphere-link .orb-shell{
+ box-shadow:inset -17px -23px 33px rgba(0,6,17,.91),
+ inset 6px 9px 20px rgba(215,248,255,.30),
+ 0 0 45px rgba(var(--c),.25)
+}
+.hero .universe .sphere-link:focus-visible{outline:2px solid rgba(141,239,238,.87);outline-offset:5px;border-radius:13px}
+.hero .universe .sphere-link:hover .sphere-caption,
+.hero .universe .sphere-link:focus-visible .sphere-caption{color:#fff;text-shadow:0 0 17px rgba(var(--c),.3)}
+.hero .universe .sphere-link:hover .arrow,
+.hero .universe .sphere-link:focus-visible .arrow{color:#e2fbff!important;text-decoration:underline;text-underline-offset:4px}
+@media(min-width:1101px){
+ .hero .universe .sphere-link .arrow{opacity:.95}
+}
+@media(min-width:761px) and (max-width:1100px){
+ .hero .universe{height:760px}
+ .hero .universe .scene{top:135px;width:min(620px,66%)}
+ .universe .forge-reactor-trigger{top:225px}
+ .v31-reactor-marker{top:131px}
+ .hero .universe .sphere-link{width:310px!important;height:178px;grid-template-columns:minmax(0,1fr) 133px;column-gap:8px!important}
+ .hero .universe .sphere-link.right,.hero .universe .sphere-link.fourth,.hero .universe .sphere-link.sixth{grid-template-columns:133px minmax(0,1fr)}
+ .hero .universe .sphere-link .orb,
+ .hero .universe .sphere-link.left .orb,
+ .hero .universe .sphere-link.right .orb,
+ .hero .universe .sphere-link.third .orb,
+ .hero .universe .sphere-link.fourth .orb,
+ .hero .universe .sphere-link.fifth .orb,
+ .hero .universe .sphere-link.sixth .orb{width:132px}
+ .hero .universe .sphere-link .sphere-caption,
+ .hero .universe .sphere-link.third .sphere-caption,
+ .hero .universe .sphere-link.third .sphere-caption span,
+ .hero .universe .sphere-link.fourth .sphere-caption,
+ .hero .universe .sphere-link.fourth .sphere-caption span,
+ .hero .universe .sphere-link.sixth .sphere-caption{font-size:15px!important}
+ .hero .universe .sphere-link .sphere-description{font-size:9px!important;letter-spacing:.02em!important}
+ .hero .universe .sphere-link .arrow{font-size:9px!important}
+ .hero .universe .sphere-link.left{left:0!important;top:73px!important}
+ .hero .universe .sphere-link.right{right:0!important;top:73px!important}
+ .hero .universe .sphere-link.third{left:0!important;top:304px!important}
+ .hero .universe .sphere-link.fourth{right:0!important;top:304px!important}
+ .hero .universe .sphere-link.fifth{left:1%!important;top:534px!important}
+ .hero .universe .sphere-link.sixth{right:1%!important;top:534px!important}
+ .v31-hud-top,.v31-hud-bottom{left:12px;right:12px}
+}
+@media(max-width:760px){
+ .hero .universe{height:auto!important;margin-top:15px}
+ .v311-cosmos{inset:0 -6%;opacity:.48}
+ .v311-cosmos:before,.v311-cosmos:after{display:none}
+ .hero .universe .sphere-link,.hero .universe .sphere-link.left,
+ .hero .universe .sphere-link.right,.hero .universe .sphere-link.third,
+ .hero .universe .sphere-link.fourth,.hero .universe .sphere-link.fifth,
+ .hero .universe .sphere-link.sixth{
+  position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+  transform:none!important;width:100%!important;height:auto;min-height:200px;
+  display:flex!important;flex-direction:column;align-items:center;
+  justify-content:flex-start;gap:7px!important;padding:14px 5px 8px!important;
+  text-align:center;grid-template-columns:none;grid-template-rows:none
+ }
+ .hero .universe .sphere-link .orb,
+ .hero .universe .sphere-link.left .orb,.hero .universe .sphere-link.right .orb,
+ .hero .universe .sphere-link.third .orb,.hero .universe .sphere-link.fourth .orb,
+ .hero .universe .sphere-link.fifth .orb,.hero .universe .sphere-link.sixth .orb{
+  width:clamp(106px,27vw,155px);grid-column:auto;grid-row:auto;flex:0 0 auto
+ }
+ .hero .universe .sphere-link .sphere-caption,
+ .hero .universe .sphere-link.third .sphere-caption,
+ .hero .universe .sphere-link.third .sphere-caption span,
+ .hero .universe .sphere-link.fourth .sphere-caption,
+ .hero .universe .sphere-link.fourth .sphere-caption span,
+ .hero .universe .sphere-link.sixth .sphere-caption{
+  grid-column:auto;grid-row:auto;text-align:center;
+  font-size:clamp(13px,3vw,18px)!important;
+  line-height:1.15!important;letter-spacing:.02em!important
+ }
+ .hero .universe .sphere-link .sphere-caption:before{font-size:8px;margin-bottom:4px}
+ .hero .universe .sphere-link .sphere-description{grid-column:auto;grid-row:auto;text-align:center;font-size:9px!important;line-height:1.35!important}
+ .hero .universe .sphere-link .arrow{display:none!important}
+ .v31-reactor-marker{display:none}
+ .hero .universe .scene{top:auto;width:100%;transform:none}
+ .universe .forge-reactor-trigger{top:auto}
+}
+@media(max-width:420px){
+ .hero .universe .sphere-link,.hero .universe .sphere-link.left,
+ .hero .universe .sphere-link.right,.hero .universe .sphere-link.third,
+ .hero .universe .sphere-link.fourth,.hero .universe .sphere-link.fifth,
+ .hero .universe .sphere-link.sixth{min-height:188px;padding-left:3px!important;padding-right:3px!important}
+ .hero .universe .sphere-link .orb,
+ .hero .universe .sphere-link.left .orb,.hero .universe .sphere-link.right .orb,
+ .hero .universe .sphere-link.third .orb,.hero .universe .sphere-link.fourth .orb,
+ .hero .universe .sphere-link.fifth .orb,.hero .universe .sphere-link.sixth .orb{width:clamp(94px,26vw,113px)}
+ .hero .universe .sphere-link .sphere-caption,
+ .hero .universe .sphere-link.third .sphere-caption,
+ .hero .universe .sphere-link.third .sphere-caption span,
+ .hero .universe .sphere-link.fourth .sphere-caption,
+ .hero .universe .sphere-link.fourth .sphere-caption span,
+ .hero .universe .sphere-link.sixth .sphere-caption{font-size:12px!important}
+ .hero .universe .sphere-link .sphere-description{font-size:8px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .v311-cosmos,.v311-cosmos:before,.v311-cosmos:after{animation:none!important}
+ .hero .universe .sphere-link .orb{animation:none!important}
+ .hero .universe .scene{filter:none}
+}
