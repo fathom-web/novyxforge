@@ -1,0 +1,26 @@
+/* NOVYX FORGE 3.0 / Weather Worlds
+   Presentation only: one lightweight canvas behind project hero content. */
+.hero{isolation:isolate}
+.hero .hero-copy,.hero .hero-art{position:relative;z-index:2}
+.weather-layer{position:absolute;z-index:0;inset:-10px -36px 0;overflow:hidden;pointer-events:none;border-radius:25px;opacity:1;transition:opacity .35s}
+.weather-layer canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.85;pointer-events:none;mask-image:linear-gradient(to bottom,transparent 1%,#000 14%,#000 75%,transparent 98%);-webkit-mask-image:linear-gradient(to bottom,transparent 1%,#000 14%,#000 75%,transparent 98%)}
+.weather-layer:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;background:radial-gradient(ellipse 70% 70% at 52% 35%,rgba(var(--weather-rgb,100,180,230),.17),transparent 75%)}
+.weather-layer[data-type="rain"]:before{background:radial-gradient(ellipse at 55% 96%,rgba(49,151,205,.26),transparent 70%),linear-gradient(140deg,rgba(32,105,175,.08),transparent)}
+.weather-layer[data-type="snow"]:before{background:radial-gradient(ellipse at 64% 10%,rgba(172,151,255,.17),transparent 80%)}
+.weather-layer[data-type="meteors"]:before{background:radial-gradient(ellipse at 62% 31%,rgba(188,71,174,.18),transparent 70%)}
+.weather-layer[data-type="fog"]:before{background:radial-gradient(ellipse at 50% 65%,rgba(75,215,150,.17),transparent 82%),linear-gradient(98deg,transparent,rgba(103,233,199,.06),transparent)}
+.weather-layer[data-type="storm"]:before{background:radial-gradient(ellipse at 50% 6%,rgba(145,83,71,.27),transparent 79%),radial-gradient(ellipse at 67% 70%,rgba(230,139,58,.1),transparent 75%)}
+.weather-layer[data-type="wind"]:before{background:radial-gradient(ellipse at 64% 24%,rgba(43,179,187,.21),transparent 80%)}
+.weather-layer[data-type="sunrise"]:before{background:radial-gradient(ellipse at 70% 45%,rgba(255,187,94,.25),transparent 66%),linear-gradient(135deg,rgba(232,107,54,.07),transparent 60%)}
+.weather-layer[data-enabled="false"]{opacity:0}
+.weather-layer[data-enabled="true"][data-motion="static"] canvas{display:none}
+.atmosphere-controls{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:18px 0 0}
+.atmosphere-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid rgba(var(--weather-rgb,114,202,237),.34);border-radius:30px;background:rgba(8,20,41,.74);color:#c9daeb;font:600 10px Outfit,sans-serif;letter-spacing:.07em;text-transform:uppercase}
+.atmosphere-chip:before{content:"";width:6px;height:6px;border-radius:50%;background:rgb(var(--weather-rgb,114,202,237));box-shadow:0 0 10px rgba(var(--weather-rgb,114,202,237),.6)}
+.atmosphere-toggle{min-height:37px;padding:8px 12px;border:1px solid rgba(142,195,234,.36);border-radius:30px;background:rgba(10,22,42,.86);color:#dce9f6;font:600 10px Outfit,sans-serif;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,background .2s}
+.atmosphere-toggle:hover{border-color:var(--accent);background:rgba(42,69,99,.63)}
+.atmosphere-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.atmosphere-toggle[aria-pressed="false"]{color:#b1bacb}
+@media(max-width:950px){.weather-layer{inset:0 -14px 0}.weather-layer canvas{opacity:.58}}
+@media(max-width:650px){.weather-layer{inset:0 -8px 0;border-radius:14px}.atmosphere-controls{gap:6px}.atmosphere-chip,.atmosphere-toggle{font-size:9px;padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){.weather-layer canvas{display:none!important}.weather-layer{transition:none!important}.atmosphere-toggle{transition:none!important}}
