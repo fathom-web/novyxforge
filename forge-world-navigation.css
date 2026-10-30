@@ -1,0 +1,137 @@
+/* NOVYX 3.0 / World Navigator, Forge Reactor & portal transitions.
+   Feature styles are additive and scoped to avoid legacy hero regressions. */
+
+/* World navigator: slim panoramic strip above every project showcase. */
+.world-nav{position:sticky;top:0;z-index:50;width:100%;border-bottom:1px solid rgba(125,193,233,.2);
+ background:linear-gradient(115deg,rgba(8,16,36,.97),rgba(11,25,44,.97));
+ -webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px)}
+.world-nav-inner{display:flex;align-items:center;gap:17px;max-width:1250px;width:calc(100% - 34px);margin:auto;min-height:76px}
+.world-nav-title{flex:0 0 auto;display:flex;align-items:center;gap:10px;min-width:165px;color:#dcf2ff;text-decoration:none}
+.world-nav-core{display:grid;place-items:center;height:37px;width:37px;border:1px solid rgba(159,220,255,.42);
+ border-radius:12px;background:radial-gradient(circle at 32% 20%,rgba(160,242,255,.3),rgba(35,72,124,.12) 65%);
+ box-shadow:inset 0 0 18px rgba(141,218,246,.1),0 0 18px rgba(82,158,240,.11);
+ color:#a4ecff;font:500 21px Outfit,sans-serif}
+.world-nav-title strong{display:block;font:600 12px Outfit,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.world-nav-title small{display:block;color:#92aacc;font:600 9px Outfit,sans-serif;letter-spacing:.14em}
+.world-nav-scroll{position:relative;min-width:0;flex:1;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:rgba(131,187,228,.38) transparent}
+.world-nav-scroll::-webkit-scrollbar{height:4px}
+.world-nav-scroll::-webkit-scrollbar-thumb{background:rgba(131,187,228,.38);border-radius:10px}
+.world-nav-links{display:flex;align-items:center;gap:7px;min-width:max-content;padding:12px 2px}
+.world-nav-link{--world-rgb:108,206,236;display:inline-flex;align-items:center;gap:8px;min-height:40px;
+ padding:9px 12px;border:1px solid transparent;border-radius:9px;color:#b7cee3;background:rgba(92,128,171,.05);
+ text-decoration:none;white-space:nowrap;font:600 11px Outfit,sans-serif;letter-spacing:.015em;
+ transition:border-color .22s,background .22s,transform .22s,color .22s}
+.world-nav-link:hover{border-color:rgba(var(--world-rgb),.4);color:#f4f9ff;
+ background:rgba(var(--world-rgb),.12);transform:translateY(-1px)}
+.world-nav-link.is-current{border-color:rgba(var(--world-rgb),.52);color:#fff;
+ background:linear-gradient(125deg,rgba(var(--world-rgb),.22),rgba(16,29,52,.65))}
+.world-nav-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;
+ background:rgb(var(--world-rgb));box-shadow:0 0 11px rgba(var(--world-rgb),.62)}
+.world-nav-divider{height:22px;border-left:1px solid rgba(148,193,238,.24);margin:0 6px}
+.world-nav-link:focus-visible{outline:2px solid rgb(var(--world-rgb));outline-offset:3px}
+#novyx-world-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Reactor trigger is an accessible control over the preserved glass centerpiece. */
+.universe .forge-reactor-trigger{
+ position:absolute;z-index:12;left:50%;top:258px;transform:translate(-50%,-50%);
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+ width:104px;height:104px;padding:12px;
+ border:1px solid rgba(190,242,255,.59);border-radius:50%;color:#fff;
+ background:radial-gradient(circle at 28% 19%,rgba(230,252,255,.28),rgba(72,164,225,.1) 35%,rgba(8,23,54,.61) 68%);
+ box-shadow:inset 0 0 30px rgba(157,224,255,.19),0 0 23px rgba(75,173,235,.29),0 0 65px rgba(82,129,246,.19);
+ cursor:pointer;isolation:isolate;transition:box-shadow .25s,scale .25s,border-color .25s;
+ font-family:Outfit,sans-serif;line-height:1.2;text-align:center;
+ -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.universe .forge-reactor-trigger:before{
+ content:"";position:absolute;inset:-12px;z-index:-1;border:1px dashed rgba(146,229,255,.42);border-radius:50%;
+ animation:reactor-menu-spin 35s linear infinite;pointer-events:none}
+.universe .forge-reactor-trigger:after{
+ content:"";position:absolute;inset:8px;z-index:-1;border:1px solid rgba(202,244,255,.26);border-radius:50%;
+ box-shadow:inset 0 0 25px rgba(116,217,255,.11);pointer-events:none}
+.forge-reactor-trigger .reactor-trigger-mark{font:600 29px Outfit,sans-serif;color:#c8f7ff;
+ text-shadow:0 0 14px rgba(120,235,255,.75)}
+.forge-reactor-trigger .reactor-trigger-label{font:700 9px Outfit,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#e9faff}
+.universe .forge-reactor-trigger:hover,.universe .forge-reactor-trigger:focus-visible{
+ border-color:#c4f6ff;box-shadow:inset 0 0 34px rgba(130,235,255,.28),0 0 32px rgba(62,217,255,.53),0 0 91px rgba(75,143,250,.25);scale:1.06}
+.universe .forge-reactor-trigger:focus-visible{outline:3px solid #c6f9ff;outline-offset:13px}
+@keyframes reactor-menu-spin{to{transform:rotate(360deg)}}
+
+/* Native modal dialog: browser owns keyboard trap, Escape and accessibility. */
+.forge-reactor-dialog{position:fixed;z-index:9999;width:min(620px,calc(100vw - 28px));max-height:min(86vh,800px);padding:0;
+ border:1px solid rgba(128,214,245,.4);border-radius:20px;color:#f3f9ff;overflow:auto;
+ background:radial-gradient(ellipse at 70% -4%,rgba(63,174,209,.18),transparent 66%),
+ linear-gradient(155deg,#101c33,#060c1d 85%);
+ box-shadow:0 35px 100px rgba(0,0,0,.7),inset 0 1px rgba(199,237,255,.1)}
+.forge-reactor-dialog::backdrop{background:rgba(3,7,18,.81);-webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px)}
+.reactor-dialog-inner{padding:clamp(22px,4vw,38px);display:grid;gap:17px}
+.reactor-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.reactor-dialog-kicker{color:#85e0ff;font:700 10px Outfit,sans-serif;letter-spacing:.23em}
+.reactor-dialog-title{font:500 clamp(35px,6vw,58px)/1.05 Outfit,sans-serif;letter-spacing:-.055em;margin:12px 0 0}
+.reactor-dialog-desc{margin:0;color:#acbdd4;font:400 14px/1.7 "DM Sans",sans-serif}
+.reactor-close{flex:0 0 39px;height:39px;display:grid;place-items:center;border:1px solid rgba(158,201,238,.34);
+ border-radius:50%;color:#e5f6ff;background:rgba(63,95,137,.2);font-size:24px;cursor:pointer}
+.reactor-close:hover{background:rgba(100,177,212,.28)}
+.reactor-actions{display:grid;gap:10px}
+.reactor-action{display:flex;align-items:center;text-align:left;justify-content:space-between;gap:16px;min-height:68px;
+ padding:16px 19px;border:1px solid rgba(141,194,237,.22);border-radius:12px;background:rgba(29,47,78,.56);
+ color:#f3faff;text-decoration:none;cursor:pointer;transition:transform .2s,border-color .2s,background .2s}
+.reactor-action:hover{border-color:rgba(119,220,247,.54);background:rgba(42,73,107,.61);transform:translateY(-2px)}
+.reactor-action strong{display:block;font:500 19px Outfit,sans-serif}
+.reactor-action small{display:block;margin-top:5px;font:400 12px/1.5 "DM Sans",sans-serif;color:#adc3da}
+.reactor-action .reactor-arrow{font:500 22px Outfit,sans-serif;color:#95edff}
+.reactor-action:focus-visible,.reactor-close:focus-visible{outline:2px solid #9ef2ff;outline-offset:4px}
+.reactor-worlds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;max-height:min(38vh,330px);overflow:auto;min-width:0}
+.reactor-worlds[hidden]{display:none!important}
+.reactor-worlds .world-nav-link{min-width:0;white-space:normal;text-align:left;border-color:rgba(var(--world-rgb),.21)}
+.reactor-dialog-foot{padding-top:10px;border-top:1px solid rgba(136,185,233,.15);color:#839ebc;
+ font:500 10px Outfit,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+html.reactor-is-open{scrollbar-gutter:stable}
+
+/* 380ms outbound and 650ms optional inbound atmospheric portal. */
+.world-gate{--gate-rgb:111,196,242;position:fixed;inset:0;z-index:99999;pointer-events:none;opacity:0;
+ display:grid;place-items:center;overflow:hidden;
+ background:radial-gradient(ellipse at 50% 50%,rgba(var(--gate-rgb),.34),rgba(4,11,30,.9) 68%,rgba(2,6,17,.99));
+ transition:opacity .28s ease}
+.world-gate.is-departing,.world-gate.is-arrived{opacity:1}
+.world-gate.is-disappearing{opacity:0}
+.world-gate-warp{position:relative;width:min(70vmin,630px);aspect-ratio:1;display:grid;place-items:center;
+ filter:drop-shadow(0 0 28px rgba(var(--gate-rgb),.31))}
+.world-gate-ring{position:absolute;inset:13%;border-radius:50%;border:2px solid rgba(var(--gate-rgb),.78);box-shadow:0 0 33px rgba(var(--gate-rgb),.35)}
+.world-gate-ring.ring-two{inset:2%;border-style:dashed;opacity:.6;transform:rotate(23deg)}
+.world-gate-ring.ring-three{inset:29%;opacity:.47}
+.world-gate.is-departing .ring-one{animation:gate-out .38s ease-out both}
+.world-gate.is-departing .ring-two{animation:gate-out .42s ease-out both}
+.world-gate-label{font:600 clamp(16px,3vw,28px) Outfit,sans-serif;letter-spacing:.14em;text-align:center;color:#f2fcff;
+ text-transform:uppercase;max-width:70%;text-shadow:0 0 22px rgba(var(--gate-rgb),.72)}
+.world-gate.is-arrival .world-gate-warp{animation:gate-in .45s ease-out both}
+@keyframes gate-out{from{scale:.55;opacity:.15}to{scale:1.3;opacity:.9}}
+@keyframes gate-in{from{scale:1.4;opacity:.8}to{scale:.72;opacity:.2}}
+
+@media(max-width:760px){
+ .world-nav-inner{width:calc(100% - 24px);min-height:70px;gap:9px}
+ .world-nav-title{min-width:0;flex:0 0 auto;gap:7px}
+ .world-nav-title strong{font-size:10px}
+ .world-nav-title small{font-size:8px}
+ .world-nav-core{height:30px;width:30px;border-radius:10px;font-size:17px}
+ .world-nav-links{padding:10px 2px}
+ .world-nav-link{padding:8px 10px;min-height:40px;font-size:10px}
+ .universe .forge-reactor-trigger{position:relative!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;
+  transform:none!important;grid-column:1/-1;grid-row:1;align-self:center;justify-self:center;width:90px;height:90px;margin-top:4px}
+ .universe .forge-reactor-trigger .reactor-trigger-mark{font-size:25px}
+ .universe .forge-reactor-trigger .reactor-trigger-label{font-size:8px}
+}
+@media(max-width:440px){
+ .world-nav-inner{width:calc(100% - 18px)}
+ .world-nav-title strong{font-size:9px}
+ .world-nav-title small{font-size:7px}
+ .world-nav-link{font-size:10px}
+ .reactor-worlds{grid-template-columns:1fr}
+ .reactor-dialog-inner{gap:13px}
+ .reactor-dialog-title{font-size:37px}
+}
+@media(prefers-reduced-motion:reduce){
+ .universe .forge-reactor-trigger:before,.world-gate-warp,.world-gate-ring{animation:none!important}
+ .world-gate{display:none!important}
+ .reactor-action,.universe .forge-reactor-trigger,.world-nav-link{transition:none!important}
+ .reactor-action:hover,.world-nav-link:hover{transform:none!important}
+}
