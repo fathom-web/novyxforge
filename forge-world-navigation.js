@@ -147,8 +147,10 @@
     if (!anchor || (anchor.target && anchor.target !== "_self") ||
         anchor.hasAttribute("download")) return;
     const world = internalWorld(anchor.href);
+    // A link to a section within this same showcase is ordinary hash navigation,
+    // not a transition into another project world.
     if (!world || !worldById.has(world.id) ||
-        world.url.href === location.href) return;
+        (world.url.pathname === location.pathname && world.url.search === location.search)) return;
     // Leave URL untouched when no transition can be shown.
     event.preventDefault();
     leaving = true;
