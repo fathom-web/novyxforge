@@ -1,0 +1,22 @@
+/* NOVYX FORGE 3.0 / Forge Feedback.
+   Reusable on the main site and in every project world. */
+.forge-feedback{position:relative;isolation:isolate;scroll-margin-top:108px}
+.forge-feedback:before{content:"";position:absolute;z-index:-1;inset:-15px -25px;pointer-events:none;background:radial-gradient(ellipse 60% 65% at 80% 38%,rgba(74,181,226,.09),transparent)}
+.feedback-panel{border:1px solid rgba(135,192,230,.26);border-radius:18px;background:linear-gradient(144deg,rgba(19,40,70,.8),rgba(7,15,34,.95));padding:clamp(21px,3vw,34px);box-shadow:0 25px 80px rgba(1,5,23,.2);margin-bottom:52px}
+.feedback-panel-heading{display:flex;align-items:flex-start;gap:17px;justify-content:space-between;flex-wrap:wrap;margin-bottom:23px}
+.feedback-panel-heading h2{margin:9px 0;color:#f0f9ff;font:500 clamp(26px,3.7vw,37px) Outfit,sans-serif;letter-spacing:-.035em}
+.feedback-panel-heading p{max-width:670px;color:#abc3d9;font:400 13px/1.75 "DM Sans",sans-serif;margin:8px 0 0}
+.feedback-glyph{display:grid;place-items:center;width:58px;height:58px;flex:0 0 58px;border:1px solid rgba(132,220,242,.44);border-radius:17px;background:radial-gradient(circle at 35% 20%,rgba(128,230,247,.29),rgba(40,105,148,.05) 77%);box-shadow:inset 0 0 24px rgba(80,194,235,.08);color:#c3f6ff;font:500 31px Outfit,sans-serif}
+.feedback-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.feedback-action{min-width:0;min-height:87px;display:flex;align-items:center;gap:15px;padding:17px 20px;border:1px solid rgba(147,193,231,.27);border-radius:12px;background:rgba(23,46,75,.53);color:#f4fbff;text-decoration:none;transition:background .18s,border-color .18s,transform .18s}
+.feedback-action:hover{border-color:rgba(142,231,244,.66);background:rgba(39,78,111,.53);transform:translateY(-2px)}
+.feedback-action:focus-visible{outline:2px solid #a2edff;outline-offset:4px}
+.feedback-action-icon{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border:1px solid rgba(139,223,242,.35);border-radius:11px;color:#a9f2ff;font:500 22px Outfit,sans-serif;background:rgba(59,144,181,.1)}
+.feedback-action-copy{display:grid;gap:5px;min-width:0;flex:1}
+.feedback-action-copy strong{color:#eefaff;font:500 17px Outfit,sans-serif}
+.feedback-action-copy small{color:#acc6d8;font:400 11px/1.5 "DM Sans",sans-serif}
+.feedback-action-arrow{color:#a4edff;font:600 20px Outfit,sans-serif}
+.feedback-notice{margin:19px 0 0;padding:13px 15px;border-left:2px solid #80dff1;border-radius:0 8px 8px 0;background:rgba(50,107,142,.1);font:400 11px/1.85 "DM Sans",sans-serif;color:#aac4d9}
+.feedback-notice strong{font-weight:700;color:#d8f4fd}
+@media(max-width:750px){.feedback-actions{grid-template-columns:1fr}.feedback-panel{padding:21px}.feedback-panel-heading{gap:10px}.feedback-action{min-height:73px;padding:14px}.feedback-glyph{width:45px;height:45px;flex-basis:45px;font-size:24px}}
+@media(prefers-reduced-motion:reduce){.feedback-action{transition:none!important}.feedback-action:hover{transform:none!important}}
