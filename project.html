@@ -18,10 +18,12 @@
 <link rel="stylesheet" href="./forge-weather.css?v=1">
 <link rel="stylesheet" href="./forge-world-navigation.css?v=2">
 <link rel="stylesheet" href="./forge-demo.css?v=1">
+<link rel="stylesheet" href="./forge-observatory.css?v=1">
 <script src="./forge-weather.js?v=2" defer></script>
 <script src="./forge-demos.js?v=2" defer></script>
 <script src="./project-showcase.js?v=6" defer></script>
 <script src="./forge-world-navigation.js?v=3" defer></script>
+<script src="./forge-observatory.js?v=1" defer></script>
 </head>
 <body>
 <header>
@@ -116,6 +118,16 @@
         <div id="tech-list" style="display:flex;flex-wrap:wrap;gap:9px"></div>
       </article>
     </div>
+  </section>
+
+  <section class="shell section evolution-section" id="evolution" aria-labelledby="evolution-heading">
+    <div class="section-label">PROJECT EVOLUTION / VERIFIED HISTORY</div>
+    <h2 id="evolution-heading">From idea to iteration.</h2>
+    <p class="evolution-lead">A timeline of verified public development milestones. A code commit does not necessarily mean an application has been released or deployed.</p>
+    <div class="evolution-rail" id="evolution-feed" aria-live="polite" aria-relevant="additions text">
+      <p class="evolution-empty">Retrieving reviewed project history…</p>
+    </div>
+    <p class="evolution-legend" id="evolution-note">Entries require a checked GitHub source. Planned work is not represented as shipped history.</p>
   </section>
 
   <section class="shell" aria-labelledby="next-step-heading">
