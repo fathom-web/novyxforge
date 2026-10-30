@@ -100,7 +100,12 @@
           ]
         ],
         "privacy": "The real app may contain information about youth players. Live pages are never embedded or automatically captured here.",
-        "screenshots": []
+        "screenshots": [],
+        "demo": {
+          "id": "football",
+          "title": "Build a matchday squad",
+          "description": "Try a formation and player availability using fictional squad members."
+        }
       },
       "world": {
         "weather": {
@@ -184,7 +189,12 @@
           ]
         ],
         "privacy": "Personal student dashboards and results are not embedded or captured on the public showcase.",
-        "screenshots": []
+        "screenshots": [],
+        "demo": {
+          "id": "study",
+          "title": "Take a practice round",
+          "description": "Answer a short sample quiz and flip a few flashcards."
+        }
       },
       "world": {
         "weather": {
@@ -268,7 +278,8 @@
           ]
         ],
         "privacy": "Illustrative visuals shown here are not captured Instagram posts.",
-        "screenshots": []
+        "screenshots": [],
+        "demo": null
       },
       "world": {
         "weather": {
@@ -354,7 +365,12 @@
           ]
         ],
         "privacy": "No direct Defence-system or Microsoft 365 integration. Do not use operationally sensitive information. The linked SAFe website is a beta; availability and organizational approval must be verified.",
-        "screenshots": []
+        "screenshots": [],
+        "demo": {
+          "id": "safe",
+          "title": "Plan a sample PI",
+          "description": "Choose an ART role and a start date to see an example ceremony schedule."
+        }
       },
       "world": {
         "weather": {
@@ -438,7 +454,8 @@
           ]
         ],
         "privacy": "Concept only. No verified addon screenshots, packages or CurseForge releases exist yet.",
-        "screenshots": []
+        "screenshots": [],
+        "demo": null
       },
       "world": {
         "weather": {
@@ -522,7 +539,12 @@
           ]
         ],
         "privacy": "Prototype data can evolve with patches. No claim of official Riot Games endorsement.",
-        "screenshots": []
+        "screenshots": [],
+        "demo": {
+          "id": "wildrift",
+          "title": "Explore lane matchups",
+          "description": "Select a lane and opponents to see illustrative draft ideas, not live counters."
+        }
       },
       "world": {
         "weather": {
@@ -608,7 +630,8 @@
           ]
         ],
         "privacy": "Inputs stay in the browser until you choose to copy or download them. This is not AI inference.",
-        "screenshots": []
+        "screenshots": [],
+        "demo": null
       },
       "world": {
         "weather": {
@@ -659,5 +682,5 @@
     "A working download link is provided; for templates, the GitHub repository is actually configured as a template",
     "Links and installation steps have been tested"
   ],
-  "worldsVersion": "3.0-alpha.1"
+  "worldsVersion": "3.0-beta.1"
 }
