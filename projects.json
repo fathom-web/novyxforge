@@ -63,6 +63,44 @@
         "downloadUrl": null,
         "documentationUrl": null,
         "license": null
+      },
+      "showcase": {
+        "lead": "Less admin. More football.",
+        "audience": "Youth football coaches, team managers and club volunteers",
+        "story": "Team management becomes complicated long before kick-off. FootballForge combines player availability, team organization and matchday preparation in one focused workflow.",
+        "steps": [
+          [
+            "Manage your teams",
+            "Keep player rosters, positions and relevant team information together."
+          ],
+          [
+            "Prepare matchday",
+            "Turn reported absences into a practical squad, formation and rotation plan."
+          ],
+          [
+            "Communicate clearly",
+            "Bring line-ups, match information and parent communications into one process."
+          ]
+        ],
+        "views": [
+          [
+            "Team clubhouse",
+            "Select a team and see its matchday workflow.",
+            "clubhouse"
+          ],
+          [
+            "Matchday planner",
+            "Plan players, roles and rotations in a football-first interface.",
+            "pitch"
+          ],
+          [
+            "Availability overview",
+            "Spot absences and keep preparation organized.",
+            "availability"
+          ]
+        ],
+        "privacy": "The real app may contain information about youth players. Live pages are never embedded or automatically captured here.",
+        "screenshots": []
       }
     },
     {
@@ -98,6 +136,44 @@
         "downloadUrl": null,
         "documentationUrl": null,
         "license": null
+      },
+      "showcase": {
+        "lead": "Make learning feel like progress.",
+        "audience": "Students and families who want practice that feels manageable",
+        "story": "StudyForge turns practice into a simple routine: choose what to work on, test your knowledge, use flashcards and see your progress. The experience stays focused on learning rather than complicated administration.",
+        "steps": [
+          [
+            "Choose your activity",
+            "Open practice tests or flashcards for a focused learning session."
+          ],
+          [
+            "Practice at your pace",
+            "Repeat exercises and revisit difficult material."
+          ],
+          [
+            "Watch your progress",
+            "Use results to see what needs another attempt."
+          ]
+        ],
+        "views": [
+          [
+            "Learning dashboard",
+            "A clear starting point for a study session.",
+            "learning"
+          ],
+          [
+            "Practice quiz",
+            "Question-based practice with visible progression.",
+            "quiz"
+          ],
+          [
+            "Flashcard session",
+            "Quick review, recall and repetition.",
+            "flashcards"
+          ]
+        ],
+        "privacy": "Personal student dashboards and results are not embedded or captured on the public showcase.",
+        "screenshots": []
       }
     },
     {
@@ -133,6 +209,44 @@
         "downloadUrl": null,
         "documentationUrl": null,
         "license": null
+      },
+      "showcase": {
+        "lead": "Curiosity deserves a cinematic universe.",
+        "audience": "Curious minds who love science, discovery and remarkable stories",
+        "story": "The Fascination Files explores the surprising side of science, nature, history, technology and mystery through short, visually distinctive storytelling.",
+        "steps": [
+          [
+            "Discover a subject",
+            "Explore a surprising fact or a question worth asking."
+          ],
+          [
+            "See the story",
+            "Cinematic visual treatments make each idea memorable."
+          ],
+          [
+            "Keep exploring",
+            "Follow the evolving library of facts and discoveries on Instagram."
+          ]
+        ],
+        "views": [
+          [
+            "Cinematic discovery",
+            "A concept look at the storytelling style.",
+            "cosmos"
+          ],
+          [
+            "Fact file",
+            "Short, curiosity-led editorial presentation.",
+            "fact"
+          ],
+          [
+            "The next mystery",
+            "Themes spanning science, technology and wonder.",
+            "mystery"
+          ]
+        ],
+        "privacy": "Illustrative visuals shown here are not captured Instagram posts.",
+        "screenshots": []
       }
     },
     {
@@ -170,6 +284,44 @@
         "downloadUrl": null,
         "documentationUrl": null,
         "license": null
+      },
+      "showcase": {
+        "lead": "From PI chaos to a clear plan.",
+        "audience": "Release Train Engineers, Product Managers, Product Owners and Scrum Masters",
+        "story": "SAFe Agile Forge makes PI ceremonies and planning events easier to prepare. The browser-based prototype focuses on useful role guidance, iteration calendars, event planning and offline deliverables.",
+        "steps": [
+          [
+            "Choose the role",
+            "Start from the ceremonies and responsibilities that matter for your role."
+          ],
+          [
+            "Plan the Program Increment",
+            "Work with iteration dates, ceremonies and PI Event preparation."
+          ],
+          [
+            "Export and share",
+            "Create calendar or offline planning artifacts as supported by the prototype."
+          ]
+        ],
+        "views": [
+          [
+            "Role-based planning",
+            "A guided view of ceremony planning by responsibility.",
+            "roles"
+          ],
+          [
+            "PI Command Center",
+            "Iteration planning and event coordination.",
+            "planner"
+          ],
+          [
+            "Calendar export",
+            "A conceptual overview of exported sessions and preparation.",
+            "calendar"
+          ]
+        ],
+        "privacy": "No direct Defence-system or Microsoft 365 integration. Do not use operationally sensitive information.",
+        "screenshots": []
       }
     },
     {
@@ -205,6 +357,44 @@
         "downloadUrl": null,
         "documentationUrl": null,
         "license": null
+      },
+      "showcase": {
+        "lead": "Every character has a legend.",
+        "audience": "World of Warcraft players who want to remember the journey",
+        "story": "WoW LifeForge is an exploratory addon concept about preserving meaningful character stories, milestones and memorable moments. It is not a finished addon or published download.",
+        "steps": [
+          [
+            "Collect the idea",
+            "Define which moments of an adventure are worth remembering."
+          ],
+          [
+            "Prototype an addon",
+            "Explore platform-supported data and a respectful in-game interface."
+          ],
+          [
+            "Prepare a release",
+            "If built and approved, distribute the addon exclusively through CurseForge."
+          ]
+        ],
+        "views": [
+          [
+            "Character chronicle",
+            "Imagined presentation for a personal adventure journal.",
+            "runes"
+          ],
+          [
+            "Milestones",
+            "A possible concept for memorable achievements.",
+            "milestones"
+          ],
+          [
+            "The journey",
+            "An early visual direction, not existing addon functionality.",
+            "journey"
+          ]
+        ],
+        "privacy": "Concept only. No verified addon screenshots, packages or CurseForge releases exist yet.",
+        "screenshots": []
       }
     },
     {
@@ -240,6 +430,44 @@
         "downloadUrl": null,
         "documentationUrl": null,
         "license": null
+      },
+      "showcase": {
+        "lead": "A smarter pick starts with a matchup.",
+        "audience": "Wild Rift players who want quick lane-counter guidance during draft",
+        "story": "Wild Rift Counter is a lane-first draft assistant prototype. It aims to make matchup information easier to use before selecting your champion, including duo-lane considerations for ADC and support.",
+        "steps": [
+          [
+            "Choose your lane",
+            "Start with Baron, Jungle, Mid, ADC or Support."
+          ],
+          [
+            "Enter opponents",
+            "Select the lane opponent, or both opponents for duo lanes."
+          ],
+          [
+            "Compare options",
+            "Review counter suggestions and make your own choice."
+          ]
+        ],
+        "views": [
+          [
+            "Lane selection",
+            "A simple starting point for each draft position.",
+            "lanes"
+          ],
+          [
+            "Matchup review",
+            "Compare possible counter picks.",
+            "matchup"
+          ],
+          [
+            "Duo lane",
+            "Consider both ADC and Support champions.",
+            "duo"
+          ]
+        ],
+        "privacy": "Prototype data can evolve with patches. No claim of official Riot Games endorsement.",
+        "screenshots": []
       }
     },
     {
@@ -266,7 +494,7 @@
         "Client-side processing"
       ],
       "links": {
-        "visit": null,
+        "visit": "./spark-lab.html",
         "source": "https://github.com/fathom-web/novyxforge"
       },
       "detail": "spark-lab.html",
@@ -277,6 +505,44 @@
         "downloadUrl": null,
         "documentationUrl": null,
         "license": null
+      },
+      "showcase": {
+        "lead": "Your next project starts with one spark.",
+        "audience": "Makers, creators and people with ideas they want to develop",
+        "story": "Spark Lab is a browser-based workshop that turns a raw idea into an initial project brief, practical next steps and an AI-ready prompt. The first beta works without a paid AI API.",
+        "steps": [
+          [
+            "Describe your idea",
+            "Write a few sentences about what you want to make."
+          ],
+          [
+            "Add context",
+            "Optionally name the audience, problem and desired format."
+          ],
+          [
+            "Take the blueprint",
+            "Copy a build prompt or export the starter brief as JSON."
+          ]
+        ],
+        "views": [
+          [
+            "Idea intake",
+            "A focused form to capture the first spark.",
+            "spark"
+          ],
+          [
+            "Your blueprint",
+            "A structured starting brief and next steps.",
+            "blueprint"
+          ],
+          [
+            "Build prompt",
+            "Copy an implementation-oriented prompt to continue.",
+            "prompt"
+          ]
+        ],
+        "privacy": "Inputs stay in the browser until you choose to copy or download them. This is not AI inference.",
+        "screenshots": []
       }
     }
   ],
