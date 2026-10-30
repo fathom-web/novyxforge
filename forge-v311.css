@@ -198,7 +198,7 @@
 }
 @media(max-width:760px){
  .hero .universe{height:auto!important;margin-top:15px}
- .v311-cosmos{inset:0 -6%;opacity:.48}
+ .v311-cosmos{inset:0;opacity:.48}
  .v311-cosmos:before,.v311-cosmos:after{display:none}
  .hero .universe .sphere-link,.hero .universe .sphere-link.left,
  .hero .universe .sphere-link.right,.hero .universe .sphere-link.third,
