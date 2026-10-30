@@ -50,6 +50,16 @@ The original five orbiting spheres, their project URLs, and central glass Forge 
 
 **Visual QA after deploying:** check desktop widths around 1440–1920px and phones around 375–430px. Verify ambient light fades smoothly beyond the sphere edges, no colored rectangular panels appear, spheres remain tappable, the large NOVYX heading is visible after the shorter hero, and keyboard focus / reduced-motion are usable. The GitHub static checks do not substitute for this visual review.
 
+## Forge Pipeline and Spark Lab (v2 platform features)
+
+- **Forge Pipeline:** four interactive columns (**Spark → Explore → Build → Launch**) displaying real, manually maintained status from `projects.json`. Use **Everything / Projects / Ideas** to filter. Clicking a project opens its details; clicking an idea takes you to the Idea Vault. Counts are derived from source data; they are not automatic completion percentages, production telemetry, or deployment verification.
+- **Status notes:** each project has a `pipelineNote` field for a short, editorial explanation of its present phase. Keep it accurate and update the stage and note together when project status changes.
+- **Spark Lab:** `spark-lab.html`, a real browser-only experiment that takes a raw idea, optional audience/problem and suggested platform, then produces a starter brief, template-guided steps and a copyable AI-ready prompt. It can download a JSON brief. It makes **no AI API calls** and performs no server-side processing of entered idea text.
+- **Spark Lab classification:** listed as **Build** until the new experience has been visually tested after MijnHost deployment. Do not present it as a production-ready AI assistant.
+- **Future Spark Lab 2.0:** add actual AI integration only when an approved secure backend and explicit user consent are in place.
+
+**Adding a new project:** edit `projects.json` (project id, stage, category, summary, `pipelineNote`, optional links); the pipeline and project explorer will both update without copying HTML cards. New ideas belong under `ideas`.
+
 ## Hosting: MijnHost DirectAdmin
 
 NOVYX uses **GitHub for source control and MijnHost for website hosting**. GitHub commits alone do not automatically update the live domain.
