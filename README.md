@@ -6,7 +6,7 @@ An independent AI & Technology Lab: a cinematic home for projects, ideas and exp
 
 The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3_0.md)**. It includes all ten selected workstreams: Six-Sphere Universe, seven-weather Weather Engine, World Transitions, World Navigator, Forge Reactor, Interactive Demo Mode, The Observatory, Evolution Timeline, Forge Feedback and Command Search, plus mobile/accessibility/performance/screenshot release gates.
 
-**Current state:** 3.0 Alpha code is being built on GitHub: six spheres and the seven-weather shared engine are implemented, but live browser acceptance and MijnHost deployment are not yet verified. The remaining roadmap items are scheduled for subsequent increments.
+**Current state:** 3.0 Alpha + Navigation Beta + Interactive Demos + **Observatory/Evolution Timeline** are coded on GitHub. Forge Feedback, Command Search, real reviewed screenshots, live browser acceptance and MijnHost production deployment have **not** been verified or delivered.
 
 ### 3.0 Alpha code and test command
 
@@ -35,6 +35,16 @@ The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3
 - `project.html` shows an extra **Try it yourself** section and hero CTA only for these four approved projects. The Fascination Files, WoW LifeForge and Spark Lab remain normal showcases.
 - Screenshots are separate from simulations. The `showcase.screenshots` list must include a real capture, sanitised content, accessible title/alt text, the local `./assets/screenshots/<project-id>/...` path and **`"verified":true`** after review. Otherwise the page keeps visibly labeled *illustrative previews*.
 - Test with `node tests/v3-demos-check.mjs`; additionally visually test keyboard and touch, label clarity and reset behavior on real browsers. GitHub commits do not automatically deploy to MijnHost.
+
+### 3.0 The Observatory + Evolution Timeline — reviewed GitHub evidence
+
+- `activity.json` contains **10 curated, dated, source-linked GitHub commits** across the NOVYX platform and several public app repositories, verified against GitHub on 2026-10-30. These are **development commits, not releases or evidence of production deployments**.
+- `forge-observatory.js` / `forge-observatory.css` render the evidence. On the homepage, **The Observatory** appears immediately before the existing live `Forge Pulse`. Visitors can filter by project or by Development/Releases.
+- Every project showcase has an **Evolution Timeline** driven by the same data. Where there is no reviewed public history (currently The Fascination Files and WoW LifeForge), display an honest empty state.
+- The Observatory is a **reviewed editorial snapshot**; Forge Pulse separately fetches the latest public GitHub commits when visible. Never describe Observatory history as a live feed. An empty release tab does not mean GitHub has no releases; it means none has been reviewed/published in `activity.json`.
+- To add a development entry, first verify its GitHub commit URL, actual commit timestamp and content. Add an item with `type:"development"`, `status:"committed"`, `reviewed:true`, exact `projectId`, and `source:{type:"github-commit",repository:"fathom-web/<repo>",sha:"<40-character SHA>",url:"https://github.com/fathom-web/<repo>/commit/<SHA>"}`. No claim of deployed features from source changes alone.
+- To add a genuine release event, verify that an actual GitHub release was published and add `type:"release"`, `status:"published"`, `source:{type:"github-release",repository:"fathom-web/<repo>",tag:"<actual-tag>",url:"https://github.com/fathom-web/<repo>/releases/tag/<actual-tag>"}` along with the real publication timestamp. Ordinary commits never become releases automatically.
+- Static contract test: `node tests/v3-observatory-check.mjs`. In-session simulated DOM checks have covered the 10-event feed, Wild Rift project filter, release empty state, FootballForge timeline and empty WoW timeline. **Actual in-browser visual/device tests remain outstanding.**
 
 ## What's here
 
