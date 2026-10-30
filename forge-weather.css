@@ -2,7 +2,7 @@
    Presentation only: one lightweight canvas behind project hero content. */
 .hero{isolation:isolate}
 .hero .hero-copy,.hero .hero-art{position:relative;z-index:2}
-.weather-layer{position:absolute;z-index:0;inset:-10px -36px 0;overflow:hidden;pointer-events:none;border-radius:25px;opacity:1;transition:opacity .35s}
+.weather-layer{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none;border-radius:25px;opacity:1;transition:opacity .35s}
 .weather-layer canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.85;pointer-events:none;mask-image:linear-gradient(to bottom,transparent 1%,#000 14%,#000 75%,transparent 98%);-webkit-mask-image:linear-gradient(to bottom,transparent 1%,#000 14%,#000 75%,transparent 98%)}
 .weather-layer:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;background:radial-gradient(ellipse 70% 70% at 52% 35%,rgba(var(--weather-rgb,100,180,230),.17),transparent 75%)}
 .weather-layer[data-type="rain"]:before{background:radial-gradient(ellipse at 55% 96%,rgba(49,151,205,.26),transparent 70%),linear-gradient(140deg,rgba(32,105,175,.08),transparent)}
@@ -21,6 +21,6 @@
 .atmosphere-toggle:hover{border-color:var(--accent);background:rgba(42,69,99,.63)}
 .atmosphere-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .atmosphere-toggle[aria-pressed="false"]{color:#b1bacb}
-@media(max-width:950px){.weather-layer{inset:0 -14px 0}.weather-layer canvas{opacity:.58}}
-@media(max-width:650px){.weather-layer{inset:0 -8px 0;border-radius:14px}.atmosphere-controls{gap:6px}.atmosphere-chip,.atmosphere-toggle{font-size:9px;padding:8px 10px}}
+@media(max-width:950px){.weather-layer{inset:0}.weather-layer canvas{opacity:.58}}
+@media(max-width:650px){.weather-layer{inset:0;border-radius:14px}.atmosphere-controls{gap:6px}.atmosphere-chip,.atmosphere-toggle{font-size:9px;padding:8px 10px}}
 @media(prefers-reduced-motion:reduce){.weather-layer canvas{display:none!important}.weather-layer{transition:none!important}.atmosphere-toggle{transition:none!important}}
