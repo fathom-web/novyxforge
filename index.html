@@ -602,6 +602,7 @@
   <link rel="stylesheet" href="./forge-worlds.css?v=2">
   <link rel="stylesheet" href="./forge-universe-v3.css?v=2">
   <link rel="stylesheet" href="./forge-world-navigation.css?v=2">
+  <link rel="stylesheet" href="./forge-observatory.css?v=1">
   <link rel="canonical" href="https://novyxforge.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://novyxforge.com/">
@@ -614,7 +615,7 @@
       <span class="mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 25V7l18 18V7" stroke="#83dcff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 7L25 25" stroke="#a991ff" stroke-opacity=".7" stroke-width="1.1"/></svg></span>
       NOVYX <small>FORGE</small>
     </a>
-    <nav class="navlinks" id="site-menu" aria-label="Main navigation"><a href="#home">Universe</a><a href="#projects">Projects</a><a href="#pipeline">Pipeline</a><a href="#spark-lab">Spark Lab</a><a href="#vault">Idea Vault</a><a class="top-cta" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav><button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="navlinks" id="site-menu" aria-label="Main navigation"><a href="#home">Universe</a><a href="#projects">Projects</a><a href="#pipeline">Pipeline</a><a href="#observatory">Observatory</a><a href="#spark-lab">Spark Lab</a><a href="#vault">Idea Vault</a><a class="top-cta" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav><button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
   <main>
     <section class="container hero" id="home">
@@ -1060,6 +1061,42 @@
       <div class="vault-grid" id="vault-grid"><p class="catalog-empty">Opening the Idea Vault…</p></div>
       <p class="project-note" id="vault-count">Idea Vault entries are concepts, not product release announcements.</p>
     </section>
+    <section class="container platform-section forge-observatory" id="observatory" aria-labelledby="observatory-heading">
+      <div class="lab-section-heading reveal">
+        <div><div class="section-kicker">EVERY STEP LEAVES A TRACE</div><h2 id="observatory-heading">The <em>Observatory.</em></h2></div>
+        <p>Follow how NOVYX and its project worlds evolve, one verifiable development milestone at a time. Real evidence, not made-up release announcements.</p>
+      </div>
+      <p class="obs-intro">A curated project-development history. For the most recent raw commit signals, continue to <a href="#pulse">Forge Pulse ↓</a>.</p>
+      <div class="obs-board">
+        <div class="obs-header">
+          <div class="obs-title-block"><strong>Development signals</strong><small>REVIEWED COMMIT EVIDENCE · NOT AUTOMATIC RELEASES</small></div>
+          <span class="obs-review" id="observatory-reviewed">Loading reviewed history…</span>
+        </div>
+        <div class="obs-stats" aria-label="Reviewed history summary">
+          <div class="obs-stat"><strong id="obs-verified-count">—</strong><span>Verified entries</span></div>
+          <div class="obs-stat"><strong id="obs-project-count">—</strong><span>Projects with history</span></div>
+          <div class="obs-stat"><strong id="obs-releases-count">—</strong><span>Confirmed releases</span></div>
+        </div>
+        <div class="obs-toolbar">
+          <div class="obs-filters" role="group" aria-label="Filter development history">
+            <button class="obs-filter" type="button" data-filter="all" aria-pressed="true">All activity</button>
+            <button class="obs-filter" type="button" data-filter="development" aria-pressed="false">Development</button>
+            <button class="obs-filter" type="button" data-filter="release" aria-pressed="false">Releases</button>
+          </div>
+          <label class="obs-field">Project
+            <select id="observatory-project" aria-label="Filter history by project"><option value="all">All projects</option></select>
+          </label>
+        </div>
+        <div class="obs-feed" id="observatory-feed" aria-live="polite" aria-relevant="additions text">
+          <p class="obs-empty">Loading verified development history…</p>
+        </div>
+        <div class="obs-footer">
+          <p><span id="observatory-visible-count">Loading entries</span> · Commits describe source-code activity, not proof of a deployed product. Dates and links are checked against the public GitHub record.</p>
+          <a class="obs-more" href="#pulse">Latest raw commits: Forge Pulse ↓</a>
+        </div>
+      </div>
+    </section>
+
     <section class="container platform-section" id="pulse" aria-labelledby="pulse-heading">
       <div class="lab-section-heading reveal">
         <div><div class="section-kicker">THE FORGE IS ALWAYS MOVING</div><h2 id="pulse-heading">Forge <em>Pulse.</em></h2></div>
@@ -1200,6 +1237,7 @@
   <script src="./forge-experience.js?v=4" defer></script>
   <script src="./forge-polish.js?v=5" defer></script>
   <script src="./forge-world-navigation.js?v=3" defer></script>
+  <script src="./forge-observatory.js?v=1" defer></script>
 
   <dialog class="forge-reactor-dialog" id="forge-reactor-dialog" aria-labelledby="reactor-dialog-title" aria-describedby="reactor-dialog-desc">
     <div class="reactor-dialog-inner">
@@ -1223,7 +1261,7 @@
           <span><strong>Mission Control</strong><small>Track the Forge Pipeline and current projects</small></span><span class="reactor-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
-      <div class="reactor-dialog-foot"><a id="reactor-home" href="#projects">Browse all projects ↗</a> · NOVYX FORGE 3.0</div>
+      <div class="reactor-dialog-foot"><a id="reactor-home" href="#projects">Browse all projects ↗</a> · <a href="#observatory">Enter Observatory ↗</a> · NOVYX FORGE 3.0</div>
     </div>
   </dialog>
   <span id="novyx-world-status" role="status" aria-live="polite" aria-atomic="true"></span>
