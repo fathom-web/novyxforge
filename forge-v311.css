@@ -6,7 +6,7 @@
 .hero .universe{height:828px;max-width:1330px;margin-top:20px;isolation:isolate}
 .v311-cosmos{
  position:absolute;z-index:0;pointer-events:none;
- inset:-22px -7% -18px;overflow:hidden;
+ inset:-22px 0 -18px;overflow:hidden;
  background:
   radial-gradient(ellipse 42% 45% at 49% 45%,rgba(30,103,135,.14),transparent 77%),
   radial-gradient(ellipse 23% 26% at 2% 45%,rgba(11,68,106,.18),transparent 87%),
