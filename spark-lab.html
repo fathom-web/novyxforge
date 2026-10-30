@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070b1b">
+<meta name="description" content="Spark Lab by NOVYX FORGE: turn a raw idea into a practical project brief and an AI-ready build prompt. Free, browser-based and private by design.">
+<title>Spark Lab — NOVYX FORGE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23050b1c'/%3E%3Cpath d='M13 48V16l38 32V16' fill='none' stroke='%237bdfff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:dark;--navy:#060c1c;--text:#effaff;--muted:#a7bad4;--mint:#9cefd4;--cyan:#92daff;--line:rgba(134,199,246,.24)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 78% 14%,rgba(91,80,189,.22),transparent 50%),radial-gradient(ellipse at 16% 26%,rgba(39,134,191,.17),transparent 43%),linear-gradient(180deg,#071329,#050917 70%);font:15px/1.65 "DM Sans",sans-serif;color:var(--text);min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+.shell{width:min(1180px,calc(100% - 42px));margin:auto}
+header{border-bottom:1px solid rgba(133,187,236,.13)}
+nav{height:84px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font:700 18px Outfit,sans-serif;letter-spacing:.15em}.brand span{color:#9bddff}
+.back{font:700 11px Outfit,sans-serif;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(142,196,246,.31);padding:12px 17px;border-radius:8px}
+.back:hover{background:rgba(100,157,227,.13)}
+.hero{padding:75px 0 42px;display:grid;grid-template-columns:minmax(0,1.15fr) 210px;align-items:center;gap:30px}
+.kicker{font:700 11px Outfit,sans-serif;letter-spacing:.23em;color:var(--mint);text-transform:uppercase}
+h1{font:500 clamp(52px,7vw,87px)/1.02 Outfit,sans-serif;letter-spacing:-.06em;margin:17px 0}
+h1 em{font-style:normal;background:linear-gradient(100deg,#9ceeff,#b3a0ff,#a9f8d6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro{font-size:17px;line-height:1.76;color:#b4c5dc;max-width:710px}
+.hero-orb{position:relative;width:190px;aspect-ratio:1;margin:auto;display:grid;place-items:center}
+.hero-orb:before,.hero-orb:after{content:"";position:absolute;inset:9%;border:1px solid rgba(141,218,245,.46);border-radius:50%;animation:spin 25s linear infinite}
+.hero-orb:after{inset:0;border-color:rgba(177,160,255,.26);border-style:dashed;animation-duration:38s;animation-direction:reverse}
+.hero-orb span{display:block;width:39%;aspect-ratio:1;border-radius:28%;transform:rotate(45deg);background:radial-gradient(circle at 30% 22%,#e2fff2,rgba(94,221,186,.36) 27%,rgba(19,49,101,.9) 73%);border:1px solid rgba(225,255,248,.69);box-shadow:0 0 42px rgba(101,217,210,.4),inset 0 0 27px rgba(105,190,255,.21);animation:levitate 7s ease-in-out infinite}
+.grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:21px;align-items:start;padding-bottom:88px}
+.panel{padding:31px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(148deg,rgba(19,40,80,.79),rgba(6,15,35,.96));box-shadow:inset 0 1px 0 rgba(207,235,255,.08),0 20px 70px rgba(0,0,0,.2)}
+.panel h2{font:500 29px Outfit,sans-serif;margin:0 0 8px;letter-spacing:-.025em}
+.panel-intro{font-size:13px;color:#9fb3cf;line-height:1.7;margin:0 0 26px}
+.fields{display:grid;gap:18px}
+.field{display:grid;gap:8px}
+.field label{font:700 11px Outfit,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#b6d2ec}
+.field label span{color:#8ea3c4;font-weight:400;letter-spacing:0;text-transform:none}
+.field textarea,.field input,.field select{background:rgba(7,17,38,.84);color:var(--text);border:1px solid rgba(132,185,241,.32);border-radius:10px;padding:14px 15px;width:100%;outline:none;font-size:14px}
+.field textarea:focus,.field input:focus,.field select:focus{border-color:#9addfb;box-shadow:0 0 0 3px rgba(105,180,248,.12)}
+.field textarea{min-height:130px;resize:vertical;line-height:1.6}
+.field input::placeholder,.field textarea::placeholder{color:#7188a8}
+.field select{appearance:auto}
+.button{border-radius:8px;padding:13px 18px;font:700 11px Outfit,sans-serif;letter-spacing:.13em;text-transform:uppercase;transition:transform .2s,border-color .2s,background .2s}
+.button:hover{transform:translateY(-2px)}
+.primary{border:1px solid #b9ffe2;background:linear-gradient(110deg,#c6fff1,#89dfff);color:#081829}
+.secondary{border:1px solid rgba(135,206,255,.43);background:rgba(20,55,92,.47);color:#d9f3ff}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+.hint{margin:17px 0 0;font-size:12px;color:#96aac5;line-height:1.7}
+.results{position:relative;min-height:445px}
+.results[data-ready="false"] .result-content{display:none}
+.empty{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:19px;min-height:306px;text-align:center;border:1px dashed rgba(143,199,245,.25);border-radius:12px;background:radial-gradient(circle at 50% 42%,rgba(65,141,216,.08),transparent 70%)}
+.empty-art{position:relative;font:500 46px Outfit,sans-serif;color:#a6e9ff;text-shadow:0 0 35px rgba(104,185,255,.37)}
+.empty-art:before,.empty-art:after{content:"";position:absolute;inset:-23px;border:1px solid rgba(145,199,255,.3);border-radius:50%}
+.empty-art:after{inset:-40px;border-style:dashed;border-color:rgba(188,160,255,.24)}
+.empty p{max-width:250px;color:#a7b9d5;margin:0;font-size:13px}
+.results[data-ready="true"] .empty{display:none}
+.result-state{font:700 10px Outfit,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:#8ddfc4;margin-bottom:20px}
+.result-block{margin-top:20px;padding:18px;border-radius:12px;border:1px solid rgba(127,186,247,.2);background:rgba(9,26,51,.53)}
+.result-block strong{display:block;font:600 11px Outfit,sans-serif;letter-spacing:.14em;color:#b4d8f6;text-transform:uppercase;margin-bottom:8px}
+.result-block p{color:#c5d6e7;font-size:14px;line-height:1.75;margin:0;white-space:pre-wrap}
+.result-block ul{margin:9px 0 0;padding-left:19px;color:#b4c8e2;font-size:13px}
+.result-block li{margin:9px 0}
+.prompt{width:100%;min-height:280px;line-height:1.7;resize:vertical;background:#071328;color:#d7eaff;padding:17px;border:1px solid rgba(135,200,248,.28);border-radius:11px;font-size:12px}
+.prompt:focus{border-color:#99e5ff}
+.result-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+.feedback{font-size:12px;color:#a4efcc;min-height:22px;margin-top:10px}
+footer{padding:30px 0 42px;color:#899dbd;font-size:12px;border-top:1px solid rgba(138,198,235,.15)}
+footer a{color:#bfebff}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes levitate{50%{transform:rotate(50deg) translate(-5px,7px)}}
+@media(max-width:780px){.grid{grid-template-columns:1fr}.hero{grid-template-columns:1fr;padding:56px 0 30px}.hero-orb{width:125px;grid-row:1;margin:0}.panel{padding:23px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><nav class="shell"><a class="brand" href="./index.html">NOVYX <span>FORGE</span></a><a class="back" href="./index.html#pipeline">← Back to the Forge</a></nav></header>
+<main>
+ <section class="hero shell">
+  <div><div class="kicker">EXPERIMENT 001 / THE INTERACTIVE LAB</div><h1>Spark <em>Lab.</em></h1><p class="intro">Every breakthrough begins with a question. Turn a rough idea into a clearer concept, a practical starting plan and a build-ready AI prompt.</p></div>
+  <div class="hero-orb" aria-hidden="true"><span></span></div>
+ </section>
+ <div class="grid shell">
+  <section class="panel" aria-labelledby="form-heading"><h2 id="form-heading">Start with a spark.</h2><p class="panel-intro">You don't need a perfect plan. Just enough curiosity to get started.</p>
+    <form id="spark-form" class="fields">
+      <div class="field"><label for="idea">What's your idea? <span>(required)</span></label><textarea id="idea" name="idea" required maxlength="1200" placeholder="I want to create something that…" spellcheck="true"></textarea></div>
+      <div class="field"><label for="audience">Who is it for? <span>(optional)</span></label><input id="audience" name="audience" maxlength="200" placeholder="Students, football coaches, gamers…"></div>
+      <div class="field"><label for="problem">What problem does it solve? <span>(optional)</span></label><textarea id="problem" name="problem" maxlength="600" rows="3" placeholder="Today people struggle with…"></textarea></div>
+      <div class="field"><label for="format">What would you like to build?</label><select id="format" name="format"><option value="undecided">Help me decide</option><option value="web">Web application</option><option value="mobile">Mobile application</option><option value="addon">Game addon or plugin</option><option value="automation">Automation or workflow</option><option value="creative">Creative digital experience</option></select></div>
+      <button class="button primary" type="submit">Forge my idea ↗</button>
+    </form>
+    <p class="hint">No account, paid AI API or server-side processing. Your inputs stay in this browser; only files you explicitly download leave it.</p>
+  </section>
+  <section class="panel results" id="spark-results" data-ready="false" aria-labelledby="result-heading">
+    <h2 id="result-heading">Your first blueprint.</h2><p class="panel-intro">A structured starting point — not a pretend AI-generated specification.</p>
+    <div class="empty"><div class="empty-art" aria-hidden="true">✧</div><p>Enter an idea and we'll turn it into a practical brief and reusable prompt.</p></div>
+    <div class="result-content" aria-live="polite">
+      <div class="result-state">PROJECT BRIEF / FIRST DRAFT</div>
+      <div class="result-block"><strong>The idea</strong><p id="brief-idea"></p></div>
+      <div class="result-block"><strong>Who &amp; why</strong><p id="brief-context"></p></div>
+      <div class="result-block"><strong>Suggested starting steps</strong><ul id="brief-steps"></ul></div>
+      <div class="result-block"><strong>Build-ready AI prompt</strong><textarea id="build-prompt" class="prompt" aria-label="Generated build-ready prompt" readonly></textarea>
+      <div class="result-actions"><button class="button primary" id="copy-prompt" type="button">Copy prompt</button><button class="button secondary" id="download-brief" type="button">Download brief (.json)</button></div><div class="feedback" id="spark-feedback" role="status"></div></div>
+    </div>
+  </section>
+ </div>
+</main>
+<footer><div class="shell">NOVYX FORGE · Ideas forged into reality. <a href="./index.html#vault">Explore the Idea Vault ↗</a></div></footer>
+<script>
+(() => {
+"use strict";
+const el=id=>document.getElementById(id);
+let current=null;
+const formats={undecided:"the most suitable digital format",web:"a web application",mobile:"a mobile application",addon:"a game addon or plugin",automation:"an automation or workflow",creative:"a creative digital experience"};
+const startingSteps={
+ undecided:["Validate who needs the idea and what they currently use.","Choose the simplest medium that can prove the concept.","Build one small demonstrable workflow before expanding."],
+ web:["Sketch the smallest possible user journey and core screens.","Build a clickable responsive prototype using a minimal stack.","Test the workflow in a browser on desktop and mobile."],
+ mobile:["Define the one job the app must perform well.","Choose an appropriate native or cross-platform approach.","Prototype the core flow and test it on a real phone."],
+ addon:["Verify the target application's addon API, permissions and distribution policy.","Create a minimal working addon with one feature.","Test compatibility, packaging and the official release process."],
+ automation:["Map the trigger, input data and desired result.","Prototype a single reliable automated workflow.","Add error handling, privacy checks and human review steps."],
+ creative:["Clarify the story, interaction or feeling the experience should create.","Build one compelling visual or interactive prototype.","Test clarity, accessibility and audience response."]
+};
+const safeInput=(id,max)=>el(id).value.trim().slice(0,max);
+const txt=(id,value)=>{el(id).textContent=value};
+const promptFor=data=>[
+"Act as an experienced product strategist, UX designer and pragmatic software architect.",
+"Turn the following raw idea into a realistic, buildable project proposal.",
+"",
+"IDEA: "+data.idea,
+"INTENDED AUDIENCE: "+(data.audience||"Not specified — propose realistic target users."),
+"PROBLEM: "+(data.problem||"Not yet validated — identify assumptions and ways to validate."),
+"PREFERRED OUTPUT: "+formats[data.format],
+"",
+"Deliver:",
+"1. A clear one-sentence product vision and the specific user problem.",
+"2. Primary users, their needs and the biggest assumptions.",
+"3. A minimum viable product with 3 essential user stories and acceptance criteria.",
+"4. Suggested key screens, interactions and data model if relevant.",
+"5. A simple technical approach, including affordable hosting where possible.",
+"6. Privacy, security, accessibility and relevant platform restrictions.",
+"7. A practical staged implementation plan and an initial validation experiment.",
+"8. What to deliberately exclude from the first release.",
+"9. Up to three important unresolved decisions.",
+"",
+"Do not claim features already exist. Label assumptions and keep scope realistic.",
+"Answer in a clear, implementation-oriented format."
+].join("\n");
+function forge(event){
+ event.preventDefault();
+ if(!el("spark-form").reportValidity())return;
+ const data={idea:safeInput("idea",1200),audience:safeInput("audience",200),problem:safeInput("problem",600),format:el("format").value};
+ if(!data.idea)return;
+ const steps=startingSteps[data.format]||startingSteps.undecided;
+ current={...data,formatLabel:formats[data.format],steps,prompt:promptFor(data),type:"NOVYX Spark Lab brief",version:1};
+ txt("brief-idea",data.idea);
+ txt("brief-context","Audience: "+(data.audience||"To be defined")+".\nProblem: "+(data.problem||"To be validated")+".\nFormat: "+formats[data.format]+".");
+ const items=el("brief-steps");items.replaceChildren();
+ steps.forEach(step=>{const li=document.createElement("li");li.textContent=step;items.append(li)});
+ el("build-prompt").value=current.prompt;
+ el("spark-results").dataset.ready="true";
+ txt("spark-feedback","");
+ if(matchMedia("(max-width:780px)").matches)el("spark-results").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"instant":"smooth"});
+}
+el("spark-form").addEventListener("submit",forge);
+el("copy-prompt").addEventListener("click",async()=>{
+ if(!current)return;
+ try{await navigator.clipboard.writeText(current.prompt);txt("spark-feedback","Prompt copied to your clipboard.");}
+ catch(e){el("build-prompt").focus();el("build-prompt").select();txt("spark-feedback","Select and copy the highlighted text manually.");}
+});
+el("download-brief").addEventListener("click",()=>{
+ if(!current)return;
+ const file=new Blob([JSON.stringify(current,null,2)+"\n"],{type:"application/json"});
+ const url=URL.createObjectURL(file),a=document.createElement("a");
+ a.href=url;a.download="novyx-spark-brief.json";document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+ txt("spark-feedback","Your brief has been prepared for download.");
+});
+})();
+</script>
+</body>
+</html>
