@@ -2,7 +2,7 @@
 (() => {
   "use strict";
   const ROOT = "./";
-  const STAGE_LABELS = {spark:"Spark",exploring:"Exploring",building:"Building",released:"Released"};
+  const STAGE_LABELS = {spark:"Spark",exploring:"Exploring",building:"Building",released:"Launch","public-ready":"Public Ready"};
   const displayDate = new Intl.DateTimeFormat("en-GB",{day:"numeric",month:"short",year:"numeric"});
   const byId = id => document.getElementById(id);
   const text = (element,value) => {element.textContent = value == null ? "" : String(value);return element};
@@ -10,6 +10,20 @@
   const isSafeProjectId = value => /^[a-z0-9-]{1,60}$/.test(value);
   const detailUrl = project => project.detail || "project.html?project="+encodeURIComponent(project.id);
   const append = (parent,...children) => {children.forEach(c=>parent.append(c));return parent};
+
+
+  // A live app does not automatically qualify as a reusable public package.
+  // Distribution URLs and documentation must be explicitly published.
+  const safeHttps=url=>{try{return typeof url==="string"&&new URL(url).protocol==="https:";}catch(e){return false;}};
+  function verifiedDistribution(p){
+    const d=p.distribution||{};
+    const licensed=typeof d.license==="string"&&d.license.trim().length>0;
+    const docs=safeHttps(d.documentationUrl);
+    const template=(d.type==="template"||d.type==="both")&&/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/generate\/?$/.test(d.templateUrl||"");
+    const download=(d.type==="download"||d.type==="both")&&safeHttps(d.downloadUrl);
+    return {ready:licensed&&docs&&(template||download),template,download,docs,d};
+  }
+  function actualStage(p){return p.stage==="public-ready"&&!verifiedDistribution(p).ready?"released":p.stage;}
 
   let data=null;
   let filter="all";
@@ -52,20 +66,30 @@
   // THE FORGE PIPELINE — a curated project/idea lifecycle, not inferred
   // completion percentages or a live deploy status. projects.json is canonical.
   function pipelineItem(item,kind){
-    const a=make("a","pipeline-card");
-    a.href=kind==="idea"?"#vault":detailUrl(item);
-    a.style.setProperty("--item-accent",item.accent||"#90dfff");
-    a.style.setProperty("--pipeline-halo",kind==="idea"?"rgba(176,133,255,.13)":"rgba(98,159,255,.12)");
-    a.setAttribute("aria-label",(kind==="idea"?"Explore idea: ":"Explore project: ")+item.name);
+    const pub=kind==="project"?verifiedDistribution(item):null;
+    const ready=kind==="project"&&actualStage(item)==="public-ready";
+    const card=make(ready?"article":"a","pipeline-card"+(ready?" pipeline-distribution-card":""));
+    if(!ready)card.href=kind==="idea"?"#vault":detailUrl(item);
+    card.style.setProperty("--item-accent",item.accent||"#90cfff");
+    card.style.setProperty("--pipeline-halo",kind==="idea"?"rgba(176,133,255,.13)":"rgba(98,159,255,.12)");
+    card.setAttribute("aria-label",(ready?"Public package: ":kind==="idea"?"Explore idea: ":"Explore project: ")+item.name);
     const meta=make("div","pipeline-meta");
     const symbol=make("span","pipeline-symbol",item.symbol||"✧");symbol.setAttribute("aria-hidden","true");
     append(meta,make("span","pipeline-type",kind==="idea"?"IDEA / "+item.category:"PROJECT / "+item.category),symbol);
-    const headline=make("h3","",item.name);
-    const description=make("p","",kind==="project"?(item.pipelineNote||item.summary):item.summary);
-    const link=make("div","pipeline-link");
-    append(link,make("span","",kind==="idea"?"See it in the Vault":"Explore project"),make("span","","↗"));
-    append(a,meta,headline,description,link);
-    return a;
+    if(ready)card.append(make("span","pipeline-ready-note","PUBLIC DISTRIBUTION"));
+    append(card,meta,make("h3","",item.name),make("p","",kind==="project"?(item.pipelineNote||item.summary):item.summary));
+    if(ready){
+      const actions=make("div","pipeline-downloads");
+      const add=(label,url,secondary)=>{const a=make("a",secondary?"secondary":"",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer";actions.append(a);};
+      if(pub.template)add("Use this template ↗",pub.d.templateUrl,false);
+      if(pub.download)add("Download release ↗",pub.d.downloadUrl,Boolean(pub.template));
+      if(pub.docs)add("Setup & docs ↗",pub.d.documentationUrl,true);
+      card.append(actions);
+    }else{
+      const more=make("div","pipeline-link");
+      append(more,make("span","",kind==="idea"?"See it in the Vault":"Explore project"),make("span","","↗"));card.append(more);
+    }
+    return card;
   }
 
   function renderPipeline(){
@@ -77,18 +101,22 @@
     columns.forEach(column=>{
       const stage=column.dataset.pipelineStage;
       const items=[
-        ...shownProjects.filter(p=>p.stage===stage).map(item=>({item,kind:"project"})),
+        ...shownProjects.filter(p=>actualStage(p)===stage).map(item=>({item,kind:"project"})),
         ...shownIdeas.filter(p=>p.stage===stage).map(item=>({item,kind:"idea"}))
       ];
       total+=items.length;
       column.replaceChildren();
       if(items.length)items.forEach(({item,kind})=>column.append(pipelineItem(item,kind)));
-      else column.append(make("p","pipeline-empty",pipelineView==="projects"?"No projects in this phase yet.":pipelineView==="ideas"?"No ideas in this phase yet.":"Nothing in this phase just yet."));
+      else if(stage==="public-ready"){
+        const empty=make("div","pipeline-empty");
+        empty.append(make("p","","No public download yet. Projects move here after a tested release, documentation and a valid package or GitHub template."));
+        const guide=make("a","","Publishing checklist ↗");guide.href="./public-ready.html";empty.append(guide);column.append(empty);
+      }else column.append(make("p","pipeline-empty",pipelineView==="projects"?"No projects in this phase yet.":pipelineView==="ideas"?"No ideas in this phase yet.":"Nothing in this phase just yet."));
       const count=byId("pipeline-count-"+stage);
       if(count)text(count,items.length);
     });
     const summary=byId("pipeline-summary");
-    if(summary)text(summary,total+" "+(pipelineView==="projects"?"projects":pipelineView==="ideas"?"ideas":"initiatives")+" across four stages");
+    if(summary)text(summary,total+" "+(pipelineView==="projects"?"projects":pipelineView==="ideas"?"ideas":"initiatives")+" across five stages");
   }
 
   function initPipeline(){
