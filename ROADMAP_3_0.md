@@ -1,6 +1,6 @@
 # NOVYX FORGE 3.0 — THE LIVING UNIVERSE
 
-**Status:** Approved scope / 3.0 Alpha, Increment 2 navigation beta and core Increment 3 interactive demos committed to GitHub; real screenshots, browser acceptance and MijnHost production deployment not yet verified.  
+**Status:** Approved scope / 3.0 Alpha, Navigation Beta, four Interactive Demos, and Observatory/Evolution code committed to GitHub. Remaining features: Forge Feedback, Command Search, real reviewed screenshots and live browser/release acceptance.  
 **Baseline inspected:** 2026-10-30 · GitHub repository `fathom-web/novyxforge`  
 **Release principle:** Ship all ten selected features as one coherent NOVYX 3.0 release, in testable, reversible increments; keep the existing site working.
 
@@ -18,7 +18,7 @@
 
 **Still pending for this Alpha:** inspect the *deployed* site at desktop, tablet and mobile sizes; verify FPS, actual appearance, controls and external links. No production rollout or completed QA claimed.
 
-**Not yet built:** World Transitions, World Navigator, Reactor actions, Interactive Demo Mode, Observatory, Evolution Timeline, Forge Feedback and Command Search. Their accepted scope remains unchanged below.
+**At the initial Alpha milestone:** these follow-on features were pending; see subsequent implementation logs below for completed Nav, Demo and Observatory/Evolution work. Forge Feedback and Command Search remain unimplemented.
 
 ## Increment 2 implementation log — 2026-10-30
 
@@ -31,7 +31,7 @@
 - `tests/v3-navigation-check.mjs`: zero-dependency static wiring and accessibility contract checks (run `node tests/v3-navigation-check.mjs` from the repo root).
 - Live MijnHost deployment, visual browser tests, native dialog keyboard/focus tests and actual mobile verification are **still required**. This is implemented beta code, not a completed release.
 
-**Next unimplemented increment:** product demos, verified screenshots and richer showcase interactions (Increment 3).
+**After Increment 2:** product demos were built in Increment 3; verified real screenshots still require collection and review.
 
 ## Increment 3 implementation log — 2026-10-30
 
@@ -44,7 +44,20 @@
 - `tests/v3-demos-check.mjs`: standalone Node simulated DOM interactions and anti-data-leak checks. In-session simulated interactions were exercised for all four demos.
 - **Still pending:** collecting and reviewing actual app screenshots (none are published in `showcase.screenshots`); full desktop/mobile visual QA and production MijnHost deployment. Increment 3 code does not constitute a verified live release.
 
-**Next remaining 3.0 features:** Evolution Timeline, Observatory, Forge Feedback, Command Search and final release gate.
+**After Increment 3:** Evolution Timeline and Observatory followed in the next increment. Forge Feedback, Command Search, reviewed screenshots and release QA remain outstanding.
+
+## Observatory + Evolution implementation log — 2026-10-30
+
+**Committed on GitHub `main`; not yet visually validated in a deployed browser.**
+
+- `activity.json`: 10 manually reviewed public GitHub commit events, including FootballForge, StudyForge, SAFeForge, Wild Rift Counter, Spark Lab and the NOVYX site. Each records exact commit date, evidence link, project and the status `committed`. The reviewed release count is currently **zero**.
+- `forge-observatory.js` + `forge-observatory.css`: accessible, responsive filtered development feed, project filter and a clear empty Releases view; per-project evidence timeline using the same JSON. Only verified commit sources and explicitly reviewed GitHub releases are accepted as their corresponding type.
+- `index.html`: new Observatory before Forge Pulse; Observatory in the main nav and as an option from the central Reactor.
+- `project.html`: verified history section on every showcase; truthful empty states for projects without a public record, including The Fascination Files and WoW LifeForge.
+- `tests/v3-observatory-check.mjs`: test contracts for source URLs, release distinction, filtering, the timeline and empty states. Simulated browser DOM test passed for all key flows.
+- **Still to verify:** production deployment via MijnHost, actual desktop/mobile screenshots and UI accessibility testing. Curated commit history is not a claim of production release or real-time monitoring.
+
+**Next remaining implementation scope:** Forge Feedback + Command Search. Continue collecting actual product screenshots using fictional/demo data, then carry out final visual QA and 3.0 production release gate.
 
 ## 1. Product intent
 
