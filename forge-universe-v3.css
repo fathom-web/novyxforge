@@ -106,3 +106,12 @@
 @keyframes rift-ring-spin{to{transform:rotate(331deg)}}
 @keyframes rift-vortex-pulse{50%{opacity:.62;transform:scale(1.14)}}
 @media(prefers-reduced-motion:reduce){.rift-ring,.rift-core{animation:none!important}}
+
+/* Reduced motion must stop movement, not remove the transform used to center
+   the Forge centerpiece. The older hero stylesheet resets transform globally. */
+@media(min-width:761px) and (prefers-reduced-motion:reduce){
+ .hero .universe .scene{transform:translateX(-50%)!important}
+}
+@media(max-width:760px) and (prefers-reduced-motion:reduce){
+ .hero .universe .scene{transform:none!important}
+}
