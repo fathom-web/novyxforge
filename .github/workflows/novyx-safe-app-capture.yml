@@ -1,0 +1,40 @@
+name: NOVYX 3.0 Safe App Screenshot Candidate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'spark-lab.html'
+      - 'spark-lab.css'
+      - 'spark-lab.js'
+      - 'tests/v3-safe-screenshot-candidate.mjs'
+      - '.github/workflows/novyx-safe-app-capture.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    name: Screenshot public Spark Lab with empty test session
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Capture public empty-state app (staging only)
+        run: node tests/v3-safe-screenshot-candidate.mjs
+      - name: Store image for editorial review, never auto-publish
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: novyx-v3-spark-lab-real-screenshot-CANDIDATE
+          path: qa-safe-app-candidates/
+          if-no-files-found: warn
+          retention-days: 14
