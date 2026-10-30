@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070e1b">
+<meta name="description" content="SAFe Agile Forge by NOVYX FORGE. Discover the in-development PI Ceremony Planner and PI Event Command Center.">
+<meta property="og:title" content="SAFe Agile Forge | NOVYX FORGE">
+<meta property="og:description" content="Explore SAFe Agile Forge: ceremony planning, PI Event Command Center, role-focused schedules and offline exports.">
+<title>SAFe Agile Forge — NOVYX FORGE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23050b1c'/%3E%3Cpath d='M13 48V16l38 32V16' fill='none' stroke='%237bdfff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:dark;--bg:#060b19;--fg:#eff7ff;--muted:#9aacc9;--line:rgba(124,213,190,.22)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 60% 18%,rgba(35,112,94,.21),transparent 45%),radial-gradient(ellipse at 10% 22%,rgba(46,83,155,.2),transparent 44%),var(--bg);color:var(--fg);font:15px/1.7 "DM Sans",sans-serif;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid #96e8d1;outline-offset:5px}
+.shell{width:min(1120px,calc(100% - 42px));margin:auto;position:relative}
+header{border-bottom:1px solid rgba(144,199,244,.12);position:relative;z-index:5}
+nav{min-height:85px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font:700 17px Outfit,sans-serif;letter-spacing:.16em}
+.brand em{font-style:normal;color:#8adcfb}
+.back{border:1px solid rgba(129,195,230,.25);padding:12px 17px;border-radius:7px;font:700 11px Outfit,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.back:hover{border-color:#92dcee;background:rgba(91,165,229,.1)}
+.hero{display:grid;grid-template-columns:1.12fr .88fr;gap:50px;align-items:center;padding:95px 0 83px}
+.kicker{font:700 11px Outfit,sans-serif;color:#7fdbb9;letter-spacing:.24em;text-transform:uppercase}
+h1{font:500 clamp(55px,7vw,94px)/1.01 Outfit,sans-serif;letter-spacing:-.06em;margin:22px 0}
+h1 span{display:block;background:linear-gradient(100deg,#aaffde,#7de8ff,#c2b1ff);color:transparent;-webkit-background-clip:text;background-clip:text}
+.lead{font-size:17px;line-height:1.8;color:#b8c9da;max-width:650px}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(112,210,171,.3);color:#b5f8dc;border-radius:30px;background:rgba(35,102,82,.18);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.status:before{content:"";width:6px;height:6px;border-radius:50%;background:#87e4be;box-shadow:0 0 13px rgba(119,232,177,.68)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:31px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;font:700 12px Outfit,sans-serif;letter-spacing:.09em;text-transform:uppercase;border-radius:6px;transition:transform .25s,background .25s}
+.btn:hover{transform:translateY(-3px)}
+.primary{background:#d8fff0;color:#071d24}
+.primary:hover{background:#fff}
+.secondary{border:1px solid rgba(135,211,203,.36);background:rgba(16,54,72,.35);color:#ccece6}
+.secondary:hover{background:rgba(29,81,91,.5)}
+.visual{position:relative;min-height:370px;display:grid;place-items:center;isolation:isolate}
+.visual:before{content:"";position:absolute;inset:15%;border-radius:50%;background:radial-gradient(circle,rgba(44,191,147,.22),transparent 72%);filter:blur(30px)}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(146,249,216,.21);width:92%;aspect-ratio:1;animation:spin 35s linear infinite}
+.ring:nth-child(2){width:73%;border:2px dashed rgba(123,238,230,.34);animation-duration:26s;animation-direction:reverse}
+.ring:nth-child(3){width:52%;border-color:rgba(170,184,255,.46);animation-duration:18s}
+.ring:after{content:"";position:absolute;left:13%;top:17%;width:8px;height:8px;border-radius:50%;background:#a4ffdf;box-shadow:0 0 18px #7effcc}
+.orb{position:relative;width:33%;aspect-ratio:1;border:1px solid rgba(221,255,243,.8);border-radius:34%;transform:rotate(45deg);background:radial-gradient(circle at 30% 20%,rgba(233,255,245,.78),rgba(69,170,145,.4) 21%,rgba(15,70,77,.9) 64%,#0b1e3a);box-shadow:inset 0 0 28px rgba(172,255,229,.25),0 0 55px rgba(73,210,184,.32);animation:bob 6s ease-in-out infinite}
+.orb:after{content:"";position:absolute;inset:23%;border:2px solid rgba(207,255,236,.63);border-radius:21%;box-shadow:0 0 20px rgba(165,243,215,.4)}
+.section{padding:30px 0 90px}
+.section h2{font:500 clamp(32px,4vw,49px)/1.12 Outfit,sans-serif;letter-spacing:-.035em;margin:0 0 13px}
+.section>.intro{color:var(--muted);max-width:670px;margin:0 0 29px}
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.feature{border:1px solid var(--line);background:linear-gradient(155deg,rgba(19,45,61,.8),rgba(8,15,33,.86));border-radius:14px;padding:28px;min-height:224px}
+.feature small{color:#7cdabc;font:700 11px Outfit,sans-serif;letter-spacing:.16em}
+.feature h3{font:500 25px Outfit,sans-serif;margin:24px 0 9px}
+.feature p{color:#a8bcd4;font-size:14px;line-height:1.75;margin:0}
+.note{border-top:1px solid rgba(124,195,222,.14);padding:30px 0 100px;color:#a6b9d2;font-size:14px}
+.note strong{color:#e4f7fa}
+footer{border-top:1px solid rgba(133,193,236,.14);padding:31px 0;color:#8195b4;font-size:12px}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{50%{transform:rotate(49deg) translate(-8px,7px)}}
+@media(max-width:750px){.hero{grid-template-columns:1fr;padding:63px 0 35px;gap:7px}.visual{min-height:270px;width:min(100%,330px);margin:auto}.features{grid-template-columns:1fr}.feature{min-height:0}h1{font-size:clamp(48px,11vw,75px)}.section{padding-bottom:65px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><nav class="shell" aria-label="Project navigation"><a class="brand" href="./index.html">NOVYX <em>FORGE</em></a><a class="back" href="./index.html#projects">← All projects</a></nav></header>
+<main>
+  <section class="hero shell" aria-labelledby="page-title">
+    <div>
+      <div class="kicker">FORGE / 004 &nbsp;·&nbsp; AGILE &amp; PI PLANNING</div>
+      <h1 id="page-title">SAFe Agile <span>Forge.</span></h1>
+      <div class="status">Prototype in development</div>
+      <p class="lead">Turn an entire Program Increment into a clear, actionable plan. A browser-based ceremony planner and PI Event Command Center designed for RTEs, Product Managers, Product Owners and Scrum Masters.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/fathom-web/SAFeForge" target="_blank" rel="noopener noreferrer">Explore the project on GitHub ↗</a>
+        <a class="btn secondary" href="#capabilities">See capabilities ↓</a>
+      </div>
+    </div>
+    <div class="visual" aria-hidden="true"><span class="ring"></span><span class="ring"></span><span class="ring"></span><span class="orb"></span></div>
+  </section>
+  <section class="section shell" id="capabilities" aria-labelledby="cap-title">
+    <h2 id="cap-title">From ceremony to command center.</h2>
+    <p class="intro">The prototype already contains working planning flows and local exports. It is still evolving and has not completed full browser or organizational acceptance testing.</p>
+    <div class="features">
+      <article class="feature"><small>01 / CEREMONIES</small><h3>PI Ceremony Planner</h3><p>Select an ART role, enter iteration dates, propose events and export a personal Outlook-compatible .ics calendar.</p></article>
+      <article class="feature"><small>02 / EVENTS</small><h3>PI Event Planner</h3><p>Plan multi-ART sessions, room capacity, speakers, objectives, dependencies, risks and confidence votes.</p></article>
+      <article class="feature"><small>03 / DELIVERABLES</small><h3>Export &amp; prepare</h3><p>Create offline PDF plans and editable workbooks, with local browser storage and JSON backup.</p></article>
+    </div>
+  </section>
+  <section class="note shell"><strong>Deployment status:</strong> The app source is available on GitHub. Its intended standalone address is <code>safeforge.novyxforge.com</code>; public hosting and HTTPS have not been verified. NOVYX does not claim an approved Scaled Agile affiliation. No connection to Defence, Microsoft 365 or Outlook is provided. Do not use operationally sensitive information.</section>
+</main>
+<footer><div class="shell foot"><span>NOVYX FORGE · Ideas forged into reality</span><a href="./index.html#projects">Return to the Forge ↑</a></div></footer>
+</body>
+</html>
