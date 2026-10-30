@@ -50,7 +50,8 @@
       "links": {
         "visit": "https://fathom-web.github.io/svdiemen/",
         "source": null
-      }
+      },
+      "pipelineNote": "Live project · football team and matchday tools available."
     },
     {
       "id": "studyforge",
@@ -77,7 +78,8 @@
       "links": {
         "visit": "https://fathom-web.github.io/studyforge/",
         "source": "https://github.com/fathom-web/studyforge"
-      }
+      },
+      "pipelineNote": "Live project · practice tests, flashcards and progress."
     },
     {
       "id": "fascination-files",
@@ -104,7 +106,8 @@
       "links": {
         "visit": "https://instagram.com/thefascinationfiles",
         "source": null
-      }
+      },
+      "pipelineNote": "Published creative project · explore on Instagram."
     },
     {
       "id": "safeforge",
@@ -133,7 +136,8 @@
         "visit": null,
         "source": "https://github.com/fathom-web/SAFeForge"
       },
-      "detail": "safe-agile.html"
+      "detail": "safe-agile.html",
+      "pipelineNote": "Working prototype · browser acceptance and independent hosting still to be verified."
     },
     {
       "id": "wow-lifeforge",
@@ -160,7 +164,8 @@
       "links": {
         "visit": null,
         "source": null
-      }
+      },
+      "pipelineNote": "Addon concept · no published CurseForge release yet."
     },
     {
       "id": "wildrift-counter",
@@ -187,7 +192,8 @@
       "links": {
         "visit": null,
         "source": "https://github.com/fathom-web/WildRiftCounter"
-      }
+      },
+      "pipelineNote": "Draft assistant prototype · lane-counter development in progress."
     }
   ],
   "ideas": [
