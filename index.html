@@ -611,7 +611,7 @@
       <span class="mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 25V7l18 18V7" stroke="#83dcff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 7L25 25" stroke="#a991ff" stroke-opacity=".7" stroke-width="1.1"/></svg></span>
       NOVYX <small>FORGE</small>
     </a>
-    <nav class="navlinks" id="site-menu" aria-label="Main navigation"><a href="#home">Universe</a><a href="#projects">Projects</a><a href="#pipeline">Pipeline</a><a href="#vault">Idea Vault</a><a href="#pulse">Forge Pulse</a><a class="top-cta" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav><button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="navlinks" id="site-menu" aria-label="Main navigation"><a href="#home">Universe</a><a href="#projects">Projects</a><a href="#pipeline">Pipeline</a><a href="#spark-lab">Spark Lab</a><a href="#vault">Idea Vault</a><a class="top-cta" href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav><button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
   <main>
     <section class="container hero" id="home">
@@ -960,6 +960,24 @@
       </div>
     </section>
 
+
+    <section class="container spark-feature" id="spark-lab" aria-labelledby="spark-feature-heading">
+      <div class="spark-feature-panel reveal">
+        <div class="spark-feature-copy">
+          <div class="section-kicker">EXPERIMENT 001 / INTERACTIVE WORKSHOP</div>
+          <h2 id="spark-feature-heading">Got an idea?<br><em>Forge it.</em></h2>
+          <p>Turn a rough thought into a structured starting brief, a practical next step and a build-ready AI prompt — all from your browser.</p>
+          <a class="btn btn-primary" href="./spark-lab.html">Enter Spark Lab <span aria-hidden="true">↗</span></a>
+          <small>Free browser-based beta · private input · JSON export</small>
+        </div>
+        <div class="spark-feature-visual" aria-hidden="true">
+          <div class="spark-ring ring-a"></div><div class="spark-ring ring-b"></div><div class="spark-ring ring-c"></div>
+          <div class="spark-core">✧</div>
+          <span class="spark-signal spark-signal-a">IDEA</span><span class="spark-signal spark-signal-b">PROTOTYPE</span><span class="spark-signal spark-signal-c">BUILD</span>
+        </div>
+      </div>
+    </section>
+
     <section class="container platform-section" id="catalog" aria-labelledby="catalog-heading">
       <div class="lab-section-heading reveal">
         <div><div class="section-kicker">THE COMPLETE CONSTELLATION / PROJECT INDEX</div><h2 id="catalog-heading">Choose your <em>universe.</em></h2></div>
@@ -972,6 +990,7 @@
           <button class="filter-pill" type="button" data-project-filter="education" aria-pressed="false">Education</button>
           <button class="filter-pill" type="button" data-project-filter="productivity" aria-pressed="false">Productivity</button>
           <button class="filter-pill" type="button" data-project-filter="gaming" aria-pressed="false">Gaming</button>
+          <button class="filter-pill" type="button" data-project-filter="ai" aria-pressed="false">AI</button>
           <button class="filter-pill" type="button" data-project-filter="creative" aria-pressed="false">Creative</button>
         </div>
         <input id="catalog-search" class="catalog-search" type="search" aria-label="Search projects" placeholder="Search the Forge…" autocomplete="off">
@@ -1052,7 +1071,7 @@
       </div>
       <a class="endcard-link" href="#vault">Enter the Idea Vault ↗</a>
     </div>
-    <div class="container footer-inner"><div><strong>NOVYX FORGE</strong><div style="margin-top:9px">Independent AI &amp; Technology Lab. Ideas forged into reality. © <span id="year">2026</span></div></div><div class="footer-links"><a href="#home">Top ↑</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#pipeline">Pipeline</a><a href="#vault">Idea Vault</a><a href="#pulse">Forge Pulse</a><a href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer>
+    <div class="container footer-inner"><div><strong>NOVYX FORGE</strong><div style="margin-top:9px">Independent AI &amp; Technology Lab. Ideas forged into reality. © <span id="year">2026</span></div></div><div class="footer-links"><a href="#home">Top ↑</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#pipeline">Pipeline</a><a href="./spark-lab.html">Spark Lab</a><a href="#vault">Idea Vault</a><a href="#pulse">Forge Pulse</a><a href="https://github.com/fathom-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer>
   <script>
     document.getElementById("year").textContent=new Date().getFullYear();
     const cards=document.querySelectorAll(".reveal");
