@@ -8,7 +8,7 @@
   const text = (element,value) => {element.textContent = value == null ? "" : String(value);return element};
   const make = (tag,cls,value) => {const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)text(e,value);return e};
   const isSafeProjectId = value => /^[a-z0-9-]{1,60}$/.test(value);
-  const detailUrl = project => project.detail || "project.html?project="+encodeURIComponent(project.id);
+  const detailUrl = project => "project.html?project="+encodeURIComponent(project.id);
   const append = (parent,...children) => {children.forEach(c=>parent.append(c));return parent};
 
 
