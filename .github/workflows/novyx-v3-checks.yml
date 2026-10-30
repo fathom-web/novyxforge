@@ -1,0 +1,58 @@
+name: NOVYX 3.0 checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - '*.js'
+      - '*.css'
+      - '*.json'
+      - 'tests/**'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/workflows/novyx-v3-checks.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - '*.js'
+      - '*.css'
+      - '*.json'
+      - 'tests/**'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/workflows/novyx-v3-checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Verify v3 static contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the Forge
+        uses: actions/checkout@v4
+      - name: Prepare Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check browser JavaScript syntax
+        run: |
+          node --check forge-demos.js
+          node --check forge-weather.js
+          node --check forge-world-navigation.js
+          node --check forge-observatory.js
+          node --check forge-search.js
+          node --check forge-feedback.js
+          node --check project-showcase.js
+      - name: Verify six project worlds and Weather Engine
+        run: node tests/v3-alpha-check.mjs
+      - name: Verify Navigator, transitions and Reactor
+        run: node tests/v3-navigation-check.mjs
+      - name: Verify isolated project demos
+        run: node tests/v3-demos-check.mjs
+      - name: Verify evidence-based Observatory
+        run: node tests/v3-observatory-check.mjs
+      - name: Verify Command Search and public feedback
+        run: node tests/v3-search-feedback-check.mjs
