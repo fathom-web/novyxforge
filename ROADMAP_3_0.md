@@ -1,8 +1,24 @@
 # NOVYX FORGE 3.0 — THE LIVING UNIVERSE
 
-**Status:** Approved scope / planning only — implementation has not started  
+**Status:** Approved scope / 3.0 Alpha implementation underway. Increment 0 and core of Increment 1 committed to GitHub; browser acceptance and MijnHost deployment not yet verified.  
 **Baseline inspected:** 2026-10-30 · GitHub repository `fathom-web/novyxforge`  
 **Release principle:** Ship all ten selected features as one coherent NOVYX 3.0 release, in testable, reversible increments; keep the existing site working.
+
+## Alpha implementation log — 2026-10-30
+
+**Committed to `main`, awaiting live visual acceptance:**
+
+- `projects.json`: central `world` configuration for seven effects (rain, snow, meteors, fog, storm, wind, sunrise); six worlds marked as homepage portals, Spark Lab as tool.
+- `index.html`: six actual homepage spheres with a new Wild Rift Counter portal; six project cards including Wild Rift.
+- `forge-universe-v3.css`: responsive six-portal positions and distinctive Wild Rift teal/violet wind identity.
+- `forge-polish.js`: hovering/focusing the sixth sphere updates central Forge energy.
+- `forge-weather.js` + `forge-weather.css`: shared zero-dependency Canvas 2D atmospheric rendering and an On/Off toggle, with visibility pause, capped density, mobile-friendly framerate, persistent opt-out, and reduced-motion fallback. No audio, APIs or full-screen lightning flash.
+- `project.html` + `project-showcase.js`: use `projects.json` to attach the appropriate weather to every project showcase.
+- `tests/v3-alpha-check.mjs`: standalone Node smoke checks for wiring, project count, links and motion-safety features.
+
+**Still pending for this Alpha:** inspect the *deployed* site at desktop, tablet and mobile sizes; verify FPS, actual appearance, controls and external links. No production rollout or completed QA claimed.
+
+**Not yet built:** World Transitions, World Navigator, Reactor actions, Interactive Demo Mode, Observatory, Evolution Timeline, Forge Feedback and Command Search. Their accepted scope remains unchanged below.
 
 ## 1. Product intent
 
