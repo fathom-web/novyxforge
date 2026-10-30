@@ -1,8 +1,14 @@
 # NOVYX FORGE 3.0 — THE LIVING UNIVERSE
 
-**Status:** Code complete for the ten selected 3.0 feature streams; GitHub beta only. Actual verified screenshots, comprehensive responsive/accessibility/performance QA, and MijnHost production release remain outstanding.  
+**Status:** RC1 — all ten 3.0 feature streams coded; five source test suites green and 16/16 Chromium browser checks green. GitHub screenshots captured. Real approved app captures, production deployment, manual supported-browser/a11y/performance acceptance remain outstanding.  
 **Baseline inspected:** 2026-10-30 · GitHub repository `fathom-web/novyxforge`  
 **Release principle:** Ship all ten selected features as one coherent NOVYX 3.0 release, in testable, reversible increments; keep the existing site working.
+
+## NOVYX FORGE 3.0 — Release Candidate RC1 (2026-10-30)
+
+**Source complete, not yet live-released.** All ten selected 3.0 features are implemented and [Chromium browser QA passed all 16 checks](https://github.com/fathom-web/novyxforge/actions/runs/41057805696), including desktop and 360/390px phones. The original five-suite [GitHub smoke checks are also passing](https://github.com/fathom-web/novyxforge/actions/runs/41057805528).
+
+The exact current status, successful screenshot artifact, corrected responsive issues and remaining production gates are in **[RELEASE_CANDIDATE_3_0.md](./RELEASE_CANDIDATE_3_0.md)**. MijnHost deployment, reviewed real application screenshots, manual cross-browser/accessibility review and measured production performance remain open. Do **not** mark 3.0 as officially released until those are validated.
 
 ## Alpha implementation log — 2026-10-30
 
