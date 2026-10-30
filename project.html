@@ -19,16 +19,21 @@
 <link rel="stylesheet" href="./forge-world-navigation.css?v=2">
 <link rel="stylesheet" href="./forge-demo.css?v=1">
 <link rel="stylesheet" href="./forge-observatory.css?v=1">
+<link rel="stylesheet" href="./forge-feedback.css?v=1">
+<link rel="stylesheet" href="./forge-search.css?v=1">
 <script src="./forge-weather.js?v=2" defer></script>
 <script src="./forge-demos.js?v=2" defer></script>
 <script src="./project-showcase.js?v=6" defer></script>
 <script src="./forge-world-navigation.js?v=4" defer></script>
 <script src="./forge-observatory.js?v=2" defer></script>
+<script src="./forge-feedback.js?v=1" defer></script>
+<script src="./forge-search.js?v=1" defer></script>
 </head>
 <body>
 <header>
   <nav class="shell" aria-label="Project navigation">
     <a class="brand" href="./index.html">NOVYX <span>FORGE</span></a>
+    <a class="forge-search-trigger" data-forge-search href="./index.html#catalog" aria-label="Search NOVYX projects and ideas" aria-keyshortcuts="Control+K Meta+K"><span class="forge-search-icon" aria-hidden="true"></span><span class="search-trigger-text">Search</span><kbd>Ctrl K</kbd></a>
     <a class="back" href="./index.html#projects">← All projects</a>
   </nav>
 </header>
@@ -139,6 +144,24 @@
         <p class="privacy-note" id="launch-note"></p>
       </div>
       <div class="final-actions" id="launch-actions"></div>
+    </div>
+  </section>
+  <section class="shell section forge-feedback" id="forge-feedback" aria-labelledby="project-feedback-heading">
+    <div class="feedback-panel">
+      <div class="feedback-panel-heading">
+        <div><div class="section-label">FORGE FEEDBACK / YOUR VOICE</div>
+          <h2 id="project-feedback-heading">Help this project evolve.</h2>
+          <p>Share a useful idea or report a problem with this experience. Your suggestion opens as a public issue on GitHub.</p>
+        </div>
+        <span class="feedback-glyph" aria-hidden="true">✦</span>
+      </div>
+      <div id="project-feedback-actions">
+        <div class="feedback-actions">
+          <a class="feedback-action" href="https://github.com/fathom-web/novyxforge/issues/new?template=feature_request.md" target="_blank" rel="noopener noreferrer">Suggest an improvement ↗</a>
+          <a class="feedback-action" href="https://github.com/fathom-web/novyxforge/issues/new?template=bug_report.md" target="_blank" rel="noopener noreferrer">Report a bug ↗</a>
+        </div>
+        <p class="feedback-notice">GitHub account required; submissions will be public. Please do not share private accounts, student data or confidential information.</p>
+      </div>
     </div>
   </section>
   <section class="shell" aria-labelledby="related-heading">
