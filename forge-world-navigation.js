@@ -92,6 +92,8 @@
     for (const world of supported) choices.append(makeLink(world, ""));
     choices.setAttribute("aria-label", "Choose a project world");
     const onOpen = () => {
+      choose.setAttribute("aria-expanded", "false");
+      choices.hidden = true;
       dialog.showModal();
       document.documentElement.classList.add("reactor-is-open");
       choose.focus();
@@ -200,10 +202,23 @@
       const trigger = document.getElementById("forge-reactor-trigger");
       const dialog = document.getElementById("forge-reactor-dialog");
       const close = document.getElementById("reactor-close");
-      if (trigger && dialog?.showModal) {
-        trigger.addEventListener("click", () => dialog.showModal());
+      if (trigger && typeof dialog?.showModal === "function") {
+        const choose = document.getElementById("reactor-choose");
+        const choices = document.getElementById("reactor-worlds");
+        if (choose && choices) {
+          choices.hidden = true;
+          choose.addEventListener("click", () => {
+            dialog.close();
+            location.hash = "projects";
+          });
+        }
+        trigger.addEventListener("click", () => {
+          dialog.showModal();
+          choose?.focus();
+        });
         close?.addEventListener("click", () => dialog.close());
         dialog.addEventListener("close", () => trigger.focus());
+        dialog.addEventListener("click", e => {if(e.target===dialog)dialog.close();});
       }
       const empty = create("a", "world-nav-link", "← All projects");
       empty.href = "./index.html#projects";
