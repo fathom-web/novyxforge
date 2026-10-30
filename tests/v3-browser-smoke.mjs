@@ -75,6 +75,23 @@ try{
   await page.locator(".sphere-link").first().waitFor();
   assert.equal(await page.locator('.sphere-link[href*="project.html?project="]').count(),6);
   assert.equal(await page.locator('.project.project-wildrift').count(),1);
+  // 3.1.1: side labels, orbital spheres and individual portals must not intersect.
+  const layout=await page.evaluate(()=>{
+    const stage=document.querySelector(".hero .universe").getBoundingClientRect();
+    const rect=el=>{const b=el.getBoundingClientRect();return {left:b.left,right:b.right,top:b.top,bottom:b.bottom};};
+    const links=[...document.querySelectorAll(".hero .universe .sphere-link")].map(el=>({name:el.className,box:rect(el),orb:rect(el.querySelector(".orb")),title:rect(el.querySelector(".sphere-caption")),display:getComputedStyle(el).display}));
+    const overlap=(a,b)=>Math.max(0,Math.min(a.right,b.right)-Math.max(a.left,b.left))*Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top));
+    const collisions=[];
+    for(let i=0;i<links.length;i++){
+      const a=links[i];
+      if(a.display!=="grid")collisions.push("non-grid portal: "+a.name);
+      if(a.box.left<stage.left-3||a.box.right>stage.right+3)collisions.push("out-of-bounds portal: "+a.name);
+      if(overlap(a.orb,a.title)>5)collisions.push("title overlaps sphere: "+a.name);
+      for(let j=i+1;j<links.length;j++)if(overlap(a.box,links[j].box)>15)collisions.push("portals overlap: "+a.name+" / "+links[j].name);
+    }
+    return {collisions,links};
+  });
+  assert.deepEqual(layout.collisions,[],"3.1.1 portal geometry: "+JSON.stringify(layout));
   await screenshot(page,"home-desktop-1440");
   await noOverflow(page);
  });
