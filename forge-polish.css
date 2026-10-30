@@ -195,3 +195,19 @@ footer:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;backg
  .universe[data-active] .sphere-link:not([data-energy="on"]) .orb{opacity:1}
  .hero .btn:before,.top-cta:before,.detail-button:before{display:none}
 }
+
+/* Lightweight cursor halo follows the orbital stage but never clips it. */
+.novyx-cursor-light{
+  position:absolute;left:0;top:0;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,rgba(var(--energy-rgb,108,177,255),.16) 0%,rgba(var(--energy-rgb,108,177,255),.07) 34%,transparent 70%);
+  pointer-events:none;z-index:2;opacity:0;transition:opacity .45s ease;will-change:transform;
+}
+.novyx-cursor-light.visible{opacity:.74}
+.universe .sphere-link{transition:opacity .35s}
+.navlinks a[aria-current="location"]:not(.top-cta){color:#e3f6ff;text-shadow:0 0 16px rgba(125,198,255,.38)}
+.navlinks a[aria-current="location"]:not(.top-cta):after{
+  content:"";display:block;height:1px;margin-top:5px;
+  background:linear-gradient(90deg,#70c9ff,rgba(154,143,255,.45),transparent)
+}
+@media(max-width:760px){.novyx-cursor-light{display:none}}
+@media(prefers-reduced-motion:reduce){.novyx-cursor-light{display:none!important}}
