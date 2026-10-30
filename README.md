@@ -6,7 +6,7 @@ An independent AI & Technology Lab: a cinematic home for projects, ideas and exp
 
 The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3_0.md)**. It includes all ten selected workstreams: Six-Sphere Universe, seven-weather Weather Engine, World Transitions, World Navigator, Forge Reactor, Interactive Demo Mode, The Observatory, Evolution Timeline, Forge Feedback and Command Search, plus mobile/accessibility/performance/screenshot release gates.
 
-**Current state:** 3.0 Alpha + Navigation Beta + Interactive Demos + **Observatory/Evolution Timeline** are coded on GitHub. Forge Feedback, Command Search, real reviewed screenshots, live browser acceptance and MijnHost production deployment have **not** been verified or delivered.
+**Current state:** Initial code for **all ten approved NOVYX 3.0 features** is committed to GitHub, including Forge Feedback and Command Search. This is still a beta: actual product screenshots, production deployment, browser/device accessibility and measured performance have not been verified.
 
 ### 3.0 Alpha code and test command
 
@@ -45,6 +45,17 @@ The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3
 - To add a development entry, first verify its GitHub commit URL, actual commit timestamp and content. Add an item with `type:"development"`, `status:"committed"`, `reviewed:true`, exact `projectId`, and `source:{type:"github-commit",repository:"fathom-web/<repo>",sha:"<40-character SHA>",url:"https://github.com/fathom-web/<repo>/commit/<SHA>"}`. No claim of deployed features from source changes alone.
 - To add a genuine release event, verify that an actual GitHub release was published and add `type:"release"`, `status:"published"`, `source:{type:"github-release",repository:"fathom-web/<repo>",tag:"<actual-tag>",url:"https://github.com/fathom-web/<repo>/releases/tag/<actual-tag>"}` along with the real publication timestamp. Ordinary commits never become releases automatically.
 - Static contract test: `node tests/v3-observatory-check.mjs`. In-session simulated DOM checks have covered the 10-event feed, Wild Rift project filter, release empty state, FootballForge timeline and empty WoW timeline. **Actual in-browser visual/device tests remain outstanding.**
+
+### 3.0 Forge Feedback + Command Search — implemented in GitHub
+
+- `forge-feedback.js` and `forge-feedback.css` add a global **Forge Feedback** section plus per-project **Suggest an improvement / Report a bug** actions on all seven project showcases.
+- Requests open public GitHub issues in **`fathom-web/novyxforge`**. The repo has GitHub Issues enabled, and `.github/ISSUE_TEMPLATE/feature_request.md` and `bug_report.md` are checked in. Each project link carries a prefilled project label and issue title/body. GitHub may require sign-in and approval before publishing; NOVYX does not submit on behalf of visitors.
+- Feedback submissions become **publicly visible** on GitHub. Explicit warnings discourage sharing passwords, private accounts, personal/student data or confidential information. No community database or direct NOVYX server endpoint is introduced.
+- `forge-search.js` and `forge-search.css` provide **Command Search** from the desktop header, phone header and keyboard **Ctrl+K / Cmd+K**. Keyboard arrow navigation, Enter, Escape, focus return and an accessible native dialog are supported.
+- Search indexes public `projects.json` projects, Idea Vault concepts, curated `activity.json` development history, verified site section links and two public GitHub documentation pages. The index is built locally in the browser; there is **no backend AI, paid search API or query logging**. Untrusted URLs are rejected and all text results are rendered as text nodes, not HTML.
+- The search works with a navigation-only fallback if public JSON fails to load. Without JavaScript, search buttons remain links to the Project Catalog.
+- Contract test: `node tests/v3-search-feedback-check.mjs`; static and local-runtime checks cover all 7 projects, 3 ideas, 10 reviewed events, data safety and per-project GitHub issue URLs.
+- **3.0 source scope:** all ten approved features have initial implementation code. **Not a finished production release:** real verified screenshots, browser/mobile accessibility/performance testing and actual MijnHost deployment validation are outstanding.
 
 ## What's here
 
