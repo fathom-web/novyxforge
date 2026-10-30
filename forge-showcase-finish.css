@@ -1,0 +1,142 @@
+/* NOVYX FORGE 3.0 — Project Worlds / final visual finish
+   Seven curated identities, one lightweight responsive system.
+   No external assets, no extra shaders, motion-safe and keyboard accessible. */
+
+:root{--world-ink:#e8f6ff;--world-line:rgba(146,193,235,.23)}
+body[data-world]{background:
+ radial-gradient(ellipse 55% 28% at 82% 9%,color-mix(in srgb,var(--accent) 14%,transparent),transparent 82%),
+ radial-gradient(ellipse 62% 35% at 2% 44%,rgba(48,78,146,.1),transparent 83%),
+ linear-gradient(180deg,#090e22 0%,#070d20 62%,#050915 100%)}
+body[data-world] .hero{position:relative;padding-top:clamp(53px,7vw,95px);padding-bottom:clamp(65px,6.8vw,110px);min-height:500px}
+body[data-world] .hero:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.22;
+ background:linear-gradient(90deg,transparent 49.92%,rgba(171,213,245,.12) 50%,transparent 50.08%),
+ linear-gradient(transparent 49.91%,rgba(171,213,245,.08) 50%,transparent 50.09%);
+ background-size:90px 90px;mask-image:linear-gradient(90deg,transparent,black 26%,black 75%,transparent)}
+body[data-world] .hero h1{max-width:13ch;text-wrap:balance}
+body[data-world] .hero .eyebrow{display:inline-flex;align-items:center;gap:9px}
+body[data-world] .hero .eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;
+ background:var(--accent);box-shadow:0 0 16px color-mix(in srgb,var(--accent) 55%,transparent)}
+body[data-world] .hero .summary{max-width:56ch;line-height:1.85}
+body[data-world] .hero .hero-art{min-height:390px;filter:drop-shadow(0 0 25px color-mix(in srgb,var(--accent) 12%,transparent))}
+body[data-world] .hero-art:after{content:"";position:absolute;inset:20%;border-radius:50%;
+ border:1px dotted color-mix(in srgb,var(--accent) 52%,transparent);opacity:.47;pointer-events:none}
+body[data-world] .hero .hero-word{max-width:95%;text-align:center;word-break:break-word;bottom:-10px;letter-spacing:.17em}
+body[data-world] .hero-core{border-radius:20%;box-shadow:inset 0 0 31px rgba(195,244,255,.22),
+ 0 0 57px color-mix(in srgb,var(--accent) 30%,transparent);animation-duration:8.5s}
+body[data-world="footballforge"] .hero-core{border-radius:50%;background:
+ radial-gradient(circle at 28% 18%,#f0ffff,color-mix(in srgb,var(--accent) 54%,#0c263f) 25%,#06223e 69%)}
+body[data-world="studyforge"] .hero-core{border-radius:10%;transform:rotate(45deg);background:
+ radial-gradient(circle at 24% 20%,#e8dfff,color-mix(in srgb,var(--accent) 50%,#1c1b49) 32%,#101533 78%)}
+body[data-world="fascination-files"] .hero-core{border-radius:50%;background:
+ radial-gradient(circle at 25% 12%,#ffe6fc,rgba(231,87,197,.72) 21%,#2c163e 69%,#130c2f)}
+body[data-world="safeforge"] .hero-core{border-radius:22% 8%;background:
+ radial-gradient(circle at 22% 15%,#e8fff5,rgba(48,191,150,.62) 23%,#123f3a 77%)}
+body[data-world="wow-lifeforge"] .hero-core{border-radius:18% 50%;background:
+ radial-gradient(circle at 25% 15%,#fff0c5,rgba(239,152,46,.64) 25%,#3a2340 75%)}
+body[data-world="wildrift-counter"] .hero-core{border-radius:50% 18%;background:
+ conic-gradient(from 45deg,#173966,#7fe6e5,#292b7a,#112b50,#90e9de,#173966)}
+body[data-world="spark-lab"] .hero-core{border-radius:48% 48% 12% 12%;background:
+ radial-gradient(circle at 50% 18%,#fff7dc,rgba(251,164,86,.73) 28%,#592b4c 75%)}
+
+/* A genuinely useful hierarchy, rather than a second heavy navbar. */
+.project-compass{position:relative;z-index:3;margin-top:0;margin-bottom:clamp(32px,6vw,67px);
+ border:1px solid var(--world-line);border-radius:17px;overflow:hidden;
+ background:linear-gradient(140deg,rgba(19,42,72,.92),rgba(6,16,34,.94) 70%);
+ box-shadow:0 22px 65px rgba(0,5,24,.25)}
+.compass-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));min-width:0}
+.compass-cell{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:7px;padding:20px 21px;
+ border-right:1px solid rgba(137,185,231,.17)}
+.compass-cell:last-child{border-right:0}
+.compass-label{color:#8aabc7;text-transform:uppercase;font:700 9px Outfit,sans-serif;letter-spacing:.15em}
+.compass-cell strong{font:500 15px/1.4 Outfit,sans-serif;color:#eaf9ff;overflow-wrap:anywhere}
+.compass-cell:nth-child(1) strong{color:var(--accent)}
+.chapter-nav{display:flex;min-height:58px;justify-content:flex-start;align-items:stretch;gap:3px;padding:9px 12px;
+ border-top:1px solid rgba(141,186,226,.18);overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(145,190,224,.38) transparent}
+.chapter-nav a{display:inline-flex;align-items:center;gap:10px;min-height:38px;padding:9px 14px;
+ color:#aecce0;text-decoration:none;white-space:nowrap;border:1px solid transparent;border-radius:9px;
+ font:600 11px Outfit,sans-serif}
+.chapter-nav a:hover,.chapter-nav a:focus-visible{background:rgba(45,86,117,.42);border-color:rgba(119,213,241,.4);color:#fff}
+.chapter-nav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chapter-nav a[hidden]{display:none!important}
+.chapter-nav a span{color:var(--accent)}
+
+/* Gallery: one hero-size visual, two supporting views, no carousel dependency.
+   These are illustrative previews until explicitly verified real app captures exist. */
+.gallery-grid-v3{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px;align-items:stretch}
+.gallery-grid-v3 .gallery-item{margin:0;min-width:0;position:relative;isolation:isolate;
+ border-color:color-mix(in srgb,var(--accent) 21%,rgba(128,182,235,.28));
+ box-shadow:0 19px 58px rgba(1,4,17,.22);transition:border-color .22s,transform .22s}
+.gallery-grid-v3 .gallery-item:hover{border-color:color-mix(in srgb,var(--accent) 60%,rgba(150,205,251,.4));transform:translateY(-3px)}
+.gallery-grid-v3 .gallery-item:first-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(220px,.65fr)}
+.gallery-grid-v3 .gallery-item:first-child .gallery-visual{min-height:clamp(310px,39vw,470px);border-bottom:0;
+ border-right:1px solid rgba(137,186,232,.19)}
+.gallery-grid-v3 .gallery-item:not(:first-child) .gallery-visual{min-height:265px}
+.gallery-grid-v3 .gallery-item:first-child figcaption{display:flex;flex-direction:column;justify-content:center;gap:14px;
+ padding:clamp(24px,4vw,48px)}
+.gallery-grid-v3 .gallery-item:first-child h3{font-size:clamp(25px,3.4vw,35px);line-height:1.12}
+.gallery-grid-v3 .gallery-item:first-child p{font-size:14px;line-height:1.85}
+.gallery-grid-v3 .gallery-item figcaption{position:relative}
+.gallery-grid-v3 .gallery-item figcaption:before{content:"VIEW / " attr(data-view-number);
+ display:block;font:700 9px Outfit,sans-serif;color:var(--accent);letter-spacing:.18em;margin-bottom:10px}
+.gallery-grid-v3 .gallery-visual:before{opacity:.11}
+.gallery-grid-v3 .gallery-kind{top:15px;left:15px;padding:8px 12px;max-width:calc(100% - 30px);
+ color:#e8faff;border-color:rgba(152,221,247,.34)}
+.gallery-grid-v3 .preview-window{max-width:94%;filter:drop-shadow(0 21px 30px rgba(1,5,17,.48))}
+.gallery-grid-v3 .gallery-item:first-child .preview-window{transform:perspective(1000px) rotateY(-3deg) rotateX(1deg)}
+.gallery-grid-v3 .gallery-photo-button{display:block;min-height:100%;align-self:stretch}
+.gallery-grid-v3 .gallery-photo{width:100%;height:100%;max-height:490px;object-fit:contain;background:#081326}
+.gallery-grid-v3 .gallery-item:focus-within{border-color:var(--accent)}
+.gallery-legend{padding:15px 17px;border-left:2px solid var(--accent);background:rgba(21,43,73,.42)}
+.gallery-note-link{color:var(--accent)}
+.section h2{text-wrap:balance}
+.story-card,.step{transition:border-color .2s ease}
+.story-card:hover,.step:hover{border-color:color-mix(in srgb,var(--accent) 43%,rgba(147,196,245,.23))}
+#evolution,#screenshots,#how-it-works,#forge-feedback,#try-demo{scroll-margin-top:105px}
+
+/* Native <dialog> gives a real focus trap and Escape behavior instead of
+   an ARIA-only div impersonating a modal. */
+dialog.lightbox{max-width:none;max-height:none;width:100vw;height:100dvh;margin:auto;padding:clamp(40px,6vw,70px) 24px 28px;
+ border:0;border-radius:0;background:rgba(3,8,21,.98);color:#f1faff;cursor:default;box-sizing:border-box;overflow:auto}
+dialog.lightbox:not([open]){display:none!important}
+dialog.lightbox[open]{display:grid;place-items:center}
+dialog.lightbox::backdrop{background:rgba(1,3,12,.91)}
+dialog.lightbox img{max-width:min(1180px,95vw);max-height:calc(100dvh - 105px);width:auto;height:auto;object-fit:contain}
+dialog.lightbox button{cursor:pointer;z-index:2;width:48px;height:48px;top:16px;right:clamp(16px,3vw,42px);font-size:27px}
+dialog.lightbox button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+@media(max-width:1020px){
+ .gallery-grid-v3 .gallery-item:first-child{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+ .gallery-grid-v3 .gallery-item:first-child .gallery-visual{min-height:340px}
+ .compass-cell{padding:17px 15px}
+ .compass-cell strong{font-size:13px}
+}
+@media(max-width:760px){
+ body[data-world] .hero{padding-top:42px;padding-bottom:37px;min-height:0}
+ body[data-world] .hero .hero-art{min-height:260px}
+ body[data-world] .hero h1{max-width:100%}
+ .project-compass{margin-bottom:32px}
+ .compass-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .compass-cell:nth-child(2){border-right:0}
+ .compass-cell:nth-child(-n+2){border-bottom:1px solid rgba(140,187,226,.16)}
+ .chapter-nav{padding:9px}
+ .gallery-grid-v3{grid-template-columns:1fr}
+ .gallery-grid-v3 .gallery-item:first-child{grid-column:auto;display:block}
+ .gallery-grid-v3 .gallery-item:first-child .gallery-visual{min-height:315px;border-right:0;border-bottom:1px solid rgba(137,186,232,.19)}
+ .gallery-grid-v3 .gallery-item:first-child figcaption{padding:22px}
+ .gallery-grid-v3 .gallery-item:first-child h3{font-size:26px}
+ .gallery-grid-v3 .gallery-item:not(:first-child) .gallery-visual{min-height:250px}
+}
+@media(max-width:430px){
+ .compass-cell{padding:13px}
+ .compass-cell strong{font-size:12px}
+ .compass-label{font-size:8px}
+ .gallery-grid-v3 .gallery-item:first-child .gallery-visual{min-height:258px}
+ .gallery-grid-v3 .gallery-item:not(:first-child) .gallery-visual{min-height:225px}
+ .gallery-grid-v3 .preview-window{max-width:96%}
+ .chapter-nav a{padding:8px 11px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ .gallery-grid-v3 .gallery-item,.story-card,.step{transition:none!important}
+ .gallery-grid-v3 .gallery-item:hover{transform:none!important}
+ .gallery-grid-v3 .gallery-item:first-child .preview-window{transform:none!important}
+}
