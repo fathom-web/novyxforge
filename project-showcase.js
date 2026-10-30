@@ -179,13 +179,16 @@ function draw(project,all){
  });
  const gallery=$("gallery");
  const images=Array.isArray(profile.screenshots)?profile.screenshots.filter(v=>v&&v.verified===true&&screenshotPath(v.src)).map(v=>({...v,kind:"screenshot"})):[];
- // Real screenshots, when supplied, appear first; otherwise use honest
- // illustrative product art instead of claiming conceptual pictures are photos.
- const visuals=images.length?images:(profile.views||[]).map(([title,description,layout])=>({title,description,layout,kind:"concept"}));
+ // Verified app captures lead the gallery. Preserve illustrative workflow
+ // companions, each clearly labelled, rather than silently replacing all art.
+ // Never infer "verified" from a filename or an unreviewed public URL.
+ const concepts=(profile.views||[]).map(([title,description,layout])=>({title,description,layout,kind:"concept"}));
+ const visuals=[...images,...concepts.slice(0,Math.max(0,3-images.length))].slice(0,3);
  for(const [i,visual] of visuals.entries())gallery.append(createGalleryItem(project,visual,i));
  $("gallery-note").textContent=images.length
-   ?"Verified screenshots from the project. Captures use approved sample data and can be enlarged."
-   :"ILLUSTRATIVE INTERFACE CONCEPTS — not screenshots of the live application. Actual verified screenshots can be added to this gallery.";
+   ?images.length+" reviewed real application screenshot"+(images.length===1?"":"s")+
+     " · Supporting concepts remain illustrative and are labelled as such. Select a screenshot to enlarge it."
+   :"ILLUSTRATIVE INTERFACE CONCEPTS — not screenshots of the live application. Real captures are only published after privacy and accuracy review.";
  const features=$("feature-list");
  (project.features||[]).forEach((feature,i)=>{const li=el("li");li.textContent=feature;features.append(li);});
  $("privacy").textContent=profile.privacy||"Feature availability may change as the project evolves.";
