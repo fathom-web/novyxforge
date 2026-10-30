@@ -1,0 +1,47 @@
+name: NOVYX 3.0 Publish Reviewed Spark Lab Screenshot
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/novyx-publish-reviewed-spark.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reviewed-capture:
+    name: Publish reviewed, blank-state Spark Lab interface
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out latest NOVYX source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Generate privacy-checked empty-state screenshot
+        run: node tests/v3-safe-screenshot-candidate.mjs
+      - name: Stage approved real application screenshot
+        run: |
+          mkdir -p assets/screenshots/spark-lab
+          cp qa-safe-app-candidates/spark-lab-live-interface-candidate.png assets/screenshots/spark-lab/spark-lab-ui.png
+      - name: Publish only the approved Spark Lab screenshot file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/screenshots/spark-lab/spark-lab-ui.png
+          if git diff --cached --quiet; then
+            echo "Reviewed screenshot already matches source. No commit needed."
+          else
+            git commit -m "Add reviewed real Spark Lab public UI capture for project showcase"
+            git push origin HEAD:main
+          fi
