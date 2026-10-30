@@ -16,6 +16,15 @@ The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3
 - Zero-dependency smoke test: `node tests/v3-alpha-check.mjs`.
 - Real device/browser validation, including frame-rate, controls, and responsive layouts, is still required before calling this Alpha released.
 
+### 3.0 Navigation Beta: World Navigator, transitions & Reactor
+
+- `forge-world-navigation.js` + `forge-world-navigation.css`: shared project navigation, a cinematic but optional world-entry transition, and a keyboard-accessible central Forge Reactor menu.
+- **Home:** Select the center glass Forge to open `Explore Worlds`, `Forge an Idea` (Spark Lab showcase) or `Mission Control` (Pipeline). The six featured spheres retain ordinary `href` links to their showcase pages.
+- **Showcase:** Scrollable sticky World Navigator with six feature worlds and Spark Lab. One click switches projects and weather themes without returning to the homepage.
+- Native browser link conventions remain intact: Ctrl/Cmd-click, middle click, external destinations, download links, browser back, and reduced-motion visitors do not depend on transitions.
+- Unit-free wiring checks: `node tests/v3-alpha-check.mjs` and `node tests/v3-navigation-check.mjs`.
+- **Validation status:** Static HTML/CSS/JS structure checked. Not yet visually tested in a deployed browser or verified on actual phones. Run FETCH → DEPLOY in MijnHost, then test six sphere links, central Reactor dialog, the world strip on each showcase, and changing weather between project pages.
+
 ## What's here
 
 - **Five interactive glass spheres:** FootballForge, StudyForge, The Fascination Files, SAFe Agile Forge and WoW LifeForge.
