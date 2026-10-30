@@ -7,7 +7,7 @@ const $=id=>document.getElementById(id);
 const el=(tag,cls,t)=>{const node=document.createElement(tag);if(cls)node.className=cls;if(t!==undefined)node.textContent=String(t);return node;};
 const add=(parent,...items)=>{parent.append(...items);return parent;};
 const validExternal=url=>{try{return /^https:/.test(new URL(url).protocol)}catch(e){return false}};
-const validDestination=url=>typeof url==="string"&&(/^(\.\/)[a-z0-9/._?=&%-]+$/i.test(url)||validExternal(url));
+const validDestination=url=>typeof url==="string"&&(/^#[a-z][a-z0-9-]*$/i.test(url)||/^(\.\/)[a-z0-9/._?=&%-]+$/i.test(url)||validExternal(url));
 const nameFromId=id=>id.replace(/-/g," ").toUpperCase();
 const labels={spark:"Spark",exploring:"Exploring",building:"Building",released:"Launched","public-ready":"Public Ready"};
 const dots=()=>{const d=el("span","preview-dots");for(let i=0;i<3;i++)d.append(el("i"));return d;};
