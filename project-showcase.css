@@ -122,3 +122,9 @@ footer a{color:#bee7ff}
 .gallery-error{color:#c8d9e7;text-align:center;font-size:13px;line-height:1.6;padding:26px}
 #try-demo{scroll-margin-top:110px}
 @media(max-width:650px){.gallery-kind{top:10px;left:10px;font-size:8px;padding:6px 9px}}
+
+/* 3.0 release polish: decorative showcase children must not create sideways
+   page scrolling on small phones. The separate World Navigator keeps its
+   own intentional horizontal scrolling and remains outside <main>. */
+main{max-width:100%;overflow-x:clip}
+@supports not (overflow:clip){main{overflow-x:hidden}}
