@@ -31,7 +31,7 @@
        if(!p||!allowProject(p.id)||typeof p.name!=="string"||!p.name.trim())continue;
        output.push({id:"project-"+p.id,title:p.name,description:typeof p.summary==="string"?p.summary.slice(0,220):"Explore this project world",
          kind:"Project",href:"./project.html?project="+p.id,symbol:"◈",
-         keywords:[p.category,p.tagline,...(Array.isArray(p.features)?p.features.slice(0,12):[])].filter(x=>typeof x==="string").join(" ")});
+         keywords:[p.category,p.tagline,p.id==="wildrift-counter"?"2v2 solo lane counters champions":"",...(Array.isArray(p.features)?p.features.slice(0,12):[])].filter(x=>typeof x==="string").join(" ")});
      }
    }
    if(Array.isArray(catalog?.ideas)){
@@ -72,7 +72,7 @@
  }
  function rank(index,query,limit=9){
    const q=norm(query);
-   if(!q)return index.filter(x=>["Project","Navigate"].includes(x.kind)).slice(0,limit);
+   if(!q)return [...index.filter(x=>x.kind==="Project"),...index.filter(x=>x.kind==="Navigate")].slice(0,limit);
    return index.map(item=>({item,s:score(item,q)})).filter(x=>x.s>0)
      .sort((a,b)=>b.s-a.s||a.item.title.localeCompare(b.item.title)).slice(0,limit).map(x=>x.item);
  }
