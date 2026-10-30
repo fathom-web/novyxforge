@@ -26,7 +26,7 @@ permissions:
 jobs:
   browser-qa:
     name: Chromium desktop + mobile smoke
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 18
     steps:
       - name: Check out NOVYX source
