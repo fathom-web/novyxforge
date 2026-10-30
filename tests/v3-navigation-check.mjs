@@ -40,7 +40,7 @@ assert.match(js,/window\.location\.assign\(world\.url\.href\)/,"Native URL prese
 assert.match(js,/world\.url\.pathname === location\.pathname && world\.url\.search === location\.search/,"Same-project hash anchors must not trigger a portal transition");
 assert.match(js,/sessionStorage\.removeItem\(TRANSITION_KEY\)/,"Transition state cleanup");
 assert.match(js,/dialog\.showModal\(\)/,"Accessible modal");
-assert.match(js,/trigger\.focus\(\)/,"Return focus to Reactor trigger");
+assert.match(js,/trigger\.focus\(\{preventScroll:true\}\)/,"Return focus without stealing anchor scroll");
 assert.match(css,/\.world-nav-link:focus-visible/,"World navigator keyboard focus");
 assert.match(css,/@media\(max-width:760px\)/,"Responsive style");
 assert.match(css,/@media\(prefers-reduced-motion:reduce\)/,"Motion fallback");
