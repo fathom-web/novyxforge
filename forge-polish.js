@@ -60,8 +60,9 @@
   // users get a fully static, accessible surface.
   if(!reduce.matches && precise.matches){
     document.querySelectorAll(".catalog-tile").forEach(card=>initializeTilt(card));
-    const grid=document.getElementById("catalog-grid");
-    if(grid){
+    for(const id of ["catalog-grid","detail-related"]){
+      const grid=document.getElementById(id);
+      if(!grid)continue;
       grid.addEventListener("pointerover",event=>{
         const card=event.target.closest(".catalog-tile");
         if(card && grid.contains(card))initializeTilt(card);
