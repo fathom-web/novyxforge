@@ -16,6 +16,7 @@ const select=(options,current,change)=>{
  s.value=current;s.addEventListener("change",()=>change(s.value));return s;
 };
 const status=(msg)=>{const p=txt("p",msg,"demo-info");p.setAttribute("role","status");return p};
+const keepFocus=(root,selector)=>root.querySelector?.(selector)?.focus?.({preventScroll:true});
 const caption=t=>txt("div",t,"demo-caption");
 function renderShell(root,title,subtitle,onReset){
  root.replaceChildren();
@@ -66,8 +67,8 @@ function football(root){
   const roster=make("div","demo-stack");
   for(const p of fixture){
    const label=make("label","demo-toggle"),input=make("input");
-   input.type="checkbox";input.checked=available.has(p.id);input.setAttribute("aria-label",p.label+" available");
-   input.addEventListener("change",()=>{input.checked?available.add(p.id):available.delete(p.id);render()});
+   input.type="checkbox";input.checked=available.has(p.id);input.dataset.demoPlayer=String(p.id);input.setAttribute("aria-label",p.label+" available");
+   input.addEventListener("change",()=>{input.checked?available.add(p.id):available.delete(p.id);render();keepFocus(root,'input[data-demo-player="'+p.id+'"]')});
    add(label,input,txt("span",p.label),txt("em",p.role));roster.append(label);
   }
   controls.append(roster);
@@ -118,7 +119,7 @@ function study(root){
   const tabs=make("div","demo-chip-row");
   for(const [key,label] of [["quiz","Practice test"],["flash","Flashcards"]]){
     const t=button(label,"demo-chip");t.setAttribute("aria-pressed",String(mode===key));
-    t.addEventListener("click",()=>{mode=key;render()});tabs.append(t);
+    t.addEventListener("click",()=>{mode=key;render();keepFocus(root,'.demo-chip[aria-pressed="true"]')});tabs.append(t);
   }controls.append(tabs);
   if(mode==="quiz"){
     const q=questions[index];
@@ -128,7 +129,7 @@ function study(root){
       const choice=button("","demo-choice"+(answer===null?"":i===q.answer?" correct":i===answer?" incorrect":""));
       choice.disabled=answer!==null;
       add(choice,txt("span",String.fromCharCode(65+i),"demo-choice-marker"),txt("span",option));
-      choice.addEventListener("click",()=>{if(answer!==null)return;answer=i;if(i===q.answer)score++;render()});
+      choice.addEventListener("click",()=>{if(answer!==null)return;answer=i;if(i===q.answer)score++;render();keepFocus(root,'.demo-choices + .demo-info + .demo-button')});
       choices.append(choice);
     });controls.append(choices);
     if(answer!==null){controls.append(status((answer===q.answer?"Correct! ":"Not quite. ")+q.why));const next=button(index===questions.length-1?"Show results":"Next question →");next.addEventListener("click",()=>{if(index===questions.length-1){mode="result"}else{index++;answer=null}render()});controls.append(next);}
@@ -175,7 +176,7 @@ function wildrift(root){
  function render(){
    const {controls,preview}=renderShell(root,"Wild Rift Counter / Draft Lab","Illustrative champion selections and strategy archetypes, not a patch-verified counter database.",reset);
    add(controls,txt("h3","Configure a sample draft","demo-subheading"),txt("p","Choose your lane and opposing champion(s). Duo lanes use both enemy ADC and Support.","demo-hint"));
-   const laneSelect=select(Object.entries(laneNames),lane,v=>{lane=v;enemy=roles[v][0];render()});
+   const laneSelect=select(Object.entries(laneNames),lane,v=>{lane=v;enemy=roles[v][0];render();keepFocus(root,'.demo-controls select')});
    controls.append(field("Your role",laneSelect));
    const duo=lane==="adc"||lane==="support";
    if(duo){
@@ -244,10 +245,10 @@ function safe(root){
   const {controls,preview}=renderShell(root,"SAFe Agile Forge / PI Lab","Fictional four-iteration PI example, not a prescribed or production calendar.",reset);
   add(controls,txt("h3","Prepare a sample PI","demo-subheading"),
     txt("p","Choose an ART role and a sample start date. The ceremony preview recalculates instantly.","demo-hint"));
-  controls.append(field("Your ART role",select([["RTE","Release Train Engineer"],["PM","Product Manager"],["PO","Product Owner"],["SM","Scrum Master"]],role,v=>{role=v;render()})));
+  controls.append(field("Your ART role",select([["RTE","Release Train Engineer"],["PM","Product Manager"],["PO","Product Owner"],["SM","Scrum Master"]],role,v=>{role=v;render();keepFocus(root,'.demo-controls select')})));
   const date=make("input");date.type="date";date.value=start;
   date.min="2020-01-01";date.max="2040-12-31";
-  date.addEventListener("change",()=>{start=date.value;render()});
+  date.addEventListener("change",()=>{start=date.value;render();keepFocus(root,'.demo-controls input[type="date"]')});
   controls.append(field("Example PI start date",date));
   add(controls,status("This is a simplified demonstration of planning logic. Dates and ceremony recommendations are illustrative, not official SAFe obligations."));
   add(preview,txt("h3","Sample PI overview","demo-subheading"));
