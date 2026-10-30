@@ -34,12 +34,18 @@ try{
   downloadThroughput:1600*1024/8,uploadThroughput:750*1024/8});
  await client.send("Emulation.setCPUThrottlingRate",{rate:4});
  await page.addInitScript(()=>{
-  window.__novyxPerf={lcp:0,cls:0,longTasks:0};
+  window.__novyxPerf={lcp:0,cls:0,longTasks:0,shifts:[]};
   try{new PerformanceObserver(list=>{
    for(const e of list.getEntries())window.__novyxPerf.lcp=e.startTime;
   }).observe({type:"largest-contentful-paint",buffered:true});}catch(_){}
   try{new PerformanceObserver(list=>{
-   for(const e of list.getEntries())if(!e.hadRecentInput)window.__novyxPerf.cls+=e.value;
+   for(const e of list.getEntries())if(!e.hadRecentInput){
+    window.__novyxPerf.cls+=e.value;
+    if(e.value>.008 && window.__novyxPerf.shifts.length<16)
+      window.__novyxPerf.shifts.push({value:Math.round(e.value*1000)/1000,
+        nodes:(e.sources||[]).map(s=>({id:s.node?.id||"",tag:s.node?.tagName||"",
+          className:String(s.node?.className?.baseVal||s.node?.className||"").slice(0,65)})).slice(0,5)});
+   }
   }).observe({type:"layout-shift",buffered:true});}catch(_){}
   try{new PerformanceObserver(list=>{
    for(const e of list.getEntries())if(e.duration>50)window.__novyxPerf.longTasks++;
@@ -55,6 +61,7 @@ try{
    return {lcpMs:Math.round(window.__novyxPerf?.lcp||0),
     cls:Math.round((window.__novyxPerf?.cls||0)*1000)/1000,
     longTasks:window.__novyxPerf?.longTasks||0,
+    shifts:window.__novyxPerf?.shifts||[],
     dclMs:Math.round(nav?.domContentLoadedEventEnd||0),
     resources:resources.length,
     transferKb:Math.round(resources.reduce((a,e)=>a+(e.transferSize||0),0)/1024),
