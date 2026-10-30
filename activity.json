@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-30",
+  "description": "Curated GitHub commit evidence. Development commits are not verified releases or production deployments.",
+  "items": [
+    {
+      "id": "commit-f81196e6132b",
+      "projectId": "footballforge",
+      "type": "development",
+      "status": "committed",
+      "title": "Team training schedules documented",
+      "summary": "Documentation updated for different training days and attendance defaults.",
+      "occurredAt": "2026-10-30T09:11:05Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/svdiemen",
+        "sha": "f81196e6132be039d96c3c49800d7b7653adf09e",
+        "url": "https://github.com/fathom-web/svdiemen/commit/f81196e6132be039d96c3c49800d7b7653adf09e"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-6d4709252db3",
+      "projectId": "studyforge",
+      "type": "development",
+      "status": "committed",
+      "title": "French listening and reading support",
+      "summary": "Development commit enabling listening playback and reading passages in StudyForge.",
+      "occurredAt": "2026-10-29T21:06:10Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/studyforge",
+        "sha": "6d4709252db31c591d5fc4f3e8bbd1844de036ef",
+        "url": "https://github.com/fathom-web/studyforge/commit/6d4709252db31c591d5fc4f3e8bbd1844de036ef"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-41c263870013",
+      "projectId": "safeforge",
+      "type": "development",
+      "status": "committed",
+      "title": "Automated code smoke checks",
+      "summary": "A GitHub workflow was added to run smoke checks for pushes and pull requests.",
+      "occurredAt": "2026-10-27T22:29:03Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/SAFeForge",
+        "sha": "41c263870013f2226726c3c5dbddb799b6bd311c",
+        "url": "https://github.com/fathom-web/SAFeForge/commit/41c263870013f2226726c3c5dbddb799b6bd311c"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-46918c9bbfa6",
+      "projectId": "wildrift-counter",
+      "type": "development",
+      "status": "committed",
+      "title": "Solo and duo-lane draft layout",
+      "summary": "The Wild Rift Counter interface was redesigned for solo lanes and 2v2 duo matchups.",
+      "occurredAt": "2026-10-29T17:30:35Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/WildRiftCounter",
+        "sha": "46918c9bbfa6db22b6206b0958b14f6affafa9bd",
+        "url": "https://github.com/fathom-web/WildRiftCounter/commit/46918c9bbfa6db22b6206b0958b14f6affafa9bd"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-107dc283fb52",
+      "projectId": "wildrift-counter",
+      "type": "development",
+      "status": "committed",
+      "title": "Wild Rift data refresh commit",
+      "summary": "The repository recorded a data-refresh commit; the validity of any specific matchup is not implied.",
+      "occurredAt": "2026-10-30T05:52:13Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/WildRiftCounter",
+        "sha": "107dc283fb52985b5be8eee2ac84d1a11292cba5",
+        "url": "https://github.com/fathom-web/WildRiftCounter/commit/107dc283fb52985b5be8eee2ac84d1a11292cba5"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-7942e65a49bb",
+      "projectId": "spark-lab",
+      "type": "development",
+      "status": "committed",
+      "title": "Spark Lab workflow documented",
+      "summary": "The Forge Pipeline and Spark Lab beta workflow were documented in the NOVYX repository.",
+      "occurredAt": "2026-10-30T10:07:38Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/novyxforge",
+        "sha": "7942e65a49bb292ae5f027d50fbfb4ebfcb678a3",
+        "url": "https://github.com/fathom-web/novyxforge/commit/7942e65a49bb292ae5f027d50fbfb4ebfcb678a3"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-e43a7868fc65",
+      "projectId": "spark-lab",
+      "type": "development",
+      "status": "committed",
+      "title": "Spark Lab added to site discovery",
+      "summary": "The Spark Lab experience was included in NOVYX search and sitemap work.",
+      "occurredAt": "2026-10-30T10:07:41Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/novyxforge",
+        "sha": "e43a7868fc6591dc74e2d5dce42c63851282f25f",
+        "url": "https://github.com/fathom-web/novyxforge/commit/e43a7868fc6591dc74e2d5dce42c63851282f25f"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-346f03fc2066",
+      "projectId": "novyxforge",
+      "type": "development",
+      "status": "committed",
+      "title": "Seven atmospheric presets added",
+      "summary": "The NOVYX codebase gained a shared Canvas weather engine and motion-safety handling.",
+      "occurredAt": "2026-10-30T11:23:21Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/novyxforge",
+        "sha": "346f03fc2066eb25f457084608aa3cfd23a8682a",
+        "url": "https://github.com/fathom-web/novyxforge/commit/346f03fc2066eb25f457084608aa3cfd23a8682a"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-26dd4ef12fb4",
+      "projectId": "novyxforge",
+      "type": "development",
+      "status": "committed",
+      "title": "Four isolated demo experiences coded",
+      "summary": "Four client-only sample product demos were added to the NOVYX codebase.",
+      "occurredAt": "2026-10-30T11:48:55Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/novyxforge",
+        "sha": "26dd4ef12fb4b26ec854cd6d0e1a5fa50c70d32d",
+        "url": "https://github.com/fathom-web/novyxforge/commit/26dd4ef12fb4b26ec854cd6d0e1a5fa50c70d32d"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-94ed29ae05c1",
+      "projectId": "novyxforge",
+      "type": "development",
+      "status": "committed",
+      "title": "World navigation guard improved",
+      "summary": "Transitions were adjusted to keep navigation inside the same showcase functioning as normal.",
+      "occurredAt": "2026-10-30T11:55:01Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/novyxforge",
+        "sha": "94ed29ae05c1e73dace274c951b2f3dae03dc67f",
+        "url": "https://github.com/fathom-web/novyxforge/commit/94ed29ae05c1e73dace274c951b2f3dae03dc67f"
+      },
+      "reviewed": true
+    }
+  ]
+}
