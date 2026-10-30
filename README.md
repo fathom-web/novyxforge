@@ -2,11 +2,17 @@
 
 An independent AI & Technology Lab: a cinematic home for projects, ideas and experiments.
 
+## NOVYX FORGE 3.0 — Release Candidate RC1 (2026-10-30)
+
+**Source complete, not yet live-released.** All ten selected 3.0 features are implemented and [Chromium browser QA passed all 16 checks](https://github.com/fathom-web/novyxforge/actions/runs/41057805696), including desktop and 360/390px phones. The original five-suite [GitHub smoke checks are also passing](https://github.com/fathom-web/novyxforge/actions/runs/41057805528).
+
+The exact current status, successful screenshot artifact, corrected responsive issues and remaining production gates are in **[RELEASE_CANDIDATE_3_0.md](./RELEASE_CANDIDATE_3_0.md)**. MijnHost deployment, reviewed real application screenshots, manual cross-browser/accessibility review and measured production performance remain open. Do **not** mark 3.0 as officially released until those are validated.
+
 ## NOVYX FORGE 3.0 — approved roadmap (2026-10-30)
 
 The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3_0.md)**. It includes all ten selected workstreams: Six-Sphere Universe, seven-weather Weather Engine, World Transitions, World Navigator, Forge Reactor, Interactive Demo Mode, The Observatory, Evolution Timeline, Forge Feedback and Command Search, plus mobile/accessibility/performance/screenshot release gates.
 
-**Current state:** Initial code for **all ten approved NOVYX 3.0 features** is committed to GitHub, including Forge Feedback and Command Search. This is still a beta: actual product screenshots, production deployment, browser/device accessibility and measured performance have not been verified.
+**Current state:** All ten approved NOVYX 3.0 features are committed to GitHub; 16/16 Chromium browser QA checks and all five source contract suites are passing. **Still a release candidate, not an official live release:** MijnHost deployment, approved real app screenshots, cross-browser accessibility and production performance are not confirmed.
 
 ### 3.0 Alpha code and test command
 
