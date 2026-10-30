@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0d20">
+<meta name="description" content="The NOVYX FORGE release checklist: how a launched project becomes Public Ready with a usable GitHub template, verified downloads, license and documentation.">
+<title>Public Ready — NOVYX FORGE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--gold:#ffd18b;--ice:#9ddfff;--muted:#acbbd1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 68% 10%,rgba(180,99,54,.2),transparent 48%),radial-gradient(ellipse at 13% 35%,rgba(45,106,170,.17),transparent 55%),#070c1a;color:#eff6ff;font:15px/1.7 "DM Sans",sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.container{width:min(1100px,calc(100% - 40px));margin:auto}
+header{border-bottom:1px solid rgba(151,195,247,.16)}nav{display:flex;justify-content:space-between;gap:15px;align-items:center;min-height:85px}
+.brand{font:700 19px Outfit,sans-serif;letter-spacing:.15em}.brand span{color:var(--ice)}.back{padding:11px 15px;border:1px solid rgba(142,191,252,.29);border-radius:8px;font:700 11px Outfit,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.hero{padding:83px 0 55px;display:grid;grid-template-columns:1fr 245px;align-items:center;gap:30px}.label{font:700 10px Outfit,sans-serif;color:var(--gold);letter-spacing:.21em;text-transform:uppercase}
+h1{font:500 clamp(55px,7vw,90px)/1.01 Outfit,sans-serif;letter-spacing:-.06em;margin:22px 0}h1 em{font-style:normal;color:transparent;background:linear-gradient(100deg,#fff0c1,#ffc376,#d7b2ff);-webkit-background-clip:text;background-clip:text}.hero p{font-size:17px;color:#b7c7dd;line-height:1.8;max-width:750px}
+.release-orb{aspect-ratio:1;width:235px;position:relative;display:grid;place-items:center;margin:auto}.release-orb:before,.release-orb:after{content:"";position:absolute;inset:8%;border:1px solid rgba(255,204,115,.49);border-radius:50%;animation:spin 31s linear infinite}.release-orb:after{inset:0;border:1px dashed rgba(177,143,255,.36);animation-direction:reverse;animation-duration:22s}.release-orb span{display:grid;place-items:center;width:39%;aspect-ratio:1;transform:rotate(45deg);border:1px solid rgba(255,230,168,.75);border-radius:26%;font:600 30px Outfit,sans-serif;color:#ffe5af;background:radial-gradient(circle at 20% 10%,rgba(255,235,159,.58),rgba(140,64,39,.8) 60%,#221b34);box-shadow:0 0 60px rgba(252,170,74,.3)}
+.intro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin:0 0 67px}.panel{border:1px solid rgba(129,184,242,.22);background:linear-gradient(145deg,rgba(18,34,66,.75),rgba(9,15,31,.94));border-radius:16px;padding:28px}.panel.gold{border-color:rgba(255,196,115,.3);background:linear-gradient(140deg,rgba(50,35,39,.74),rgba(10,17,35,.96))}.panel h2{font:500 29px Outfit,sans-serif;margin:8px 0 14px}.panel p{color:#adbed4;line-height:1.78;margin:0}.panel small{color:#98bcf1;font:700 10px Outfit,sans-serif;letter-spacing:.17em;text-transform:uppercase}
+.section-heading{font:500 clamp(33px,4.4vw,52px)/1.1 Outfit,sans-serif;letter-spacing:-.04em;margin:0 0 15px}.section-sub{color:#adc0d8;max-width:760px;margin:0 0 28px}
+.checklist{display:grid;gap:12px;padding-bottom:80px}.check{display:flex;align-items:start;gap:15px;padding:20px;border:1px solid rgba(132,186,238,.25);border-radius:13px;background:rgba(15,28,55,.7);cursor:pointer}.check:hover{border-color:rgba(255,211,143,.43)}.check input{flex:0 0 19px;width:19px;height:19px;accent-color:#ffd18b;margin:5px 0 0}.check strong{font:600 18px Outfit,sans-serif}.check span{display:block;font-size:13px;color:#a6bad4;margin-top:4px}.status{margin:0 0 90px;padding:23px;border:1px solid rgba(255,211,131,.31);border-radius:13px;background:rgba(87,51,26,.18);color:#f2d7b2}.status strong{display:block;color:#fff1ce;font:600 17px Outfit,sans-serif}.status p{margin:5px 0 0;font-size:13px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:80px}.step{padding:25px;border:1px solid rgba(137,187,235,.24);border-radius:14px;background:rgba(14,30,57,.7)}.step small{font:700 10px Outfit,sans-serif;letter-spacing:.16em;color:#ffc883}.step h3{font:500 21px Outfit,sans-serif;margin:16px 0 10px}.step p{color:#a9bdd7;font-size:13px;line-height:1.75;margin:0}
+.finish{display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap;border:1px solid rgba(255,214,132,.26);border-radius:16px;padding:32px;background:linear-gradient(110deg,rgba(63,37,29,.67),rgba(11,24,49,.8));margin:0 0 70px}.finish h2{font:500 27px Outfit,sans-serif;margin:0}.finish p{margin:6px 0 0;color:#afc0d6;font-size:13px;max-width:610px}.finish a{padding:12px 18px;background:#ffe2aa;color:#271c23;border-radius:7px;font:700 11px Outfit,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+footer{padding:28px 0;border-top:1px solid rgba(134,184,241,.16);font-size:12px;color:#a0aec5}
+@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:750px){.hero{grid-template-columns:1fr;padding-top:55px}.release-orb{width:170px}.intro-grid,.steps{grid-template-columns:1fr}.hero p{font-size:15px}.panel{padding:23px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head><body>
+<header><nav class="container"><a class="brand" href="./index.html">NOVYX <span>FORGE</span></a><a class="back" href="./index.html#pipeline">← Pipeline</a></nav></header>
+<main class="container">
+<section class="hero"><div><div class="label">STAGE 05 / AFTER LAUNCH</div><h1>Public <em>Ready.</em></h1><p>A working product isn't automatically a public package. The final Forge stage is for releases that others can actually download, install or use as a GitHub template — with clear instructions and permissions.</p></div><div class="release-orb" aria-hidden="true"><span>✧</span></div></section>
+<div class="intro-grid">
+ <article class="panel"><small>04 / Launch</small><h2>The product works.</h2><p>The experience is available, tested for its intended use and ready to be explored. A live application can stay in Launch even if it isn't distributed as a reusable package.</p></article>
+ <article class="panel gold"><small>05 / Public Ready</small><h2>Others can build with it.</h2><p>There is a real distributable release or template, a clear license, setup documentation and tested access links. Only then do public download buttons appear.</p></article>
+</div>
+<h2 class="section-heading">The release gate.</h2><p class="section-sub">Use this checklist while preparing a specific project. Checking boxes here is just a planning aid — it doesn't publish files, change GitHub settings or mark a project Public Ready.</p>
+<div class="checklist" id="checklist">
+ <label class="check"><input type="checkbox"><div><strong>Working release</strong><span>Test the application, addon or reusable project version on the supported platform.</span></div></label>
+ <label class="check"><input type="checkbox"><div><strong>Distribution package</strong><span>Publish an actual downloadable release, or enable Template repository for a reusable GitHub project.</span></div></label>
+ <label class="check"><input type="checkbox"><div><strong>License &amp; ownership</strong><span>Verify rights and include a suitable license before inviting others to reuse the code.</span></div></label>
+ <label class="check"><input type="checkbox"><div><strong>Documentation</strong><span>Add a useful README, installation steps, dependencies and example configuration where needed.</span></div></label>
+ <label class="check"><input type="checkbox"><div><strong>Verified links</strong><span>Open the release, template and documentation links yourself and test the result before changing the stage.</span></div></label>
+</div>
+<div class="status" aria-live="polite"><strong id="check-title">0 of 5 checks selected</strong><p id="check-desc">Complete the checklist as you prepare a release. The actual Public Ready status remains under NOVYX project catalog control.</p></div>
+<h2 class="section-heading">How downloads will work.</h2>
+<p class="section-sub">When an eligible project is ready, its Pipeline card can display the relevant actions automatically from our catalog. These are different distribution methods:</p>
+<div class="steps">
+ <article class="step"><small>01 / GITHUB TEMPLATE</small><h3>Use this template</h3><p>In the GitHub repository settings, enable <strong>Template repository</strong>. Then provide the repository's real <code>/generate</code> link. Visitors can create a new repository from it; this is not the same as downloading a ZIP.</p></article>
+ <article class="step"><small>02 / RELEASE PACKAGE</small><h3>Download a version</h3><p>Provide a real GitHub Release or other approved package URL. Visitors download a versioned artifact, with an installation guide and license.</p></article>
+ <article class="step"><small>03 / GAMING ADDONS</small><h3>CurseForge only</h3><p>WoW addon downloads and updates stay on CurseForge. NOVYX showcases addons, their features and development status, but does not become an alternative download site.</p></article>
+</div>
+<div class="finish"><div><h2>One last gate. Then it's ready for the world.</h2><p>Current NOVYX repositories have not yet been verified as public GitHub templates. The Pipeline will not invent template or download links.</p></div><a href="./index.html#pipeline">Return to Pipeline ↗</a></div>
+</main><footer><div class="container">NOVYX FORGE · Explore. Experiment. Build. Release.</div></footer>
+<script>
+const boxes=[...document.querySelectorAll('#checklist input[type="checkbox"]')];
+const title=document.getElementById("check-title"),desc=document.getElementById("check-desc");
+const update=()=>{const done=boxes.filter(x=>x.checked).length;title.textContent=done+" of 5 checks selected";desc.textContent=done===5?"Checklist complete for your own review. This does not automatically publish or approve a project.":"Complete the checklist as you prepare a release. The actual Public Ready stage is managed in the NOVYX project catalog."};
+boxes.forEach(x=>x.addEventListener("change",update));update();
+</script>
+</body></html>
