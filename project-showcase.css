@@ -115,3 +115,10 @@ footer a{color:#bee7ff}
 .gallery-photo-button img{transition:transform .25s ease}
 .gallery-photo-button:hover img{transform:scale(1.035)}
 @media(prefers-reduced-motion:reduce){.gallery-photo-button img:hover{transform:none!important}}
+
+/* NOVYX 3.0 editorial truth labels: no conceptual art masquerading as screenshots. */
+.gallery-kind{position:absolute;z-index:3;top:13px;left:13px;padding:7px 10px;border:1px solid rgba(164,206,247,.35);border-radius:20px;background:rgba(5,18,37,.85);color:#e3f7ff;font:700 9px Outfit,sans-serif;letter-spacing:.09em;pointer-events:none}
+.gallery-missing{background:rgba(26,34,58,.72)}
+.gallery-error{color:#c8d9e7;text-align:center;font-size:13px;line-height:1.6;padding:26px}
+#try-demo{scroll-margin-top:110px}
+@media(max-width:650px){.gallery-kind{top:10px;left:10px;font-size:8px;padding:6px 9px}}
