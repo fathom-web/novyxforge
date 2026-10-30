@@ -79,3 +79,19 @@
 @media(max-width:850px){.spark-feature-panel{grid-template-columns:1fr;gap:5px;padding:42px 27px}.spark-feature-visual{width:min(100%,330px);margin:auto}.spark-feature{padding-bottom:68px}}
 @media(max-width:430px){.spark-feature h2{font-size:44px}.spark-feature p{font-size:15px}.spark-feature-visual{min-height:255px}.spark-feature .section-kicker{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.spark-ring,.spark-core{animation:none!important}}
+
+
+/* Pipeline visual QA: ensure a direct #pipeline visit keeps the entire heading
+   comfortably below the browser chrome; the native smooth-scroll remains intact. */
+#pipeline{scroll-margin-top:75px}
+#pipeline .lab-section-heading{padding-top:8px}
+#pipeline .lab-section-heading h2{line-height:1.16;padding-top:3px}
+.pipeline-card p{font-size:13px;line-height:1.62}
+.pipeline-card h3{line-height:1.28}
+.pipeline-card .pipeline-link{font-size:11px;min-height:18px}
+.pipeline-column-title small{font-size:12px}
+@media(max-width:800px){
+  #pipeline{scroll-margin-top:50px}
+  #pipeline .lab-section-heading{padding-top:10px}
+  .pipeline-card p{font-size:13px}
+}
