@@ -103,7 +103,7 @@
     close.addEventListener("click", () => dialog.close());
     dialog.addEventListener("close", () => {
       document.documentElement.classList.remove("reactor-is-open");
-      trigger.focus();
+      trigger.focus({preventScroll:true});
     });
     dialog.addEventListener("click", event => {
       if (event.target === dialog) dialog.close();
