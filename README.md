@@ -38,9 +38,9 @@ The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3
 | `project.html` | Generic dynamic project experience |
 | `safe-agile.html` | Dedicated SAFe Agile Forge introduction |
 
-To add a project without creating another hero sphere, add an entry in `projects.json`. The Project Explorer renders it automatically. The five hero spheres are hand-crafted visual highlights, while the catalog is scalable beyond five projects.
+To add a project without creating another hero sphere, add an entry in `projects.json`. The Project Explorer renders it automatically. The six hero spheres are hand-crafted visual highlights, while the catalog is scalable beyond the featured projects.
 
-The `stage` values are `spark`, `exploring`, `building`, and `released`. Only mark a project as released when its public experience is actually available. The `links.visit` field may be `null` for unfinished apps. Concept data belongs in the `ideas` array.
+The `stage` values are `spark`, `exploring`, `building`, `released`, and `public-ready`. Only mark a project as released when its public experience is actually available. The `links.visit` field may be `null` for unfinished apps. Concept data belongs in the `ideas` array.
 
 ## SAFe Agile Forge
 
@@ -98,7 +98,7 @@ Files: `forge-worlds.css` (sphere identity + five-column layout), `public-ready.
 
 ## Product showcases and screenshot gallery
 
-All five homepage spheres, all five featured project cards, the Project Explorer, and the Pipeline now route to the **project showcase** first (`project.html?project=<project-id>`). This is intentional: visitors should understand the project before opening the real application.
+All six homepage spheres, all six featured project cards, the Project Explorer, and the Pipeline now route to the **project showcase** first (`project.html?project=<project-id>`). This is intentional: visitors should understand the project before opening the real application.
 
 Each project showcase contains: the problem and audience, the core workflow, capabilities, three cinematic **illustrative interface previews**, an optional gallery of **real screenshots**, and a clearly separated "Open the application"/"Visit Instagram"/source CTA. Actual screenshots have **not** yet been collected from the apps. Illustrative previews are labeled as such; do not present them as real screenshots. Projects without a verified environment do not get invented launch links.
 
@@ -122,7 +122,7 @@ NOVYX uses **GitHub for source control and MijnHost for website hosting**. GitHu
 1. In DirectAdmin, open the **NOVYX FORGE Git repository** that deploys to the **main domain**.
 2. Use **FETCH** to retrieve the new commits, then **DEPLOY**.
 3. Verify `index.html`, `projects.json`, `forge-experience.js`, `forge-experience.css`, `project.html` and `safe-agile.html` have all arrived in the same main document root.
-4. Test the five spheres, SAFe destination, WoW detail, category filters/search, Idea Vault and GitHub Pulse (including its fallback).
+4. Test all six spheres including Wild Rift, each project weather effect and the atmosphere toggle, SAFe destination, WoW detail, category filters/search, Idea Vault and GitHub Pulse (including its fallback).
 5. Force-refresh the browser. SSL should remain enabled.
 
 Do not deploy the main site into the separate SAFe subdomain directory, or vice versa.
