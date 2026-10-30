@@ -25,6 +25,17 @@ The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3
 - Unit-free wiring checks: `node tests/v3-alpha-check.mjs` and `node tests/v3-navigation-check.mjs`.
 - **Validation status:** Static HTML/CSS/JS structure checked. Not yet visually tested in a deployed browser or verified on actual phones. Run FETCH → DEPLOY in MijnHost, then test six sphere links, central Reactor dialog, the world strip on each showcase, and changing weather between project pages.
 
+### 3.0 Interactive Demo Beta — four product sandboxes
+
+- `forge-demos.js` + `forge-demo.css` power isolated client-side demos. They **never** contact production application APIs, write to persistent browser storage, collect account data or submit anything externally.
+- `FootballForge`: 16 fictional sample positions, available/absent toggles, an illustrative 4–3–3 lineup, empty positions and bench.
+- `StudyForge`: four-question sample quiz with feedback and score, plus simple interactive flashcards. Nothing is recorded to a student account.
+- `Wild Rift Counter`: selectable Baron/Jungle/Mid (one opposing champion) and ADC/Support (both opposing duo-lane champions). **Only illustrative drafting considerations** are shown; no patch-verified counters or win rates are invented.
+- `SAFe Agile Forge`: select RTE, PM, PO or SM and a sample start date to calculate a fictional four-iteration PI planning preview. This is not official or mandatory SAFe ceremony guidance.
+- `project.html` shows an extra **Try it yourself** section and hero CTA only for these four approved projects. The Fascination Files, WoW LifeForge and Spark Lab remain normal showcases.
+- Screenshots are separate from simulations. The `showcase.screenshots` list must include a real capture, sanitised content, accessible title/alt text, the local `./assets/screenshots/<project-id>/...` path and **`"verified":true`** after review. Otherwise the page keeps visibly labeled *illustrative previews*.
+- Test with `node tests/v3-demos-check.mjs`; additionally visually test keyboard and touch, label clarity and reset behavior on real browsers. GitHub commits do not automatically deploy to MijnHost.
+
 ## What's here
 
 - **Five interactive glass spheres:** FootballForge, StudyForge, The Fascination Files, SAFe Agile Forge and WoW LifeForge.
@@ -118,9 +129,10 @@ Each project showcase contains: the problem and audience, the core workflow, cap
 3. In `projects.json` find the project and add entries to `showcase.screenshots`:
    
    ```json
-   {"src":"./assets/screenshots/footballforge/dashboard.webp","title":"Team dashboard","description":"The current FootballForge workspace","alt":"FootballForge team dashboard shown with demo data"}
+   {"src":"./assets/screenshots/footballforge/dashboard.webp","title":"Team dashboard","description":"The current FootballForge workspace","alt":"FootballForge dashboard shown with fictitious demo data","verified":true}
    ```
-4. Deploy the updated repo to MijnHost with FETCH → DEPLOY. The real screenshot gallery will automatically replace the illustrative previews for that project, and visitors can enlarge each screenshot.
+4. Set `"verified":true` only after reviewing the real capture for accurate content and privacy. Otherwise the page will continue showing illustrative concept previews.
+5. Deploy the updated repo to MijnHost with FETCH → DEPLOY. The real screenshot gallery will automatically replace the illustrative previews for that project, and visitors can enlarge each screenshot.
 
 The showcase pages use `project-showcase.css` and `project-showcase.js` and read the same `projects.json` project metadata. Product URLs remain in `links.visit`, separated from the showcase destinations. The old standalone `safe-agile.html` page still works and now links back to the full showcase.
 
