@@ -37,6 +37,7 @@ assert.match(js,/anchor\.hasAttribute\("download"\)/,"Downloads must pass throug
 assert.match(js,/document\.visibilityState === "hidden"/,"Do not animate hidden pages");
 assert.match(js,/prefers-reduced-motion: reduce/,"Reduced motion safety");
 assert.match(js,/window\.location\.assign\(world\.url\.href\)/,"Native URL preserved");
+assert.match(js,/world\.url\.pathname === location\.pathname && world\.url\.search === location\.search/,"Same-project hash anchors must not trigger a portal transition");
 assert.match(js,/sessionStorage\.removeItem\(TRANSITION_KEY\)/,"Transition state cleanup");
 assert.match(js,/dialog\.showModal\(\)/,"Accessible modal");
 assert.match(js,/trigger\.focus\(\)/,"Return focus to Reactor trigger");
