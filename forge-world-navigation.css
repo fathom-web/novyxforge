@@ -135,3 +135,6 @@ html.reactor-is-open{scrollbar-gutter:stable}
  .reactor-action,.universe .forge-reactor-trigger,.world-nav-link{transition:none!important}
  .reactor-action:hover,.world-nav-link:hover{transform:none!important}
 }
+/* Sticky world navigation must not cover deep-linked showcase sections. */
+#how-it-works,#screenshots{scroll-margin-top:108px}
+@media(max-width:760px){#how-it-works,#screenshots{scroll-margin-top:96px}}
