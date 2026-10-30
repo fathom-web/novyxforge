@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "brand": "NOVYX FORGE",
+  "updated": "2026-10-30",
+  "stages": [
+    {
+      "id": "spark",
+      "title": "Spark",
+      "description": "A promising idea"
+    },
+    {
+      "id": "exploring",
+      "title": "Explore",
+      "description": "Research and experimentation"
+    },
+    {
+      "id": "building",
+      "title": "Build",
+      "description": "Prototype in progress"
+    },
+    {
+      "id": "released",
+      "title": "Launch",
+      "description": "Available to explore"
+    }
+  ],
+  "projects": [
+    {
+      "id": "footballforge",
+      "name": "FootballForge",
+      "category": "Sports",
+      "stage": "released",
+      "featured": true,
+      "accent": "#71cdff",
+      "symbol": "⚽",
+      "tagline": "Matchday, reimagined.",
+      "summary": "A smarter home for football teams, player availability, rotations and matchday communication.",
+      "problem": "Coordinating players, attendance and matchday decisions takes too much manual work.",
+      "solution": "Bring the team workflow into one focused digital experience.",
+      "features": [
+        "Team and player management",
+        "Attendance and matchday planning",
+        "Line-ups and substitution rotations",
+        "Communication tools"
+      ],
+      "tech": [
+        "Web application",
+        "Workflow design"
+      ],
+      "links": {
+        "visit": "https://fathom-web.github.io/svdiemen/",
+        "source": null
+      }
+    },
+    {
+      "id": "studyforge",
+      "name": "StudyForge",
+      "category": "Education",
+      "stage": "released",
+      "featured": true,
+      "accent": "#a79aff",
+      "symbol": "✦",
+      "tagline": "Learn. Practice. Progress.",
+      "summary": "An interactive study space for practice tests, flashcards and visible learning progress.",
+      "problem": "Studying needs to feel clearer, more practical and more engaging.",
+      "solution": "Turn study material into focused exercises and progress tracking.",
+      "features": [
+        "Practice tests",
+        "Flashcards",
+        "Progress overview",
+        "Import-driven learning content"
+      ],
+      "tech": [
+        "Static web app",
+        "JSON data"
+      ],
+      "links": {
+        "visit": "https://fathom-web.github.io/studyforge/",
+        "source": "https://github.com/fathom-web/studyforge"
+      }
+    },
+    {
+      "id": "fascination-files",
+      "name": "The Fascination Files",
+      "category": "Creative",
+      "stage": "released",
+      "featured": true,
+      "accent": "#c795ff",
+      "symbol": "✧",
+      "tagline": "Wonder is everywhere.",
+      "summary": "Cinematic stories and remarkable facts about science, technology, nature and the unexplained.",
+      "problem": "Amazing discoveries deserve a more memorable way of being shared.",
+      "solution": "Combine researched facts and cinematic visual storytelling.",
+      "features": [
+        "Science and discovery",
+        "Curiosity-led stories",
+        "Short-form visuals",
+        "Daily creative exploration"
+      ],
+      "tech": [
+        "Visual storytelling",
+        "AI-assisted creative workflows"
+      ],
+      "links": {
+        "visit": "https://instagram.com/thefascinationfiles",
+        "source": null
+      }
+    },
+    {
+      "id": "safeforge",
+      "name": "SAFe Agile Forge",
+      "category": "Productivity",
+      "stage": "building",
+      "featured": true,
+      "accent": "#79edc2",
+      "symbol": "◈",
+      "tagline": "Bring clarity to every PI.",
+      "summary": "A role-based PI Ceremony Planner and PI Event Command Center, with calendar and offline exports.",
+      "problem": "PI ceremonies and large planning events need a coherent overview of people, timing, readiness and outcomes.",
+      "solution": "Plan the PI in a browser-based workspace, without direct Defence or Microsoft 365 integration.",
+      "features": [
+        "Role-based ceremony planning",
+        "PI Event Planner and ART context",
+        "Outlook-compatible .ics calendar export",
+        "Offline PDF/XLSX and JSON export"
+      ],
+      "tech": [
+        "HTML/JavaScript",
+        "Browser-local storage",
+        "Offline exports"
+      ],
+      "links": {
+        "visit": null,
+        "source": "https://github.com/fathom-web/SAFeForge"
+      },
+      "detail": "safe-agile.html"
+    },
+    {
+      "id": "wow-lifeforge",
+      "name": "WoW LifeForge",
+      "category": "Gaming",
+      "stage": "exploring",
+      "featured": true,
+      "accent": "#ffbc77",
+      "symbol": "◆",
+      "tagline": "Your character. Your journey. Your legend.",
+      "summary": "A World of Warcraft: Forever addon concept to chronicle adventures, friendships and milestones.",
+      "problem": "A character's most memorable moments and achievements disappear into chat logs and memories.",
+      "solution": "Explore a way to preserve the character's story in a meaningful addon experience.",
+      "features": [
+        "Adventure journal concept",
+        "Character journey milestones",
+        "Memories and friendships",
+        "Future CurseForge distribution"
+      ],
+      "tech": [
+        "WoW addon concept",
+        "Lua (planned)"
+      ],
+      "links": {
+        "visit": null,
+        "source": null
+      }
+    },
+    {
+      "id": "wildrift-counter",
+      "name": "Wild Rift Counter",
+      "category": "Gaming",
+      "stage": "building",
+      "featured": false,
+      "accent": "#6dd8e8",
+      "symbol": "✕",
+      "tagline": "Think ahead. Pick smarter.",
+      "summary": "A smart lane-counter assistant for League of Legends: Wild Rift drafts.",
+      "problem": "Choosing counters during champion selection requires fast, relevant lane matchup information.",
+      "solution": "A focused draft assistant that starts with the opponent's lane picks.",
+      "features": [
+        "Lane matchup selection",
+        "Duo-lane matchups",
+        "Counter suggestions",
+        "Patch-aware data workflow"
+      ],
+      "tech": [
+        "Web application",
+        "Matchup data"
+      ],
+      "links": {
+        "visit": null,
+        "source": "https://github.com/fathom-web/WildRiftCounter"
+      }
+    }
+  ],
+  "ideas": [
+    {
+      "id": "prompt-playground",
+      "name": "Prompt Playground",
+      "stage": "spark",
+      "category": "AI",
+      "accent": "#9abfff",
+      "symbol": "✳",
+      "summary": "A creative playground for discovering, testing and refining powerful AI prompts."
+    },
+    {
+      "id": "open-tools",
+      "name": "Open Tools & White Label",
+      "stage": "exploring",
+      "category": "Open Forge",
+      "accent": "#87e3d4",
+      "symbol": "⌘",
+      "summary": "Make selected Forge tools reusable without maintaining a separate custom version for everyone."
+    },
+    {
+      "id": "forge-automations",
+      "name": "Forge Automations",
+      "stage": "spark",
+      "category": "Automation",
+      "accent": "#e6a5e8",
+      "symbol": "↝",
+      "summary": "Explore small automations that connect useful ideas with everyday tasks."
+    }
+  ]
+}
