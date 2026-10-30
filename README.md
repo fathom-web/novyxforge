@@ -57,6 +57,8 @@ The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3
 - Contract test: `node tests/v3-search-feedback-check.mjs`; static and local-runtime checks cover all 7 projects, 3 ideas, 10 reviewed events, data safety and per-project GitHub issue URLs.
 - **3.0 source scope:** all ten approved features have initial implementation code. **Not a finished production release:** real verified screenshots, browser/mobile accessibility/performance testing and actual MijnHost deployment validation are outstanding.
 
+**Automated verification (2026-10-30):** [NOVYX 3.0 checks — passing run](https://github.com/fathom-web/novyxforge/actions/runs/41054917934) validated syntax and all five zero-dependency test suites, including Command Search and Forge Feedback. This is **code-level verification**, not a browser accessibility audit or confirmation of MijnHost deployment.
+
 ## What's here
 
 - **Five interactive glass spheres:** FootballForge, StudyForge, The Fascination Files, SAFe Agile Forge and WoW LifeForge.
