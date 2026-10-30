@@ -92,6 +92,33 @@ try{
     return {collisions,links};
   });
   assert.deepEqual(layout.collisions,[],"3.1.1 portal geometry: "+JSON.stringify(layout));
+  // 3.1.2: verify the formerly flat lower homepage uses its new deep-scroll architecture.
+  const continuity=await page.evaluate(()=>{
+    const main=document.querySelector("main");
+    const rail=document.querySelector(".manifesto .principles");
+    const first=document.querySelector(".projects .cards>.project:first-child");
+    const last=document.querySelector(".projects .cards>.project:last-child");
+    const outro=document.querySelector("#final-portal");
+    const width=(el)=>el.getBoundingClientRect().width;
+    return {
+      backdrop:getComputedStyle(main,"::before").backgroundImage,
+      railLayout:getComputedStyle(rail).display,
+      railColumns:getComputedStyle(rail).gridTemplateColumns.split(" ").length,
+      firstWidth:width(first),lastWidth:width(last),
+      gridWidth:width(document.querySelector(".projects .cards")),
+      systems:document.querySelectorAll(".v312-module").length,
+      outroVisible:Boolean(outro&&getComputedStyle(outro).display!=="none"),
+      outroLinks:outro?.querySelectorAll('a[href^="#"]').length||0
+    };
+  });
+  assert.match(continuity.backdrop,/gradient/i,"missing continuous canvas");
+  assert.equal(continuity.railLayout,"grid");
+  assert.equal(continuity.railColumns,4,"desktop process rail must show four connected steps");
+  assert.ok(continuity.firstWidth>continuity.gridWidth*.92,"first project needs cinematic full-width bay");
+  assert.ok(continuity.lastWidth>continuity.gridWidth*.92,"final project needs a second wide bay");
+  assert.equal(continuity.systems,8);
+  assert.equal(continuity.outroVisible,true);
+  assert.equal(continuity.outroLinks,2);
   await screenshot(page,"home-desktop-1440");
   await noOverflow(page);
  });
