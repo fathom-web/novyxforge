@@ -179,6 +179,9 @@ function draw(project,all){
  if(project.id==="wow-lifeforge"){$("launch-note").textContent="World of Warcraft addon concept. No download is available. Future official addon releases will use CurseForge only.";}
  else if(!app){$("launch-note").textContent="A public application environment has not been verified for this project yet. Explore its development through the available source link.";}
  else{$("launch-note").textContent="The external application opens separately. You can always return here for context, features and project information.";}
+ // Feedback stays a public GitHub handoff; no browser-side submission.
+ const feedbackHost=$("project-feedback-actions");
+ if(feedbackHost&&window.NovyxFeedback?.mount)window.NovyxFeedback.mount(feedbackHost,{id:project.id,name:project.name});
  const items=all.filter(p=>p.id!==project.id).slice(0,3);
  const related=$("related");
  items.forEach(p=>{
