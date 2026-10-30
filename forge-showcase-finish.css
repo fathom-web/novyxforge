@@ -140,3 +140,15 @@ dialog.lightbox button:focus-visible{outline:3px solid var(--accent);outline-off
  .gallery-grid-v3 .gallery-item:hover{transform:none!important}
  .gallery-grid-v3 .gallery-item:first-child .preview-window{transform:none!important}
 }
+/* Progressive loading veil: the first browser paint keeps the project hero
+   unpainted until its catalog-derived text and controls are populated.
+   The inline class is added only when JS runs; no-JS visitors keep the
+   normal HTML fallback. This prevents hero elements from jumping on mobile. */
+html.js-project-loading .hero-copy,html.js-project-loading .hero-art{visibility:hidden}
+html.js-project-loading .hero{position:relative}
+html.js-project-loading .hero:before{
+ content:"✦  ENTERING PROJECT WORLD";position:absolute;z-index:5;top:34%;left:clamp(16px,5vw,60px);
+ color:#c5e7ff;font:700 11px Outfit,sans-serif;letter-spacing:.17em;
+ background:linear-gradient(90deg,rgba(12,30,52,.92),transparent);padding:14px 35px 14px 15px;
+ border-left:2px solid #90dcf6;pointer-events:none}
+@media(prefers-reduced-motion:reduce){html.js-project-loading .hero:before{transition:none!important}}
