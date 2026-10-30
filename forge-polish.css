@@ -1,0 +1,197 @@
+/* NOVYX FORGE — Cinematic Polish v3
+   Full-width atmosphere replaces competing clipped light layers.
+   Decorative motion is deliberately optional and does not block content. */
+:root{--novyx-night:#050918;--novyx-ice:#a6e5ff;--novyx-lilac:#c2a8ff;--novyx-mint:#8fe7d1}
+html{scroll-padding-top:88px}
+body{background-color:var(--novyx-night)}
+.sky{background:
+  radial-gradient(ellipse 80% 47% at 50% 29%,rgba(34,75,142,.2),transparent 82%),
+  linear-gradient(180deg,#060e21 0%,#060a19 68%,#050815 100%);height:1250px}
+.ambient-mesh{opacity:.075}
+.noise{opacity:.045}
+
+/* The hero is a viewport-spanning atmosphere, NOT a container-sized gradient.
+   Its diffuse falloff deliberately reaches 0 alpha well before the edges. */
+.hero{overflow:visible;isolation:isolate}
+.hero:before{display:none!important}
+.hero:after{
+  content:"";position:absolute;z-index:0;pointer-events:none;
+  width:100vw;height:110%;left:50%;top:-6%;transform:translateX(-50%);
+  background:
+    radial-gradient(ellipse 48% 36% at 50% 40%,rgba(71,118,241,.21),transparent 77%),
+    radial-gradient(ellipse 43% 34% at 24% 39%,rgba(37,159,224,.12),transparent 78%),
+    radial-gradient(ellipse 43% 37% at 79% 38%,rgba(135,87,220,.135),transparent 78%),
+    radial-gradient(ellipse 49% 28% at 51% 72%,rgba(76,75,167,.12),transparent 83%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 11%,black 78%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0%,black 11%,black 78%,transparent 100%);
+  animation:atmosphere-breathe 18s ease-in-out infinite alternate;
+}
+.hero>.eyebrow,.hero>.main-title,.hero>.hero-tagline,.hero>.hero-desc,.hero>.hero-actions,.hero>.glass-divider{position:relative;z-index:2}
+.hero .universe{z-index:1;height:682px;isolation:isolate;overflow:visible}
+.universe-aura{
+  inset:0 10% 12%;border-radius:50%;filter:none;opacity:.78;
+  background:radial-gradient(ellipse 50% 42% at 50% 42%,rgba(62,117,220,.21),rgba(102,84,192,.08) 45%,transparent 86%);
+  animation:universe-breathe 14s ease-in-out infinite alternate;
+}
+.universe:before{
+  content:"";position:absolute;left:50%;top:2%;transform:translateX(-50%);
+  width:78%;height:88%;pointer-events:none;z-index:0;opacity:0;
+  background:radial-gradient(ellipse at 50% 46%,rgba(var(--energy-rgb,104,181,255),.19),transparent 68%);
+  transition:opacity .65s ease;
+}
+.universe[data-active]:before{opacity:1}
+.universe:after{inset:11% 18% 9%;box-shadow:0 0 0 47px rgba(118,165,251,.017),0 0 0 93px rgba(132,110,251,.009)}
+/* Element-level brightness filters can rasterize translucent glow into rectangular
+   compositor layers. Remove them and illuminate the rounded orb instead. */
+.universe .sphere-link,.universe .sphere-link:hover,.universe .sphere-link:focus-visible{filter:none!important;background:transparent!important}
+.universe .sphere-link .orb{transition:transform .45s cubic-bezier(.2,.72,.2,1),opacity .45s ease}
+.universe .sphere-link .orb-shell{transition:box-shadow .35s ease, border-color .35s ease}
+.universe .sphere-link:hover .orb-shell,.universe .sphere-link:focus-visible .orb-shell,
+.universe .sphere-link[data-energy="on"] .orb-shell{
+  border-color:rgba(var(--c),.95);
+  box-shadow:inset -11px -18px 28px rgba(0,4,22,.87),
+             inset 5px 8px 14px rgba(185,238,255,.32),
+             0 0 50px rgba(var(--c),.36),0 0 95px rgba(var(--c),.2);
+}
+.universe .sphere-link:hover .orb-orbit,.universe .sphere-link:focus-visible .orb-orbit{
+  border-color:rgba(var(--c),.93);box-shadow:0 0 21px rgba(var(--c),.59),inset 0 0 10px rgba(var(--c),.28)
+}
+.universe .sphere-link:hover .sphere-caption,
+.universe .sphere-link:focus-visible .sphere-caption{color:#fff;text-shadow:0 0 17px rgba(var(--c),.36)}
+.universe .sphere-link .arrow{opacity:.76;transition:opacity .3s,letter-spacing .3s;letter-spacing:.13em}
+.universe .sphere-link:hover .arrow,.universe .sphere-link:focus-visible .arrow{opacity:1;letter-spacing:.19em}
+.universe[data-active] .sphere-link:not([data-energy="on"]) .orb{opacity:.76}
+.universe[data-active] .sphere-link:not([data-energy="on"]) .sphere-caption{opacity:.75}
+.universe .sphere-link .sphere-description{font-size:10px;line-height:1.55}
+.universe .sphere-link.third .sphere-description,.universe .sphere-link.fourth .sphere-description,.universe .sphere-link.fifth .sphere-description{font-size:10px}
+.universe .sphere-link.third,.universe .sphere-link.fourth{top:355px!important}
+.universe .sphere-link.fifth{top:419px!important}
+.hero .universe .scene{top:32px;filter:none;will-change:transform}
+/* Diffuse separate central energy bloom without clipping the SVG */
+.universe .scene:before{content:"";position:absolute;pointer-events:none;z-index:-1;inset:17% 9% 4%;
+  background:radial-gradient(ellipse,rgba(92,190,255,.21),rgba(95,103,247,.09) 34%,transparent 70%);
+  animation:core-luminescence 6s ease-in-out infinite alternate;
+}
+.universe .scene svg{filter:none;overflow:visible}
+.universe-network{opacity:.64;filter:none}
+.universe-network .net-current{opacity:.7;transition:opacity .35s ease;filter:drop-shadow(0 0 4px rgba(116,206,255,.35))}
+.universe[data-active] .universe-network .net-current{opacity:1;filter:drop-shadow(0 0 8px rgba(var(--energy-rgb,112,196,255),.52))}
+.hero-beams{opacity:.55}
+.fifth-beam{opacity:.43}
+.hero .main-title{margin-top:-3px;letter-spacing:-.05em;text-shadow:0 0 55px rgba(82,165,255,.14)}
+.hero .main-title .novyx-word{
+  background:linear-gradient(180deg,#ffffff 0%,#d9f3ff 26%,#8ebdf3 52%,#eefaff 74%,#81a9dd 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 16px rgba(135,208,255,.25))
+}
+.hero .hero-tagline{font-size:12px;letter-spacing:.35em;color:#c0cff0}
+.hero .hero-desc{font-size:17px;line-height:1.74;max-width:655px;color:#b8c9e2}
+
+/* The core glows through its existing glass forms; never obscure its SVG. */
+.forge-reactor{filter:drop-shadow(0 0 28px rgba(92,183,255,.11))}
+.reactor-core{box-shadow:inset 0 0 39px rgba(99,185,255,.39),0 0 83px rgba(89,159,255,.42)}
+.about-section .feature-heading{font-size:clamp(43px,5.3vw,72px)}
+.about-section .about-copy p{font-size:16px;line-height:1.86}
+.manifesto .principle{background:linear-gradient(148deg,rgba(21,42,83,.63),rgba(7,13,30,.91));border-radius:15px}
+.manifesto .principle:hover{transform:translateY(-5px)}
+.hero .btn,.openforge-panel .btn,.top-cta,.detail-button{position:relative;overflow:hidden;isolation:isolate}
+.hero .btn:before,.openforge-panel .btn:before,.top-cta:before,.detail-button:before{
+  content:"";position:absolute;inset:0;width:48%;transform:translateX(-190%) skewX(-25deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  pointer-events:none;transition:transform .65s ease
+}
+.hero .btn:hover:before,.openforge-panel .btn:hover:before,.top-cta:hover:before,.detail-button:hover:before{transform:translateX(350%) skewX(-25deg)}
+
+/* Project previews & constellation cards — quiet halo around surfaces, not hard boxes */
+.cards .project{border-color:rgba(var(--accent),.18);box-shadow:inset 0 1px 0 rgba(187,218,255,.07),0 20px 55px rgba(1,6,18,.14)}
+.cards .project:hover{border-color:rgba(var(--accent),.53);box-shadow:0 25px 78px rgba(2,7,24,.43),0 0 55px rgba(var(--accent),.08)}
+.project .preview-window{box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 20px 45px rgba(0,0,0,.36),0 0 49px rgba(var(--accent),.13)}
+.project:hover .preview-window{box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 28px 60px rgba(0,0,0,.5),0 0 56px rgba(var(--accent),.27)}
+.catalog-tile{transform-style:preserve-3d;transform:perspective(950px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));transition:transform .3s ease,border-color .3s,box-shadow .3s}
+.catalog-tile:hover{transform:perspective(950px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-6px);box-shadow:0 18px 52px rgba(2,9,23,.4),0 0 22px rgba(86,156,244,.09)}
+.catalog-tile .tile-symbol{box-shadow:0 0 24px rgba(79,151,244,.12)}
+.catalog-tile .tile-bottom strong{transition:transform .3s}
+.catalog-tile:hover .tile-bottom strong{transform:translateX(4px)}
+.catalog-search{transition:border-color .25s,box-shadow .25s}
+.catalog-search:focus{border-color:#8fdbff;box-shadow:0 0 0 3px rgba(85,176,251,.1)}
+.stage-track{position:relative}
+.stage-track:before{content:"";position:absolute;left:7%;right:7%;top:50%;height:1px;pointer-events:none;background:linear-gradient(90deg,rgba(113,181,255,.15),rgba(187,147,255,.31),rgba(116,233,203,.25))}
+.stage-chip{z-index:1;position:relative;box-shadow:inset 0 1px 0 rgba(181,211,252,.055)}
+.stage-chip:hover{border-color:rgba(146,211,255,.45)}
+.vault-capsule{background:radial-gradient(ellipse at 105% 0%,rgba(133,102,223,.15),transparent 65%),linear-gradient(153deg,rgba(29,34,78,.69),rgba(8,12,31,.95))}
+.vault-capsule:hover:after{box-shadow:inset 0 0 27px rgba(181,149,255,.19),0 0 55px rgba(152,102,255,.4);transform:rotate(64deg)}
+.vault-capsule:after{transition:transform .6s ease,box-shadow .45s}
+.pulse-card{position:relative;transition:border-color .3s,transform .3s,box-shadow .3s}
+.pulse-card:hover{transform:translateY(-4px);border-color:rgba(144,221,255,.48);box-shadow:0 18px 45px rgba(1,6,20,.36)}
+.pulse-icon{box-shadow:0 0 20px rgba(109,188,255,.11)}
+.inside-card{transition:transform .3s,border-color .3s}
+.inside-card:hover{transform:translateY(-6px);border-color:rgba(136,213,255,.48)}
+.inside-card:hover .inside-orbit{box-shadow:0 0 0 18px rgba(94,168,255,.057),0 0 0 35px rgba(161,131,255,.025),0 0 25px rgba(101,180,255,.16)}
+.openforge-panel{box-shadow:0 25px 70px rgba(2,7,23,.25),inset 0 1px 0 rgba(189,220,255,.07)}
+.why-panel{box-shadow:inset 0 1px 0 rgba(171,210,252,.07)}
+/* A final interactive signature, not another generic link list */
+.site-endcard{position:relative;overflow:hidden;margin:0 auto 65px;display:grid;grid-template-columns:112px 1fr auto;gap:27px;align-items:center;padding:28px 36px;border:1px solid rgba(136,204,255,.24);border-radius:20px;background:radial-gradient(ellipse at 88% 50%,rgba(90,81,209,.16),transparent 52%),linear-gradient(115deg,#0a1630,#0a0f25)}
+.site-endcard:before{content:"";position:absolute;width:440px;height:440px;right:-150px;top:-160px;border-radius:50%;pointer-events:none;border:1px solid rgba(125,184,255,.16);box-shadow:0 0 0 64px rgba(135,158,252,.018)}
+.endmark{position:relative;width:100px;height:100px;display:grid;place-items:center}
+.endmark:before,.endmark:after{content:"";position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(131,210,255,.46);animation:endmark-spin 22s linear infinite}
+.endmark:after{inset:17px;border-style:dashed;border-color:rgba(181,148,255,.43);animation-duration:15s;animation-direction:reverse}
+.endmark svg{width:43px;height:43px;filter:drop-shadow(0 0 15px rgba(103,204,255,.49))}
+.endcard-copy{position:relative}
+.endcard-kicker{font:700 10px Outfit,sans-serif;letter-spacing:.21em;color:#8abaf3}
+.endcard-copy strong{display:block;font:500 clamp(26px,3.5vw,39px)/1.1 Outfit,sans-serif;letter-spacing:-.03em;margin:10px 0}
+.endcard-copy p{font-size:14px;color:#afbdd7;margin:0}
+.endcard-link{position:relative;white-space:nowrap;padding:15px 18px;border-radius:8px;border:1px solid rgba(137,200,250,.41);font:700 11px Outfit,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#d4edff;transition:background .25s,box-shadow .25s}
+.endcard-link:hover{background:rgba(78,144,224,.13);box-shadow:0 0 20px rgba(102,185,248,.13)}
+footer{position:relative;background:linear-gradient(180deg,transparent,rgba(5,12,32,.62))}
+footer:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(118,207,255,.38),rgba(170,138,253,.26),transparent)}
+.footer-inner{padding-top:14px;padding-bottom:20px;flex-wrap:wrap}
+.footer-links{flex-wrap:wrap;gap:13px 22px}
+.footer-inner strong{color:#e4f2ff}
+#project-detail .detail-visual{filter:none}
+#project-detail .detail-orbit{box-shadow:0 0 40px rgba(108,185,255,.08)}
+#project-detail .detail-info{box-shadow:inset 0 1px 0 rgba(180,217,255,.07)}
+#project-detail .detail-info:hover{border-color:rgba(151,208,255,.42)}
+@keyframes atmosphere-breathe{from{opacity:.84;transform:translateX(-50%) scale(1)}to{opacity:1;transform:translateX(-50%) scale(1.045)}}
+@keyframes core-luminescence{from{opacity:.52}to{opacity:1}}
+@keyframes endmark-spin{to{transform:rotate(360deg)}}
+
+@media(max-width:1050px){
+ .hero .universe{height:650px}
+ .universe .sphere-link.third,.universe .sphere-link.fourth{top:367px!important}
+ .universe .sphere-link.fifth{top:424px!important}
+ .site-endcard{grid-template-columns:85px 1fr;gap:15px}
+ .endmark{width:78px;height:78px}
+ .endcard-link{grid-column:2;justify-self:start}
+}
+@media(max-width:760px){
+ .hero:after{height:110%;top:-4%;background:
+   radial-gradient(ellipse 74% 38% at 50% 31%,rgba(50,109,216,.2),transparent 79%),
+   radial-gradient(ellipse 66% 35% at 20% 52%,rgba(40,145,204,.09),transparent 81%),
+   radial-gradient(ellipse 66% 35% at 85% 55%,rgba(147,87,223,.1),transparent 81%)}
+ .hero .universe{height:auto}
+ .universe .sphere-link.third,.universe .sphere-link.fourth,.universe .sphere-link.fifth{top:auto!important}
+ .universe .scene:before{inset:20% 12% 0}
+ .hero .main-title{margin-top:19px}
+ .hero .hero-tagline{font-size:10px;letter-spacing:.22em}
+ .universe .sphere-link .sphere-description,.universe .sphere-link.third .sphere-description,
+ .universe .sphere-link.fourth .sphere-description,.universe .sphere-link.fifth .sphere-description{font-size:9px}
+ .site-endcard{grid-template-columns:1fr;text-align:center;gap:13px;padding:25px 22px}
+ .endmark{margin:auto}
+ .endcard-link{grid-column:1;justify-self:center;white-space:normal}
+ .stage-track:before{display:none}
+}
+@media(max-width:430px){
+ .hero .main-title{margin-top:13px}
+ .hero .hero-desc{font-size:15px}
+ .site-endcard{margin-bottom:35px}
+}
+@media(hover:none){
+ .catalog-tile:hover{transform:none}
+ .sphere-link:hover .orb{animation-play-state:running}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero:after,.universe-aura,.universe .scene:before,.site-endcard .endmark:before,.site-endcard .endmark:after{animation:none!important}
+ .hero .scene,.catalog-tile,.pulse-card,.vault-capsule,.inside-card{transition:none!important;transform:none!important}
+ .universe[data-active] .sphere-link:not([data-energy="on"]) .orb{opacity:1}
+ .hero .btn:before,.top-cta:before,.detail-button:before{display:none}
+}
