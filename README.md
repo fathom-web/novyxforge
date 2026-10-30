@@ -4,15 +4,19 @@ An independent AI & Technology Lab: a cinematic home for projects, ideas and exp
 
 ## NOVYX FORGE 3.0 — Release Candidate RC1 (2026-10-30)
 
-**Source complete, not yet live-released.** All ten selected 3.0 features are implemented and [Chromium browser QA passed all 16 checks](https://github.com/fathom-web/novyxforge/actions/runs/41057805696), including desktop and 360/390px phones. The original five-suite [GitHub smoke checks are also passing](https://github.com/fathom-web/novyxforge/actions/runs/41057805528).
+**LIVE MijnHost verification — 2026-10-30:** The user deployed the latest 3.0 build. An independent [production Chromium + HTTP QA workflow](https://github.com/fathom-web/novyxforge/actions/runs/41058654495) checked the actual `https://novyxforge.com/` domain and passed **11/11 checks (0 failures)**, including HTTPS, current JS/CSS asset versions, six homepage spheres, Reactor, Command Search, Observatory, a FootballForge demo, and 360px/390px mobile layouts. [Live production screenshot artifact](https://github.com/fathom-web/novyxforge/actions/runs/41058654495/artifacts/12977897540) (retained until 2026-11-13). This verifies core production functionality, **not** all seven live app demos, Safari/Firefox, accessibility, performance metrics or approved real app screenshots.
 
-The exact current status, successful screenshot artifact, corrected responsive issues and remaining production gates are in **[RELEASE_CANDIDATE_3_0.md](./RELEASE_CANDIDATE_3_0.md)**. MijnHost deployment, reviewed real application screenshots, manual cross-browser/accessibility review and measured production performance remain open. Do **not** mark 3.0 as officially released until those are validated.
+
+
+**Code complete and live-deployed; not yet an official tagged 3.0 release.** All ten selected 3.0 features are implemented and [Chromium browser QA passed all 16 checks](https://github.com/fathom-web/novyxforge/actions/runs/41057805696), including desktop and 360/390px phones. The original five-suite [GitHub smoke checks are also passing](https://github.com/fathom-web/novyxforge/actions/runs/41057805528).
+
+The exact current status, successful screenshot artifact, corrected responsive issues and remaining production gates are in **[RELEASE_CANDIDATE_3_0.md](./RELEASE_CANDIDATE_3_0.md)**. MijnHost production is independently live-verified (11/11); reviewed real application screenshots, a full all-project live walkthrough, manual cross-browser/accessibility review and measured production performance remain open. Do **not** mark 3.0 as officially released until those are validated.
 
 ## NOVYX FORGE 3.0 — approved roadmap (2026-10-30)
 
 The official, approved 3.0 scope is documented in **[ROADMAP_3_0.md](./ROADMAP_3_0.md)**. It includes all ten selected workstreams: Six-Sphere Universe, seven-weather Weather Engine, World Transitions, World Navigator, Forge Reactor, Interactive Demo Mode, The Observatory, Evolution Timeline, Forge Feedback and Command Search, plus mobile/accessibility/performance/screenshot release gates.
 
-**Current state:** All ten approved NOVYX 3.0 features are committed to GitHub; 16/16 Chromium browser QA checks and all five source contract suites are passing. **Still a release candidate, not an official live release:** MijnHost deployment, approved real app screenshots, cross-browser accessibility and production performance are not confirmed.
+**Current state:** All ten approved NOVYX 3.0 features are committed to GitHub; 16/16 Chromium browser QA checks and all five source contract suites are passing. **Still a release candidate, not an official tagged release:** live MijnHost deploy passed 11/11 smoke checks; approved real app screenshots, full per-project live QA, cross-browser accessibility and measured production performance are not confirmed.
 
 ### 3.0 Alpha code and test command
 
