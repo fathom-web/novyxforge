@@ -273,7 +273,7 @@
         "Offline exports"
       ],
       "links": {
-        "visit": null,
+        "visit": "https://safeforge.novyxforge.com/",
         "source": "https://github.com/fathom-web/SAFeForge"
       },
       "detail": "safe-agile.html",
@@ -320,7 +320,7 @@
             "calendar"
           ]
         ],
-        "privacy": "No direct Defence-system or Microsoft 365 integration. Do not use operationally sensitive information.",
+        "privacy": "No direct Defence-system or Microsoft 365 integration. Do not use operationally sensitive information. The linked SAFe website is a beta; availability and organizational approval must be verified.",
         "screenshots": []
       }
     },
