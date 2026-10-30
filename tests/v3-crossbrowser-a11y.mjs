@@ -32,6 +32,7 @@ await new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
 const base="http://127.0.0.1:"+server.address().port;
 const worlds=["footballforge","studyforge","fascination-files","safeforge","wow-lifeforge","wildrift-counter","spark-lab"];
 const weathers=["rain","snow","meteors","fog","storm","wind","sunrise"];
+const verifiedByProject=new Map(JSON.parse(await readFile(resolve(root,"projects.json"),"utf8")).projects.map(p=>[p.id,(p.showcase?.screenshots||[]).filter(x=>x.verified===true).length]));
 const browsers={chromium,firefox,webkit};
 const outcomes=[],violations=[],perfSamples=[];
 async function run(name,fn){
@@ -83,7 +84,9 @@ try {
         assert.equal(await page.locator("#gallery .gallery-item:first-child figcaption").getAttribute("data-view-number"),"01");
         assert.equal(await page.locator(".weather-layer").getAttribute("data-type"),weather);
         assert.equal(await page.locator("#world-nav-links a").count(),7);
-        assert.equal(await page.locator(".gallery-kind").filter({hasText:"ILLUSTRATIVE PREVIEW"}).count(),3);
+        const verified=verifiedByProject.get(id)||0;
+        assert.equal(await page.locator(".gallery-kind").filter({hasText:"ILLUSTRATIVE PREVIEW"}).count(),3-verified);
+        assert.equal(await page.locator(".gallery-kind").filter({hasText:"VERIFIED SCREENSHOT"}).count(),verified);
         assert.equal(await page.locator('a[data-chapter-demo]').isVisible(),["footballforge","studyforge","wildrift-counter","safeforge"].includes(id));
         await overflow(page);
         if(engine==="chromium"){
