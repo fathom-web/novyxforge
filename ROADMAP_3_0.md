@@ -1,6 +1,6 @@
 # NOVYX FORGE 3.0 — THE LIVING UNIVERSE
 
-**Status:** Approved scope / 3.0 Alpha implementation underway. Increment 0 and core of Increment 1 committed to GitHub; browser acceptance and MijnHost deployment not yet verified.  
+**Status:** Approved scope / 3.0 Alpha + Increment 2 navigation beta committed to GitHub; browser acceptance and MijnHost production deployment not yet verified.  
 **Baseline inspected:** 2026-10-30 · GitHub repository `fathom-web/novyxforge`  
 **Release principle:** Ship all ten selected features as one coherent NOVYX 3.0 release, in testable, reversible increments; keep the existing site working.
 
@@ -19,6 +19,19 @@
 **Still pending for this Alpha:** inspect the *deployed* site at desktop, tablet and mobile sizes; verify FPS, actual appearance, controls and external links. No production rollout or completed QA claimed.
 
 **Not yet built:** World Transitions, World Navigator, Reactor actions, Interactive Demo Mode, Observatory, Evolution Timeline, Forge Feedback and Command Search. Their accepted scope remains unchanged below.
+
+## Increment 2 implementation log — 2026-10-30
+
+**Committed to GitHub `main`; deployed browser acceptance not yet verified.**
+
+- `forge-world-navigation.js`: a shared catalog-driven World Navigator, accessible native `<dialog>` Reactor menu and short filmic portal transitions. Routes remain real links when JavaScript is off or reduced-motion is active. Modified clicks, external links and download links retain browser-default behavior. The arrival overlay expires automatically and stale session state is cleared.
+- `forge-world-navigation.css`: sticky, mobile-scrollable world switcher; glass Reactor trigger; native modal; color-coded world gate and reduced-motion styles. Section deep links account for the sticky nav.
+- `index.html`: glass Forge core trigger and Reactor menu with **Explore Worlds**, **Forge an Idea** (Spark Lab showcase), **Mission Control** (existing Forge Pipeline).
+- `project.html`: persistent World Navigator across the six featured project worlds, plus Spark Lab. Current page is marked with `aria-current="page"`.
+- `tests/v3-navigation-check.mjs`: zero-dependency static wiring and accessibility contract checks (run `node tests/v3-navigation-check.mjs` from the repo root).
+- Live MijnHost deployment, visual browser tests, native dialog keyboard/focus tests and actual mobile verification are **still required**. This is implemented beta code, not a completed release.
+
+**Next unimplemented increment:** product demos, verified screenshots and richer showcase interactions (Increment 3).
 
 ## 1. Product intent
 
