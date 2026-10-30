@@ -599,6 +599,7 @@
   <link rel="stylesheet" href="./forge-experience.css?v=1">
   <link rel="stylesheet" href="./forge-polish.css?v=3">
   <link rel="stylesheet" href="./forge-pipeline.css?v=3">
+  <link rel="stylesheet" href="./forge-worlds.css?v=1">
   <link rel="canonical" href="https://novyxforge.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://novyxforge.com/">
@@ -646,7 +647,7 @@
 
       <a class="sphere-link left" href="https://fathom-web.github.io/svdiemen/" target="_blank" rel="noopener noreferrer" aria-label="Open FootballForge">
         <span class="orb" aria-hidden="true">
-          <span class="orb-shell"></span><span class="orb-orbit-back"></span>
+          <span class="orb-shell"></span><span class="orb-orbit-back"></span><span class="orb-identity orb-identity-tactical"><i></i><i></i><i></i></span>
           <svg class="orb-globe" viewBox="0 0 170 170" fill="none">
             <defs><radialGradient id="footballGlass"><stop stop-color="#b9e9ff" stop-opacity=".54"/><stop offset=".6" stop-color="#3972be" stop-opacity=".23"/><stop offset="1" stop-color="#091a41" stop-opacity=".13"/></radialGradient></defs>
             <circle cx="85" cy="85" r="59" fill="url(#footballGlass)" stroke="#a6eaff" stroke-opacity=".5"/>
@@ -664,7 +665,7 @@
       </a>
       <a class="sphere-link right" href="https://fathom-web.github.io/studyforge/" target="_blank" rel="noopener noreferrer" aria-label="Open StudyForge">
         <span class="orb" aria-hidden="true">
-          <span class="orb-shell"></span><span class="orb-orbit-back"></span>
+          <span class="orb-shell"></span><span class="orb-orbit-back"></span><span class="orb-identity orb-identity-knowledge"><i></i><i></i><i></i></span>
           <svg class="orb-globe" viewBox="0 0 170 170" fill="none">
             <defs><linearGradient id="bookGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c3a3ff"/><stop offset=".55" stop-color="#c8ddff"/><stop offset="1" stop-color="#777dff"/></linearGradient></defs>
             <circle cx="85" cy="85" r="66" stroke="#b9b0ff" stroke-opacity=".35"/>
@@ -728,7 +729,7 @@
       <a class="sphere-link third" href="https://instagram.com/thefascinationfiles" target="_blank" rel="noopener noreferrer" aria-label="Explore The Fascination Files on Instagram">
         
         <span class="orb" aria-hidden="true">
-          <span class="orb-shell"></span><span class="orb-orbit-back"></span>
+          <span class="orb-shell"></span><span class="orb-orbit-back"></span><span class="orb-identity orb-identity-mystery"><i></i><i></i><i></i></span>
           <svg class="orb-globe" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <radialGradient id="mysteryCore">
@@ -764,7 +765,7 @@
 
       <a class="sphere-link fourth" href="./safe-agile.html" aria-label="Explore SAFe Agile Forge, the PI planning prototype">
         <span class="orb" aria-hidden="true">
-          <span class="orb-shell"></span><span class="orb-orbit-back"></span>
+          <span class="orb-shell"></span><span class="orb-orbit-back"></span><span class="orb-identity orb-identity-command"><i></i><i></i><i></i></span>
           <svg class="orb-globe" viewBox="0 0 170 170" fill="none">
             <defs><radialGradient id="agileGlass"><stop stop-color="#e4fff5" stop-opacity=".72"/><stop offset=".5" stop-color="#6af0b5" stop-opacity=".22"/><stop offset="1" stop-color="#113b44" stop-opacity=".08"/></radialGradient></defs>
             <circle cx="85" cy="85" r="65" fill="url(#agileGlass)" stroke="#b2ffe2" stroke-opacity=".45"/>
@@ -783,7 +784,7 @@
         <span class="arrow">Explore prototype ↗</span>
       </a>
       <a class="sphere-link fifth" href="./project.html?project=wow-lifeforge" aria-label="Discover WoW LifeForge, a World of Warcraft addon concept">
-        <span class="orb" aria-hidden="true"><span class="orb-shell"></span><span class="orb-orbit-back"></span>
+        <span class="orb" aria-hidden="true"><span class="orb-shell"></span><span class="orb-orbit-back"></span><span class="orb-identity orb-identity-relic"><i></i><i></i><i></i></span>
           <svg class="orb-globe" viewBox="0 0 170 170" fill="none">
             <defs><radialGradient id="wowGold"><stop stop-color="#fff0bf" stop-opacity=".84"/><stop offset=".42" stop-color="#db893f" stop-opacity=".43"/><stop offset="1" stop-color="#3b1e29" stop-opacity=".15"/></radialGradient></defs>
             <circle cx="85" cy="85" r="66" fill="url(#wowGold)" stroke="#ffc98c" stroke-opacity=".55"/>
@@ -924,7 +925,7 @@
     <section class="container platform-section forge-pipeline" id="pipeline" aria-labelledby="pipeline-heading">
       <div class="lab-section-heading reveal">
         <div><div class="section-kicker">THE FORGE / DEVELOPMENT CONTROL</div><h2 id="pipeline-heading">The Forge <em>Pipeline.</em></h2></div>
-        <p>See which ideas are emerging, which projects are being built, and what's already out in the world.</p>
+        <p>See ideas progress from the first spark to releases that others can download and reuse.</p>
       </div>
       <div class="pipeline-toolbar">
         <div class="pipeline-view" role="group" aria-label="Pipeline content">
@@ -935,7 +936,7 @@
         <span class="pipeline-summary" id="pipeline-summary" aria-live="polite">Loading project stages…</span>
       </div>
       <div class="pipeline-frame">
-        <div class="pipeline-deck" aria-label="Project status pipeline. On smaller screens, scroll horizontally to see all stages.">
+        <div class="pipeline-deck" aria-label="Five-phase project status pipeline. On smaller screens, scroll horizontally to see all stages.">
           <div class="pipeline-column" data-stage="spark">
             <div class="pipeline-column-head"><span class="pipeline-node" aria-hidden="true">01</span><div class="pipeline-column-title"><strong>Spark</strong><small>Ideas taking shape</small></div><span class="pipeline-count" id="pipeline-count-spark" aria-label="Items in Spark">0</span></div>
             <div class="pipeline-items" data-pipeline-stage="spark"><p class="pipeline-empty">Loading the pipeline…</p></div>
@@ -952,11 +953,17 @@
             <div class="pipeline-column-head"><span class="pipeline-node" aria-hidden="true">04</span><div class="pipeline-column-title"><strong>Launch</strong><small>Released experiences</small></div><span class="pipeline-count" id="pipeline-count-released" aria-label="Items in Launch">0</span></div>
             <div class="pipeline-items" data-pipeline-stage="released"><p class="pipeline-empty">Loading the pipeline…</p></div>
           </div>
+          <div class="pipeline-column pipeline-public" data-stage="public-ready">
+            <div class="pipeline-column-head"><span class="pipeline-node" aria-hidden="true">05</span><div class="pipeline-column-title"><strong>Public Ready</strong><small>Download · Template · Docs</small></div><span class="pipeline-count" id="pipeline-count-public-ready" aria-label="Items in Public Ready">0</span></div>
+            <div class="pipeline-items" data-pipeline-stage="public-ready">
+              <p class="pipeline-empty">No distribution-ready projects yet. First the release — then the public package.</p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="pipeline-statusline">
-        <span><i class="pipeline-led" aria-hidden="true"></i> Stages are curated in the Forge catalog — not automated build verification.</span>
-        <a href="#catalog">Explore the full project universe ↗</a>
+        <span><i class="pipeline-led" aria-hidden="true"></i> Public Ready requires a real tested package, documentation and verified distribution links.</span>
+        <a href="./public-ready.html">How publishing works ↗</a>
       </div>
     </section>
 
@@ -1145,5 +1152,6 @@
   </script>
   <script src="./forge-experience.js?v=2" defer></script>
   <script src="./forge-polish.js?v=3" defer></script>
+  <script src="./forge-worlds.js?v=1" defer></script>
 </body>
 </html>
