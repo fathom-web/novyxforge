@@ -9,6 +9,7 @@ on:
       - '*.css'
       - '*.json'
       - 'tests/**'
+      - 'wow/**'
       - '.github/ISSUE_TEMPLATE/**'
       - '.github/workflows/novyx-v3-checks.yml'
   pull_request:
@@ -18,6 +19,7 @@ on:
       - '*.css'
       - '*.json'
       - 'tests/**'
+      - 'wow/**'
       - '.github/ISSUE_TEMPLATE/**'
       - '.github/workflows/novyx-v3-checks.yml'
   workflow_dispatch:
@@ -48,12 +50,15 @@ jobs:
           node --check project-showcase.js
           node --check forge-v31.js
           node --check forge-v312.js
+          node --check wow/site.js
       - name: Verify 3.1 design contracts and keyboard/mobile safeguards
         run: node tests/v31-design-check.mjs
       - name: Verify 3.1.1 cinematic portal composition
         run: node tests/v311-layout-check.mjs
       - name: Verify 3.1.2 background continuity and visual systems
         run: node tests/v312-continuity-check.mjs
+      - name: Verify WoW Addon Foundry and CurseForge-only distribution
+        run: node tests/wow-hub-check.mjs
       - name: Verify six project worlds and Weather Engine
         run: node tests/v3-alpha-check.mjs
       - name: Verify Navigator, transitions and Reactor
