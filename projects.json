@@ -630,7 +630,18 @@
           ]
         ],
         "privacy": "Inputs stay in the browser until you choose to copy or download them. This is not AI inference.",
-        "screenshots": [],
+        "screenshots": [
+          {
+            "src": "./assets/screenshots/spark-lab/spark-lab-ui.png",
+            "title": "Spark Lab — Real Interface",
+            "description": "Reviewed capture of the public idea workshop in a fresh, empty session. No visitor information is included.",
+            "alt": "Actual Spark Lab application showing the empty idea form and the blueprint preview side by side",
+            "verified": true,
+            "source": "./spark-lab.html",
+            "reviewedOn": "2026-10-30",
+            "captureContext": "Fresh unauthenticated local app session; no filled inputs"
+          }
+        ],
         "demo": null
       },
       "world": {
