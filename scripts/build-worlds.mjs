@@ -37,7 +37,7 @@ for(const p of catalog.projects){
   fill('related',c.related.map(([id,reason])=>`<a href="${C.worldURL(id)}"><small>${e(reason)}</small><strong>${e(catalog.projects.find(x=>x.id===id).name)}</strong></a>`).join(''));
   const history=activity.items.filter(x=>x.projectId===p.id && x.reviewed);
   fill('evolution-feed',history.length?history.map(x=>`<article class="evolution-item"><time datetime="${e(x.occurredAt)}">${e(x.occurredAt.slice(0,10))}</time><h3>${e(x.title)}</h3><p>${e(x.summary)}</p><a href="${e(x.source.url)}">Read development evidence ↗</a></article>`).join(''):'<p>No reviewed milestones are recorded for this world yet. A catalog stage is not a release history.</p>');
-  html=html.replace('<main>','<main id="main-content">').replace('<body data-', '<body data-');
+  html=html.replace('<main>','<main id="main-content">');
   html=html.replace('</body>','<noscript><p class="shell">Interactive demos and atmospheric controls need JavaScript. All project stories and world links remain available.</p></noscript></body>');
   write(`world-${p.id}.html`,html);
 }
