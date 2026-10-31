@@ -1,0 +1,137 @@
+{
+  "reviewedOn": "2026-10-31",
+  "projects": {
+    "footballforge": {
+      "theme": "THE MATCHDAY WORLD",
+      "question": "How do you turn availability into a fair, usable match plan?",
+      "intro": "Matchday is a chain of small decisions. A coach needs to know who is coming, which positions are covered and what changes after the first substitution. FootballForge brings that chain together for youth teams, with team-specific training schedules and a shared planning workspace.",
+      "capabilities": [
+        ["Before kick-off", "Maintain the squad, record attendance exceptions and select guest players for a particular match. Regular players and guests follow different availability rules."],
+        ["Four moments, one match", "The documented planner produces a starting formation and three substitution views. Manual changes recalculate the later lineups and substitution text."],
+        ["Take the plan to the pitch", "A local four-page PDF puts each formation and its substitutions on a separate page. The parent-message workflow also supports match communication and a downloadable poster."]
+      ],
+      "architecture": ["Team workspace", "Availability + positions", "Lineup engine", "PDF / parent message"],
+      "decisions": [
+        ["Keep team changes scoped", "The documented Supabase workflow merges the selected team's changes against the latest shared state using an updated_at comparison. This addresses one team's edits overwriting another team's data; it does not make browser access codes secure authentication."],
+        ["Protect against an empty cloud response", "The source documentation describes a browser recovery copy and a warning when remote data contains less team content than the local copy. The coach decides which version to retain. Production recovery has not been exercised by this showcase."],
+        ["Generate artifacts locally", "lineup-engine.js handles formation decisions, matchday-pdf.js produces the PDF and parent-message.js prepares communications. The showcase demo uses fictional players and never connects to these team records."]
+      ],
+      "next": ["Verify concurrent edits and recovery on controlled test teams.", "Complete real authentication and team-scoped access before broader use.", "Review phone and print workflows with coaches."],
+      "related": [["safeforge", "Both turn preparation into a plan people can use."], ["studyforge", "Both organize repeatable routines and make progress visible."]],
+      "sources": [["FootballForge source documentation", "https://github.com/fathom-web/svdiemen/blob/main/README.md"]],
+      "limits": "These explanations follow the public repository documentation. Live team data, synchronization and player records were not accessed. Product screenshots are not available for publication."
+    },
+    "studyforge": {
+      "theme": "THE KNOWLEDGE WORLD",
+      "question": "What makes the next practice session easier to start?",
+      "intro": "StudyForge connects published learning material with short, repeatable practice. Learners can work through questions, revisit mistakes and use flashcards; planning and goals give the next session a purpose. The learning content is prepared outside the app and published as a library.",
+      "capabilities": [
+        ["Practice with feedback", "The documented experience includes multiple-choice questions, open questions with self-assessment, practice history and a way to revisit mistakes."],
+        ["Remember through repetition", "Flashcards offer a second way to work with material. The sample here demonstrates recall and reveal without recording a learner's results."],
+        ["Choose the next step", "Learning goals, practice planning and readiness views support a personal routine. The app reads published test dates; it does not provide an in-app authoring or import screen."]
+      ],
+      "architecture": ["Published JSON library", "Practice interface", "Results + goals", "Optional shared progress"],
+      "decisions": [
+        ["Separate publishing from learning", "data.js loads the public content library; app.js presents learning activities and studytools.js supports goals and planning. Stable collection IDs keep results associated with the same material when content is updated."],
+        ["Keep a static front end", "HTML, CSS and JavaScript are hosted on GitHub Pages. The documented shared-progress adapter uses a limited Supabase database function. A configured adapter is not evidence of a verified live connection."],
+        ["Treat access and privacy separately", "The documented profile-code screen is not strong authentication. This world therefore uses only synthetic demo questions, with no student names, results, profile codes or production database calls."]
+      ],
+      "next": ["Verify shared progress between controlled test sessions.", "Review keyboard and assistive-technology use during practice.", "Improve access controls before extending beyond the intended private use."],
+      "related": [["fascination-files", "Curiosity can become a question worth practicing."], ["footballforge", "Small routines support learning and team preparation alike."]],
+      "sources": [["StudyForge architecture and learning workflow", "https://github.com/fathom-web/studyforge/blob/main/README.md"]],
+      "limits": "The documentation describes the product and its cloud adapter; no private learning data or live database was accessed. The local demo does not synchronize results."
+    },
+    "fascination-files": {
+      "theme": "THE DISCOVERY WORLD",
+      "question": "What turns a surprising question into a story worth following?",
+      "intro": "The Fascination Files is the creative edge of the Forge: curiosity-led, visual storytelling around science, history, space, technology, nature and mystery. The published destination is Instagram. This world explains its editorial direction without representing invented stories as published work.",
+      "capabilities": [
+        ["A question comes first", "The existing project catalog describes a discovery-led approach: start with a remarkable subject, then build a clear visual story around it."],
+        ["A visual way into an idea", "Cinematic presentation is part of the project's identity. The artwork in this showcase is an illustrative treatment, not an Instagram capture."],
+        ["Continue at the source", "Open the original Instagram profile to see its available published material. No feed is scraped, mirrored or presented as live here."]
+      ],
+      "architecture": ["Curiosity / subject", "Research", "Visual narrative", "Instagram publication"],
+      "decisions": [
+        ["Explain the editorial direction honestly", "The workflow above summarizes the existing NOVYX catalog. A public content-production repository was not available, so this page does not claim a particular publishing pipeline, automation service or production schedule."],
+        ["Separate illustration from evidence", "Illustrative previews communicate a visual direction. They do not establish that a particular story was published, researched or reviewed. Specific posts should be added only with a checked original link and permission to reuse their media."],
+        ["Let discovery connect the worlds", "Knowledge is a shared interest with StudyForge; technology experiments connect this creative world to Spark Lab. These are editorial connections between projects, not product integrations."]
+      ],
+      "next": ["Curate a small set of original posts with verified links and media rights.", "Add source notes to future story breakdowns.", "Explore an accessible text companion for selected visual stories."],
+      "related": [["studyforge", "Turn curiosity into a learning routine."], ["spark-lab", "Turn an interesting question into an experiment."]],
+      "sources": [["Existing NOVYX editorial catalog", "https://github.com/fathom-web/novyxforge/blob/d73163a9fc3749b218309ec01d71fed47682bdc4/projects.json"], ["Original Instagram profile", "https://instagram.com/thefascinationfiles"]],
+      "limits": "The Instagram profile could not be independently read during this review. No specific published posts, audience figures or posting frequency are claimed. Future editorial ideas are proposals."
+    },
+    "safeforge": {
+      "theme": "THE PLANNING WORLD",
+      "question": "How can a complex planning event become a sequence of clear decisions?",
+      "intro": "SAFe Agile Forge combines role-based ceremony preparation with a PI Event Command Center. Its browser-based approach brings dates, responsibilities, readiness and event artifacts into a workspace that can be used without a hosted planning backend.",
+      "capabilities": [
+        ["Start with your responsibility", "The documented role paths cover RTE, Product Manager, Product Owner and Scrum Master. Select ceremonies, enter iteration dates and preview a proposed calendar."],
+        ["Prepare the whole event", "The PI planner documents ART and team context, a two-day program, capacity and overlap checks, objectives, dependencies, ROAM risks and confidence records."],
+        ["Make the plan portable", "The repository describes calendar, PDF, XLSX and JSON outputs. Calendar files require an explicit import; they do not automatically send invitations."]
+      ],
+      "architecture": ["Role / ART context", "Browser-local plan", "Readiness + checks", "ICS / PDF / XLSX"],
+      "decisions": [
+        ["Local-first planning has a boundary", "Event state is stored per browser in localStorage, with JSON backup/import. The static architecture avoids server setup but does not provide synchronized multi-organizer editing or centralized RSVP collection."],
+        ["Exports are deliberate handoffs", "Offline artifacts let an organizer review and share a plan. The RSVP workflow requires the participant to send an email or export a CSV; displaying a form does not mean the response was delivered."],
+        ["A planning aid needs human judgment", "Readiness markers, business value and confidence controls record proposed planning information. They are not organizational signoff. The source documentation leaves full browser and cross-device acceptance open."]
+      ],
+      "next": ["Complete end-to-end browser acceptance for planning and exports.", "Review generated documents against the intended event workflow.", "Evaluate multi-organizer collaboration only with an explicit backend design."],
+      "related": [["footballforge", "Both translate preparation into practical, printable plans."], ["spark-lab", "Both help structure an idea before execution."]],
+      "sources": [["SAFe Agile Forge capabilities and architectural limits", "https://github.com/fathom-web/SAFeForge/blob/main/README.md"]],
+      "limits": "Prototype implementation is documented in source. Hosting availability and organizational acceptance are separate checks. No Microsoft 365 or organizational-system integration is claimed."
+    },
+    "wow-lifeforge": {
+      "theme": "THE LEGACY WORLD",
+      "question": "What remains of an adventure after the session ends?",
+      "intro": "LifeForge approaches Warcraft as a personal history: recorded milestones, memories, observed companions and places visited. It is a native Lua addon for the intended Forever client, with a local data model. Its public source is an alpha, not a confirmed in-game release.",
+      "capabilities": [
+        ["Record the journey", "Build 7 documents character history, replay-safe milestone tiers and an observed zone atlas. History starts from recorded events; it cannot reconstruct adventures from before installation."],
+        ["Keep the human moments", "The source describes memories, favorites, future-self letters and a Memory Museum. These are implemented source features whose actual in-client behavior still requires validation."],
+        ["Make room for real life", "The related Forge AFK — Dad Mode repository documents twelve AFK reasons, a timer, silent mode and a return action. Its v1.0.0-beta.2 build also awaits game-client testing and CurseForge release."]
+      ],
+      "architecture": ["Observed game events", "Lua data model", "Local SavedVariables", "Chronicle + LF2 backup"],
+      "decisions": [
+        ["Local records, meaningful evidence", "LifeForge uses WoW SavedVariables and a versioned LF2 backup format. It records observed history instead of inventing old milestones. There is no companion website account or cloud character synchronization."],
+        ["A test double is not a game client", "The Build 7 README reports headless Lua and archive tests. They exercise logic but cannot establish rendering, combat behavior, API compatibility or reload persistence inside the real Forever client."],
+        ["Keep distribution explicit", "GitHub provides source and development evidence. The showcase offers no addon ZIP download; public releases and updates belong on a verified CurseForge page after client acceptance. Neither addon has a verified CurseForge release in this review."]
+      ],
+      "next": ["Validate the target client interface and game API behavior.", "Verify UI, combat restrictions and persistence after reload.", "Confirm license and distribution gates before a public CurseForge release."],
+      "related": [["wildrift-counter", "Two gaming worlds, focused on different kinds of player decisions."], ["fascination-files", "Both use storytelling to make moments memorable."]],
+      "sources": [["LifeForge Build 7 documentation", "https://github.com/fathom-web/WoW-LifeForge/blob/main/README.md"], ["Forge AFK — Dad Mode beta documentation", "https://github.com/fathom-web/forge-afk-dad-mode/blob/main/README.md"]],
+      "limits": "LifeForge 0.8.0-alpha and Forge AFK v1.0.0-beta.2 are source-development snapshots. Game-client operation, screenshots and public CurseForge downloads remain unverified."
+    },
+    "wildrift-counter": {
+      "theme": "THE DRAFT WORLD",
+      "question": "Which information matters while the draft clock is running?",
+      "intro": "Wild Rift Counter starts with the lane and the opposing picks. Its purpose is to narrow a drafting question quickly, while recognizing that a solo matchup and a duo lane ask different things of a player. The Forge's sandbox demonstrates that decision flow with clearly labeled examples.",
+      "capabilities": [
+        ["Begin with the lane", "The catalog describes Baron, Jungle, Mid, ADC and Support selection. A focused starting point reduces the number of unrelated choices."],
+        ["Think about the pair", "The existing project workflow and sample demo distinguish solo opponents from ADC/support pairs. Duo-lane context matters to the question being asked."],
+        ["Use judgment after a suggestion", "The local demo provides illustrative drafting considerations. It does not expose live win rates, current-patch counter rankings or a verified team-composition engine."]
+      ],
+      "architecture": ["Lane selection", "Opponent context", "Matchup data", "Compare options"],
+      "decisions": [
+        ["Bound the claims to the evidence", "The public README identifies a smart Wild Rift draft assistant. The existing NOVYX catalog and reviewed development history provide the lane-first and duo-lane context. A framework, scoring algorithm or live data provider is not inferred from that description."],
+        ["Keep examples separate from advice", "The browser sandbox uses fixed demonstration choices. Its answers explain a draft interaction; they are not statistical recommendations. A production counter guide needs a checked patch, documented evidence and a maintained data workflow."],
+        ["Leave room for the rest of the team", "Team composition is a useful future dimension, but the current showcase does not present a complete composition optimizer as an implemented capability."]
+      ],
+      "next": ["Verify a public application address and end-to-end draft flow.", "Document matchup data provenance and patch-review dates.", "Investigate team-composition context as a proposed extension."],
+      "related": [["wow-lifeforge", "Explore another gaming project built around the player experience."], ["footballforge", "Compare digital draft decisions with a real matchday lineup."]],
+      "sources": [["Wild Rift Counter public source", "https://github.com/fathom-web/WildRiftCounter"], ["Reviewed NOVYX project catalog", "https://github.com/fathom-web/novyxforge/blob/d73163a9fc3749b218309ec01d71fed47682bdc4/projects.json"]],
+      "limits": "The public application address remains unverified. No patch-current counters, performance statistics or official Riot endorsement are claimed."
+    },
+    "spark-lab": {
+      "theme": "THE EXPERIMENT WORLD",
+      "question": "What is the smallest useful version of an idea?",
+      "intro": "Spark Lab is a working browser workshop. Describe an idea, its audience and the problem, then take away a structured brief, starting steps and a reusable build prompt. It uses deterministic templates, not a remote AI model.",
+      "capabilities": [["Frame the problem", "Capture an idea and optional context in the existing workshop."], ["Make the first brief", "Generate a structured starting point in your browser."], ["Take it with you", "Copy the prompt or download the brief as JSON."]],
+      "architecture": ["Idea + context", "Local templates", "Structured brief", "Copy / JSON export"],
+      "decisions": [["Make an experiment useful", "The workshop runs in static HTML and JavaScript without a paid API or backend. Its output is a starting point for human review, not a validated feasibility assessment."], ["Keep the handoff visible", "Visitors explicitly copy or download their brief. The page does not claim to create a repository, contact an AI service or submit an idea to NOVYX."]],
+      "next": ["Explore reusable brief templates as an Idea Vault concept.", "Evaluate prompt iteration with a clear local history model."],
+      "related": [["safeforge", "From a clear brief to structured preparation."], ["fascination-files", "Start an experiment with a question worth asking."]],
+      "sources": [["Spark Lab workshop source", "https://github.com/fathom-web/novyxforge/blob/d73163a9fc3749b218309ec01d71fed47682bdc4/spark-lab.html"]],
+      "limits": "The local workshop is a template-driven tool. It does not perform AI inference or publish your idea."
+    }
+  }
+}

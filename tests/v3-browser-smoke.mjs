@@ -65,7 +65,7 @@ const allIds=["footballforge","studyforge","fascination-files","safeforge","wow-
 const labels=["FootballForge","StudyForge","The Fascination Files","SAFe Agile Forge","WoW LifeForge","Wild Rift Counter","Spark Lab"];
 const supportedDemo=new Set(["footballforge","studyforge","safeforge","wildrift-counter"]);
 try{
- browser=await chromium.launch({headless:true,args:["--disable-dev-shm-usage","--no-sandbox"]});
+ browser=await chromium.launch({headless:true,...(process.env.NOVYX_BROWSER_CHANNEL?{channel:process.env.NOVYX_BROWSER_CHANNEL}:{}),args:["--disable-dev-shm-usage","--no-sandbox"]});
  const ctx=await browser.newContext({viewport:{width:1440,height:900},deviceScaleFactor:1,reducedMotion:"reduce"});
  const page=await ctx.newPage();
  const errors=[];

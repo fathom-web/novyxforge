@@ -1,0 +1,40 @@
+name: NOVYX V4 review checks
+on:
+  pull_request:
+  push:
+    branches: [novyx-v4]
+permissions:
+  contents: read
+jobs:
+  living-forge:
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static generation is reproducible
+        run: |
+          node scripts/build-worlds.mjs
+          git diff --exit-code
+      - name: Syntax and regression contracts
+        run: node scripts/check.mjs
+      - name: Install browser test tooling
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps ${{ matrix.browser }}
+      - name: Verify V4 interactions and responsive static worlds
+        env:
+          NOVYX_ENGINE: ${{ matrix.browser }}
+        run: node tests/v4-browser-check.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: novyx-v4-review-${{ matrix.browser }}
+          path: qa-v4/
+          retention-days: 14

@@ -20,15 +20,17 @@
   const internalWorld = (href) => {
     try {
       const url = new URL(href, window.location.href);
-      if (url.origin !== window.location.origin || !url.pathname.endsWith("/project.html")) return null;
-      const id = url.searchParams.get("project");
+      if (url.origin !== window.location.origin) return null;
+      const staticWorld=url.pathname.match(/\/world-([a-z0-9-]+)\.html$/);
+      if(!staticWorld && !url.pathname.endsWith("/project.html"))return null;
+      const id = staticWorld?.[1] || url.searchParams.get("project");
       return id && /^[a-z0-9-]{1,50}$/.test(id) ? { id, url } : null;
     } catch (_) { return null; }
   };
   const safeColor = rgb => /^\d{1,3},\d{1,3},\d{1,3}$/.test(rgb || "") ? rgb : "111,196,242";
   const fromProject = p => {
     const rgb = safeColor(p.world?.weather?.rgb);
-    return { id: p.id, name: p.name, rgb, accent: p.accent || "#8fdfff",
+    return { id: p.id, name: p.name, summary:p.summary, status:p.pipelineNote, rgb, accent: p.accent || "#8fdfff",
       type: p.world?.weather?.type || "", portal: p.world?.portal === true,
       href: "./project.html?project=" + encodeURIComponent(p.id) };
   };
@@ -58,7 +60,7 @@
 
   function renderNavigator(worlds) {
     if (!gallery) return;
-    const current = new URLSearchParams(location.search).get("project");
+    const current = document.body.dataset.project || new URLSearchParams(location.search).get("project");
     const items = worlds.filter(w => w.portal);
     const spark = worlds.find(w => w.id === "spark-lab");
     gallery.replaceChildren();
@@ -89,7 +91,12 @@
     if (!choose || !choices || !close || !mission || !homeLink) return;
     const supported = worlds.filter(w => w.portal);
     choices.replaceChildren();
-    for (const world of supported) choices.append(makeLink(world, ""));
+    for (const world of supported){
+      const link=makeLink(world, "");
+      const show=()=>{const description=$('#reactor-dialog-desc',dialog);if(description)description.textContent=world.name+' · '+world.status;};
+      link.addEventListener('focus',show);link.addEventListener('pointerenter',show,{passive:true});
+      choices.append(link);
+    }
     choices.setAttribute("aria-label", "Choose a project world");
     const onOpen = () => {
       choose.setAttribute("aria-expanded", "false");
@@ -144,7 +151,7 @@
   document.addEventListener("click", event => {
     if (event.defaultPrevented || event.button !== 0 ||
         event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
-        motionQuery.matches || leaving || document.visibilityState === "hidden") return;
+        motionQuery.matches || document.documentElement.classList.contains('v4-motion-paused') || leaving || document.visibilityState === "hidden") return;
     const anchor = event.target.closest?.("a[href]");
     if (!anchor || (anchor.target && anchor.target !== "_self") ||
         anchor.hasAttribute("download")) return;
@@ -159,13 +166,14 @@
     const config = worldById.get(world.id);
     const rgb = safeColor(config.rgb);
     const panel = openGate(rgb, config.name);
+    panel.dataset.identity=config.type;
     announce("Entering " + config.name);
     try { sessionStorage.setItem(TRANSITION_KEY, JSON.stringify({
       id: world.id, at: Date.now()
     })); } catch (_) { /* private browsing: visual effect still works */ }
     requestAnimationFrame(() => panel.classList.add("is-departing"));
     // The timeout is deliberately short: never strand visitors in an animation.
-    window.setTimeout(() => window.location.assign(world.url.href), 380);
+    window.setTimeout(() => window.location.assign(world.url.href), 160);
   });
 
   function arrivalGate() {
@@ -177,15 +185,17 @@
       if (raw) meta = JSON.parse(raw);
     } catch (_) { return; }
     if (!meta || Date.now() - meta.at > 4500 || !worldById.has(meta.id)) return;
-    const here = new URLSearchParams(location.search).get("project");
+    const here = document.body.dataset.project || new URLSearchParams(location.search).get("project");
     if (here !== meta.id) return;
     const world = worldById.get(meta.id);
     const panel = openGate(world.rgb, world.name, true);
+    panel.dataset.identity=world.type;
     panel.classList.add("is-arrived");
     requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add("is-disappearing")));
     window.setTimeout(() => { panel.remove(); gate = null; }, 650);
   }
 
+  window.addEventListener('pageshow',()=>{leaving=false;if(gate){gate.remove();gate=null;}});
   async function init() {
     let worlds = [];
     try {

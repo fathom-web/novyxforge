@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#050917">
   <meta name="description" content="NOVYX FORGE is a living independent AI and technology lab. Explore six interactive project worlds, seven atmospheric experiences, the Idea Vault, Forge Pulse, gaming tools, learning platforms and experiments.">
-  <meta property="og:title" content="NOVYX FORGE — Ideas Forged Into Reality">
+  <meta property="og:title" content="NOVYX FORGE 4.0 — The Living Forge">
   <meta property="og:description" content="Explore. Experiment. Build. Enter an independent AI and technology lab where ideas become experiences.">
-  <title>NOVYX FORGE — Ideas Forged Into Reality</title>
+  <title>NOVYX FORGE 4.0 — The Living Forge</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -604,7 +604,7 @@
   <link rel="stylesheet" href="./forge-world-navigation.css?v=2">
   <link rel="stylesheet" href="./forge-observatory.css?v=1">
   <link rel="stylesheet" href="./forge-feedback.css?v=2">
-  <link rel="stylesheet" href="./forge-search.css?v=2">
+  <link rel="stylesheet" href="./forge-search.css?v=40">
   <link rel="stylesheet" href="./forge-v31.css?v=1">
   <link rel="stylesheet" href="./forge-v311.css?v=1">
   <link rel="stylesheet" href="./forge-v312.css?v=1">
@@ -612,6 +612,9 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://novyxforge.com/">
   <meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="./forge-v4.css?v=4">
+<script src="./forge-content.js?v=4" defer></script>
+<script src="./forge-v4.js?v=4" defer></script>
 </head>
 <body>
   <div class="site-progress" aria-hidden="true"></div><div class="ambient-mesh" aria-hidden="true"></div><div class="noise" aria-hidden="true"></div><div class="sky" aria-hidden="true"></div>
@@ -631,7 +634,7 @@
         <div class="v311-cosmos" aria-hidden="true"></div>
         <div class="v31-stage-field" aria-hidden="true"></div>
         <div class="v31-stage-hud" aria-hidden="true">
-          <div class="v31-hud-top"><span><i class="v31-hud-led"></i><strong>FORGE NETWORK</strong> / SIX WORLDS</span><span>ATLAS // 03.1.2</span></div>
+          <div class="v31-hud-top"><span><i class="v31-hud-led"></i><strong>FORGE NETWORK</strong> / SIX WORLDS</span><span>ATLAS // 04.0</span></div>
           <span class="v31-stage-tick left"></span><span class="v31-stage-tick right"></span>
           <div class="v31-hud-bottom"><span><strong>CORE LINK</strong> · SELECT A PORTAL</span><span class="v31-focus-state" id="v31-focus-state">SELECT A WORLD</span></div>
         </div>
@@ -820,7 +823,7 @@
           </svg><span class="orb-orbit"></span></span>
         <span class="sphere-caption">WOW <span>LIFEFORGE</span></span>
         <span class="sphere-description">Your Journey · Your Legend</span>
-        <span class="arrow">Explore concept ↓</span>
+        <span class="arrow">Explore alpha ↓</span>
       </a>
 
       <a class="sphere-link sixth" href="./project.html?project=wildrift-counter" aria-label="Discover Wild Rift Counter, the Arcane Wind project world">
@@ -852,19 +855,24 @@
       </a>
       </div>
       <h1 class="main-title"><span class="novyx-word">NOVYX</span> <span class="forge-word">FORGE</span></h1>
-      <div class="hero-tagline">Explore &nbsp;·&nbsp; Experiment &nbsp;·&nbsp; Build</div>
+      <div class="hero-tagline">THE LIVING FORGE</div>
+      <div class="v4-toolbar"><span>V4 / SIX WORLDS. ONE CURIOSITY.</span><button id="forge-motion" type="button" aria-pressed="false">Pause motion</button></div>
+      <div class="v4-portal-preview" id="portal-preview"><strong>Choose your next discovery.</strong><p>Explore a sphere, or follow the shared ideas in the World Atlas.</p><small>Working tools, developing prototypes and creative projects — each with its own story.</small></div>
       <p class="hero-desc">Step into a living laboratory of ideas — where curiosity meets technology, and experiments become experiences.</p>
-      <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#about">The story behind it <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-actions"><a class="btn btn-primary" href="#world-atlas">Explore the World Atlas <span aria-hidden="true">↗</span></a><a class="btn btn-outline" href="#about">The story behind it <span aria-hidden="true">↓</span></a></div>
       <div class="glass-divider" aria-hidden="true"></div>
     </section>
 
+    <!-- V4 ATLAS START --><section class="container v4-section" id="world-atlas" aria-labelledby="atlas-heading"><div class="v4-section-head"><span class="v4-kicker">THE LIVING FORGE / WORLD ATLAS</span><h2 id="atlas-heading">Different worlds.<br><em>Connected by curiosity.</em></h2><p>Find your next discovery through the ideas these projects share. Connections describe a common interest, not a technical integration.</p></div>
+      <div class="v4-atlas-layout"><div class="v4-world-list" aria-label="Select a world to explore its connections"><button type="button" data-atlas-world="footballforge" aria-pressed="true" style="--world-accent:#3CDAFF"><span class="v4-world-dot" aria-hidden="true"></span><span><small>WORLD / 01</small>FootballForge</span><span aria-hidden="true">↗</span></button><button type="button" data-atlas-world="studyforge" aria-pressed="false" style="--world-accent:#9B7CFF"><span class="v4-world-dot" aria-hidden="true"></span><span><small>WORLD / 02</small>StudyForge</span><span aria-hidden="true">↗</span></button><button type="button" data-atlas-world="fascination-files" aria-pressed="false" style="--world-accent:#FF63CF"><span class="v4-world-dot" aria-hidden="true"></span><span><small>WORLD / 03</small>The Fascination Files</span><span aria-hidden="true">↗</span></button><button type="button" data-atlas-world="safeforge" aria-pressed="false" style="--world-accent:#50F3A6"><span class="v4-world-dot" aria-hidden="true"></span><span><small>WORLD / 04</small>SAFe Agile Forge</span><span aria-hidden="true">↗</span></button><button type="button" data-atlas-world="wow-lifeforge" aria-pressed="false" style="--world-accent:#FFB541"><span class="v4-world-dot" aria-hidden="true"></span><span><small>WORLD / 05</small>WoW LifeForge</span><span aria-hidden="true">↗</span></button><button type="button" data-atlas-world="wildrift-counter" aria-pressed="false" style="--world-accent:#5EDFE7"><span class="v4-world-dot" aria-hidden="true"></span><span><small>WORLD / 06</small>Wild Rift Counter</span><span aria-hidden="true">↗</span></button></div><div class="v4-atlas-detail" id="atlas-detail" aria-live="polite"><span class="v4-kicker">THE MATCHDAY WORLD</span><h3>FootballForge</h3><p>How do you turn availability into a fair, usable match plan?</p><p>A smarter home for football teams, player availability, rotations and matchday communication.</p><div class="v4-atlas-actions"><a href="./world-footballforge.html">Enter this world <span aria-hidden="true">↗</span></a><a href="./world-footballforge.html#try-demo">Try the sample demo <span aria-hidden="true">↗</span></a></div><div class="v4-connection-list"><article><a href="./world-safeforge.html">SAFe Agile Forge <span aria-hidden="true">↗</span></a><p>Both turn preparation into a plan people can use.</p></article><article><a href="./world-studyforge.html">StudyForge <span aria-hidden="true">↗</span></a><p>Both organize repeatable routines and make progress visible.</p></article></div></div></div><noscript><p>Explore the worlds directly:</p><p><a href="./world-footballforge.html">FootballForge</a></p><p><a href="./world-studyforge.html">StudyForge</a></p><p><a href="./world-fascination-files.html">The Fascination Files</a></p><p><a href="./world-safeforge.html">SAFe Agile Forge</a></p><p><a href="./world-wow-lifeforge.html">WoW LifeForge</a></p><p><a href="./world-wildrift-counter.html">Wild Rift Counter</a></p><p><a href="./world-spark-lab.html">Spark Lab</a></p></noscript></section><!-- V4 ATLAS END -->
     <div class="v312-seam" aria-hidden="true"><span>FROM CURIOSITY TO CREATION</span></div>
     <section class="container about-section" id="about" aria-labelledby="about-heading">
       <div class="about-copy reveal">
         <div class="section-kicker">01 / What is NOVYX?</div>
         <h2 class="feature-heading" id="about-heading">Curiosity is the spark.<br><em>Creation is the point.</em></h2>
         <p>An independent AI and technology lab where ideas are explored, tested and turned into digital experiences. From practical tools to creative experiments, NOVYX is built around one simple belief: the best ideas deserve to become real.</p>
-        <p>It starts with curiosity. The rest is experimentation, design, code and a willingness to discover something unexpected.</p>
+        <p>The connection is practical curiosity: make studying easier to start, make matchday simpler to prepare, preserve a gaming memory, or turn a surprising question into a story. Different interests ask different questions. Building is a way to explore the answers.</p>
+        <p>The Forge is an independent maker's workspace. Prototypes belong here alongside working tools, because the decisions, limits and lessons are part of the story. Every world gives you a way to see what exists, try an example where available, and understand what still needs work.</p>
         <div class="about-meta"><span>Independent by nature</span><span>Experimental by design</span></div>
       </div>
       <div class="forge-reactor reveal" aria-hidden="true">
@@ -956,14 +964,14 @@
             
           </div>
         </a>
-        <a class="project project-wow reveal" href="./project.html?project=wow-lifeforge" aria-label="Discover WoW LifeForge addon concept">
-          <div class="project-top"><span class="project-number">FORGE / 005</span><span class="state concept-state"><span class="concept-dot"></span> Exploring</span></div>
+        <a class="project project-wow reveal" href="./project.html?project=wow-lifeforge" aria-label="Discover WoW LifeForge alpha development">
+          <div class="project-top"><span class="project-number">FORGE / 005</span><span class="state concept-state"><span class="concept-dot"></span> Alpha</span></div>
           <div class="project-art" aria-hidden="true">
             <div class="preview-window preview-wow"><div class="preview-bar"><span class="preview-brand">WOW <span>LIFEFORGE</span></span><span class="preview-dots"><i></i><i></i><i></i></span></div>
               <div class="wow-panel"><div class="wow-vfx"></div><div class="wow-runic"></div><div class="wow-smallprint"><span>YOUR CHARACTER</span><span>YOUR JOURNEY</span><span>YOUR LEGEND</span></div></div>
             </div>
           </div>
-          <div class="project-bottom"><span class="project-category">GAMING / WORLD OF WARCRAFT</span><h3>WoW LifeForge</h3><p>An addon concept to chronicle adventures, milestones and the moments that make a character legendary. Future downloads and updates via CurseForge only.</p><span class="project-arrow">Explore concept ↗</span></div>
+          <div class="project-bottom"><span class="project-category">GAMING / WORLD OF WARCRAFT</span><h3>WoW LifeForge</h3><p>An in-development Lua addon for recorded adventures, milestones and memories. Game-client validation is pending; future public downloads will use CurseForge.</p><span class="project-arrow">Explore alpha ↗</span></div>
         </a>
         <a class="project project-wildrift reveal" href="./project.html?project=wildrift-counter" aria-label="Discover Wild Rift Counter and its lane matchup prototype">
           <div class="project-top"><span class="project-number">FORGE / 006</span><span class="state concept-state"><span class="concept-dot"></span> Building</span></div>
@@ -985,6 +993,14 @@
     </section>
 
 
+    <section class="container v4-section" id="experiments" aria-labelledby="experiments-heading">
+      <div class="v4-section-head"><span class="v4-kicker">SPARK LAB / WORKING EXPERIMENTS</span><h2 id="experiments-heading">Small enough to try.<br><em>Useful enough to explain.</em></h2><p>Explore these isolated browser demonstrations. They use fictional examples and never connect to production accounts.</p></div>
+      <div class="v4-lab-grid">
+        <article><span class="v4-kicker">01 / LEARNING</span><h3>Recall before reveal.</h3><p>Try flashcards and a short quiz. See how immediate feedback changes a practice session.</p><a href="./world-studyforge.html#try-demo">Open the learning sandbox ↗</a></article>
+        <article><span class="v4-kicker">02 / TEAMWORK</span><h3>A squad becomes a plan.</h3><p>Change fictional player availability and inspect the formation and bench.</p><a href="./world-footballforge.html#try-demo">Open the lineup sandbox ↗</a></article>
+        <article><span class="v4-kicker">03 / MAKING</span><h3>A spark becomes a brief.</h3><p>Turn an idea into a structured starting plan with the existing local workshop.</p><a href="./spark-lab.html">Open Spark Lab ↗</a></article>
+      </div>
+    </section>
     <div class="v312-seam" aria-hidden="true"><span>BEHIND THE MACHINE</span></div>
     <nav class="container v31-system-index" id="systems" aria-label="Forge systems directory">
       <div class="v31-system-head">
@@ -1303,12 +1319,12 @@
       });
     }
   </script>
-  <script src="./forge-experience.js?v=4" defer></script>
+  <script src="./forge-experience.js?v=40" defer></script>
   <script src="./forge-polish.js?v=5" defer></script>
-  <script src="./forge-world-navigation.js?v=4" defer></script>
-  <script src="./forge-observatory.js?v=2" defer></script>
+  <script src="./forge-world-navigation.js?v=40" defer></script>
+  <script src="./forge-observatory.js?v=40" defer></script>
   <script src="./forge-feedback.js?v=2" defer></script>
-  <script src="./forge-search.js?v=3" defer></script>
+  <script src="./forge-search.js?v=40" defer></script>
   <script src="./forge-v31.js?v=1" defer></script>
   <script src="./forge-v312.js?v=1" defer></script>
 
@@ -1327,6 +1343,7 @@
           <span><strong>Explore Worlds</strong><small>Travel directly to a project showcase</small></span><span class="reactor-arrow" aria-hidden="true">◎</span>
         </button>
         <div class="reactor-worlds" id="reactor-worlds" hidden></div>
+        <a class="reactor-action" href="#world-atlas"><span><strong>Follow the connections</strong><small>Discover shared ideas in the World Atlas</small></span><span aria-hidden="true">◎</span></a>
         <a class="reactor-action" href="./project.html?project=spark-lab">
           <span><strong>Forge an Idea</strong><small>Enter Spark Lab through its project showcase</small></span><span class="reactor-arrow" aria-hidden="true">✦</span>
         </a>
@@ -1334,7 +1351,7 @@
           <span><strong>Mission Control</strong><small>Track the Forge Pipeline and current projects</small></span><span class="reactor-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
-      <div class="reactor-dialog-foot"><a id="reactor-home" href="#projects">Browse all projects ↗</a> · <a id="reactor-observatory" href="#observatory">Enter Observatory ↗</a> · NOVYX FORGE 3.1.2</div>
+      <div class="reactor-dialog-foot"><a id="reactor-home" href="#projects">Browse all projects ↗</a> · <a id="reactor-observatory" href="#observatory">Enter Observatory ↗</a> · NOVYX FORGE 4.0</div>
     </div>
   </dialog>
   <span id="novyx-world-status" role="status" aria-live="polite" aria-atomic="true"></span>

@@ -1,8 +1,56 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "description": "Curated GitHub commit evidence. Development commits are not verified releases or production deployments.",
   "items": [
+    {
+      "id": "commit-c79f0553be3a",
+      "projectId": "novyxforge",
+      "type": "development",
+      "status": "committed",
+      "title": "The six-world visual redesign",
+      "summary": "Version 3.1 design source evolved the universe presentation while retaining project navigation.",
+      "occurredAt": "2026-10-30T17:38:30Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/novyxforge",
+        "sha": "c79f0553be3abc1a809ac3a46a0fcb1badf1c2f0",
+        "url": "https://github.com/fathom-web/novyxforge/commit/c79f0553be3abc1a809ac3a46a0fcb1badf1c2f0"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-9e7524c04afd",
+      "projectId": "novyxforge",
+      "type": "development",
+      "status": "committed",
+      "title": "Cinematic continuity and systems deck",
+      "summary": "Version 3.1.2 source introduced seamless scrolling and the systems directory.",
+      "occurredAt": "2026-10-30T19:30:40Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/novyxforge",
+        "sha": "9e7524c04afd4b373670efafdcb0d2bd33bbc0bc",
+        "url": "https://github.com/fathom-web/novyxforge/commit/9e7524c04afd4b373670efafdcb0d2bd33bbc0bc"
+      },
+      "reviewed": true
+    },
+    {
+      "id": "commit-d73163a9fc37",
+      "projectId": "novyxforge",
+      "type": "development",
+      "status": "committed",
+      "title": "WoW Addon Foundry source added",
+      "summary": "A separate static WoW showcase and source-backed alpha status were added to NOVYX. This commit is not proof of subdomain deployment.",
+      "occurredAt": "2026-10-30T19:50:27Z",
+      "source": {
+        "type": "github-commit",
+        "repository": "fathom-web/novyxforge",
+        "sha": "d73163a9fc3749b218309ec01d71fed47682bdc4",
+        "url": "https://github.com/fathom-web/novyxforge/commit/d73163a9fc3749b218309ec01d71fed47682bdc4"
+      },
+      "reviewed": true
+    },
     {
       "id": "commit-f81196e6132b",
       "projectId": "footballforge",

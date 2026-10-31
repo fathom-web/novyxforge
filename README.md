@@ -1,5 +1,21 @@
 # NOVYX FORGE — Living Innovation Lab
 
+## NOVYX FORGE 4.0 — The Living Forge (review candidate)
+
+V4 adds source-backed project depth, a connected World Atlas, seven statically rendered world pages, searchable engineering notes, atmosphere controls and resilient public activity caching. It preserves the six spheres, Reactor, existing routes, demos, feedback and buildless hosting.
+
+See **[V4_REVIEW.md](./V4_REVIEW.md)** for the implementation report, evidence limits, verification results and production gates. This branch is for review; it has not been deployed.
+
+```sh
+node scripts/build-worlds.mjs
+node scripts/check.mjs
+node scripts/preview.mjs
+```
+
+Preview at `http://127.0.0.1:4173`. Source content lives in `projects.json` and `world-content.json`; `project.html` is the shared shell. Regenerate and commit `world-*.html` after editing those inputs. Original query-string project URLs remain compatible.
+
+The V3 sections below are historical implementation notes, not the current V4 acceptance status.
+
 An independent AI & Technology Lab: a cinematic home for projects, ideas and experiments.
 
 ## NOVYX FORGE 3.0 — Release Candidate RC1 (2026-10-30)

@@ -15,7 +15,8 @@ const clamp=(n,lo,hi)=>Math.max(lo,Math.min(hi,n));
 function mount(hero,config){
  if(!hero||!config||!TYPES.has(config.type))return null;
  if(hero.querySelector(".weather-layer"))return null;
- const type=config.type, rgb=/^\d{1,3},\d{1,3},\d{1,3}$/.test(config.rgb||"")?config.rgb:"105,188,233";
+ let type=config.type;
+ const rgb=/^\d{1,3},\d{1,3},\d{1,3}$/.test(config.rgb||"")?config.rgb:"105,188,233";
  const layer=document.createElement("div");
  layer.className="weather-layer";
  layer.setAttribute("aria-hidden","true");
@@ -34,7 +35,11 @@ function mount(hero,config){
  chip.textContent="World atmosphere · "+(config.title||type);
  const button=document.createElement("button");
  button.className="atmosphere-toggle";button.type="button";
- controls.append(chip,button);
+ const mode=document.createElement('select');mode.setAttribute('aria-label','Fictional atmosphere mode');
+ for(const value of TYPES){const option=document.createElement('option');option.value=value;option.textContent=value[0].toUpperCase()+value.slice(1);mode.append(option);}mode.value=type;
+ const intensity=document.createElement('select');intensity.setAttribute('aria-label','Atmosphere intensity');
+ for(const [value,label] of [['0.4','Subtle'],['0.7','Balanced'],['1','Full']]){const option=document.createElement('option');option.value=value;option.textContent=label;intensity.append(option);}intensity.value='0.7';
+ controls.append(chip,button,mode,intensity);
  const target=hero.querySelector(".hero-actions")||hero.querySelector(".hero-copy")||hero;
  target.append(controls); // Actions remain directly before the atmosphere control.
  function syncControls(){
@@ -56,7 +61,7 @@ function mount(hero,config){
      canvas.height=Math.min(1600,Math.round(height*state.dpr));
      ctx.setTransform(state.dpr,0,0,state.dpr,0,0);
    }
-   const area=width*height,level=clamp(Number(config.level)||1,.3,1.2);
+   const area=width*height,level=clamp((Number(config.level)||1)*Number(intensity.value),.15,1.2);
    const count=Math.round(clamp(area/5400,28,mobile?65:140)*level);
    const n=type==="fog"?Math.min(12,Math.ceil(count/7)):type==="meteors"?Math.min(38,count):count;
    state.particles=Array.from({length:n},()=>newParticle(state,true));
@@ -124,6 +129,8 @@ function mount(hero,config){
    if(desired){state.last=0;state.frame=0;state.raf=requestAnimationFrame(frame);}
    else {if(state.raf)cancelAnimationFrame(state.raf);state.raf=0;if(ctx)ctx.clearRect(0,0,state.width,state.height);}
  }
+ mode.addEventListener('change',()=>{type=mode.value;state.type=type;layer.dataset.type=type;chip.textContent='Fictional atmosphere · '+type;drawSize();});
+ intensity.addEventListener('change',()=>drawSize());
  button.addEventListener("click",()=>{
    const newValue=!state.enabled;
    try{localStorage.setItem(preferenceKey,String(newValue));}catch(e){/* storage disabled */}

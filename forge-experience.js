@@ -141,6 +141,11 @@
         make("h3","",idea.name),
         make("p","",idea.summary),
         make("div","vault-caption",idea.category+" / IN THE VAULT"));
+      const detail=make('details','vault-question');
+      const summary=make('summary','','Explore this idea');
+      const note=make('p','','An exploratory concept, not a committed roadmap item. A useful next step is to define the audience, the smallest test and what would make the idea worth pursuing.');
+      const workshop=make('a','','Shape it in Spark Lab ↗');workshop.href='./spark-lab.html';
+      detail.append(summary,note,workshop);card.append(detail);
       container.append(card);
     });
     const count=byId("vault-count");
@@ -168,6 +173,27 @@
     append(fallback,a);target.append(fallback);
     const state=byId("pulse-state");if(state)text(state,"Live feed unavailable");
   }
+  // Public commit metadata only. Cache avoids repeat API traffic between worlds.
+  async function pulseRequest(repo){
+    const key='novyx.pulse.v4.'+repo;
+    let cached;
+    try{cached=JSON.parse(sessionStorage.getItem(key)||'null');}catch{}
+    const age=Date.now()-Number(cached?.at);
+    if(age>=0 && age<900000 && Array.isArray(cached?.data))return {data:cached.data,cached:true};
+    try{
+      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),5000);
+      let response;
+      try{response=await fetch('https://api.github.com/repos/fathom-web/'+encodeURIComponent(repo)+'/commits?per_page=1',{headers:{Accept:'application/vnd.github+json'},signal:controller.signal});}finally{clearTimeout(timer);}
+      if(!response.ok)throw Error('GitHub unavailable');
+      const data=await response.json();if(!Array.isArray(data))throw Error('Invalid GitHub response');
+      const minimal=data.slice(0,1).map(x=>({html_url:x.html_url,commit:{message:String(x.commit?.message||'').slice(0,200),committer:{date:x.commit?.committer?.date}}}));
+      try{sessionStorage.setItem(key,JSON.stringify({at:Date.now(),data:minimal}));}catch{}
+      return {data:minimal,cached:false};
+    }catch(error){
+      if(age>=0 && age<86400000 && Array.isArray(cached?.data))return {data:cached.data,cached:true};
+      throw error;
+    }
+  }
   async function loadPulse(){
     if(!byId("pulse-feed"))return;
     const repos=[
@@ -177,15 +203,15 @@
       ["Wild Rift Counter","WildRiftCounter"]
     ];
     const results=await Promise.allSettled(repos.map(async ([name,repo])=>{
-      const response=await fetch("https://api.github.com/repos/fathom-web/"+encodeURIComponent(repo)+"/commits?per_page=1",{headers:{"Accept":"application/vnd.github+json"}});
-      if(!response.ok)throw new Error("GitHub feed status "+response.status);
-      const payload=await response.json();
+      const result=await pulseRequest(repo);
+      const payload=result.data;
       if(!Array.isArray(payload)||!payload[0]?.commit?.message||!payload[0]?.html_url)return null;
       const commit=payload[0];
+      if(!new RegExp('^https://github\\.com/fathom-web/'+repo+'/commit/[a-f0-9]{40}$').test(commit.html_url))return null;
       const date=commit.commit?.committer?.date||commit.commit?.author?.date;
       const stamp=Date.parse(date||"");
       if(!Number.isFinite(stamp))return null;
-      return {name,headline:commit.commit.message.split("\n")[0].slice(0,175),url:commit.html_url,date:stamp};
+      return {name,headline:commit.commit.message.split("\n")[0].slice(0,175),url:commit.html_url,date:stamp,cached:result.cached};
     }));
     const entries=results.filter(r=>r.status==="fulfilled"&&r.value).map(r=>r.value).sort((a,b)=>b.date-a.date).slice(0,4);
     if(!entries.length){pulseFallback("The public GitHub feed could not be loaded right now.");return;}
@@ -203,7 +229,7 @@
       container.append(card);
     });
     const status=byId("pulse-state");
-    if(status)text(status,"Public GitHub commits · Updated when you open this page");
+    if(status)text(status,entries.some(x=>x.cached)?"Public GitHub commits · Includes cached snapshot (up to 24 hours old)":"Public GitHub commits · Fetched on this visit");
   }
   function setupPulse(){
     const anchor=byId("pulse");

@@ -9,7 +9,7 @@ const read=path=>readFileSync(new URL("../"+path,import.meta.url),"utf8");
 const activity=JSON.parse(read("activity.json")),projects=JSON.parse(read("projects.json"));
 const code=read("forge-observatory.js"),home=read("index.html"),showcase=read("project.html");
 assert.equal(activity.schemaVersion,1);
-assert.equal(activity.updated,"2026-10-30");
+assert.match(activity.updated,/^\d{4}-\d{2}-\d{2}$/);
 assert.ok(activity.items.length>0);
 assert.equal(new Set(activity.items.map(x=>x.id)).size,activity.items.length,"Unique evidence ids");
 for(const a of activity.items){
