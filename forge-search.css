@@ -63,3 +63,4 @@ body:has(.forge-search-dialog[open]){scrollbar-gutter:stable}
  header nav.shell .brand{font-size:14px;letter-spacing:.08em}
  header nav.shell .back{font-size:8px;padding:9px 8px}
 }
+.forge-search-group{list-style:none;padding:16px 12px 6px;color:#cbb990;font-size:11px;text-transform:uppercase;letter-spacing:.14em}

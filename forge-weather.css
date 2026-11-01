@@ -24,3 +24,6 @@
 @media(max-width:950px){.weather-layer{inset:0}.weather-layer canvas{opacity:.58}}
 @media(max-width:650px){.weather-layer{inset:0;border-radius:14px}.atmosphere-controls{gap:6px}.atmosphere-chip,.atmosphere-toggle{font-size:9px;padding:8px 10px}}
 @media(prefers-reduced-motion:reduce){.weather-layer canvas{display:none!important}.weather-layer{transition:none!important}.atmosphere-toggle{transition:none!important}}
+/* V4: explicit fictional mode and intensity controls, sized for touch. */
+.atmosphere-controls select{font:inherit;font-size:12px;background:#111e32;color:#e1e9f4;border:1px solid #61718b;border-radius:6px;padding:8px;min-height:44px;max-width:100%}
+.atmosphere-controls select:focus-visible{outline:2px solid #f0d29d;outline-offset:3px}

@@ -115,13 +115,20 @@
   function renderTimeline(data,projectId){
     const root=$("evolution-feed");
     if(!root)return;
+    if(root.parentElement && !document.getElementById('timeline-order')){
+      const label=e('label','timeline-controls','Timeline order '),select=e('select');select.id='timeline-order';
+      for(const [value,title] of [['newest','Newest first'],['oldest','Oldest first']]){const option=e('option','',title);option.value=value;select.append(option);}
+      label.append(select);root.parentElement.insertBefore(label,root);
+      select.addEventListener('change',()=>renderTimeline(data,projectId));
+    }
     const entries=data.items.filter(item=>item.projectId===projectId);
+    if(document.getElementById('timeline-order')?.value==='oldest')entries.reverse();
     root.replaceChildren();
     if(!entries.length){
       root.append(e("p","evolution-empty","No reviewed, source-backed development milestones have been published for this project yet. Its catalog stage is not a confirmed release history."));
       return;
     }
-    for(const item of entries.slice(0,8)){
+    for(const item of entries){
       const card=e("article","evolution-item");
       const head=e("div","evolution-item-head");
       head.append(makeDate(item),e("span","evolution-status",item.type==="release"?"Release published":"Code committed"));
@@ -150,7 +157,7 @@
         catalog.projects.forEach(p=>{if(p&&projectScope.has(p.id)&&p.id!=="novyxforge")projects.set(p.id,p)});
         renderObservatory(activity,projects);
       }
-      if(detail)renderTimeline(activity,new URLSearchParams(location.search).get("project"));
+      if(detail)renderTimeline(activity,document.body?.dataset?.project||new URLSearchParams(location.search).get("project"));
     }catch(error){
       if(home)$("observatory-feed").replaceChildren(empty("The reviewed activity history is temporarily unavailable. The public GitHub Pulse below can still be used to view repository commits."));
       if(detail)$("evolution-feed").replaceChildren(e("p","evolution-empty","Project history is unavailable right now. Please check GitHub for technical updates."));

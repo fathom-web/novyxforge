@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d1d">
+
+<meta name="description" content="An interactive study space for practice tests, flashcards and visible learning progress.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NOVYX FORGE">
+<meta property="og:title" content="StudyForge — The Living Forge">
+<meta property="og:description" content="An interactive study space for practice tests, flashcards and visible learning progress.">
+<title>StudyForge — The Living Forge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23050b1c'/%3E%3Cpath d='M13 48V16l38 32V16' fill='none' stroke='%237bdfff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./project-showcase.css?v=4">
+<link rel="stylesheet" href="./forge-weather.css?v=40">
+<link rel="stylesheet" href="./forge-world-navigation.css?v=2">
+<link rel="stylesheet" href="./forge-demo.css?v=1">
+<link rel="stylesheet" href="./forge-observatory.css?v=1">
+<link rel="stylesheet" href="./forge-feedback.css?v=2">
+<link rel="stylesheet" href="./forge-search.css?v=40">
+<link rel="stylesheet" href="./forge-showcase-finish.css?v=2">
+<script src="./forge-weather.js?v=40" defer></script>
+<script src="./forge-demos.js?v=2" defer></script>
+<script src="./forge-feedback.js?v=2" defer></script>
+<script src="./project-showcase.js?v=40" defer></script>
+<script src="./forge-world-navigation.js?v=40" defer></script>
+<script src="./forge-observatory.js?v=40" defer></script>
+
+<script src="./forge-search.js?v=40" defer></script>
+<link rel="stylesheet" href="./forge-v4.css?v=4">
+<script src="./forge-content.js?v=4" defer></script>
+<script src="./forge-v4.js?v=4" defer></script>
+<link rel="canonical" href="https://novyxforge.com/world-studyforge.html"><meta property="og:url" content="https://novyxforge.com/world-studyforge.html"><script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"StudyForge","description":"An interactive study space for practice tests, flashcards and visible learning progress.","url":"https://novyxforge.com/world-studyforge.html","isPartOf":{"@type":"WebSite","name":"NOVYX FORGE","url":"https://novyxforge.com/"}}</script></head>
+<body data-project="studyforge" data-world="studyforge" style="--accent:#9B7CFF">
+<a class="v4-skip" href="#engineering">Skip to project story</a>
+<header>
+  <nav class="shell" aria-label="Project navigation">
+    <a class="brand" href="./index.html">NOVYX <span>FORGE</span></a>
+    <a class="forge-search-trigger" data-forge-search href="./index.html#catalog" aria-label="Search NOVYX projects and ideas" aria-keyshortcuts="Control+K Meta+K"><span class="forge-search-icon" aria-hidden="true"></span><span class="search-trigger-text">Search</span><kbd>Ctrl K</kbd></a>
+    <a class="back" href="./index.html#projects">← All projects</a>
+  </nav>
+</header>
+<nav class="world-nav" aria-label="Explore NOVYX project worlds">
+  <div class="world-nav-inner">
+    <a class="world-nav-title" href="./index.html#home" aria-label="Return to the NOVYX Forge universe">
+      <span class="world-nav-core" aria-hidden="true">✦</span>
+      <span><strong>World Navigator</strong><small id="world-nav-count">PROJECT WORLDS</small></span>
+    </a>
+    <div class="world-nav-scroll" tabindex="0" role="region" aria-label="Scroll through project worlds">
+      <div class="world-nav-links" id="world-nav-links"><a class="world-nav-link" href="./world-footballforge.html">FootballForge</a><a class="world-nav-link is-current" href="./world-studyforge.html" aria-current="page">StudyForge</a><a class="world-nav-link" href="./world-fascination-files.html">The Fascination Files</a><a class="world-nav-link" href="./world-safeforge.html">SAFe Agile Forge</a><a class="world-nav-link" href="./world-wow-lifeforge.html">WoW LifeForge</a><a class="world-nav-link" href="./world-wildrift-counter.html">Wild Rift Counter</a><a class="world-nav-link" href="./world-spark-lab.html">Spark Lab</a></div>
+    </div>
+  </div>
+</nav>
+<span id="novyx-world-status" role="status" aria-live="polite" aria-atomic="true"></span>
+<main id="main-content">
+  <section class="shell hero" aria-labelledby="name">
+    <div class="hero-copy">
+      <span class="eyebrow">FORGE / PROJECT WORLD</span>
+      <h1 id="name">StudyForge</h1>
+      <div class="lead" id="lead">Make learning feel like progress.</div>
+      <span class="status" id="stage">Available to explore</span>
+      <p class="summary" id="summary">An interactive study space for practice tests, flashcards and visible learning progress.</p>
+      <div class="hero-actions" id="hero-actions"><a class="btn btn-primary" href="#engineering">Explore the story ↓</a><a class="btn btn-secondary" href="#try-demo">Try the sample demo ↓</a></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <span class="hero-orbit"></span><span class="hero-orbit"></span><span class="hero-orbit"></span><span class="hero-core"></span>
+      <span class="hero-word" id="world">THE KNOWLEDGE WORLD</span>
+    </div>
+  </section>
+
+  <section class="shell project-compass" aria-label="Project overview">
+    <div class="compass-grid">
+      <div class="compass-cell"><span class="compass-label">WORLD</span><strong id="compass-world">Education</strong></div>
+      <div class="compass-cell"><span class="compass-label">STATUS</span><strong id="compass-stage">Available to explore</strong></div>
+      <div class="compass-cell"><span class="compass-label">EXPERIENCE</span><strong id="compass-experience">Sample demo + project story</strong></div>
+      <div class="compass-cell"><span class="compass-label">ATMOSPHERE</span><strong id="compass-weather">Crystal Snow</strong></div>
+    </div>
+    <nav class="chapter-nav" aria-label="Jump between chapters">
+      <a href="#how-it-works">How it works <span aria-hidden="true">↗</span></a>
+      <a href="#screenshots">Inside the experience <span aria-hidden="true">↗</span></a>
+      <a href="#try-demo" data-chapter-demo hidden>Try the demo <span aria-hidden="true">↗</span></a>
+      <a href="#engineering">Behind the Forge <span aria-hidden="true">↗</span></a>
+      <a href="#horizon">Next questions <span aria-hidden="true">↗</span></a>
+      <a href="#evolution">Evolution <span aria-hidden="true">↗</span></a>
+      <a href="#forge-feedback">Feedback <span aria-hidden="true">↗</span></a>
+    </nav>
+  </section>
+
+  <section class="shell section" aria-labelledby="about-heading">
+    <div class="section-label">01 / THE STORY</div>
+    <h2 id="about-heading">What is it, and why does it exist?</h2>
+    <div class="story-grid">
+      <article class="story-card">
+        <small>THE IDEA</small><h3>What we're building.</h3>
+        <p id="story">StudyForge turns practice into a simple routine: choose what to work on, test your knowledge, use flashcards and see your progress. The experience stays focused on learning rather than complicated administration.</p>
+      </article>
+      <article class="story-card">
+        <small>WHO IT'S FOR</small><h3>The people behind the purpose.</h3>
+        <p id="audience">Students and families who want practice that feels manageable</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="shell section" id="how-it-works" aria-labelledby="how-heading">
+    <div class="section-label">02 / HOW IT WORKS</div>
+    <h2 id="how-heading">From problem to experience.</h2>
+    <p class="section-intro">The project's key workflow, explained without unnecessary technical jargon.</p>
+    <div class="steps" id="steps"><article class="step"><small>01 / WORKFLOW</small><h3>Choose your activity</h3><p>Open practice tests or flashcards for a focused learning session.</p></article><article class="step"><small>02 / WORKFLOW</small><h3>Practice at your pace</h3><p>Repeat exercises and revisit difficult material.</p></article><article class="step"><small>03 / WORKFLOW</small><h3>Watch your progress</h3><p>Use results to see what needs another attempt.</p></article></div>
+  </section>
+
+  <section class="shell section" id="screenshots" aria-labelledby="screenshots-heading">
+    <div class="section-label">03 / INSIDE THE EXPERIENCE</div>
+    <h2 id="screenshots-heading">See the experience.</h2>
+    <p class="section-intro">A visual introduction to the product. Verified app screenshots will replace illustrative concepts as they're available.</p>
+    <p class="gallery-legend" id="gallery-note">Illustrative concepts are available with JavaScript. Product screenshots are published only after review.</p>
+    <div class="gallery-grid gallery-grid-v3" id="gallery"></div>
+    <p class="privacy-note" id="privacy">Personal student dashboards and results are not embedded or captured on the public showcase.</p>
+  </section>
+
+  <section class="shell section demo-section" id="try-demo" aria-labelledby="demo-heading" hidden>
+    <div class="demo-head">
+      <div>
+        <div class="section-label">04 / INTERACTIVE DEMO</div>
+        <h2 id="demo-heading">Try it yourself.</h2>
+        <p id="demo-intro">A small hands-on experience using fictional sample data.</p>
+      </div>
+      <span class="demo-stamp">Local-only sandbox</span>
+    </div>
+    <div class="demo-board" id="demo-board" aria-label="Interactive project demonstration"></div>
+  </section>
+
+  <section class="shell section" aria-labelledby="features-heading">
+    <div class="section-label" id="features-section-number">05 / CAPABILITIES</div>
+    <h2 id="features-heading">What's inside.</h2>
+    <div class="story-grid">
+      <article class="story-card">
+        <small>FEATURES</small><h3>What it offers.</h3>
+        <ul class="detail-features" id="feature-list" style="color:#bdd1e7;line-height:2;padding-left:22px"><li>Practice tests</li><li>Flashcards</li><li>Progress overview</li><li>Published learning library, goals and planning</li></ul>
+      </article>
+      <article class="story-card">
+        <small>BUILT WITH</small><h3>Under the surface.</h3>
+        <div id="tech-list" style="display:flex;flex-wrap:wrap;gap:9px"><span>Static HTML / JavaScript</span><span>Published JSON library</span><span>Supabase shared-progress adapter</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="shell v4-section" id="engineering" data-prerendered="true" aria-labelledby="engineering-heading"><div class="v4-section-head"><span class="v4-kicker">BEHIND THE FORGE / THE KNOWLEDGE WORLD</span><h2 id="engineering-heading">What makes the next practice session easier to start?</h2><p>StudyForge connects published learning material with short, repeatable practice. Learners can work through questions, revisit mistakes and use flashcards; planning and goals give the next session a purpose. The learning content is prepared outside the app and published as a library.</p></div>
+      <div class="v4-capabilities"><article><span class="v4-index">01</span><h3>Practice with feedback</h3><p>The documented experience includes multiple-choice questions, open questions with self-assessment, practice history and a way to revisit mistakes.</p></article><article><span class="v4-index">02</span><h3>Remember through repetition</h3><p>Flashcards offer a second way to work with material. The sample here demonstrates recall and reveal without recording a learner&#39;s results.</p></article><article><span class="v4-index">03</span><h3>Choose the next step</h3><p>Learning goals, practice planning and readiness views support a personal routine. The app reads published test dates; it does not provide an in-app authoring or import screen.</p></article></div>
+      <div class="v4-blueprint"><h3>The workflow, under the surface.</h3><ol aria-label="Project architecture"><li>Published JSON library</li><li>Practice interface</li><li>Results + goals</li><li>Optional shared progress</li></ol><p>A simplified reading of the documented workflow.</p></div>
+      <div class="v4-decisions"><details id="decision-1"><summary><span>01 / ENGINEERING NOTE</span>Separate publishing from learning</summary><p>data.js loads the public content library; app.js presents learning activities and studytools.js supports goals and planning. Stable collection IDs keep results associated with the same material when content is updated.</p></details><details id="decision-2"><summary><span>02 / ENGINEERING NOTE</span>Keep a static front end</summary><p>HTML, CSS and JavaScript are hosted on GitHub Pages. The documented shared-progress adapter uses a limited Supabase database function. A configured adapter is not evidence of a verified live connection.</p></details><details id="decision-3"><summary><span>03 / ENGINEERING NOTE</span>Treat access and privacy separately</summary><p>The documented profile-code screen is not strong authentication. This world therefore uses only synthetic demo questions, with no student names, results, profile codes or production database calls.</p></details></div>
+      <div class="v4-horizon" id="horizon"><div><span class="v4-kicker">NEXT QUESTIONS / PROPOSED</span><h3>Where this world could go.</h3><p>Review opportunities, not shipped features or delivery promises.</p></div><ul><li>Verify shared progress between controlled test sessions.</li><li>Review keyboard and assistive-technology use during practice.</li><li>Improve access controls before extending beyond the intended private use.</li></ul></div>
+      <aside class="v4-evidence" id="evidence"><strong>Know what you're exploring.</strong><p>The documentation describes the product and its cloud adapter; no private learning data or live database was accessed. The local demo does not synchronize results.</p><span class="v4-kicker">SOURCE REVIEW / 31 OCT 2026</span><ul><li><a href="https://github.com/fathom-web/studyforge/blob/main/README.md">StudyForge architecture and learning workflow <span aria-hidden="true">↗</span></a></li></ul></aside>
+      <div class="v4-connections" id="connections"><span class="v4-kicker">CONNECTED WORLDS / SHARED IDEAS</span><h3>Follow the connection.</h3><div><article><a href="./world-fascination-files.html">The Fascination Files <span aria-hidden="true">↗</span></a><p>Curiosity can become a question worth practicing.</p></article><article><a href="./world-footballforge.html">FootballForge <span aria-hidden="true">↗</span></a><p>Small routines support learning and team preparation alike.</p></article></div></div></section>
+  <section class="shell section evolution-section" id="evolution" aria-labelledby="evolution-heading">
+    <div class="section-label">PROJECT EVOLUTION / VERIFIED HISTORY</div>
+    <h2 id="evolution-heading">From idea to iteration.</h2>
+    <p class="evolution-lead">A timeline of verified public development milestones. A code commit does not necessarily mean an application has been released or deployed.</p>
+    <div class="evolution-rail" id="evolution-feed" aria-live="polite" aria-relevant="additions text"><article class="evolution-item"><time datetime="2026-10-29T21:06:10Z">2026-10-29</time><h3>French listening and reading support</h3><p>Development commit enabling listening playback and reading passages in StudyForge.</p><a href="https://github.com/fathom-web/studyforge/commit/6d4709252db31c591d5fc4f3e8bbd1844de036ef">Read development evidence ↗</a></article></div>
+    <p class="evolution-legend" id="evolution-note">Entries require a checked GitHub source. Planned work is not represented as shipped history.</p>
+  </section>
+
+  <section class="shell" aria-labelledby="next-step-heading">
+    <div class="final-panel">
+      <div>
+        <span class="eyebrow" id="go-further-number">06 / GO FURTHER</span>
+        <strong id="next-step-heading">Ready to explore?</strong>
+        <p>The environment is one step away. Explore the actual application or visit the source repository where available.</p>
+        <p class="privacy-note" id="launch-note">Live project · practice tests, flashcards and progress.</p>
+      </div>
+      <div class="final-actions" id="launch-actions"><a class="btn btn-primary" href="https://fathom-web.github.io/studyforge/">Open project destination ↗</a><a class="btn btn-secondary" href="https://github.com/fathom-web/studyforge">Source repository ↗</a></div>
+    </div>
+  </section>
+  <section class="shell section forge-feedback" id="forge-feedback" aria-labelledby="project-feedback-heading">
+    <div class="feedback-panel">
+      <div class="feedback-panel-heading">
+        <div><div class="section-label">FORGE FEEDBACK / YOUR VOICE</div>
+          <h2 id="project-feedback-heading">Help this project evolve.</h2>
+          <p>Share a useful idea or report a problem with this experience. Your suggestion opens as a public issue on GitHub.</p>
+        </div>
+        <span class="feedback-glyph" aria-hidden="true">✦</span>
+      </div>
+      <div id="project-feedback-actions">
+        <div class="feedback-actions">
+          <a class="feedback-action" href="https://github.com/fathom-web/novyxforge/issues/new?template=feature_request.md" target="_blank" rel="noopener noreferrer">Suggest an improvement ↗</a>
+          <a class="feedback-action" href="https://github.com/fathom-web/novyxforge/issues/new?template=bug_report.md" target="_blank" rel="noopener noreferrer">Report a bug ↗</a>
+        </div>
+        <p class="feedback-notice">GitHub account required; submissions will be public. Please do not share private accounts, student data or confidential information.</p>
+      </div>
+    </div>
+  </section>
+  <section class="shell" aria-labelledby="related-heading">
+    <div class="section-label">EXPLORE ANOTHER WORLD</div>
+    <h2 id="related-heading" style="font:500 clamp(29px,4vw,42px) Outfit,sans-serif;letter-spacing:-.035em">There's more in the Forge.</h2>
+    <div class="related" id="related"><a href="./world-fascination-files.html"><small>Curiosity can become a question worth practicing.</small><strong>The Fascination Files</strong></a><a href="./world-footballforge.html"><small>Small routines support learning and team preparation alike.</small><strong>FootballForge</strong></a></div>
+  </section>
+</main>
+<footer><div class="shell"><a href="./index.html#home">NOVYX FORGE — Explore. Experiment. Build. ↑</a></div></footer>
+<dialog class="lightbox" id="lightbox" aria-label="Verified application screenshot preview">
+  <button id="lightbox-close" type="button" aria-label="Close screenshot">×</button>
+  <img id="lightbox-image" alt="">
+</dialog>
+<noscript><p class="shell">Interactive demos and atmospheric controls need JavaScript. All project stories and world links remain available.</p></noscript></body>
+</html>

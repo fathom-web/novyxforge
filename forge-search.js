@@ -9,6 +9,7 @@
  const norm=value=>String(value||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
  const publicHref=href=>typeof href==="string"&&
    (/^\.\/(?:index\.html|project\.html)(?:\?[a-z0-9=&%-]+)?(?:#[a-z0-9-]+)?$/i.test(href)||
+    /^\.\/world-[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/.test(href)||
     /^https:\/\/github\.com\/fathom-web\/[a-z0-9._/-]+$/i.test(href));
  const el=(tag,cls,content)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(content!==undefined)n.textContent=String(content);return n;};
  const base=[
@@ -24,7 +25,7 @@
   {id:"doc-readme",title:"NOVYX Source Documentation",description:"Public repository README and deployment notes",kind:"Documentation",href:"https://github.com/fathom-web/novyxforge/blob/main/README.md",symbol:"▤",keywords:"docs github readme deployment"}
  ];
  const allowProject=id=>typeof id==="string"&&/^[a-z0-9-]{1,50}$/.test(id);
- function buildIndex(catalog,activity){
+ function buildIndex(catalog,activity,content){
    const output=[...base];
    if(Array.isArray(catalog?.projects)){
      for(const p of catalog.projects){
@@ -52,6 +53,15 @@
        output.push({id:"history-"+item.id,title:item.title,description:item.summary.slice(0,220),
          kind:"Development",href,symbol:"⌁",keywords:item.projectId+" source verified code committed"});
      }
+   }
+   if(content?.projects && Array.isArray(catalog?.projects))for(const p of catalog.projects){
+     const c=content.projects[p.id];if(!c||!allowProject(p.id))continue;
+     for(const [i,note] of (c.decisions||[]).entries()){
+       if(!Array.isArray(note)||note.length!==2)continue;
+       output.push({id:'engineering-'+p.id+'-'+i,title:note[0],description:p.name+' · '+String(note[1]).slice(0,180),kind:'Engineering',href:'./world-'+p.id+'.html#decision-'+(i+1),symbol:'⌘',keywords:p.name+' '+note[1]});
+     }
+     output.push({id:'horizon-'+p.id,title:p.name+' — next questions',description:'Proposed review opportunities, not shipped features or delivery commitments.',kind:'Ideas',href:'./world-'+p.id+'.html#horizon',symbol:'◇',keywords:(c.next||[]).join(' ')});
+     if(p.showcase?.demo)output.push({id:'demo-'+p.id,title:p.showcase.demo.title,description:p.showcase.demo.description+' Fictional sample data.',kind:'Demo',href:'./world-'+p.id+'.html#try-demo',symbol:'▷',keywords:p.name+' sample experiment sandbox demo'});
    }
    const seen=new Set();
    return output.filter(item=>{if(seen.has(item.id)||!publicHref(item.href))return false;seen.add(item.id);return true});
@@ -119,7 +129,10 @@
          "Project data is unavailable or still loading. You can still browse the main navigation."));
        return;
      }
-     for(const item of matches){
+     const groups=[...new Set(matches.map(x=>x.kind))];
+     for(const group of groups){
+       const heading=el('li','forge-search-group',group);heading.setAttribute('role','presentation');list.append(heading);
+       for(const item of matches.filter(x=>x.kind===group)){
        const li=el("li","forge-search-result"),a=el("a","");
        a.href=item.href;
        const mark=el("span","forge-search-kind",item.symbol);mark.setAttribute("aria-hidden","true");
@@ -128,18 +141,19 @@
        a.append(mark,body,el("span","forge-search-arrow","↗"));
        li.append(a);list.append(li);
        a.addEventListener("click",()=>dialog.close());
+       }
      }
    }
    async function load(){
      if(loading||loaded)return;loading=true;
-     const jobs=["./projects.json","./activity.json"].map(async path=>{
+     const jobs=["./projects.json","./activity.json","./world-content.json"].map(async path=>{
        const response=await fetch(path,{cache:"no-store"});
        if(!response.ok)throw Error("Search data unavailable");
        return response.json();
      });
-     const [catalog,activity]=await Promise.allSettled(jobs);
+     const [catalog,activity,content]=await Promise.allSettled(jobs);
      index=buildIndex(catalog.status==="fulfilled"?catalog.value:null,
-       activity.status==="fulfilled"?activity.value:null);
+       activity.status==="fulfilled"?activity.value:null,content.status==='fulfilled'?content.value:null);
      loading=false;loaded=true;
      if(dialog.open)render();
    }

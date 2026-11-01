@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "brand": "NOVYX FORGE",
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "stages": [
     {
       "id": "spark",
@@ -49,12 +49,13 @@
         "Communication tools"
       ],
       "tech": [
-        "Web application",
-        "Workflow design"
+        "HTML / JavaScript",
+        "Supabase synchronization",
+        "Local PDF generation"
       ],
       "links": {
         "visit": "https://fathom-web.github.io/svdiemen/",
-        "source": null
+        "source": "https://github.com/fathom-web/svdiemen"
       },
       "pipelineNote": "Live project · football team and matchday tools available.",
       "distribution": {
@@ -116,7 +117,7 @@
           "visual": "Electric cyan rain, reflected floodlights"
         },
         "portal": true,
-        "version": 1
+        "version": 2
       }
     },
     {
@@ -135,11 +136,12 @@
         "Practice tests",
         "Flashcards",
         "Progress overview",
-        "Import-driven learning content"
+        "Published learning library, goals and planning"
       ],
       "tech": [
-        "Static web app",
-        "JSON data"
+        "Static HTML / JavaScript",
+        "Published JSON library",
+        "Supabase shared-progress adapter"
       ],
       "links": {
         "visit": "https://fathom-web.github.io/studyforge/",
@@ -205,7 +207,7 @@
           "visual": "Drifting violet ice crystals"
         },
         "portal": true,
-        "version": 1
+        "version": 2
       }
     },
     {
@@ -224,7 +226,7 @@
         "Science and discovery",
         "Curiosity-led stories",
         "Short-form visuals",
-        "Daily creative exploration"
+        "Visual storytelling"
       ],
       "tech": [
         "Visual storytelling",
@@ -290,7 +292,7 @@
           "visual": "Meteors and deep-space particles"
         },
         "portal": true,
-        "version": 1
+        "version": 2
       }
     },
     {
@@ -381,7 +383,7 @@
           "visual": "Soft emerald mist and light shafts"
         },
         "portal": true,
-        "version": 1
+        "version": 2
       }
     },
     {
@@ -467,7 +469,7 @@
           "visual": "Distant thunderclouds and amber embers; no flash"
         },
         "portal": true,
-        "version": 1
+        "version": 2
       }
     },
     {
@@ -556,7 +558,7 @@
           "visual": "Fast teal energy gusts"
         },
         "portal": true,
-        "version": 1
+        "version": 2
       }
     },
     {
@@ -654,7 +656,7 @@
           "visual": "Warm dawn and floating sparks"
         },
         "portal": false,
-        "version": 1
+        "version": 2
       }
     }
   ],
@@ -694,5 +696,5 @@
     "A working download link is provided; for templates, the GitHub repository is actually configured as a template",
     "Links and installation steps have been tested"
   ],
-  "worldsVersion": "3.0-beta.1"
+  "worldsVersion": "4.0-review"
 }

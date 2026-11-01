@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://novyxforge.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://novyxforge.com/safe-agile.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://novyxforge.com/project.html?project=footballforge</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://novyxforge.com/project.html?project=studyforge</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://novyxforge.com/project.html?project=fascination-files</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://novyxforge.com/project.html?project=wow-lifeforge</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://novyxforge.com/project.html?project=wildrift-counter</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://novyxforge.com/spark-lab.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://novyxforge.com/public-ready.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://novyxforge.com/project.html?project=safeforge</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://novyxforge.com/project.html?project=spark-lab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://novyxforge.com/</loc></url>
+  <url><loc>https://novyxforge.com/safe-agile.html</loc></url>
+  <url><loc>https://novyxforge.com/spark-lab.html</loc></url>
+  <url><loc>https://novyxforge.com/public-ready.html</loc></url>
+  <url><loc>https://novyxforge.com/world-footballforge.html</loc></url>
+  <url><loc>https://novyxforge.com/world-studyforge.html</loc></url>
+  <url><loc>https://novyxforge.com/world-fascination-files.html</loc></url>
+  <url><loc>https://novyxforge.com/world-safeforge.html</loc></url>
+  <url><loc>https://novyxforge.com/world-wow-lifeforge.html</loc></url>
+  <url><loc>https://novyxforge.com/world-wildrift-counter.html</loc></url>
+  <url><loc>https://novyxforge.com/world-spark-lab.html</loc></url>
 </urlset>

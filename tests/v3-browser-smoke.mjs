@@ -65,7 +65,7 @@ const allIds=["footballforge","studyforge","fascination-files","safeforge","wow-
 const labels=["FootballForge","StudyForge","The Fascination Files","SAFe Agile Forge","WoW LifeForge","Wild Rift Counter","Spark Lab"];
 const supportedDemo=new Set(["footballforge","studyforge","safeforge","wildrift-counter"]);
 try{
- browser=await chromium.launch({headless:true,args:["--disable-dev-shm-usage","--no-sandbox"]});
+ browser=await chromium.launch({headless:true,...(process.env.NOVYX_BROWSER_CHANNEL?{channel:process.env.NOVYX_BROWSER_CHANNEL}:{}),args:["--disable-dev-shm-usage","--no-sandbox"]});
  const ctx=await browser.newContext({viewport:{width:1440,height:900},deviceScaleFactor:1,reducedMotion:"reduce"});
  const page=await ctx.newPage();
  const errors=[];
@@ -157,7 +157,8 @@ try{
  });
  await check("Observatory: reviewed source evidence and release zero state",async()=>{
   await page.locator("#observatory-feed .obs-entry").first().waitFor({timeout:12000});
-  assert.equal(await page.locator("#observatory-feed .obs-entry").count(),10);
+  const reviewed=JSON.parse(await readFile(resolve(root,'activity.json'),'utf8')).items.filter(x=>x.reviewed);
+  assert.equal(await page.locator("#observatory-feed .obs-entry").count(),reviewed.length);
   await page.locator('.obs-filter[data-filter="release"]').click();
   await page.getByText("No verified releases have been published").waitFor();
   await page.locator('.obs-filter[data-filter="all"]').click();

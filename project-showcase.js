@@ -139,8 +139,8 @@ function draw(project,all){
  if(ogTitle)ogTitle.content=project.name+" — NOVYX FORGE";
  const ogDescription=document.querySelector('meta[property="og:description"]');
  if(ogDescription)ogDescription.content=project.summary||"Discover this project world inside NOVYX FORGE.";
- const canonical=document.querySelector('link[rel="canonical"]');
- if(canonical)canonical.href=new URL("./project.html?project="+encodeURIComponent(project.id),location.href).href;
+ const canonical=document.querySelector('link[rel="canonical"]')||document.head.appendChild(document.createElement('link'));
+ canonical.rel='canonical';canonical.href="https://novyxforge.com/world-"+encodeURIComponent(project.id)+".html";
  const meta=document.querySelector('meta[name="description"]');
  if(meta)meta.content=(project.summary||"")+" | Explore the project, features and interface previews on NOVYX FORGE.";
  $("name").textContent=project.name;$("lead").textContent=profile.lead||project.tagline;
@@ -153,6 +153,8 @@ function draw(project,all){
  for(const [key,value] of Object.entries(summary)){const field=$("compass-"+key);if(field)field.textContent=value;}
  $("story").textContent=profile.story||project.solution;
  $("audience").textContent=profile.audience||"Everyone curious about this experiment.";
+ // Static pages carry useful content before JavaScript; replace enhanced regions once.
+ for(const id of ["hero-actions","steps","gallery","feature-list","tech-list","launch-actions","related"])$(id)?.replaceChildren();
  const top=$("hero-actions");
  const view=buildLink("Explore the interface","#screenshots","btn-primary");if(view)top.append(view);
  const how=buildLink("What it does","#how-it-works","btn-secondary");if(how)top.append(how);
@@ -201,7 +203,7 @@ function draw(project,all){
  if(project.links?.source && validExternal(project.links.source)){
    action.append(buildLink("View source on GitHub",project.links.source,"btn-secondary"));
  }
- if(project.id==="wow-lifeforge"){$("launch-note").textContent="World of Warcraft addon concept. No download is available. Future official addon releases will use CurseForge only.";}
+ if(project.id==="wow-lifeforge"){$("launch-note").textContent="LifeForge is in alpha development. Game-client validation and a public CurseForge release are pending. Open the WoW showcase for context; no addon download is available here.";}
  else if(!app){$("launch-note").textContent="A public application environment has not been verified for this project yet. Explore its development through the available source link.";}
  else{$("launch-note").textContent="The external application opens separately. You can always return here for context, features and project information.";}
  // Feedback stays a public GitHub handoff; no browser-side submission.
@@ -220,7 +222,7 @@ function draw(project,all){
 }
 async function main(){
  initLightbox();
- const projectId=new URLSearchParams(location.search).get("project");
+ const projectId=document.body.dataset.project||new URLSearchParams(location.search).get("project");
  if(!projectId||!/^[a-z0-9-]{1,50}$/.test(projectId)){
    $("name").textContent="Project not found";$("summary").textContent="Go back to NOVYX to browse our projects.";document.documentElement.classList.remove("js-project-loading");return;
  }
@@ -233,6 +235,7 @@ async function main(){
    if(!project)throw Error("Project not found");
    draw(project,data.projects);
  }catch(e){
+   if(document.body.dataset.project){document.documentElement.classList.remove("js-project-loading");return;}
    $("name").textContent="Project unavailable";
    $("summary").textContent="We couldn't load this project right now. Please return to the Forge and try again.";
    const a=buildLink("Back to all projects","./index.html#catalog","btn-primary");

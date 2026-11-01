@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {execFileSync} from "node:child_process";
+import {fileURLToPath} from "node:url";
 
 const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const css = readFileSync(new URL("../forge-v31.css", import.meta.url), "utf8");
@@ -27,5 +28,5 @@ assert.ok(css.includes("prefers-reduced-motion:reduce"), "reduced-motion safety 
 assert.equal(count(css, /\{/g), count(css, /\}/g), "CSS braces must balance");
 assert.ok(css.includes(".cards>.project:nth-child(6n+1)"), "asymmetrical product bays required");
 assert.ok(js.includes('addEventListener("focus"') && js.includes('addEventListener("blur"'), "keyboard focus instrumentation required");
-execFileSync(process.execPath, ["--check", new URL("../forge-v31.js", import.meta.url).pathname], {stdio:"pipe"});
+execFileSync(process.execPath, ["--check", fileURLToPath(new URL("../forge-v31.js", import.meta.url))], {stdio:"pipe"});
 console.log("NOVYX 3.1 design contracts passed (worlds, reactor, systems, mobile, motion, syntax).");

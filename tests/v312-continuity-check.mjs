@@ -2,6 +2,7 @@
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {execFileSync} from "node:child_process";
+import {fileURLToPath} from "node:url";
 const read=name=>readFileSync(new URL("../"+name,import.meta.url),"utf8");
 const html=read("index.html"),css=read("forge-v312.css"),js=read("forge-v312.js");
 const occurrences=(s,re)=>[...s.matchAll(re)].length;
@@ -28,5 +29,5 @@ for(const selector of ["main:before","main:after",".v312-seam",".manifesto .prin
 }
 assert.ok(!css.includes("url(http"),"new visuals must not depend on third-party images");
 assert.ok(!js.includes("requestAnimationFrame"),"passive observer, no scroll frame loop");
-execFileSync(process.execPath,["--check",new URL("../forge-v312.js",import.meta.url).pathname],{stdio:"pipe"});
+execFileSync(process.execPath,["--check",fileURLToPath(new URL("../forge-v312.js",import.meta.url))],{stdio:"pipe"});
 console.log("PASS NOVYX 3.1.2: continuous backdrop, process rail, hero/showcases, systems deck, mobile, outro, JS syntax");
