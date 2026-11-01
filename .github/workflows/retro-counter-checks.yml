@@ -1,0 +1,40 @@
+name: Retro visitor counter checks
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "forge-visitor-counter.css"
+      - "forge-visitor-counter.js"
+      - "api/visitor-counter.php"
+      - "tests/visitor-counter-check.mjs"
+      - ".github/workflows/retro-counter-checks.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  counter:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Markup and script contracts
+        run: |
+          node --check forge-visitor-counter.js
+          node tests/visitor-counter-check.mjs
+      - name: PHP syntax
+        run: php -l api/visitor-counter.php
+      - name: Counter increments and persists
+        run: |
+          php -S 127.0.0.1:18765 -t . >/tmp/novyx-counter-php.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          sleep 2
+          ENDPOINT=http://127.0.0.1:18765/api/visitor-counter.php
+          test "$(curl -fsS "$ENDPOINT")" = '{"visits":0}'
+          test "$(curl -fsS -X POST "$ENDPOINT")" = '{"visits":1}'
+          test "$(curl -fsS "$ENDPOINT")" = '{"visits":1}'
+          test "$(curl -fsS -X POST "$ENDPOINT")" = '{"visits":2}'
+          test "$(curl -fsS "$ENDPOINT")" = '{"visits":2}'
+          test -z "$(curl -fsS http://127.0.0.1:18765/api/.visitor-counter-state.php)"

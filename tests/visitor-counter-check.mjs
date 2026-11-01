@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+const root = fileURLToPath(new URL('../', import.meta.url));
+const read = name => readFileSync(root + name, 'utf8');
+const html = read('index.html');
+const css = read('forge-visitor-counter.css');
+const js = read('forge-visitor-counter.js');
+const php = read('api/visitor-counter.php');
+
+assert.match(html, /forge-search-trigger[\s\S]*?<\/a><span class="forge-visit-counter forge-visit-counter--desktop"/);
+assert.match(html, /header-search-mobile[\s\S]*?<\/a><span class="forge-visit-counter forge-visit-counter--mobile"/);
+assert.match(html, /forge-visitor-counter\.css\?v=1/);
+assert.match(html, /forge-visitor-counter\.js\?v=1/);
+assert.match(css, /@media\s*\(max-width:900px\)/);
+assert.match(css, /prefers-reduced-motion/);
+assert.match(js, /fetch\('\.\/api\/visitor-counter\.php'/);
+assert.match(js, /sessionStorage/);
+assert.match(js, /data-forge-visit-digits/);
+assert.match(php, /flock\(\$handle, LOCK_EX\)/);
+assert.match(php, /Cache-Control: no-store/);
+assert.match(php, /NOVYX_COUNTER_FILE/);
+assert.doesNotMatch(js, /Math\.random\(\)/);
+console.log('Retro visitor counter markup, client and endpoint contracts passed.');
