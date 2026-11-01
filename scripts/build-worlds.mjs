@@ -13,6 +13,26 @@ const context=vm.createContext({});vm.runInContext(read('forge-content.js'),cont
 const C=context.NovyxContent,e=C.esc;
 const template=read('project.html');
 const stage={released:'Available to explore',building:'In development',exploring:'Exploring'};
+// Hero destinations use the same catalog source as the existing bottom-of-page links.
+const projectLaunchTitles={footballforge:"Open FootballForge",studyforge:"Open StudyForge","fascination-files":"View The Fascination Files on Instagram",safeforge:"Open SAFe Agile Forge beta","wow-lifeforge":"Enter the WoW showcase","spark-lab":"Open Spark Lab"};
+const safeProjectVisit=v=>typeof v==="string"&&/^(https:\/\/[a-z0-9.-]+\/[a-z0-9._~/?=&%-]*|\.\/[a-z0-9-]+\.html)$/i.test(v);
+function heroActionsFor(p){
+  const visit=p.links?.visit;
+  const demo=Boolean(p.showcase?.demo);
+  const story='<a class="btn btn-secondary" href="#engineering">Explore the story ↓</a>';
+  const sample='<a class="btn btn-secondary" href="#try-demo">Try the sample demo ↓</a>';
+  if(safeProjectVisit(visit)){
+    const external=visit.startsWith("https://");
+    const address=external?new URL(visit).host:"novyxforge.com/spark-lab.html";
+    const label=projectLaunchTitles[p.id]||"Open "+p.name;
+    const target=external?' target="_blank" rel="noopener noreferrer"':"";
+    const accessible=external?' aria-label="'+e("Open "+p.name+" at "+address+" in a new tab")+'"':"";
+    const launch=`<a class="btn btn-primary btn-project-destination" href="${e(visit)}"${target}${accessible}><span class="project-destination-text">${e(label)} ↗</span><small class="project-destination-url">${e(address)}</small></a>`;
+    return launch+story+(demo?sample:"");
+  }
+  const source=p.links?.source&&/^https:\/\/github\.com\//.test(p.links.source)?`<a class="btn btn-secondary" href="${e(p.links.source)}" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>`:"";
+  return (demo?'<a class="btn btn-primary" href="#try-demo">Try the sample demo ↓</a>'+story:'<a class="btn btn-primary" href="#engineering">Explore the story ↓</a>')+source;
+}
 for(const p of catalog.projects){
   const c=content.projects[p.id];if(!c)throw Error('Missing world content: '+p.id);
   let html=template.replace('<body>',`<body data-project="${e(p.id)}" data-world="${e(p.id)}" style="--accent:${e(p.accent)}">`)
@@ -25,7 +45,7 @@ for(const p of catalog.projects){
   html=html.replace('</head>',`<link rel="canonical" href="${url}"><meta property="og:url" content="${url}"><script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'CreativeWork',name:p.name,description:p.summary,url,isPartOf:{'@type':'WebSite',name:'NOVYX FORGE',url:'https://novyxforge.com/'}}).replace(/</g,'\\u003c')}</script></head>`);
   const fill=(id,value)=>{const pattern=new RegExp('(<([a-z0-9]+)\\b[^>]*\\bid="'+id+'"[^>]*>)[\\s\\S]*?(<\\/\\2>)');html=html.replace(pattern,(_,start,tag,end)=>start+value+end);};
   for(const [id,value] of Object.entries({name:p.name,lead:p.showcase.lead,summary:p.summary,stage:stage[p.stage]||p.stage,story:p.showcase.story,audience:p.showcase.audience,privacy:p.showcase.privacy,world:c.theme,'compass-world':p.category,'compass-stage':stage[p.stage]||p.stage,'compass-experience':p.showcase.demo?'Sample demo + project story':'Project story','compass-weather':p.world.weather.title,'launch-note':p.pipelineNote}))fill(id,e(value));
-  fill('hero-actions',`<a class="btn btn-primary" href="#engineering">Explore the story ↓</a>${p.showcase.demo?'<a class="btn btn-secondary" href="#try-demo">Try the sample demo ↓</a>':''}`);
+  fill('hero-actions',heroActionsFor(p));
   fill('steps',p.showcase.steps.map(([title,body],i)=>`<article class="step"><small>0${i+1} / WORKFLOW</small><h3>${e(title)}</h3><p>${e(body)}</p></article>`).join(''));
   fill('feature-list',p.features.map(x=>`<li>${e(x)}</li>`).join(''));
   fill('tech-list',p.tech.map(x=>`<span>${e(x)}</span>`).join(''));
