@@ -8,9 +8,9 @@ const base='http://127.0.0.1:'+server.address().port;
 await mkdir(new URL('../qa-v4/',import.meta.url),{recursive:true});
 const catalog=JSON.parse(await readFile(new URL('../projects.json',import.meta.url),'utf8'));
 let browser;const report=[],errors=[];
-const check=async(name,fn)=>{try{await fn();report.push({name,result:'PASS'});console.log('PASS',name);}catch(e){report.push({name,result:'FAIL',error:String(e)});console.error('FAIL',name,String(e).slice(0,600));}};
+const check=async(name,fn)=>{try{await fn();report.push({name,result:'PASS'});console.log('PASS',name);}catch(e){report.push({name,result:'FAIL',error:String(e)});console.error('FAIL',name,String(e).slice(0,4000));}};
 const overflow=async page=>{
-  const state=await page.evaluate(()=>({url:location.pathname,width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,suspects:[...document.querySelectorAll('body *')].map(el=>({tag:el.tagName,id:el.id,cls:typeof el.className==='string'?el.className:'',right:Math.round(el.getBoundingClientRect().right),width:Math.round(el.getBoundingClientRect().width)})).filter(x=>x.right>document.documentElement.clientWidth+2 && x.width>0).slice(0,15)}));
+  const state=await page.evaluate(()=>({url:location.pathname,width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,suspects:[...document.querySelectorAll('body *')].map(el=>({tag:el.tagName,id:el.id,cls:typeof el.className==='string'?el.className:'',right:Math.round(el.getBoundingClientRect().right),width:Math.round(el.getBoundingClientRect().width)})).filter(x=>x.right>document.documentElement.clientWidth+2 && x.width>0).sort((a,b)=>a.right-b.right).slice(0,25)}));
   if(state.scroll>state.width+2)await page.screenshot({path:'qa-v4/overflow-'+state.url.replace(/[^a-z0-9]/gi,'-')+'.png',fullPage:true});
   assert.ok(state.scroll<=state.width+2,'Horizontal overflow '+JSON.stringify(state));
 };

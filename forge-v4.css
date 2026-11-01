@@ -53,7 +53,7 @@
 @media(prefers-reduced-motion:reduce){.v4-section *{animation:none!important;transition:none!important}.v4-section{scroll-behavior:auto}}
 @media(max-width:400px){.v4-world-list{grid-template-columns:minmax(0,1fr)}.v4-world-list button{min-height:64px}.v4-atlas-layout{grid-template-columns:minmax(0,1fr)}}
 .vault-question{margin-top:20px;border-top:1px solid var(--v4-line);padding-top:16px}.vault-question summary{cursor:pointer;min-height:44px;color:#e4d1ac}.vault-question a{display:inline-block;padding:12px 0;color:#e4d1ac}
-.timeline-controls{display:flex;align-items:center;gap:16px;margin:22px 0;color:#c5cddb;font-size:14px}.timeline-controls select{background:#152033;color:#edf1f7;padding:12px;border:1px solid #65768f;border-radius:5px;min-height:44px}
+.timeline-controls{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin:22px 0;color:#c5cddb;font-size:14px}.timeline-controls select{min-width:0;max-width:100%;background:#152033;color:#edf1f7;padding:12px;border:1px solid #65768f;border-radius:5px;min-height:44px}
 .world-nav.v4-aux-nav{display:block;height:auto;gap:0}.v4-aux-nav .world-nav-link{min-height:44px}
 .world-gate[data-identity=rain] .world-gate-ring{border-radius:5%;transform:rotate(90deg);border-style:dashed}
 .world-gate[data-identity=snow] .world-gate-ring{border-radius:12%;border-style:double}
