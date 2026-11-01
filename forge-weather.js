@@ -43,7 +43,7 @@ function mount(hero,config){
  const target=hero.querySelector(".hero-actions")||hero.querySelector(".hero-copy")||hero;
  target.append(controls); // Actions remain directly before the atmosphere control.
  function syncControls(){
-   state.motion=!media.matches;
+   state.motion=!media.matches && !document.documentElement.classList.contains('v4-motion-paused');
    layer.dataset.enabled=String(state.enabled);
    layer.dataset.motion=state.motion?"animated":"static";
    button.setAttribute("aria-pressed",String(state.enabled));
@@ -139,6 +139,7 @@ function mount(hero,config){
  state.refresh=syncControls;
  const onMotion=()=>{for(const s of instances)s.refresh()};
  media.addEventListener?.("change",onMotion);
+ document.addEventListener('novyx-motion-change',onMotion);
  const observer=typeof IntersectionObserver==="function"?new IntersectionObserver(entries=>{state.visible=entries[0]?.isIntersecting??true;updateAnimation();},{threshold:.02}):null;
  observer?.observe(hero);
  const resize=typeof ResizeObserver==="function"?new ResizeObserver(()=>{drawSize();updateAnimation()}):null;
@@ -156,6 +157,7 @@ function mount(hero,config){
    if(resizeFallback)window.removeEventListener("resize",resizeFallback);
    document.removeEventListener("visibilitychange",visibility);
    media.removeEventListener?.("change",onMotion);
+   document.removeEventListener('novyx-motion-change',onMotion);
    button.remove();controls.remove();layer.remove();instances.delete(state);
  };
  return state;

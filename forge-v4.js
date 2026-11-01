@@ -10,6 +10,7 @@
     document.documentElement.classList.toggle('v4-motion-paused',paused || motion.matches);
     toggle?.setAttribute('aria-pressed',String(paused || motion.matches));
     if(toggle) toggle.textContent = paused || motion.matches ? 'Motion paused' : 'Pause motion';
+    document.dispatchEvent(new Event('novyx-motion-change'));
   }
   toggle?.addEventListener('click',()=>{paused=!paused;try{localStorage.setItem('novyx.motion.paused',String(paused));}catch{}syncMotion();});
   motion.addEventListener('change',syncMotion);syncMotion();

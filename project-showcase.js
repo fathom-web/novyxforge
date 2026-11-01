@@ -139,8 +139,8 @@ function draw(project,all){
  if(ogTitle)ogTitle.content=project.name+" — NOVYX FORGE";
  const ogDescription=document.querySelector('meta[property="og:description"]');
  if(ogDescription)ogDescription.content=project.summary||"Discover this project world inside NOVYX FORGE.";
- const canonical=document.querySelector('link[rel="canonical"]');
- if(canonical)canonical.href="https://novyxforge.com/world-"+encodeURIComponent(project.id)+".html";
+ const canonical=document.querySelector('link[rel="canonical"]')||document.head.appendChild(document.createElement('link'));
+ canonical.rel='canonical';canonical.href="https://novyxforge.com/world-"+encodeURIComponent(project.id)+".html";
  const meta=document.querySelector('meta[name="description"]');
  if(meta)meta.content=(project.summary||"")+" | Explore the project, features and interface previews on NOVYX FORGE.";
  $("name").textContent=project.name;$("lead").textContent=profile.lead||project.tagline;

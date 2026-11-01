@@ -85,6 +85,18 @@ try{
     await page.goto(base+'/world-studyforge.html');assert.equal(await page.locator('#name').innerText(),'StudyForge');assert.ok((await page.locator('#engineering').innerText()).includes('learning'));
     await ctx.unroute('**/*.json');
   });
+  await check('Motion pause persists into canvas weather across worlds',async()=>{
+    await page.emulateMedia({reducedMotion:'no-preference'});
+    await page.goto(base);await page.locator('#forge-motion').click();
+    assert.equal(await page.locator('#forge-motion').getAttribute('aria-pressed'),'true');
+    await page.goto(base+'/world-studyforge.html');await page.locator('.weather-layer').waitFor();
+    assert.equal(await page.locator('.weather-layer').getAttribute('data-motion'),'static');
+    await page.goto(base);await page.locator('#forge-motion').click();
+    assert.equal(await page.locator('#forge-motion').getAttribute('aria-pressed'),'false');
+    await page.goto(base+'/world-studyforge.html');await page.locator('.weather-layer').waitFor();
+    assert.equal(await page.locator('.weather-layer').getAttribute('data-motion'),'animated');
+    await page.emulateMedia({reducedMotion:'reduce'});
+  });
   await check('Pulse caches public metadata and retains a labeled fallback on rate limits',async()=>{
     let requests=0;
     await ctx.route('https://api.github.com/**',async route=>{
