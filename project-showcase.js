@@ -156,20 +156,44 @@ function draw(project,all){
  // Static pages carry useful content before JavaScript; replace enhanced regions once.
  for(const id of ["hero-actions","steps","gallery","feature-list","tech-list","launch-actions","related"])$(id)?.replaceChildren();
  const top=$("hero-actions");
- const view=buildLink("Explore the interface","#screenshots","btn-primary");if(view)top.append(view);
- const how=buildLink("What it does","#how-it-works","btn-secondary");if(how)top.append(how);
- // Only mount four approved, client-only sample demos. Others remain honest showcases.
+ // Mount the local demo before deciding which external action is genuinely available.
  const demoSection=$("try-demo"),demoHost=$("demo-board");
  const hasDemo=Boolean(demoSection&&demoHost&&window.NovyxDemos?.mount?.(project,demoHost));
  if(hasDemo){
    demoSection.hidden=false;
    document.querySelectorAll("[data-chapter-demo]").forEach(a=>a.hidden=false);
    $("demo-intro").textContent=profile.demo?.description||"An interactive sample experience using entirely fictional data.";
-   const tryDemo=buildLink("Try interactive demo","#try-demo","btn-secondary");
-   if(tryDemo)top.append(tryDemo);
  }else{
    if($("features-section-number"))$("features-section-number").textContent="04 / CAPABILITIES";
    if($("go-further-number"))$("go-further-number").textContent="05 / GO FURTHER";
+ }
+ const visit=project.links?.visit;
+ if(visit && validDestination(visit)){
+   const actionTitles={footballforge:"Open FootballForge",studyforge:"Open StudyForge","fascination-files":"View The Fascination Files on Instagram",safeforge:"Open SAFe Agile Forge beta","wow-lifeforge":"Enter the WoW showcase","spark-lab":"Open Spark Lab"};
+   const launch=buildLink(actionTitles[project.id]||"Open "+project.name,visit,"btn-primary btn-project-destination");
+   if(launch){
+     const address=new URL(visit,document.baseURI).host+(visit.startsWith("https://")?"":"/spark-lab.html");
+     launch.replaceChildren(el("span","project-destination-text",(actionTitles[project.id]||"Open "+project.name)+" ↗"),el("small","project-destination-url",address));
+     if(visit.startsWith("https://"))launch.setAttribute("aria-label","Open "+project.name+" at "+address+" in a new tab");
+     top.append(launch);
+   }
+   const story=buildLink("Explore the story","#engineering","btn-secondary");
+   if(story)top.append(story);
+   if(hasDemo){
+     const sample=buildLink("Try the sample demo","#try-demo","btn-secondary");
+     if(sample)top.append(sample);
+   }
+ }else{
+   const first=buildLink(hasDemo?"Try the sample demo":"Explore the story",hasDemo?"#try-demo":"#engineering","btn-primary");
+   if(first)top.append(first);
+   if(hasDemo){
+     const story=buildLink("Explore the story","#engineering","btn-secondary");
+     if(story)top.append(story);
+   }
+   if(project.links?.source){
+     const source=buildLink("View source on GitHub",project.links.source,"btn-secondary");
+     if(source)top.append(source);
+   }
  }
  // Place the atmosphere control after the primary overview actions.
  if(atmosphere && window.NovyxWeather)window.NovyxWeather.mount(document.querySelector(".hero"),atmosphere);
