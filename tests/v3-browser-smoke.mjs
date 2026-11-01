@@ -157,7 +157,8 @@ try{
  });
  await check("Observatory: reviewed source evidence and release zero state",async()=>{
   await page.locator("#observatory-feed .obs-entry").first().waitFor({timeout:12000});
-  assert.equal(await page.locator("#observatory-feed .obs-entry").count(),10);
+  const reviewed=JSON.parse(await readFile(resolve(root,'activity.json'),'utf8')).items.filter(x=>x.reviewed);
+  assert.equal(await page.locator("#observatory-feed .obs-entry").count(),reviewed.length);
   await page.locator('.obs-filter[data-filter="release"]').click();
   await page.getByText("No verified releases have been published").waitFor();
   await page.locator('.obs-filter[data-filter="all"]').click();

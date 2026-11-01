@@ -9,7 +9,11 @@ await mkdir(new URL('../qa-v4/',import.meta.url),{recursive:true});
 const catalog=JSON.parse(await readFile(new URL('../projects.json',import.meta.url),'utf8'));
 let browser;const report=[],errors=[];
 const check=async(name,fn)=>{try{await fn();report.push({name,result:'PASS'});console.log('PASS',name);}catch(e){report.push({name,result:'FAIL',error:String(e)});console.error('FAIL',name,String(e).slice(0,600));}};
-const overflow=async page=>assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth+2),'Horizontal overflow');
+const overflow=async page=>{
+  const state=await page.evaluate(()=>({url:location.pathname,width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,suspects:[...document.querySelectorAll('body *')].map(el=>({tag:el.tagName,id:el.id,cls:typeof el.className==='string'?el.className:'',right:Math.round(el.getBoundingClientRect().right),width:Math.round(el.getBoundingClientRect().width)})).filter(x=>x.right>document.documentElement.clientWidth+2 && x.width>0).slice(0,15)}));
+  if(state.scroll>state.width+2)await page.screenshot({path:'qa-v4/overflow-'+state.url.replace(/[^a-z0-9]/gi,'-')+'.png',fullPage:true});
+  assert.ok(state.scroll<=state.width+2,'Horizontal overflow '+JSON.stringify(state));
+};
 try{
   const engine={chromium,firefox,webkit}[process.env.NOVYX_ENGINE||'chromium'];
   browser=await engine.launch({headless:true,...(process.env.NOVYX_BROWSER_CHANNEL?{channel:process.env.NOVYX_BROWSER_CHANNEL}:{})});
@@ -70,7 +74,7 @@ try{
   });
   await check('Legacy URLs and standalone tools retain world navigation',async()=>{
     for(const file of ['project.html?project=studyforge','safe-agile.html','spark-lab.html','public-ready.html']){
-      await page.goto(base+'/'+file);assert.ok(await page.locator('.world-nav-link').count()>=6);await overflow(page);
+      await page.goto(base+'/'+file);await page.locator('.world-nav-link').nth(5).waitFor();assert.ok(await page.locator('.world-nav-link').count()>=6);await overflow(page);
     }
   });
   await check('Static worlds survive JavaScript disabled and unavailable JSON',async()=>{

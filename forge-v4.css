@@ -62,3 +62,5 @@
 .world-gate[data-identity=wind] .world-gate-ring{border-radius:5% 80%;rotate:-35deg}
 .world-gate[data-identity=sunrise] .world-gate-ring{border-style:double;border-width:6px}
 @media(pointer:coarse),(max-width:600px){.hero-particles{display:none}.sphere-link .orb-orbit,.sphere-link .orb-orbit-back{animation-duration:35s!important}}
+.demo-field input,.demo-field select{min-width:0;max-width:100%;box-sizing:border-box}
+.v4-section p,.v4-section li,.v4-section summary{overflow-wrap:anywhere}

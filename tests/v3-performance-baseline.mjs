@@ -22,10 +22,10 @@ const server=createServer(async(req,res)=>{
 });
 await new Promise(ok=>server.listen(0,"127.0.0.1",ok));
 const host="http://127.0.0.1:"+server.address().port;
-const pages=["/","/project.html?project=footballforge","/project.html?project=spark-lab","/project.html?project=wildrift-counter"];
+const pages=["/","/project.html?project=footballforge","/project.html?project=spark-lab","/project.html?project=wildrift-counter","/world-footballforge.html","/world-studyforge.html"];
 let browser=null;const samples=[];
 try{
- browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
+ browser=await chromium.launch({headless:true,...(process.env.NOVYX_BROWSER_CHANNEL?{channel:process.env.NOVYX_BROWSER_CHANNEL}:{}),args:["--no-sandbox"]});
  const context=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});
  const page=await context.newPage();
  const client=await context.newCDPSession(page);
