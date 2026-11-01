@@ -21,7 +21,7 @@ for(const p of catalog.projects){
   assert.ok(!html.includes('js-project-loading'));
   assert.ok(!html.includes('Loading project'));
   assert.ok(html.includes('data-prerendered="true"'));
-  const heroActions=html.match(/<div class="hero-actions" id="hero-actions">([\\s\\S]*?)<\\/div>/)?.[1]||'';
+  const heroActions=html.match(/<div class="hero-actions" id="hero-actions">([\s\S]*?)<\/div>/)?.[1]||'';
   if(p.links?.visit){
     assert.ok(heroActions.includes('class="btn btn-primary btn-project-destination"'),p.id+' must have a primary project link');
     assert.ok(heroActions.includes('href="'+p.links.visit+'"'),p.id+' missing catalog destination');
@@ -42,4 +42,4 @@ assert.ok(index.some(x=>x.kind==='Engineering'));assert.equal(index.filter(x=>x.
 console.log('PASS V4: seven static worlds, metadata, evidence, connections, local links, safe rendering and engineering/demo search.');
 
 assert.match(read('project-showcase.js'), /btn-primary btn-project-destination/);
-assert.match(read('project.html'), /forge-project-links\\.css/);
+assert.match(read('project.html'), /forge-project-links\.css/);
