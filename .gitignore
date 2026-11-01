@@ -5,3 +5,6 @@ qa-performance/
 qa-v4/
 qa-production-screenshots/
 *.log
+
+# Writable count state is created on the web host, never commit visitor totals
+api/.visitor-counter-state.php
