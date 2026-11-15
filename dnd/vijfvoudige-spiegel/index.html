@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080e12">
+  <meta name="description" content="Een interactieve D&D-puzzel voor Novus Ordo Mundi: De Vijfvoudige Spiegel.">
+  <title>De Vijfvoudige Spiegel | Novus Ordo Mundi</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    :root{color-scheme:dark;--ink:#e8e3d1;--muted:#9aa6a4;--gold:#dcc38b;--gold2:#a68f55;--pine:#081314;--panel:rgba(12,24,28,.83);--line:rgba(209,189,140,.27);--emerald:#9bb7aa;--crimson:#ae5360;--shadow:0 28px 100px #0009}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--ink);background:#060d10;font-family:Georgia,"Times New Roman",serif;letter-spacing:.015em;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;background:radial-gradient(ellipse 60% 55% at 48% 25%,#1f3530 0%,#0a1719 66%,#06090e 100%)}
+    body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;opacity:.26;background:repeating-linear-gradient(90deg,transparent 0 73px,#040c0a 76px 94px,transparent 100px 162px),radial-gradient(circle at 12% 34%,#d6eac8 0 1px,transparent 2px),radial-gradient(circle at 79% 15%,#d6eac8 0 1px,transparent 2px);background-size:100% 100%,97px 127px,143px 193px}
+    .fog{pointer-events:none;position:fixed;z-index:-1;inset:0;background:radial-gradient(ellipse at 50% 82%,#51756912,transparent 60%);animation:mist 22s ease-in-out infinite alternate}
+    @keyframes mist{from{transform:translateX(-3%);opacity:.4}to{transform:translateX(5%);opacity:1}}
+    button,input{font:inherit}
+    button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+    button:focus-visible,a:focus-visible{outline:2px solid #e0ce9c;outline-offset:4px}
+    a{color:var(--gold)}
+    [hidden]{display:none!important}
+    .shell{width:min(1310px,calc(100% - 42px));margin:0 auto;padding:30px 0 65px}
+    .masthead{display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line);padding-bottom:20px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand-emblem{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--gold);font-size:26px;box-shadow:inset 0 0 16px #d4bd6733}
+    .brand-copy{display:flex;flex-direction:column;gap:4px}
+    .brand-copy strong{font-family:Arial,sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:12px}
+    .brand-copy small,.kicker,.location{font-family:Arial,sans-serif;text-transform:uppercase;letter-spacing:.17em;font-size:10px;color:var(--muted)}
+    .header-actions{display:flex;align-items:center;gap:9px}
+    .small-btn{border:1px solid var(--line);color:var(--gold);border-radius:7px;background:#182629aa;padding:10px 13px;font-family:Arial,sans-serif;font-size:12px;letter-spacing:.06em;transition:background .2s,border-color .2s}
+    .small-btn:hover{background:#2b3938;border-color:#a6a38288}
+    .intro{text-align:center;margin:44px auto 23px;max-width:760px}
+    .intro .kicker{font-size:11px;color:var(--gold);margin:0 0 12px}
+    h1{font-weight:normal;font-size:clamp(39px,5.2vw,73px);letter-spacing:.055em;line-height:1.05;text-shadow:0 5px 25px #000; margin:0}
+    h1 em{font-style:normal;color:var(--gold)}
+    .subtitle{font-size:clamp(14px,1.8vw,18px);color:#c6d3c8;line-height:1.75;margin:17px auto 0;max-width:620px}
+    .stage{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(330px,.9fr);gap:22px;align-items:start;margin-top:30px}
+    .stage-card,.panel,.role-card,.dm-card{border:1px solid var(--line);background:linear-gradient(145deg,#111d20ed,#0c171acc);border-radius:16px;box-shadow:var(--shadow)}
+    .stage-card{padding:17px 18px 22px;position:relative;overflow:hidden}
+    .stage-card:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,#e3c68f08,transparent 30%)}
+    .topline{display:flex;justify-content:space-between;align-items:center;gap:14px;color:#bacac3;font-family:Arial,sans-serif;font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+    .topline .mark{color:var(--gold)}
+    .basin{--s: min(570px, 100%);width:var(--s);aspect-ratio:1;margin:14px auto 8px;position:relative;touch-action:manipulation}
+    .basin:before{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 52% 33%,#a2c4a319,#162a2c88 25%,#030b11 70%,#0c2023 80%,#6a77705c 86%,#091415 92%);border:3px ridge #9d8d65aa;box-shadow:inset 0 0 60px #000,inset 0 0 12px #b6d5c24d,0 0 26px #799a7933,0 0 0 11px #1c2422,0 0 0 12px #8a775945,0 0 0 21px #071318;transition:box-shadow .8s}
+    .basin:after{content:"";position:absolute;inset:13%;pointer-events:none;border-radius:50%;border:1px solid #d3dcb31c;box-shadow:0 0 0 21px #9bccaf06,0 0 0 43px #7babb209;animation:ripple 7s ease-in-out infinite}
+    @keyframes ripple{0%,100%{opacity:.3;transform:scale(.98)}50%{opacity:.75;transform:scale(1.04)}}
+    .basin.is-solved:before{box-shadow:inset 0 0 60px #000,inset 0 0 34px #d6e2bc6e,0 0 58px #9fd8b377,0 0 0 11px #1c2422,0 0 0 12px #d7bc7788,0 0 0 21px #071318}
+    .pool-center{position:absolute;inset:30%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;z-index:1;pointer-events:none;color:#cce2d1;text-shadow:0 3px 15px #000}
+    .pool-center .water-glow{font-size:clamp(28px,4.7vw,54px);opacity:.72;color:#adcabf;line-height:1;animation:breathe 4s ease-in-out infinite}
+    @keyframes breathe{50%{filter:drop-shadow(0 0 13px #add3bc);opacity:1}}
+    .pool-center strong{font-size:clamp(12px,2.2vw,21px);line-height:1.27;letter-spacing:.1em;font-weight:normal;text-transform:uppercase;margin-top:12px}
+    .pool-center small{font-family:Arial,sans-serif;font-size:clamp(9px,1.5vw,12px);line-height:1.5;margin-top:9px;color:#a8b6b2}
+    .socket{position:absolute;z-index:5;width:clamp(66px,15%,91px);height:clamp(66px,15%,91px);border:1px solid #c6b37a80;background:radial-gradient(circle at 35% 28%,#324b47,#111f23 70%);border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;color:var(--gold);box-shadow:inset 0 0 0 5px #050e10aa,inset 0 0 15px #e8d4a326,0 7px 13px #000a;transition:transform .15s,box-shadow .2s,border-color .2s;transform:translate(-50%,-50%)}
+    .socket:hover{transform:translate(-50%,-50%) scale(1.07);border-color:#e8ce8f}
+    .socket.selected{border-color:#f4e7b6;box-shadow:inset 0 0 14px #e8d4a37b,0 0 20px #ddbe6688}
+    .socket .socket-symbol{height:40px;display:grid;place-items:center}
+    .socket svg,.rune svg{width:34px;height:34px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .socket small{font-family:Arial,sans-serif;letter-spacing:.04em;color:#a7ac9f;font-size:10px;text-transform:uppercase}
+    .socket.empty .socket-symbol{color:#7b817a;font-size:23px;opacity:.7}
+    .slot0{left:50%;top:8%}.slot1{left:90%;top:37%}.slot2{left:75%;top:85%}.slot3{left:25%;top:85%}.slot4{left:10%;top:37%}
+    .altar-caption{text-align:center;color:#b8c9bd;font-family:Arial,sans-serif;font-size:12px;letter-spacing:.065em;line-height:1.6;margin:5px auto 0;max-width:480px}
+    .right-col{display:flex;flex-direction:column;gap:15px}
+    .panel{padding:25px}
+    .panel h2,.role-card h2,.dm-card h2{font-weight:normal;letter-spacing:.075em;font-size:27px;margin:5px 0 12px;color:var(--gold)}
+    .panel p{line-height:1.7;color:#c2cfc5;font-size:15px;margin:10px 0}
+    .runes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:20px}
+    .rune{min-height:91px;padding:9px 3px 7px;border:1px solid #8a997b55;background:#14272a;border-radius:9px;color:#d6c18e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:transform .2s,background .2s,border-color .2s}
+    .rune:hover{transform:translateY(-3px);background:#203539}
+    .rune.selected{border-color:#f1db9a;background:#3b4030;box-shadow:0 0 18px #a9a07633}
+    .rune.placed{opacity:.6}
+    .rune svg{width:31px;height:31px}
+    .rune span{font-family:Arial,sans-serif;font-size:10px;letter-spacing:.07em;text-transform:uppercase}
+    .controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+    .action{border:1px solid #bba66d;border-radius:7px;background:linear-gradient(180deg,#bca36a,#8d7650);color:#101b1b;padding:12px 17px;font-family:Arial,sans-serif;font-size:12px;line-height:1.1;font-weight:bold;letter-spacing:.095em;text-transform:uppercase;min-height:43px}
+    .action:hover{filter:brightness(1.15)}
+    .action.alt{background:transparent;color:var(--gold);border-color:var(--line)}
+    .action:disabled{opacity:.4;cursor:default;filter:none}
+    .message{min-height:69px;padding:16px;margin-top:16px;background:#0a171a;border-left:2px solid #a6af8c;border-radius:3px;color:#c1cfc4;font-size:14px;line-height:1.65}
+    .message.error{border-color:#a75860;color:#e6bfbb}
+    .message.success{border-color:#bcdca5;background:#16291f;color:#e5f2d9}
+    .guidance{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:14px 0 0;font-family:Arial,sans-serif;font-size:11px;color:var(--muted)}
+    .hint-card{margin-top:12px;border:1px solid #9fba914f;border-radius:7px;padding:14px 15px;background:#16251dd9;color:#e0e7d4;line-height:1.55;font-size:14px}
+    .hint-card strong{font-family:Arial,sans-serif;display:block;color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:7px}
+    .ending{margin-top:16px;border:1px solid #9bbf8f9c;background:linear-gradient(115deg,#18332ba8,#22312dbf);padding:22px;border-radius:10px;line-height:1.75}
+    .ending h3{color:#e5d4a5;font-size:28px;font-weight:normal;letter-spacing:.06em;margin:0 0 7px}
+    .ending p{margin:7px 0;font-size:15px}
+    .ending .omen{font-size:19px;font-style:italic;color:#d5d8ba;padding-top:10px}
+    .info-strip{margin-top:25px;display:flex;align-items:center;justify-content:center;gap:12px;color:#748d89;font-family:Arial,sans-serif;font-size:11px;letter-spacing:.08em;text-align:center;flex-wrap:wrap}
+    .dot{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--gold2)}
+    .role-wrap{max-width:880px;margin:58px auto 0}
+    .role-card{padding:clamp(25px,7vw,65px);text-align:center;position:relative;overflow:hidden;background:linear-gradient(#13252acc,#101b21e8),radial-gradient(ellipse at 50% 20%,#445e56,transparent 70%)}
+    .role-card:before{content:"✦";font-size:34px;color:#d7bd7f;display:block;margin-bottom:17px;opacity:.9}
+    .role-card h1{font-size:clamp(36px,7vw,60px)}
+    .role-card h2{font-size:21px;color:#b2bdad;margin-top:12px}
+    .role-card .divider{height:1px;background:linear-gradient(90deg,transparent,#9e8c66,transparent);margin:30px auto;max-width:390px}
+    .role-card .inscription{font-size:clamp(22px,4.5vw,35px);line-height:1.55;color:#f1e3c2;margin:10px auto;max-width:670px;font-style:italic}
+    .role-card .instruction{max-width:520px;margin:25px auto 0;font-family:Arial,sans-serif;color:#b7c6c1;font-size:13px;line-height:1.75}
+    .role-card .nameplate{display:inline-block;border:1px solid var(--line);font:11px Arial,sans-serif;letter-spacing:.18em;padding:8px 16px;color:var(--gold);border-radius:99px;margin-top:12px}
+    .dm-shell{max-width:1050px;margin:50px auto 0}
+    .dm-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}
+    .dm-card{padding:24px}
+    .dm-card p,.dm-card li{line-height:1.65;font-size:14px;color:#c4d0c9}
+    .dm-card ul{padding-left:21px}
+    .dm-card strong{color:#e1cf9b}
+    .dm-card .solution{font-size:19px;line-height:1.65;color:#e5d8ad;letter-spacing:.03em;margin:10px 0}
+    .dm-card .toolrow{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+    .dm-card .status{padding:12px;color:#bad4c0;border:1px solid var(--line);border-radius:7px;font-family:Arial,sans-serif;font-size:13px;margin-bottom:10px}
+    .share-links{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;font-family:Arial,sans-serif;font-size:13px}
+    .share-links code{font-family:monospace;color:#b9c5be;overflow-wrap:anywhere;font-size:11px}
+    .share-links button{padding:9px 12px}
+    .footer{text-align:center;color:#6f807c;font-family:Arial,sans-serif;font-size:11px;margin-top:40px;letter-spacing:.07em}
+    .tiny{font-family:Arial,sans-serif;font-size:12px;color:#aabbb3}
+    .screenreader{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden}
+    @media(max-width:900px){.stage{grid-template-columns:1fr}.basin{max-width:510px}.right-col{display:grid;grid-template-columns:1fr 1fr;gap:13px}.panel{padding:18px}.runes{grid-template-columns:repeat(5,minmax(0,1fr))}.dm-grid{grid-template-columns:1fr}}
+    @media(max-width:670px){.shell{width:min(100% - 22px,550px);padding-top:18px}.masthead{align-items:flex-start}.brand-copy strong{font-size:10px}.brand-copy small{font-size:9px}.brand-emblem{width:32px;height:32px}.header-actions{flex-direction:column;align-items:end}.small-btn{font-size:10px;padding:8px 9px}.intro{margin:26px 5px 22px}.intro .subtitle{font-size:14px}.stage{gap:13px;margin-top:20px}.stage-card{padding:13px 7px 19px}.basin{width:100%;max-width:470px}.socket{width:16.8%;height:16.8%;min-width:55px;min-height:55px}.socket svg{width:25px;height:25px}.socket .socket-symbol{height:28px}.socket small{font-size:8px}.right-col{display:flex}.panel{padding:20px}.pool-center strong{font-size:clamp(10px,3.2vw,18px)}.pool-center small{font-size:9px}.rune{min-height:79px}.rune svg{width:25px;height:25px}.rune span{font-size:9px}.topline{font-size:9px;padding:0 10px}.altar-caption{font-size:11px;padding:0 13px}.role-wrap,.dm-shell{margin-top:34px}.role-card{padding:32px 23px}.footer{margin-top:24px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<div class="fog" aria-hidden="true"></div>
+<div class="shell">
+  <header class="masthead">
+    <a class="brand" href="./" aria-label="Naar de hoofdpuzzel"><span class="brand-emblem">✦</span><span class="brand-copy"><strong>Novus Ordo Mundi</strong><small>Een avontuur in Vareth</small></span></a>
+    <div class="header-actions"><span class="location">Eldervane · Fluisterwoud</span><button type="button" class="small-btn" id="fullscreen-btn">Volledig scherm</button></div>
+  </header>
+
+  <main id="player-view">
+    <section class="intro"><p class="kicker">Chapter I · Een verborgen ontmoeting</p><h1>De Vijfvoudige <em>Spiegel</em></h1><p class="subtitle">Tussen de bomen ligt een kring van zwart water. Het weerspiegelt geen gezichten. Vijf lege nissen gloeien langs de rand, en uit de stilte klinkt een fluistering: <i>“Vijf stemmen. Eén waarheid.”</i></p></section>
+    <div class="stage">
+      <section class="stage-card" aria-labelledby="board-title">
+        <div class="topline"><span id="board-title">De kring van vergeten reflecties</span><span class="mark">◈ ◈ ◈ ◈ ◈</span></div>
+        <div class="basin" id="basin"><div class="pool-center"><div class="water-glow" id="water-symbol">◇</div><strong id="water-title">Wat ziet het water?</strong><small id="water-sub">De steen spreekt.<br>Het water antwoordt.</small></div><div id="sockets"></div></div>
+        <p class="altar-caption">Kies een rune en tik op een lege nis. Begin bovenaan en volg de klok mee, maar denk goed na over wat het water werkelijk ziet.</p>
+      </section>
+      <div class="right-col">
+        <section class="panel"><div class="kicker">Vijf tekens · Één volgorde</div><h2>De runen</h2><p>Iedere held heeft een andere tekst gevonden. Vertel elkaar wat erop staat en leid samen af hoe de tekens moeten liggen.</p><div class="runes" id="runes" role="group" aria-label="Kies een rune"></div><div class="controls"><button type="button" class="action" id="test-btn">Laat het water spreken</button><button type="button" class="action alt" id="remove-btn">Neem rune terug</button><button type="button" class="action alt" id="reset-btn">Begin opnieuw</button></div><div id="message" class="message" aria-live="polite">Vijf nissen wachten. Het water is onbeweeglijk.</div><div class="guidance"><span id="attempts">Pogingen: 0</span><span>Een fout antwoord sluit het pad niet af.</span></div><div id="hint-container"></div><div id="ending" class="ending" hidden><h3>Het verborgen pad</h3><p>De waterspiegel wordt volkomen stil. Tussen de bomen lichten oude stenen op. Even houdt het Fluisterwoud op met verschuiven en wordt een veilige doorgang zichtbaar.</p><p class="omen">“Waar macht onbreekbaar lijkt, zoek wat haar voedt.”</p><p>Verderop wacht de Holte van de Vergetenen.</p></div></section>
+        <section class="panel"><div class="kicker">Vijf helden · Vijf getuigenissen</div><h2>Iedereen heeft een deel</h2><p>De vijf aanwijzingen horen bij <strong>Quasar, Gnarly, Kagen, Bryndis</strong> en <strong>Vespera</strong>. De Dungeon Master geeft ieder zijn eigen link. Zonder overleg ontbreekt er iets.</p><p class="tiny">Tip: gebruik dit scherm op de laptop of televisie. Laat de spelers hun eigen aanwijzing op hun telefoon bekijken.</p></section>
+      </div>
+    </div>
+    <div class="info-strip"><span>Een ontmoeting in het Fluisterwoud</span><span class="dot"></span><span>Voor vijf beginnende avonturiers</span><span class="dot"></span><span>Geen dobbelsteen vereist om de logica op te lossen</span></div>
+  </main>
+
+  <main id="role-view" hidden><div class="role-wrap"><div class="role-card"><p class="kicker">Een geheim voor één van de vijf</p><h1 id="role-name"></h1><h2 id="role-heading"></h2><span class="nameplate" id="role-id"></span><div class="divider"></div><p class="inscription" id="role-text"></p><div class="divider"></div><p class="instruction">Lees deze woorden zorgvuldig. Vertel de andere avonturiers wat je ontdekt hebt. Misschien kan alleen jouw deel de anderen verder helpen.</p><div style="margin-top:25px"><a class="small-btn" href="./" style="display:inline-block;text-decoration:none">Bekijk het gezamenlijke speelveld</a></div></div></div></main>
+
+  <main id="dm-view" hidden><div class="dm-shell"><div class="kicker">Alleen voor de Dungeon Master</div><h1>De <em>DM-tafel</em></h1><p class="subtitle" style="margin-left:0">Bedien de hintweergave op het spelersscherm, controleer de oplossing en deel de vijf persoonlijke aanwijzingen.</p><div class="dm-grid"><section class="dm-card"><h2>Spelregie</h2><div class="status" id="dm-status"></div><p><strong>Opzet:</strong> vijf helden krijgen één eigen inscriptie. Het grote scherm toont de waterkring. Hun taak is de tekens te plaatsen zoals de <em>spiegel</em> ze ziet, niet zoals de steen ze beschrijft.</p><p><strong>Oplossing op steen (met de klok mee):</strong></p><p class="solution">Oog → Blad → Vlam → Maan → Zon</p><p><strong>Correct spiegelbeeld (invullen):</strong></p><p class="solution">Oog → Zon → Maan → Vlam → Blad</p><p><strong>Hintregeling:</strong> hints verschijnen op het spelersscherm zodra je er één vrijgeeft. In twee browservensters van dezelfde laptop synchroniseert dit automatisch.</p><div class="toolrow"><button class="action" id="hint-up">Geef volgende hint</button><button class="action alt" id="hint-down">Verberg laatste hint</button></div><div class="toolrow"><button class="action alt" id="dm-reset">Reset hele puzzel</button><button class="action alt" id="dm-unlock">Toon oplossing / onthulling</button></div><p id="dm-hints" class="tiny"></p><p class="tiny">Voor projectie: open het gewone speelveld in een tweede browservenster op je extra scherm. Open deze DM-weergave op je laptop.</p></section><section class="dm-card"><h2>De persoonlijke links</h2><p>Stuur elke link naar de betreffende speler. Links werken op hun telefoon zodra de website online staat.</p><div id="share-links" class="share-links"></div><div class="toolrow"><button class="action" id="copy-all">Kopieer alle vijf links</button><button class="action alt" id="player-open">Open het spelersscherm</button></div><p class="tiny" id="copy-status" aria-live="polite"></p></section><section class="dm-card"><h2>Voorleestekst</h2><p>“De wind sterft weg. Voor jullie ligt een donkere waterkring, omgeven door vijf lege stenen nissen. In het zwarte oppervlak verschijnt geen van jullie gezichten. Dan klinkt een stem, alsof vijf mensen tegelijk fluisteren: <em>Vijf stemmen. Eén waarheid. Niet alles wat je ziet, is zoals het staat geschreven.</em>”</p><p>Laat iedere held zijn eigen aanwijzing ontdekken. Als ze een andere slimme manier gebruiken om het bos te doorkruisen, mogen ze dat ook proberen.</p></section><section class="dm-card"><h2>Canon & verloop</h2><ul><li>Dit is een <strong>VOORSTEL</strong> binnen het bestaande Fluisterwoud. De oorsprong van de waterkring wordt niet tot canon verklaard.</li><li>Bij succes vinden de spelers een duidelijker pad naar de <strong>Holte van de Vergetenen</strong> en een cryptische waarschuwing.</li><li>Bij mislukking zijn alternatieve routes, onderzoek en spelkeuzes mogelijk. De puzzel is geen onvermijdelijke blokkade.</li><li>De waterkring is <strong>niet</strong> de demonische spiegel uit de grot. De grotspiegel moet volgens canon nog steeds echt vernietigd worden; de demon moet daarna apart worden verslagen.</li><li>Voor een groep beginnende spelers: speel ongeveer 10–15 minuten met vrije uitleg, en geef daarna zo nodig de eerste hint.</li></ul></section></div></div></main>
+
+  <footer class="footer">NOVUS ORDO MUNDI · VARETH · INTERACTIEF SPELMATERIAAL · VOORSTEL</footer>
+</div>
+<script>
+(() => {
+  'use strict';
+  const KEY='nom-vijfvoudige-spiegel-v1';
+  const GLYPHS={
+    oog:{name:'Oog',svg:'<path d="M2.2 12s3.7-6 9.8-6 9.8 6 9.8 6-3.7 6-9.8 6-9.8-6-9.8-6Z"/><circle cx="12" cy="12" r="3"/>'},
+    blad:{name:'Blad',svg:'<path d="M20.5 3.5C11 3.5 4 8 4 15a5 5 0 0 0 5 5c7 0 11.5-7 11.5-16.5Z"/><path d="M5 21c2-5 5-8 11-12"/>'},
+    vlam:{name:'Vlam',svg:'<path d="M12 22c4.4 0 7.5-3.1 7.5-7.2 0-3.2-2-6.1-5.3-9.9.1 4-1.5 5.2-3.2 6.3-.7-3.1-1.8-4.8-3-6.3.2 4-3.4 6.7-3.4 10C4.6 19 7.8 22 12 22Z"/><path d="M12 21.5c2 0 3.1-1.5 3.1-3.5 0-1.5-1-3.1-2.2-4.5-.1 2-2.1 2.9-2.8 4.3-.7 1.6.2 3.7 1.9 3.7Z"/>'},
+    maan:{name:'Maan',svg:'<path d="M20.2 16.4A8.7 8.7 0 0 1 7.6 3.8 8.8 8.8 0 1 0 20.2 16.4Z"/>'},
+    zon:{name:'Zon',svg:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9l2.1 2.1m10 10 2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/>'}
+  };
+  const ROLE={
+    quasar:{name:'Quasar Qadiran',heading:'De eerste steen',id:'I · Het Oog',text:'“Het Oog houdt wacht op de hoogste nis. Boven alle anderen ziet het de hele kring.”'},
+    gnarly:{name:'Gnarly Glimmer',heading:'De tweede steen',id:'II · Het Blad en de Vlam',text:'“Waar het Blad rust, ontwaakt direct daarna de Vlam. Volg de richting waarin de klok draait.”'},
+    kagen:{name:'Kagen Bloodmoon',heading:'De derde steen',id:'III · De Maan en het Oog',text:'“De Maan duldt het Oog niet naast zich. Tussen hen moet altijd een ander teken staan.”'},
+    bryndis:{name:'Bryndis Highwind',heading:'De vierde steen',id:'IV · De Maan en de Zon',text:'“De Zon volgt de Maan op de voet, met de draai van de klok mee. Geen nis ligt ertussen.”'},
+    vespera:{name:'Vespera',heading:'De vijfde steen',id:'V · De leugen van het water',text:'“Steen onthoudt wat rechts ligt. Water toont het aan de linkerzijde. Alleen wat bovenaan staat, verandert niet van plaats.”'}
+  };
+  const HINTS=[
+    'De hoogste nis verandert niet in een reflectie. Begin bij het Oog. De overige nissen hebben aan de overkant een spiegelbeeld.',
+    'Op de stenen staan twee opeenvolgende paren: Blad → Vlam en Maan → Zon. De Maan mag niet direct naast het Oog staan.',
+    'De volgorde op steen is: Oog → Blad → Vlam → Maan → Zon. Het water toont de omgekeerde draairichting: Oog → Zon → Maan → Vlam → Blad.'
+  ];
+  const CORRECT=['oog','zon','maan','vlam','blad'];
+  const STONE=['oog','blad','vlam','maan','zon'];
+  const DEFAULT={slots:[null,null,null,null,null],selected:null,attempts:0,hints:0,solved:false,msg:'Vijf nissen wachten. Het water is onbeweeglijk.',msgType:'neutral'};
+  const $=id=>document.getElementById(id);
+  function readState(){try{const v=JSON.parse(localStorage.getItem(KEY));if(!v || !Array.isArray(v.slots) || v.slots.length!==5 || !v.slots.every(x=>x===null || !!GLYPHS[x]))return structuredClone(DEFAULT);return {...structuredClone(DEFAULT),...v};}catch(e){return structuredClone(DEFAULT)}}
+  let state=readState();
+  const channel=('BroadcastChannel' in window)?new BroadcastChannel(KEY):null;
+  const params=new URLSearchParams(location.search);
+  const role=params.get('rol');
+  const dm=params.get('dm')==='1';
+  function save(next){state=next;try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}if(channel)channel.postMessage(state);render()}
+  if(channel)channel.addEventListener('message',e=>{if(e.data?.slots && Array.isArray(e.data.slots)){state=e.data;render()}});
+  window.addEventListener('storage',e=>{if(e.key===KEY){state=readState();render()}});
+  const glyphIcon=(id)=>`<svg viewBox="0 0 24 24" aria-hidden="true">${GLYPHS[id].svg}</svg>`;
+  function setMessage(s,t='neutral'){save({...state,msg:s,msgType:t})}
+  function moveToSlot(i){if(state.solved)return;if(!state.selected){if(state.slots[i])save({...state,selected:state.slots[i]});else setMessage('Kies eerst een van de vijf runen.');return}
+    const arr=[...state.slots];const old=arr[i];const from=arr.indexOf(state.selected);if(from>=0)arr[from]=old||null;arr[i]=state.selected;save({...state,slots:arr,selected:null,msg:'Het water rimpelt. De rune ligt op haar plaats.',msgType:'neutral'});
+  }
+  function chooseRune(id){if(state.solved)return;save({...state,selected:state.selected===id?null:id})}
+  function removeRune(){if(!state.selected){setMessage('Selecteer eerst de rune die je wilt terugnemen.');return}const arr=[...state.slots];const i=arr.indexOf(state.selected);if(i>=0)arr[i]=null;save({...state,slots:arr,selected:null,msg:'De rune keert terug naar de rand.',msgType:'neutral'})}
+  function reset(){save(structuredClone(DEFAULT))}
+  function check(){if(state.solved)return;const attempts=state.attempts+1;if(state.slots.some(x=>!x)){save({...state,attempts,msg:'Er zijn nog lege nissen. Het water wacht op vijf tekens.',msgType:'error'});return}
+    if(state.slots.every((x,i)=>x===CORRECT[i])){save({...state,selected:null,attempts,solved:true,msg:'De reflectie is juist. Het water erkent jullie gezamenlijke antwoord.',msgType:'success'});return}
+    const stone=state.slots.every((x,i)=>x===STONE[i]);save({...state,attempts,msg:stone?'De stenen zouden deze volgorde erkennen. Maar het water fluistert: “Ik toon niet de zijde die jullie aanraken…”':'De tekens trillen. Er klinkt een zachte, droevige toon. Er is nog iets niet juist aan deze reflectie.',msgType:'error'});
+  }
+  function renderPlayer(){
+    const sockets=$('sockets');if(!sockets)return;
+    sockets.innerHTML=state.slots.map((id,i)=>`<button type="button" class="socket slot${i} ${id?'':'empty'} ${state.selected===id && id?'selected':''}" data-slot="${i}" aria-label="Nis ${i+1}: ${id?GLYPHS[id].name:'leeg'}"><span class="socket-symbol">${id?glyphIcon(id):'✧'}</span><small>${id?GLYPHS[id].name:i===0?'Boven':`Nis ${i+1}`}</small></button>`).join('');
+    sockets.querySelectorAll('[data-slot]').forEach(el=>el.addEventListener('click',()=>moveToSlot(Number(el.dataset.slot))));
+    const runes=$('runes');runes.innerHTML=Object.entries(GLYPHS).map(([id,g])=>`<button type="button" class="rune ${state.selected===id?'selected':''} ${state.slots.includes(id)?'placed':''}" data-rune="${id}" aria-pressed="${state.selected===id}" aria-label="Kies de rune ${g.name}">${glyphIcon(id)}<span>${g.name}</span></button>`).join('');
+    runes.querySelectorAll('[data-rune]').forEach(el=>el.addEventListener('click',()=>chooseRune(el.dataset.rune)));
+    $('message').textContent=state.msg;$('message').className='message'+(state.msgType==='neutral'?'':' '+state.msgType);
+    $('attempts').textContent=`Pogingen: ${state.attempts}`;
+    $('hint-container').innerHTML=HINTS.slice(0,state.hints).map((h,i)=>`<div class="hint-card"><strong>Een fluistering uit de verte · ${i+1}</strong>${h}</div>`).join('');
+    $('ending').hidden=!state.solved;$('basin').classList.toggle('is-solved',state.solved);
+    $('water-symbol').textContent=state.solved?'✦':'◇';$('water-title').textContent=state.solved?'Het pad verschijnt':'Wat ziet het water?';$('water-sub').innerHTML=state.solved?'Vijf stemmen.<br>Eén waarheid.':'De steen spreekt.<br>Het water antwoordt.';
+    $('test-btn').disabled=state.solved;$('remove-btn').disabled=state.solved;
+  }
+  function baseUrl(){return location.href.split('?')[0].split('#')[0]}
+  async function copyString(s){try{await navigator.clipboard.writeText(s);return true}catch(e){const t=document.createElement('textarea');t.value=s;document.body.appendChild(t);t.select();let ok=false;try{ok=document.execCommand('copy')}catch(e2){}t.remove();return ok}}
+  function renderDm(){if(!$('dm-status'))return;
+    $('dm-status').textContent=`Status: ${state.solved?'opgelost':'actief'} · ${state.slots.filter(Boolean).length}/5 symbolen · ${state.attempts} poging(en) · ${state.hints}/3 hints zichtbaar`;
+    $('dm-hints').textContent=`Zichtbare hints: ${state.hints===0?'geen':HINTS.slice(0,state.hints).map((h,i)=>(i+1)+'. '+h).join(' | ')}`;
+    const sharing=$('share-links');sharing.innerHTML=Object.entries(ROLE).map(([id,r])=>`<div><strong>${r.name}</strong><div><code>${baseUrl()}?rol=${id}</code></div></div><button class="small-btn" type="button" data-share="${id}">Kopieer</button>`).join('');
+    sharing.querySelectorAll('[data-share]').forEach(el=>el.addEventListener('click',async()=>{const ok=await copyString(`${baseUrl()}?rol=${el.dataset.share}`);$('copy-status').textContent=ok?'Link gekopieerd.':'Kopiëren lukte niet; selecteer de link handmatig.'}));
+  }
+  function render(){if(dm)renderDm();else if(!role)renderPlayer()}
+  if(role && ROLE[role]){$('player-view').hidden=true;$('role-view').hidden=false;const r=ROLE[role];$('role-name').textContent=r.name;$('role-heading').textContent=r.heading;$('role-id').textContent=r.id;$('role-text').textContent=r.text;document.title=`${r.name} | De Vijfvoudige Spiegel`}
+  else if(dm){$('player-view').hidden=true;$('dm-view').hidden=false;document.title='DM-tafel | De Vijfvoudige Spiegel';$('hint-up').addEventListener('click',()=>save({...state,hints:Math.min(HINTS.length,state.hints+1)}));$('hint-down').addEventListener('click',()=>save({...state,hints:Math.max(0,state.hints-1)}));$('dm-reset').addEventListener('click',()=>{if(confirm('De hele puzzel en alle hints opnieuw starten?'))reset()});$('dm-unlock').addEventListener('click',()=>{if(confirm('De puzzel direct als opgelost markeren op het spelersscherm?'))save({...state,slots:[...CORRECT],selected:null,solved:true,msg:'De reflectie is juist. Het water erkent jullie gezamenlijke antwoord.',msgType:'success'})});$('copy-all').addEventListener('click',async()=>{const lines=Object.entries(ROLE).map(([id,r])=>`${r.name}: ${baseUrl()}?rol=${id}`).join('\n');const ok=await copyString(lines);$('copy-status').textContent=ok?'Alle vijf links gekopieerd.':'Kopiëren is niet gelukt; gebruik de afzonderlijke links.'});$('player-open').addEventListener('click',()=>window.open(baseUrl(),'_blank','noopener'))}
+  else{$('test-btn').addEventListener('click',check);$('remove-btn').addEventListener('click',removeRune);$('reset-btn').addEventListener('click',()=>{if(confirm('Alle runen van de kring verwijderen?'))reset()})}
+  $('fullscreen-btn').addEventListener('click',async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){alert('Volledig scherm wordt op dit apparaat niet ondersteund.')}});
+  render();
+})();
+</script>
+</body>
+</html>
